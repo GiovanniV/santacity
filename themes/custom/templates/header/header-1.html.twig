@@ -1,0 +1,27 @@
+
+<!-- Header and Navbar -->
+<header class="main-header" id="main-header">
+     <div class="inner-header">
+	      <div class="container">
+	       <div class="logo">
+	         {% if page.header %}
+                     {{ page.header }}
+                 {% endif %}
+	       </div>
+	       <div class="nav main-toggle-menu">
+		  {{ page.primary_menu }}
+	       </div>
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navigation" style="position: absolute;right: 0;top: 36px; background:#000;">
+		  <span class="sr-only">Toggle navigation</span>
+		  <span class="icon-bar" style="background:#aaa;"></span>
+		  <span class="icon-bar" style="background:#aaa;"></span>
+		  <span class="icon-bar" style="background:#aaa;"></span>
+               </button>
+	       <div class="search"> 
+	       {% if page.header %}
+		    {{ page.header_search }}
+	       {% endif %}
+	       </div>
+	     </div>
+     </div>
+</header>

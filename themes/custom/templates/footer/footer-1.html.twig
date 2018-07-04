@@ -1,0 +1,35 @@
+<!-- start: Footer -->
+{% if page.footer_first or page.footer_second or page.footer_third %}
+  <div class="footerwidget">
+    <div class="container">
+      
+      <div class="row">
+        
+        <!-- Start Footer First Region -->
+        <div class = {{ footer_class }}>
+          {% if page.footer_first %}
+            {{ page.footer_first }}
+          {% endif %}
+        </div>
+        <!-- End Footer First Region -->
+
+        <!-- Start Footer Second Region -->
+        <div class = {{ footer_class }}>
+          {% if page.footer_second %}
+            {{ page.footer_second }}
+          {% endif %}
+        </div>
+        <!-- End Footer Second Region -->
+
+        <!-- Start Footer third Region -->
+        <div class = {{ footer_third_class }}>
+          {% if page.footer_third %}
+            {{ page.footer_third }}
+          {% endif %}
+        </div>
+        <!-- End Footer Third Region -->
+      </div>
+    </div>
+  </div>
+{% endif %}
+<!--End Footer -->
