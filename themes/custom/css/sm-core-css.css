@@ -130,7 +130,7 @@
   .menu-base-theme a, .menu-base-theme a:hover, 
   .menu-base-theme a:focus, .menu-base-theme a:active, 
   .menu-base-theme a.highlighted {
-    padding: 13px 24px;
+    padding: 13px 14px;
     background: #3092c0;
     color: white;
   }
