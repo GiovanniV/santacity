@@ -1,0 +1,18 @@
+<?php
+
+/**
+ * Implementing hook_theme
+ */
+function santa_theme() {
+  // Globe Search
+  $theme['home_slider'] = [
+    'variables' => [
+      'data' => [],
+			'#attached' => [
+				'library' => 'santa/home-slider',
+			]
+    ],
+  ];
+	
+  return $theme;
+}

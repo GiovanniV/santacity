@@ -1,0 +1,10 @@
+home-slider:
+  version: 1.x
+  css:
+    theme:
+      css/flexslider.css: {}
+  js:
+    js/jquery.flexslider.js: {}
+    js/homeslider.js: {}
+  dependencies:
+    - core/jquery

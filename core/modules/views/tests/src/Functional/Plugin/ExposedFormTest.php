@@ -199,6 +199,27 @@ class ExposedFormTest extends ViewTestBase {
     $view = Views::getView('test_exposed_block');
     $view->setDisplay('page_1');
     $block = $this->drupalPlaceBlock('views_exposed_filter_block:test_exposed_block-page_1');
+		
+		// Set to display the label on the exposed filter form block.
+		$block->getPlugin()->setConfigurationValue('label_display', TRUE);
+		$block->save();
+		// Test that the block label is found.
+		$this->drupalGet('test_exposed_block');
+		$this->assertText($view->getTitle(), 'Block title found.');
+		// Set a custom label on the exposed filter form block.
+		$block->getPlugin()->setConfigurationValue('views_label', 'Custom title');
+		$block->save();
+		// Test that the custom block label is found.
+		$this->drupalGet('test_exposed_block');
+		$this->assertText('Custom title', 'Custom block title found.');
+		// Set to hide the label on the exposed filter form block.
+		$block->getPlugin()->setConfigurationValue('label_display', FALSE);
+		$block->save();
+		// Test that the label is removed.
+		$this->drupalGet('test_exposed_block');
+		$this->assertNoText('Custom title', 'Custom title was not displayed.');
+		$this->assertNoText($view->getTitle(), 'Block title was not displayed.');
+		 
     $this->drupalGet('test_exposed_block');
 
     // Test there is an exposed form in a block.

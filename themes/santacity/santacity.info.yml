@@ -1,0 +1,43 @@
+core: 8.x
+type: theme
+base theme: bootstrap
+
+name: 'santacity'
+description: 'Uses the Bootstrap framework Sass source files and must be compiled (not for beginners).'
+package: 'Bootstrap'
+
+regions:
+  navigation: 'Navigation'
+  left_navigation: 'Left Navigation'
+  navigation_collapsible: 'Navigation (Collapsible)'
+  header: 'Top Bar'
+  top: 'Content Top'
+  top_service_left: 'Top Service Left'
+  top_service_right: 'Top Service Right'
+  home_feature: 'Home Feature'
+  breadcrumb: 'Breadcrumb'
+  home_events: 'Home Events'
+  top_left: 'Top Left'
+  top_rigt: 'Top Right'
+  bottom: 'Content Bottom'
+  highlighted: 'Highlighted'
+  help: 'Help'
+  content: 'Content'
+  follow_us: 'Follow Us'
+  sidebar_first: 'Primary'
+  sidebar_second: 'Secondary'
+  page_heading: 'Page Heading'
+  home_slider: 'Page One Fouth'
+  three_fourth: 'Page Three Fouth'
+  one_fourth: 'Page One Fouth'
+  content_left: 'Content Left'
+  content_right: 'Content Right'
+  footer: 'Footer'
+  page_top: 'Page top'
+  page_bottom: 'Page bottom'
+  feature: 'Feature'
+  banner: 'Banner'
+
+libraries-extend:
+  bootstrap/framework:
+    - santacity/framework

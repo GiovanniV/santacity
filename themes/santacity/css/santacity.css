@@ -1,0 +1,2212 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+
+body {
+    font-family: 'Poppins', sans-serif !important;
+}
+
+
+.region.region-page-heading {
+    margin-top: -12vw;
+    position: relative;
+    z-index: 5;
+    max-width: 1920px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.event_in_bnr+.container {
+    margin-top: -290px;
+}
+
+.event_in_bnr+.container > div:nth-child(1) {
+    box-shadow: 2px 2px 10px #ccc;
+    padding-bottom:20px;
+    padding-top: 10px;
+}
+
+header#navbar {
+    border-bottom: 0px;
+    margin-bottom: 0px;
+    background: url(/themes/santacity/images/header-top-bg.png) no-repeat;
+    background-position: center -10px;
+    z-index: 6;
+    background-size: 104% 100%;
+}
+
+header#navbar .container {
+    background: #fff0;
+}
+
+.navbar-default .navbar-nav > li.active > a{
+    background: transparent !important;
+    border-bottom: solid 2px #f3c70e;
+}
+
+.navbar-default .navbar-nav > li:nth-child(1) > a {
+    font-size: 0 !important;
+    position:  relative;
+}
+
+.navbar-default .navbar-nav > li:nth-child(1) > a:before {
+    content: '\e021';
+   font-family: 'Glyphicons Halflings';
+   font-size: 16px;
+}
+
+.main-container .breadcrumb {background-color:  transparent !important;}
+
+.main-container .region .breadcrumb {
+    background: transparent;
+    font-size: 16px;
+    margin-bottom: 0px;
+    padding-left: 0;
+}
+
+.main-container .region .breadcrumb > li + li:before{
+    content: '\e258' !important;
+    font-family: 'Glyphicons Halflings';
+    font-weight:100 !important;
+    color: #000;
+    font-size: 10px;
+}
+
+.main-container .region .breadcrumb li a {
+    color: #000;
+}
+
+.main-container .region .breadcrumb li.active {
+    font-weight: 500;
+    color: #000;
+}
+
+.webform-breadcrumb ul.breadcrumb {
+    text-align:  center;
+}
+
+.webform-breadcrumb + div h1.page-header {
+    text-align: center;
+}
+
+.webform-breadcrumb + div h1.page-header:after{
+    right: 0;
+    margin: auto;
+    bottom: -8px;
+}
+
+header#navbar + .page-heading + .main-container .region.region-header .breadcrumb + .page-header {
+    border-bottom: 0;
+    margin-bottom: 30px;
+    position:  relative;
+    padding-bottom: 10px;
+}
+
+header#navbar + .page-heading + .main-container .region.region-header .breadcrumb + .page-header:after {
+    content:  '';
+    position:  absolute;
+    width: 100%;
+    max-width: 100px;
+    height: 4px;
+    background: #f3c70e;
+    bottom:  0;
+    left:  0;
+    margin: auto;
+}
+
+div#block-santacity-search {
+    max-width: 230px;
+}
+
+div#block-santacity-search form input {
+    border: solid 1px #4c4c4c;
+    border-radius: 8px 0 0 8px;
+    box-shadow: none;
+}
+
+div#block-santacity-search form .input-group-btn{
+    right: 5px;
+}
+
+div#block-santacity-search form .input-group-btn button {
+    border-radius: 8px;
+    padding: 7px 12px 6px;
+    color: #fff;
+    box-shadow: none;
+}
+
+nav#block-mainnavigation .menu {
+    max-width:  70%;
+    margin-left: 1%;
+}
+
+.navbar-header {
+    width: 220px;
+}
+
+.navbar-header img{
+    height: 100px !important;
+    margin: -5px 0 10px;
+}
+
+div#navbar-collapse {
+    padding-top: 9px;
+}
+
+
+.navbar-default .navbar-nav > li > a {
+    font-size: 15px;
+    color:  #000;
+    font-weight: 500;
+    padding: 10px;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+.santacityheader .lng-dropdown{
+    padding-top: 2px;
+}
+
+.santacityheader .lng-dropdown button {
+    background: #000;
+    color: #fff;
+}
+
+.santacityheader .lng-dropdown button:nth-child(1) {
+    border-radius: 10px 0 0 10px;
+    border: 0;
+    padding: 5px 3px 5px 30px;
+    position: relative;
+}
+.santacityheader .lng-dropdown button:nth-child(1):before {
+    content:  '\e135';
+    position:  absolute;
+    font-family: 'Glyphicons Halflings';
+    width: 24px;
+    height: 30px;
+    line-height: 30px;
+    background: #535353;
+    left:  0;
+    top: 0;
+    border-radius: 10px 0 0 10px;
+}
+
+.santacityheader .lng-dropdown button:nth-child(2) {
+    border: 0;
+    padding: 5px 6px;
+    border-radius: 0 10px 10px 0;
+    position: relative;
+}
+
+.santacityheader .lng-dropdown button:nth-child(2):before {
+    content: "\e259";
+    font-family: 'Glyphicons Halflings';
+    font-size: 10px;
+}
+
+.santacityheader .lng-dropdown button:nth-child(2) .caret{display: none;}
+
+/*Page Title Wrapper css start*/
+.page-heading {
+    position:  relative;
+}
+
+.page-heading section.block .field + .field {
+    position: absolute;
+    width: 100%;
+    top: 65%;
+    left: 0%;
+    text-align: center;
+    font-size: 52px;
+    color: #fff;
+}
+
+footer{margin-top:-2px !important;}
+
+footer.footer {
+    background: #323232;
+    color: #fff;
+    padding: 20px 0 !important;
+}
+
+footer.footer .block-block-content {
+    border-right: solid 2px #464646;
+    min-height: 150px;
+}
+
+footer.footer .block-block-content:last-child,footer.footer .block-block-content:first-child {
+    border-right: 0;
+}
+
+footer.footer .block-block-content a {
+    color: #f1f1f1;
+}
+footer.footer h3 {
+    font-size: 18px;
+}
+footer.footer #block-logo p:nth-child(1) {
+    float:  left;
+    margin-right:  15px;
+}
+
+
+.webform-submission-form .form-item .panel-heading {
+    background: white;
+    border-bottom: 0;
+    text-align:  center;
+    max-width: 60%;
+    margin: -25px  auto 0;
+    padding: 0;
+}
+
+.webform-submission-form .form-item .panel-heading .panel-title{
+    font-size:24px;
+    font-weight:600;
+}
+
+.webform-submission-form .webform-section-wrapper > .form-item.panel {
+    margin-bottom: 50px;
+    margin-top: 10px;
+    border: solid 2px #000 !important;
+}
+
+.webform-submission-form .form-item .panel-body {
+    padding: 30px;
+}
+
+.webform-submission-form .form-item .panel-body label {
+    display:  block;
+    margin-bottom: 8px;
+    visibility: visible;
+}
+
+.webform-submission-form .form-item label {
+    visibility: visible;
+}
+
+.form-item input[type=radio], .webform-submission-form .form-item input[type=checkbox] {
+    height: auto;
+}
+.webform-submission-form .form-item .panel-body input[type=tel]{width:100%}
+.webform-submission-form .form-item input, 
+.webform-submission-form .form-item .panel-body select, 
+.path-garage-list .views-exposed-form .form-item input,
+.path-garage-list .views-exposed-form .form-item select{
+    border:  0;
+    height: 42px;
+    box-shadow: 1px 2px 10px #ccc;
+}
+.webform-submission-form .form-item .panel-body .select-wrapper:after,
+.path-garage-list .views-exposed-form .form-item .select-wrapper:after{color: #000 !important;}
+
+.webform-submission-form .form-item .panel-body textarea {
+    border: 0;
+    resize: none;
+    box-shadow: 1px 2px 10px #ccc;
+}
+
+ .form-item button,
+.views-exposed-form button {
+    border: 0;
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+    position: relative;
+    background: #f3c70e;
+    border-radius: 10px;
+    padding: 10px 28px 10px 12px;
+    box-shadow: 1px 2px 10px #ccc;
+}
+
+.webform-submission-form .form-item button:after,
+.path-garage-list .views-exposed-form button:after {
+    content: "\e258";
+    right: 9px;
+    top: 15px;
+    font-size: 14px;
+    font-weight:100;
+    position: absolute;
+    display: inline-block;
+    font-family: "Glyphicons Halflings";
+    transform: rotate(0deg);
+}
+
+ .form-item input[type=radio], .form-item input[type=checkbox] {
+    width: 15px;
+    height: 15px;
+    background:  transparent;
+    box-shadow: none;
+}
+
+.form-item input[type=radio]:before {
+    background: #fff;
+    content:  '';
+    position:  absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 100%;
+    border: solid 1px #ccc;
+    box-shadow: 1px 2px 12px #ccc;
+}
+
+.form-item input[type=radio]:checked:after {
+    border: 4px solid #0e2b89 !important;
+        border-radius: 15px;
+        width:17px;
+        height:17px;
+        position: relative;
+        background-color: #ffffff;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        top: -8px;
+}
+
+
+ .form-item input[type=checbox] {
+  position: relative;
+  top: -0.375rem;
+  margin: 0 1rem 0 0;
+  cursor: pointer;
+  
+}
+.webform-submission-form  .form-checkbox:before {
+  -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+  -moz-transition: -moz-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+  transition: transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
+  -webkit-transform: rotate(-45deg) scale(0, 0);
+  -moz-transform: rotate(-45deg) scale(0, 0);
+  -ms-transform: rotate(-45deg) scale(0, 0);
+  -o-transform: rotate(-45deg) scale(0, 0);
+  transform: rotate(-45deg) scale(0, 0);
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 4px;
+  z-index: 1;
+  width: 11px;
+  height: 5px;
+  border: 2px solid #0d2b89;
+  border-top-style: none;
+  border-right-style: none;
+}
+.webform-submission-form  .form-checkbox:checked:before {
+  -webkit-transform: rotate(-45deg) scale(1, 1);
+  -moz-transform: rotate(-45deg) scale(1, 1);
+  -ms-transform: rotate(-45deg) scale(1, 1);
+  -o-transform: rotate(-45deg) scale(1, 1);
+  transform: rotate(-45deg) scale(1, 1);
+}
+.webform-submission-form .form-checkbox:after {
+  content: "";
+  position: absolute;
+  top: -0.125rem;
+  left: 0;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  box-shadow: 1px 1px 5px #ccc !important;
+}
+
+
+.path-garage-list .views-exposed-form label {
+    display: none;
+}
+
+
+.home-feature-content {
+    background:  url(/themes/santacity/images/wrapper-bg-1.png) no-repeat;
+    background-size: 100% 100%;
+    position: relative;
+    min-height: 850px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    color: #fff;
+    background-position: center center;
+}
+
+.home-feature-content:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    background: rgba(0,0,0,0.5);
+}
+
+.home-feature-content:after{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 58px;
+    left: 0;
+    z-index: 2;
+    top: -24px;
+    background: #fff;
+    clip-path: polygon(-40% 0%, 48% 99%, 110% 40%);
+}
+
+.home-feature-content .flex-direction-nav a.flex-next:before {
+    content: '\e258' !important;
+    font-family: 'Glyphicons Halflings' !important;
+    color: #fff !important;
+    font-size: 24px;
+    position: relative;
+    left: -8px;
+    top: 4px;
+}
+
+.home-feature-content .flex-direction-nav a:before {
+    content:  '\e257' !important;
+    color: #fff !important;
+    font-family: 'Glyphicons Halflings' !important;
+    font-size: 24px;
+    position: relative;
+    left: 6px;
+    top: 4px;
+}
+.flexslider:hover .flex-direction-nav .flex-prev, .flexslider:hover .flex-direction-nav .flex-next {
+    background: #f3c70e !important;
+    border-radius: 50% !important;
+}
+
+/* p Events Css start*/
+h2.feature { color: #333333;    font-size: 30px;}
+li.media { box-shadow: 2px 3px 5px #dfdfdf;display: flex;align-items: center;margin-bottom: 10px;}
+h2.news-filter{color: #333333;    font-size: 25px; margin-top: 25px;}
+p.dat {font-weight: 300;font-size: 12px;color:  #5f5f5f;margin-bottom: 5px;/* clear: both; */}
+p.media-heading { font-size:  16px; color:  #333333;margin-bottom: 5px;}
+p.by-category{font-weight: 300;font-size: 12px;color:  #5f5f5f;margin-bottom: 5px;}
+p.by-category a { text-decoration: underline;}
+.main-row .col-md-8 {    background: url(/themes/santacity/images/news.jpg) no-repeat;background-size: cover;}
+.main-row .col-md-8 > .col-md-6{position: absolute;bottom: 20px;left: 20px;background: rgba(0, 0, 0, 0.7);color:  #fff;padding: 10px;}
+.main-row .col-md-8 > .col-md-6 p {    padding:  0px;    margin:  0px;    color: #fff;    font-size: 14px;}
+.main-row .col-md-8 > .col-md-6 p.media-heading {  font-weight:  600; font-size: 18px;}
+.main-row .col-md-8 > .col-md-6 a {    color: #fff;}
+.main-row .col-md-8 > .col-md-6 p.armor{    font-size:15px; padding-top:15px;    padding-bottom: 10px;}
+.after-main{ margin-top: 30px; }
+a.read { border: 1px solid #333; padding: 3px 15px; color: #333; border-radius: 10px; margin-right: 15px; text-decoration: none; font-size: 14px;}
+a.more { background: #f3c70e; padding: 6px 10px;  margin-top: 10px; color: #333 !important;  font-weight: bold;  border-radius: 10px;}
+.after-main .col-md-9 {    padding: 0px;}
+
+.event_in_bnr{background: url(/themes/santacity/images//back.jpg) no-repeat;background-size: cover !important;padding: 220px 0px;position: relative;margin-top: -40px;}
+
+ul.breadcrumb a.active:after {content: ""; font-family: FontAwesome; font-style: normal; font-weight: 100; text-decoration: inherit; color: #333; font-size: 16px; padding-right: 0.8em; padding-left: 0.8em;}
+span.calender {background: #fff; text-align:center; float: left; box-shadow: 0px 0px 8px #dfdfdf; margin-right: 20px;}
+span.calender p.year{background: #f3c70e; margin-bottom: 0px; line-height: 23px;}
+span.calender p { padding: 5px 15px; margin-bottom: 0px;}
+p.year b { font-size: 38px; font-weight: 500;}
+p.tour { font-size: 24px; padding-left: 10px;}
+p.tour b {  font-weight: 600;}
+p.city-cat a { color: #333; text-decoration: underline; padding-right: 5px;}
+p.city-cat {font-size: 12px;color: #333;}
+.wh p {margin-bottom: 2px;}
+p.city-cat+p {font-size: 12px;font-weight: 600;}
+
+.city-cat + .text-right{font-weight:600}
+.city-cat + .text-right > section {
+    display: inline-block;
+    padding-left: 15px;
+}
+.city-cat + .text-right > section img {
+    width: 26px;
+    padding: 0 2px;
+}
+.event_in_bnr+.container > div:nth-child(1) a.more {
+    padding: 9px 16px 7px;
+    font-size: 17px;
+}
+
+.event_in_bnr+.container > div:nth-child(1) a.more:after {
+    padding-left: 10px;
+    font-size: 18px;
+}
+
+.wh p:last-child {  font-size: 14px;}
+span.calender p.year {  padding: 15px 25px;}
+p.text-right i:nth-child(1) { background: #3b5998; color:  #fff; font-weight:  100; font-size:  13px; margin-right:7px; margin-left: 5px;}
+p.text-right i:nth-child(2) { background: #1da1f2; color:  #fff; font-weight:  100; font-size:  13px;margin-right:7px}
+p.text-right i:nth-child(3) { background: #d60b0b; color:  #fff;font-weight:  100; font-size:  13px;}
+.lft-white h2 { font-size: 28px; color:#333}
+.lft-white h2:before{ content: "\f073"; font-family: FontAwesome;font-style: normal;font-weight: 500;text-decoration: inherit;color: #333;font-size: 30px;padding-right: 0.2em;padding-left: 0em;}
+.col-md-offset-1.col-md-4.lft-white {/* position:  absolute; */right:  0px;padding: 0px 15px;}
+
+.lft-white h2 { font-size: 22px; color: #333; margin-top: 8px; font-weight: 600;}
+
+.lft-white p { margin-bottom: 0px;color: #333;}
+.lft-white p b {font-weight: 600;}
+p.bot-mar { margin-bottom: 10px;}
+.lft-white .row { background: #fff; margin-bottom: 35px; display:  block;padding: 10px 15px 20px; box-shadow: 0px 0px 5px #e1e1e1;}
+.lft-white .row div { margin-top: 7px;}
+.lft-white .row:nth-child(2) h2:before { content: "\f095"; font-family: FontAwesome;font-style: normal;font-weight: 500;text-decoration: inherit;color: #333;font-size: 30px;padding-right: 0.2em;
+    padding-left: 0em;}
+a.more:after,a.read:after { content: "\f105";font-family: FontAwesome;font-style: normal;text-decoration: inherit;color: #333;font-size: 16px;padding-left: 0.3em;}
+.after-main span.calender { background: #fff; text-align: center; float: left; margin-right: 20px; position: absolute; left: 30px; top: 10px;box-shadow: 0px 0px 3px #dfdfdf;}
+.img-box{ width: 100%; }
+.img-box img{ width: 100% }
+.img-box span.calender p.year {
+    padding: 0px 13px;
+}
+.img-box span.calender p {
+    padding: 0px 15px;
+    margin-bottom: 0px;
+}
+.txt-box p.media-heading {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 3px;
+    padding-top: 0;
+}.txt-box p.by-category {
+    font-weight: 400;
+    font-size: 12px;
+    color: #5f5f5f;
+    margin-bottom: 5px;
+}
+
+
+.after-main > .col-md-9 > .row > .col-md-4 >div {
+    box-shadow:2px 4px 7px #dfdfdf;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+
+.event-landing-main {
+    box-shadow: 1px 2px 12px #ccc;
+    margin-bottom: 40px;
+}
+
+.view-events .view-content .img-box {
+    position:  relative;
+}
+
+.view-events .view-content .img-box span.calender {
+    position:  absolute;
+    top: 10px;
+    left:  10px;
+    background: #fff;
+    text-align: center;
+}
+
+.view-events .view-content .img-box span.calender p:nth-child(1) {
+    padding: 3px 20px;
+    margin-bottom: 0;
+}
+
+.view-events .view-content .img-box span.calender p:nth-child(2) {
+    background: #f3c70e;
+    padding: 3px 20px;
+}
+
+.view-events .view-content .img-box span.calender p:nth-child(2) b {
+    font-size: 22px;
+    display:  block;
+    margin-top: -9px;
+}
+.view-events .view-content .img-box span.calender p:nth-child(2) br {display:  none;}
+
+.view-events .view-content .txt-box {
+    padding: 15px;
+}
+
+
+.view-events .view-content .txt-box .media-heading a {
+    font-size: 18px;
+    font-weight: 600;
+    color: #000;
+}
+
+.view-events .view-content .txt-box p:nth-child(3){
+    margin-bottom:0
+}
+
+.view-events .view-content .txt-box .read {
+    border: solid 1px #6f6f6f;
+    padding: 2px 10px 2px 8px;
+    border-radius: 10px;
+    display: inline-block;
+    margin-top: 5px;
+    color: #000;
+    position:  relative;
+}
+
+.view-events .view-content .txt-box .read:after{
+    content: '\e258';
+    font-family: 'Glyphicons Halflings';
+    right: 0;
+    font-size: 10px;
+}
+
+
+ form .form-item label {
+    width:  100%;
+    visibility: hidden;
+}
+
+ form .form-item input {
+    width:  100%;
+    box-shadow: 2px 2px 11px #ccc;
+    border: 0;
+    height: 38px;
+    line-height: 38px;
+    border-radius: 7px;
+}
+
+ form .form-item .select-wrapper {
+    display: block !important;
+    width: 100% !important;
+}
+
+ form .form-item .select-wrapper select {
+    height:  38px;
+    border:  0;
+    width: 100%;
+    border-radius: 7px;
+    box-shadow: 2px 2px 12px #ccc;
+}
+
+ form .form-item .select-wrapper select:after {
+}
+
+form .form-item .select-wrapper:after {
+    color: #000;
+}
+
+ form #edit-submit-events, #edit-submit-latest-news {
+    margin-top: 20px;
+    color: #000;
+    border: 0;
+    font-size: 18px;
+    background: #f3c70e;
+    position: relative;
+    border-radius: 7px;
+    font-weight: 700;
+    padding: 10px 20px;
+    box-shadow: 2px 2px 12px #ccc;
+}
+
+  form #edit-submit-events:after, #edit-submit-latest-news:after {
+    content: '\e258';
+    font-family: 'Glyphicons Halflings';
+    padding-left: 10px;
+    font-size: 12px;
+}
+
+#edit-submit-latest-news{
+    margin-top: 0;
+}
+
+#block-events-filter .form-item input {
+    width: 100% !important;
+}
+
+#block-exposedformlatest-news .form-item input{
+    width: 100% !important;
+}
+
+#block-exposedformlatest-news .form-item, #block-events-filter .form-item {
+   width: 100%;
+}
+
+#views-exposed-form-latest-news-latest-news input{
+    margin: 20px 0;
+}
+
+
+
+
+
+/* =========== R Heading Css =========== */
+
+    h1.page-header {
+        position:  relative;
+        border-bottom: 0;
+        font-weight: 700;
+    }
+
+    h1.page-header:after {
+        content:  '';
+        position:  absolute;
+        width:  70px;
+        height:  4px;
+        background: #f3c70e;
+        bottom: -10px;
+        left: 0;
+    }
+
+    
+    .heading_area{max-width: 500px;margin: 0 auto 40px;text-align: center;}
+
+    .heading_area h3 {
+        margin-bottom: 22px;
+        font-weight: bold;
+    }
+
+    .hd_bdr_btm{position: relative; padding-bottom: 5px;}
+
+    .hd_bdr_btm:before{
+        content: '';
+        position: absolute;
+        border-bottom: solid 2px #fff;
+        width: 60px;
+        bottom: -5px;
+    }
+
+    .economic_area{
+        position: relative;
+        background: url(/themes/santacity/images/economic_area.jpg) no-repeat center center;
+        color: #fff;
+        padding: 60px 0 100px;
+        margin-top: -20px;
+    }
+
+    .economic_area:before{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        display: block;
+        background-color: rgba(0,0,0,0.6);
+    }
+
+    .economic_area .economic_lft_box{
+        padding: 30px 0;
+    }
+
+    .eco_rgt{
+        background-color: #00aeef;
+        padding: 10px 20px 40px;
+    }
+
+    .eco_rgt_inner{
+        background: url('/themes/santacity/images/eco_rgt_bg.png') no-repeat top left;
+        background-size: cover;
+        padding: 80px 50px 30px;
+        color: #000;
+        margin-left: -20px;
+        margin-bottom: 10px;
+    }
+    .eco_rgt h3.text-center {
+        line-height: 30px;
+    }
+
+    .economic_area a{
+        display: block;
+        width: 210px;
+        color: #fff;
+        padding: 7px;
+        text-align: center;
+        border: solid 2px #fff;
+        border-radius: 4px;
+        margin: auto;
+    }
+
+    .more_city {
+        padding: 20px 0 80px;
+        background: url(/themes/santacity/images/lorem_bg.jpg) no-repeat center bottom;
+        background-size: 100%;
+        position: relative;
+    }
+
+    .more_city:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        left: 0;
+        z-index: 0;
+        top: -59px;
+        background: #fff;
+        clip-path: polygon(0% 30%, 50% 100%, 0% 100%);
+    }
+
+    .more_city:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 60px;
+        left: 0;
+        z-index: 0;
+        top: -35px;
+        background: #fff;
+        clip-path: polygon(100% 0%, 50% 60%, 100% 100%);
+    }
+
+    .city_box{
+        background: #fff;
+        margin-bottom:30px;
+        box-shadow: 0px 2px 5px #ccc;
+    }
+
+    .city_text{
+        padding: 15px;
+        box-shadow: 1px 1px 8px 1px #ddd;
+    }
+
+    .city_box .city_text h5 {
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 15px;
+    }
+
+    
+    .eco_steps {
+        padding: 0px 0 180px;
+        color: #fff;
+        position: relative;
+        background: linear-gradient(90deg, #545e75, #272727);
+    }
+    .eco_steps:after {
+        content: '';
+        clip-path: polygon(0% 100%, 130% 0%, 100% 100%);
+        bottom: -3px;
+        z-index: 0;
+        position: absolute;
+        background: linear-gradient(90deg, #0e5692, #0f64a6, #085792);
+        width: 100%;
+        height: 80px;
+    }
+
+
+    .eco_steps:before {
+         content: '';
+        clip-path: polygon(0% 100%, 130% 0%, 100% 101%);
+        top: -78px;
+        z-index: 0;
+        position: absolute;
+        background: linear-gradient(90deg, #545e75, #272727);
+        width: 100%;
+        height: 80px;
+    }
+
+    
+    .eco_steps p {
+        line-height: 26px;
+    }
+    
+    .eco_steps img, .eco_steps h4, .eco_steps p {
+        padding-bottom: 15px;
+        margin-bottom: 15px;
+    }
+
+    .we_help{
+         background-size: cover;
+        padding-bottom: 40px;
+        background-position: left top 100px;
+        position: relative;
+        z-index: 0;
+    }
+
+    .we_help_inner{
+        position: absolute;
+        top: -100px;
+        width: 100%;
+    }
+
+    .we_help .wh{
+      padding: 15px;
+    }
+
+    section#block-economy5.we_help {
+        background: url(/themes/santacity/images/clock_tower.jpg) no-repeat;
+        background-size: cover;
+        height: 500px;
+    } 
+
+    .we_help .field.field--name-body {
+        margin-top: -95px;
+    }
+    .we_help .wh > div {
+        margin-bottom: 15px;
+    }
+    
+    .more {
+        background: #f3c70e;
+        padding: 6px 10px 9px;
+        margin-top: 10px;
+        color: #333;
+        font-weight: bold;
+        border-radius: 7px;
+        display: inline-block;
+        border: 0;
+    }
+    .more:after {
+        content: '\e258';
+        font-family: 'Glyphicons Halflings';
+        padding-left: 3px;
+        top: 2px;
+        position: relative;
+    }
+
+    .btn-more2{ 
+        background: #fff; 
+        padding: 3px 10px;  
+        margin-top: 10px; 
+        color: #333;  
+        border: solid 1px #bbb;
+        font-weight: bold;  
+        border-radius: 10px;
+        display: inline-block;
+    }
+    .btn-more2:after {
+        content: '\e258';
+        font-family: 'Glyphicons Halflings';
+        padding-left: 3px;
+    }
+
+    .wh{background-color: #fff;}
+
+    .letest_news{
+        margin-bottom: 30px;
+        box-shadow: 2px 2px 8px 1px #ccc;
+    }
+
+    .news_txt {
+        padding-top: 10px;
+    }
+
+    .letest_news .media img {
+        min-height: 120px;
+    }
+    .letest_news .btn-more2 {transform: translateY(100%);}
+
+
+    .path-garage-list .views-exposed-form label {
+        display: none;
+    }
+
+    .path-garage-list .view-content .views-field .media-body p {
+        overflow:  hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 2 !important;
+        -webkit-box-orient: vertical;
+        height: 40px;
+    }
+
+    .path-garage-list .view-content .views-field .media-right a {
+        display:  inline-block;
+        border: solid 1px #ccc;
+        padding: 7px 15px;
+        border-radius: 8px;
+        color: #000;
+        margin-top: 22px;
+    }
+
+    .path-garage-list .view-content .views-field .media-right a:after {
+        font-size: 12px;
+        content: '\e258';
+        font-family: 'Glyphicons Halflings';
+        padding-left: 4px;
+    }
+
+    .path-garage-list .view-content .views-field .media-body h4 a {
+        color: #111;
+    }
+
+    .view-events .view-content + nav.pager-nav{
+        text-align:left !important;
+
+    }
+    .view-events .view-content + nav.pager-nav ul li a{
+        background: transparent !important;
+        color: #000 !important;
+        border: 0;
+        padding: 0px 4px;
+        font-size: 17px;
+    }
+
+    .view-events .view-content + nav.pager-nav ul li.active a{
+        font-weight: 700;
+    }
+
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--first a span,
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--next a span,
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--previous a span, 
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--last a span { display: none; }
+
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--next a:before {content: 'Next';}
+
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--next a:after {
+        content: '\e258';
+        font-family: 'Glyphicons Halflings';
+        font-size: 11px;
+        margin-left: -3px;
+    }
+
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--previous a:after {content: 'Previous';margin-left:-4px}
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--previous a:before {
+        content: '\e257';
+        font-family: 'Glyphicons Halflings';
+        font-size: 11px;
+    }
+
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--last a:before {content: 'Last';}
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--last a:after {
+        content: '\e258';
+        font-family: 'Glyphicons Halflings';
+        font-size: 11px;
+        margin-left: -3px;
+    }
+
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--first a:after {content: 'First';margin-left:-4px}
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--first a:before {
+        content: '\e257';
+        font-family: 'Glyphicons Halflings';
+        font-size: 11px;
+    }
+
+    section#block-policedepartment-2 { margin-bottom:30px}
+
+    .polic-dp{background: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        width: 90%;
+        padding: 20px 50px 36px 20px;
+        margin: 135px 20px;}
+
+    .view-events .view-content .img-box img{
+        position: relative;
+        max-height:150px;
+        height:120px;
+    }
+
+
+/*Responsive css start*/
+
+@media only screen and (max-width: 1199px) and (min-width:992px){
+    nav#block-mainnavigation .menu {
+        max-width: 60%;
+        margin-left: 0%;
+    }
+   .navbar-default .navbar-nav > li > a {
+        font-size: 14px;
+        padding: 8px;
+    } 
+    .navbar-header {
+        width: 20%;
+    }
+    .navbar-header img {
+        height: 80px !important;
+    }
+    div#block-santacity-search {
+        max-width: 180px;
+    }
+    div#navbar-collapse{
+        padding: 0;
+    }
+}
+
+
+
+
+
+
+@media only screen and (max-width: 991px) and (min-width:768px){
+    .navbar-header {
+        width: 25%;
+    }
+    .navbar-header img {
+        height: 80px !important;
+    }
+    .navbar-default .navbar-nav > li > a {
+        font-size: 14px;
+        padding: 8px;
+    }
+    div#navbar-collapse ul.menu.menu--main.nav.navbar-nav {
+        float: right;
+    }
+    header#navbar .region.region-navigation-collapsible {
+        position:  relative;
+    }
+    header#navbar div#block-santacity-search {
+        position:  absolute;
+        right: 0;
+        top: -35px;
+        z-index: 999;
+    }
+    header#navbar section#block-dropdownlanguage {
+        position:  absolute;
+        right: 170px;
+        top: -36px;
+        z-index: 999;
+    }
+    div#navbar-collapse {
+        padding: 34px 0 24px;
+    }
+
+}
+
+@media only screen and (max-width:767px){
+    .region.region-navigation-collapsible {
+        background: #f3c70e;
+        padding: 50px 0;
+    }
+    nav#block-mainnavigation .menu {
+        max-width: 100%;
+        margin-left: 0;
+    }
+    div#navbar-collapse {
+        padding: 0px 0;
+        position: absolute;
+        border: none;
+        width: 100%;
+        top: 60px;
+        z-index: -999;
+    }
+    .navbar-default .navbar-toggle {
+        border-color: #ddd;
+        position: absolute;
+        top: 19px;
+        right: 10px;
+    }
+    .navbar-header img {
+        height: 90px !important;
+        margin-left: 10px;
+        padding-bottom: 10px;
+    }
+    div#navbar-collapse ul.menu.menu--main.nav.navbar-nav li {
+        border-bottom: 1px solid #b39209;
+    }
+    .navbar-nav {
+        margin: 0;
+    }
+    header .navbar-collapse .menu.navbar-nav {
+        padding: 0px;
+    }
+    .navbar-default .navbar-nav > li > a {
+        padding: 12px 20px;
+    }
+    .santacityheader .lng-dropdown {
+        padding-left: 15px;
+    }
+    header#navbar{background:none;}
+    header#navbar:before {
+        content: '';
+        background: url(/themes/santacity/images/header-top-bg.png) no-repeat;
+        background-size: 103%;
+        background-position: center bottom;
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        z-index: -1;
+    }
+    header#navbar:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 80px;
+        background: #fff;
+        top: 0;
+        z-index: -1;
+    }
+    header.navbar-fixed-top {
+        padding-top: 0;
+    }
+    .navbar-header {
+        padding: 20px 0;
+    }
+    div#block-santacity-search {
+        margin-top: 20px;
+    }
+    .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
+        max-height: 372px;
+    }
+}
+
+
+
+@media only screen and (max-width:480px){
+    header#navbar:before {
+        content: '';
+        background: url(/themes/santacity/images/header-top-bg.png) no-repeat;
+        background-size: 103%;
+        background-position: center bottom;
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        z-index: -1;
+    }
+
+    header#navbar:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 90px;
+        background: #fff;
+        top: 0;
+        z-index: -1;
+    }
+}
+
+/************ Developer fix**************/
+
+.img-box span.calender p {
+    padding: 0px 15px;
+    margin-bottom: 0px;
+}
+.txt-box p.media-heading {
+    font-size: 18px;
+    color: #333333;
+    margin-bottom: 3px;
+    padding-top: 10px;
+}.txt-box p.by-category {
+    font-weight: 400;
+    font-size: 12px;
+    color: #5f5f5f;
+    margin-bottom: 5px;
+}
+.txt-box p.by-category b {
+    font-weight: 700;
+}
+.txt-box {
+    padding-left: 10px;
+}
+.after-main > .col-md-9 > .row > .col-md-4 >div {
+    box-shadow:2px 4px 7px #dfdfdf;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+ul.pagination li a {
+    color: #333;
+    padding-right: 8px;
+    font-size: 17px;
+}
+ul.pagination li a.active {
+    text-decoration: underline;
+    font-weight: bold;
+}
+ul.pagination li a.active {
+    text-decoration:  underline;
+    font-weight:  bold;
+}
+ul.pagination {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+ul.pagination li:nth-child(7) a:after{content: "\f105";
+    font-family: FontAwesome;
+    font-style: normal;
+    text-decoration: inherit;
+    color: #333;
+    font-size: 16px;
+    padding-left: 0.3em;}
+/*ul.pagination li:last-child a:after{content: "\f101";
+    font-family: FontAwesome;
+    font-style: normal;
+    text-decoration: inherit;
+    color: #333;
+    font-size: 16px;
+    padding-left: 0.3em;}*/
+@media screen and (max-width:1024px){
+.main-row .col-md-4,.main-row .col-md-8,.after-main .col-md-9{width:100%;display:block;max-width: 100%;flex: 0 0 100%;}
+.main-row .col-md-8 > .col-md-6 { position: relative;  bottom: 0px;  left: 0px;  }
+.after-main .col-md-3{ display:none}
+.after-main .col-md-9 li.media { display: block;  margin-bottom: 15px; padding-bottom: 10px;}
+.after-main .col-md-9 li.media a.pull-left { float:none;}
+.col-md-7.wh {    padding-bottom: 15px;position: relative;}
+.col-md-offset-1.col-md-4.lft-white { position: relative; top: 26px;}
+span.calender { margin-right: 15px;}
+span.calender p.year {    padding: 10px 20px;}
+}
+
+    .hd_bdr_btm{position: relative; padding-bottom: 5px;}
+
+    .hd_bdr_btm:before{
+        content: '';
+        position: absolute;
+        border-bottom: solid 2px #fff;
+        width: 60px;
+        bottom: -5px;
+    }
+
+        
+
+    .wh{background-color: #fff;}
+
+    .letest_news{
+        margin-bottom: 30px;
+        box-shadow: 2px 2px 8px 1px #ccc;
+    }
+
+    .news_txt {
+        padding-top: 10px;
+    }
+
+    .letest_news .media img {
+        min-height: 120px;
+    }
+    .letest_news .btn-more2 {transform: translateY(100%);}
+   .modal-content {
+    border-radius: 0 !important;
+    padding: 20px;
+}
+.modal-header .close{font-size: 28px;}
+.modal-header{
+  border-bottom:0
+}
+.modal-header:after{
+    content:'';
+    width: 60px;
+    height: 5px;
+    background: #f3c70e
+}
+.pop_img {
+    margin-bottom: 10px;
+}
+.pop_btn {
+    background: #f3c70e;
+    padding: 8px 10px;
+    font-size: 20px;
+    color: #000;
+    border-radius: 7px;
+    display:inline-block;
+    margin-top: 20px
+}
+.back{padding:0px}
+
+.map-filter-overlay-container .filter-container {
+    position: absolute;
+    z-index: 1;
+    background-color: white;
+    top: 10px;
+    right: 0px;
+}
+
+.featured-news .view-filters .form-actions #edit-submit-latest-news{ padding:6px 20px; margin-top:15px}
+
+
+/*News and artical*/
+
+.news-banner-text {
+    background: #000000ba;
+    color: #fff;
+    width: 90%;
+    padding: 20px 50px 36px 20px;
+    margin: 160px 20px;
+}
+
+.news-banner-text p.dat {
+    color: #fff;
+    margin-bottom: 8px;
+}
+
+.news-banner-text p.media-heading {
+    color:  #fff;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.news-banner-text p.by-category a {display:  inline;color: #fff;margin-right: 6px;}
+
+.news-banner-text p.by-category {
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.news-banner-text a.more {
+    display:  inline;
+    padding: 8px 15px;
+    font-weight:  800;
+    font-size: 16px;
+}
+
+.news-banner-text p.armor {
+    margin-bottom:  20px;
+    line-height:  17px;
+}
+
+
+.region.region-feature .featured-news h3 {
+    font-weight: 600;
+}
+.region.region-feature .featured-news .media-body p.media-heading a {
+    color: #313131;
+    font-weight: 500;
+}
+.region.region-feature .featured-news .media-body p.dat {
+    font-weight: 400;
+}
+.region.region-feature .featured-news .media-body p.by-category {
+    font-weight: 400;
+}
+.region.region-feature .featured-news ul.media-list.main-list li:nth-child(1) {
+    border-right: 13px solid #f3c70e;
+}
+
+.region.region-feature .featured-news ul.media-list.main-list p.by-category a {
+    color: #173fc1;
+}
+
+.region.region-feature .form-group .featured-news ul li a:hover {
+    text-decoration: none;
+}
+
+.top_service h2 {
+    font-size: 26px;
+    font-weight:  600;
+    margin-bottom: 26px;
+}
+.top_service .top_right {
+    float:  left;
+}
+.top_service .top_left{
+    float: left;
+}
+
+.top_service .top_right ul li:nth-child(1) {
+    background: #fff;
+    line-height: 0;
+    overflow: hidden;
+}
+.top_service button {
+    background: #f3c70e00;
+    border:none;
+    margin: 0;
+    padding: 0px;
+    float: right;
+}
+
+.top_service ul li {
+    list-style: none;
+    background: #0e2b89;
+    margin-bottom: 20px;
+    height: 56px;
+    width: 350px;
+    color: #fff;
+    line-height: 56px;
+    border-radius: 6px;
+    box-shadow: 0px 3px 2px #c5c5c5;
+}
+.top_service .top_right ul {
+    padding: 0;
+   
+}
+.top_service ul li input {
+    padding: 9px 10px;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    color: #000;
+    font-size: 20px;
+    width: 70%;
+}
+.bnner_bx {
+    margin-top: 57px;
+    margin-bottom: 50px;
+}
+
+.top_service ul li svg {
+    height: 56px;
+    background: #415cb5;
+    width: 54px !IMPORTANT;
+    padding: 12px;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    margin-right: 11px;
+    float: left;
+}
+.top_service .top_right ul li:nth-child(1) svg {
+    margin-right: 0;
+    background: #f3c70e;
+    color: #000;
+}
+
+.region.region-content .form-group .latest-news ul.media-list li .media-body {
+    padding: 10px 0;
+    width: 64%;
+}
+.region.region-content .latest-news ul.media-list.main-list li p.media-heading a {
+    font-weight: 500;
+    color: #000;
+}
+.region.region-content .latest-news ul.media-list.main-list li p.media-heading {
+    margin-bottom: 0;
+}
+.region.region-content .latest-news ul.media-list.main-list li p.dat,.region.region-content .latest-news ul.media-list.main-list li p.by-category{
+    font-weight: 500;
+}
+.region.region-content .latest-news ul.media-list.main-list li img.media-object {
+    width: 160px;
+    height: 124px;
+}
+
+.region.region-content .featured-news ul.media-list.main-list li p.media-heading a {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.region.region-content .latest-news ul.media-list.main-list li a:hover{text-decoration: none;}
+
+.region.region-one-fourth .after-main .view-header h3.title {float:  left;}
+.region.region-one-fourth .form-group .after-main .view-header a.view-all:before {
+    content: '\f105 ';
+    font-family: fontawesome;
+    position: absolute;
+    right: 12px;
+    font-size: 22px;
+    top: 0;
+}
+.region.region-one-fourth .form-group .after-main .view-header a.view-all {
+    float: right;
+    margin-top: 18px;
+    border: 1px solid #fff;
+    padding: 5px 10px;
+    border-radius: 6px;
+    color: #fff;
+    width: 40%;
+    position: relative;
+}
+.region.region-one-fourth .form-group .after-main .view-content { clear: both;}
+.region.region-one-fourth .form-group .after-main .view-content .media .media-left {
+    background: #f3c70e;
+    width: 80px;
+    float: left;
+    height: 80px;
+    text-align: center;
+    padding: 20px 0px;
+}
+.region.region-one-fourth .form-group .after-main .view-content .media .media-left small {
+    display: block;
+ color: #000;
+}
+.region.region-one-fourth .form-group .after-main .view-content .media { margin-bottom: 10px;}
+.region.region-one-fourth .form-group .after-main .view-content .media .media-body {
+    background: #eee;
+    height: 80px;
+    padding: 18px 10px;
+}
+.region.region-one-fourth .form-group .after-main .view-content .media .media-left span {
+    font-size: 30px;
+    padding-left: 4px;
+    color: #000;
+    font-weight: 500;
+    line-height: 25px !important;
+}
+.region.region-one-fourth .form-group .after-main .view-content .media .media-body p { color: #3b3b3b;
+    font-size: 14px;
+}
+.region.region-one-fourth .form-group .after-main .view-content .media .media-body h4.media-heading a { color: #000;}
+.region.region-one-fourth .form-group .after-main a:hover { text-decoration: none;}
+.discover-sant-container { position:  relative;}
+
+.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
+    padding: 20px;
+    right: 50px;
+    width: 36%;
+    box-shadow: 0 4px 6px #c1c1c1;
+    margin-top: 10px;
+}
+
+.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container h2:before {
+    content:  "";
+    position:  absolute;
+    width: 70px;
+    height: 3px;
+    background: #f3c70e;
+    bottom: -11px;
+}
+
+.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container h2 { 
+    position: relative;
+    margin:0;
+    font-size: 24px;
+}
+
+.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container .form-item {
+    margin:  0;
+    width: 34%;
+    margin-right: 14px;
+}
+.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container button {
+    padding: 9px 21px;
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container button:after {
+    content: '\e258';
+    font-family: 'Glyphicons Halflings';
+    padding-left: 9px;
+    font-size: 10px;
+}
+
+.discover-sant-container .view.map-filter-overlay-container .geolocation-map-container.js-show {
+    height:  600px !important;
+}
+
+.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container input#edit-title {width: 100%;}
+
+.top_Notification .home_page_notifi h2 {
+    float:  left;
+}
+
+.top_Notification .home_page_notifi a.home_view {
+    float:  right;
+    margin: 20px 0;
+    color: #000;
+    border:  1px solid #000;
+    border-radius: 9px;
+    padding: 5px 22px 6px 10px;
+    position:  relative;
+}
+
+.top_Notification .notifi_sec {
+    clear:  both;
+    box-shadow: 0px 2px 7px #d8d8d8;
+    padding: 0px 18px;
+    box-sizing: border-box;
+}
+
+.top_Notification .notifi_sec .niticy_inner_box {border-bottom: 1px solid #bbafaf;box-sizing: border-box;clear:  both;}
+
+.top_Notification .notifi_sec .niticy_inner_box .tex_noti {
+    float:  left;
+    padding-top: 6px;
+}
+
+.top_Notification .notifi_sec .niticy_inner_box  .icon_home_view {
+    float:  right;
+    font-size: 25px;
+    padding-top: 18px;
+}
+
+.top_Notification .notifi_sec .niticy_inner_box p { margin: 0; font-size: 14px;}
+
+.top_Notification .notifi_sec .niticy_inner_box p:nth-child(2) {
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.top_Notification .notifi_sec a {color: #000;display: grid;}
+
+.top_Notification  a.home_view:before {
+    content: '\f105 ';
+    font-family: fontawesome;
+    position: absolute;
+    right: 8px;
+    font-size: 19px;
+    top: 2px;
+}
+
+.top_Notification .notifi_sec .niticy_inner_box .tex_noti p:nth-child(1) {color: #a2a2a2;}
+.top_Notification .notifi_sec a:nth-child(5) .niticy_inner_box {border: none;}
+
+.head_follows a.Follow_page {
+    float: right;
+    margin: 20px 0;
+    color: #000;
+    border: 1px solid #000;
+    border-radius: 9px;
+    padding: 5px 22px 6px 10px;
+    position: relative;
+}
+.head_follows a.Follow_page:before {
+    content: '\f105 ';
+    font-family: fontawesome;
+    position: absolute;
+    right: 8px;
+    font-size: 19px;
+    top: 2px;
+}
+
+.head_follows h3{float:left; font-weight: 600;}
+
+.region.region-one-fourth .after-main {
+    margin-top: 0;.
+}
+
+.socail_page_home {clear:both;}
+
+.follow-us-container {
+    background: url(/themes/santacity/images/wrapper-bg-2.png) no-repeat;
+    background-position: center;
+    padding: 70px 0;
+    margin-top: -50px;
+    position:  relative;
+}
+
+.follow-us-container .head_follows {
+    clear: both;
+    padding: 0 15px;
+}
+
+.facebook_page_home {background: #fff;
+    box-shadow: 0px 0px 11px #ccc;}
+
+
+.fb_home_head h1 {
+    background: #3b5998;
+    color: #fff;
+    font-size: 25px;
+    padding: 11px 18px;
+    font-weight: 600;
+}
+.fb_home_head h1 i {
+    margin-right: 7px;
+    font-size: 22px;
+}
+.text_home_page .media-left img {
+    width: 50px;
+    float: left;
+    margin-right: 10px;
+}
+.text_home_page {padding: 10px 14px;}
+.text_home_page .media-body h4.media-heading {
+    margin: 0;
+    font-weight: 500;
+        font-size: 16px;
+}
+.text_home_page .media-body h5 {
+    margin: 2px 0px 7px;
+    color: #b9b9b9;
+    font-weight: 400;
+}
+.twiter .fb_home_head h1 {background: #1da1f2;}
+.text_home_page .media-body h4.media-heading span {
+    font-size: 12px;
+    margin-left: 8px;
+    color: #c5c5c5;
+}
+.twitter_home .media-left img {width: 38px;}
+.text_home_page .media-body p { font-size: 14px;}
+.bottom_twit h4 {float: left; font-size: 16px;}
+.bottom_twit h3 {float: right; font-size: 16px;}
+.clerfix {clear: both;}
+.bottom_twit h4 {
+    float: left;
+    margin: 21px 0;
+    font-size: 16px;
+}
+.bottom_twit a {color: #1da1f2;}
+.youtube .fb_home_head h1 {background: #ff0000;}
+.you_tube a {color: #f00;}
+
+.featured_content2 {
+    position:  relative;
+    margin-bottom: 11px;
+}
+
+.featured_text {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    width: 380px;
+    height: 225px;
+    background: #00000070;
+    color: #fff;
+    margin: 10px;
+    padding: 0px 20px;
+    display: block;
+}
+.featured_text a.featured_btn {
+    background: #f3c70e;
+    padding: 9px 16px;
+    margin-top: 22px;
+    color: #333 !important;
+    font-weight: bold;
+    border-radius: 10px;
+    position: relative;
+    top: 15px;
+}
+.flexslider{
+    border:none !important;
+}
+.featured_content2 .featured_text a.featured_btn {
+    background: #f3c70e;
+    padding: 10px 20px;
+    color: #000;
+    font-weight: 600;
+    border-radius: 11px;
+}
+.featured_content2 .featured_text a.featured_btn i {
+    font-size: 20px;
+    padding-top: 12px;
+}
+.featured_text p {
+    font-size: 14px;
+    line-height: 23px;
+}
+.more_featured .box_feature img {
+    width: 200px;
+}
+.more_featured {
+    float: left;
+    margin-right: 10px;
+}
+.more_texts {
+    background: #0e2b89;
+    width: 200px;
+    color: #fff;
+    padding: 14px 8px 10px;
+    font-weight: 500;
+}
+
+
+ /*police-department page css*/
+     div#accordion {
+        border:none;
+        box-shadow:0px 3px 4px #ddd;
+        padding: 10px 10px;
+        position: relative;
+    }
+    #accordion .panel-default > .panel-heading + .panel-collapse > .panel-body{
+        border-top:none;
+        padding: 10px 15px;
+        background: #f1f1f1;
+    }
+    #accordion .panel{
+        border:none;
+        padding: 0px 7px;
+    }
+
+    #accordion h4.panel-title{
+         font-weight: 400;
+         border-bottom:1px solid #ddd;
+         padding:0px;
+     }
+    #accordion h4.panel-title a{
+        text-decoration:none;
+        display:block;
+        padding:10px 0px;
+        font-size:14px;
+        font-weight:400;
+        position:relative;
+        background-color: #fff;
+    }
+
+    #accordion h4.panel-title a[aria-expanded="true"]:after {
+      content: '\e259';
+      font-family: 'Glyphicons Halflings';
+      font-size: 12px;
+      position: absolute;
+      -webkit-transform: rotate(180deg);
+        -moz-transform: rotate(180deg);
+        -o-transform: rotate(180deg);
+        -ms-transform: rotate(180deg);
+        transform: rotate(180deg);
+        right:10%;
+        display: none;
+    }
+    #accordion h4.panel-title:after {
+        content: '\e259';
+        font-family: 'Glyphicons Halflings';
+        font-size: 12px;
+        -webkit-transform: none;
+        -moz-transform: none;
+        -o-transform: none;
+        -ms-transform: none;
+        transform: none;
+        position:absolute;
+        right:14px;
+        top:10px;
+    }
+
+    #accordion h4.panel-title a[aria-expanded="true"]:before {
+         /*border-left: 5px solid #ffc200;*/
+         padding: 20px 10px 16px 10px;
+         content: "";
+         position: absolute;
+         left: -17px;
+         top: 0px;
+    }
+
+    #accordion .panel {position: relative;}
+
+    #accordion .collapse.in:before {
+        content: "";
+        position: absolute;
+        top: 0px;
+        left: -10px;
+        background: #f3c70e;
+        height: 36px;
+        width: 7px;
+    }
+
+    #accordion .collapse.in:after {
+        content:  '\e260';
+        position:  absolute;
+        font-family: 'Glyphicons Halflings';
+        top: 8px;
+        right: 8px !important;
+        z-index: 1;
+        background: #fff;
+        width: 20px;
+    }
+
+
+    .more-link.form-group a {
+        background: #f3c70e;
+        padding: 6px 10px 9px;
+        margin-top: 10px;
+        color: #333;
+        font-weight: bold;
+        border-radius: 10px;
+        display: inline-block;
+        border: 0;
+    }
+    .more-link.form-group a:after {
+        content: '\e258';
+        font-family: 'Glyphicons Halflings';
+        padding-left: 3px;
+        position: relative;
+        top: 2px; 
+    }
+
+    .featured-news .view-filters .form-item {
+       width:30%
+    }
+
+    .featured-news .view-filters .form-item input {
+       width:90%
+    }
+
+    #views-exposed-form-events-block-1 .form-item {
+        width:  30%;
+    }
+    #views-exposed-form-events-block-1 .form-item input {
+        width:  95%;
+    }
+
+    #views-exposed-form-events-block-1 .form-actions {
+        width:  25%;
+    }
+    #views-exposed-form-events-block-1 .form-actions #edit-submit-events{
+       padding:7px 20px;
+    }
+
+    .view-events .view-content .event-landing-main .txt-box .media-heading a {
+        color: #444;
+        font-weight:  500;
+    }
+    #views-exposed-form-events-block-1 {
+        margin-bottom: 30px;
+    }
+    #views-exposed-form-latest-news-block-1{ margin-bottom:30px;}
+    #block-views-block-latest-news-block-1 h3.block-title,#block-views-block-events-block-1 h3.block-title{ margin-bottom:0px}
+
+    .ecm-nwz-sec .featured-news .media-list.main-list {
+        margin-top: 30px;
+    }
+    .ecm-nwz-sec .featured-news.media-list.main-list .media .media-left, .ecm-nwz-sec .featured-news .media-list.main-list .media > .pull-left {
+        padding-right: 15px;
+    }
+    .ecm-nwz-sec .featured-news  .media-list.main-list .media .media-body {
+        padding: 38px 0;
+    }
+
+    .ecm-nwz-sec .featured-news .media-list.main-list .media {
+        margin-bottom: 35px;
+        flex-wrap: wrap;
+    }
+    .ecm-nwz-sec .featured-news .media-list.main-list .media a.pull-left {
+        width: 30%;
+    }
+    .ecm-nwz-sec .featured-news .media-list.main-list .media .media-body {
+        width: 70%;
+    }
+    .ecm-nwz-sec .featured-news .media-list.main-list .media a.pull-left img {
+        width: 100%;
+    }
+
+    .ecm-nwz-sec .featured-news .media-list.main-list .media .media-body {
+        padding: 22px 0;
+    }
+    .economic-event-container .event-landing-main .img-box {
+        height: 104px;
+        overflow: hidden;
+    }
+
+    .economic-banner .field.field--name-body h2 {
+        color: #fff;
+        text-align: center;
+        font-weight: bold;
+        line-height: 39px;
+    }
+    .economic-banner .field.field--name-body {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .economic-banner {
+        background: url(/themes/santacity/images/economic_banner.jpg) no-repeat;
+         position: relative;
+        height: 70vh;
+        background-size: cover;
+        min-height: 300px;
+    }
+    .economic-banner:before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(14, 43, 136, 0.4);
+    }
+    .economic-banner .field.field--name-body h3 {
+        color: #fff;
+        font-size:30px;
+        text-align: center;
+        font-weight: bold;
+        line-height: 39px;
+        margin-bottom: 30px;
+    }
+    .economic-banner .field.field--name-body h3:before {
+        position: absolute;
+        content: "";
+        border-bottom: 4px solid;
+        bottom: 58px;
+        left: auto 0;
+        width: 80px;
+        right: 40%;
+    }
+   
+
+    section#block-newsletter:after {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background: rgba(0, 0, 0, 0.3);
+        bottom: 0;
+        left: 0;
+        display: block;
+        z-index: 0;
+    }
+    section#block-newsletter:before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        left: 0;
+        z-index: 1;
+        top: -13px;
+        background: #ffffff;
+        clip-path: polygon(111% 20%, 50% 100%, -11% 20%);
+    }
+    .newsletter-bottom-container {
+        background: #237979;
+        text-align: center;
+        position: relative;
+        background: url(/themes/santacity/images/clock_tower.jpg) no-repeat;
+        background-size: cover;
+        margin-top: 51px;
+    }
+    .newsletter-bottom-container .field.field--name-body {
+        max-width: 650px;
+        margin: 0 auto;
+        padding: 90px 0;
+        position: relative;
+        z-index: 3;
+    }
+    .newsletter-bottom-container .field.field--name-body h3 {
+        color: #fff;
+        margin-bottom: 20px;
+    }
+    .newsletter-bottom-container .field.field--name-body p {
+        color: #fff;
+        line-height: 26px;
+    }
+    form.eco_btnsup {
+        padding-top: 50px;
+        text-align: left;
+    }
+    form.eco_btnsup label {
+        display: block;
+        text-align: left;
+        color: #fff;
+        font-size: 16px;
+        font-weight: 500;
+        margin-bottom: -4px;
+    }
+    form.eco_btnsup input[type="text"] {
+        width: 80%;
+        height: 36px;
+        border-radius: 10px;
+        border: 1px solid #fff;
+        padding: 0 10px;
+        margin-right: 10px;
+    }
+    form.eco_btnsup button {
+        background: #f3c70e;
+        padding: 7px 23px 9px;
+        margin-top: 10px;
+        color: #333;
+        font-weight: bold;
+        border-radius: 10px;
+        display: inline-block;
+        border: 0;
+    }
+    form.eco_btnsup button:after {
+        content: '\e258';
+        font-family: 'Glyphicons Halflings';
+        padding-left: 3px;
+        position: relative;
+        top: 2px;
+    }
+    section#block-latestbusinesseventsnews {
+        margin-top: 40px;
+    }
+
+    #views_slideshow_controls_text_previous_our_santa_ana-block,#views_slideshow_controls_text_next_our_santa_ana-block { font-size:0px; }
+    #views_slideshow_controls_text_previous_our_santa_ana-block{position: absolute;top: 50%;left: -1.5%;}
+    #views_slideshow_controls_text_next_our_santa_ana-block{position: absolute;left: 98.5%;top: 50%;}
+    #views_slideshow_controls_text_previous_our_santa_ana-block a,#views_slideshow_controls_text_next_our_santa_ana-block a{ font-size:0px; color:#333}
+    #views_slideshow_controls_text_previous_our_santa_ana-block a:before{content: "\e257";
+        font-family: "Glyphicons Halflings";
+        font-size: 14px;
+         border-radius:100%
+        color:#fff; background:#f3c70e; padding:10px; border-radius:100%; box-shadow:0px 3px 5px #ccc 
+    }
+    #views_slideshow_controls_text_pause_our_santa_ana-block a{ display:none; }
+      
+    #views_slideshow_controls_text_next_our_santa_ana-block a:after{content: "\e258";
+       font-family: "Glyphicons Halflings";
+        font-size: 14px;
+         border-radius:100%
+        color:#fff; background:#f3c70e; padding:10px; border-radius:100%;box-shadow:0px 3px 5px #ccc }
+
+
+
+
+
+
+/*=============Home Page Responsive CSS===============*/
+
+@media screen only and (max-width: 1024px){
+
+div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
+    width: 100% !important;
+    overflow: hidden;
+}
+div#block-santacity-search {
+    max-width: 210px;
+}
+div#block-santacity-search {
+    max-width: 210px;
+}
+.top_service ul li{
+    width: 290px;
+}
+}
+
+@media screen only and (max-width: 991px){
+nav#block-mainnavigation .menu {
+    max-width: 80%;
+    margin-left: 0%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.top_service ul li {
+    width: 340px !important;
+}
+}
