@@ -110,13 +110,24 @@
 					<div class="col-md-7 wh">
 						{{ image }}
 						{# Header #}
-						{% if page.header %}
-							{% block header %}
+						
 							<div class="col-sm-12" role="heading">
+								
+								{% if page.breadcrumb %}
+								{% block breadcrumb %}
+								{{ page.breadcrumb }}
+								{% endblock %}
+								{% endif %}
+								
+								{% if page.header %}
+								{% block header %}
 								{{ page.header|without('pagetitle') }}
+								{% endblock %}
+								{% endif %}
+								
 							</div>
-							{% endblock %}
-						{% endif %}
+							
+						
 						<span class="calender">
 							<p>{{ node.field_start_date.value|date("D") }}</p>
 							<p class="year">{{ node.field_start_date.value|date("M") }}.<br><b>{{ node.field_start_date.value|date("d") }}</b></p>
@@ -171,9 +182,12 @@
 							</div>
 						</div>
 					</div>
-				
+					
 					<div class="col-sm-12">
-						<dd>{{ page.content.related_events }}</dd>
+						{{ page.content }}
+					</div>
+					<div class="col-sm-12">
+						{{ page.content.related_events }}
 					</div>
 				</div>
 			</div>

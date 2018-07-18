@@ -13,6 +13,6 @@ function santa_theme() {
 			]
     ],
   ];
-	
+
   return $theme;
 }

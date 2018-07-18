@@ -49,17 +49,50 @@ function santacity_theme_suggestions_block_alter(&$suggestions, $vars, $hook) {
  */
 function santacity_preprocess_page($variables) {
 	$node = \Drupal::routeMatch()->getParameter('node');
-	
+
 	if ($node instanceof \Drupal\node\NodeInterface) {
 		if($node->getType() == 'events') {
 			$variables['current_node']['field_event_image'] = $node->get('field_event_image')->entity->uri->value;
-			
+
 			$block_entity = \Drupal\block\Entity\Block::load('socialsharingblock');
 			$block_view = \Drupal::entityTypeManager()->getViewBuilder('block')->view($block_entity);
 			if ($block_view) {
 				$variables['socialsharing'] = $block_view;
-				
+
 			}
 		}
+	}
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function santacity_preprocess_field(&$variables, $hook) {
+  $element = $variables['element'];
+	
+	$variables['slider_values'] = [];
+	$variables['thumbnail_values'] = [];
+	$variables['slider_name'] = rand(0, 10);
+	
+	if($element['#bundle'] == 'thumbnail_slider') {
+		foreach (Element::children($element) as $elements) {
+			$paragraph = $element[$elements]['#paragraph'];
+			
+			$slider_image = $paragraph->get('field_slider_image')->view('full');
+			$slider_text = $paragraph->get('field_slider_text')->view('full');
+			$thumbnail_image = $paragraph->get('field_thumbnail_image')->view('full');
+			$thumbnail_text = $paragraph->get('field_thumbnail_text')->view('full');
+			
+			$variables['slider_values'][] = [
+				'slider_image' => $slider_image,
+				'slider_text' => $slider_text,
+			];
+			
+			$variables['thumbnail_values'][] = [
+				'thumbnail_image' => $thumbnail_image,
+				'thumbnail_text' => $thumbnail_text,
+			];
+		}
+		
 	}
 }
