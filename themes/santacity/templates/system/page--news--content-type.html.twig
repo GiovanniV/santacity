@@ -102,102 +102,45 @@
 	{% endblock %}
 {% endif %}
 
-<section class="article_inner_back">
-	<img src="/themes/santacity/images/news_img.png" alt="" class="img-responsive">
-	<div class="container">
-		<div class="row">
-
-		</div>
-	</div>
-</section>
+<div class="container-fluid back">
+				<div class="event_in_bnr" style="background: url( {{ file_url(node.field_news_image.entity.uri.value) }}) no-repeat;"></div>
 <div class="container">
-	<div class="row">
-		<div class="col-md-12">
+
+		<div class="col-md-12 wh">
 			<div class="box_article_page">
-				<div class="top_inner_article">
-					<ul>
-						<li><a href="">Home <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-						<li><a href="">Library Services <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-						<li><a href="">Latest News <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-						<li><a href="">Roident est Duis Duis Site</a></li>
-					</ul>
-				</div>
-				<h2 class="artivle_text">Roident est Duis Duis Site</h2>
+				{% if page.breadcrumb %}
+				{% block breadcrumb %}
+				{{ page.breadcrumb }}
+				{% endblock %}
+				{% endif %}
+				
+				{% if page.header %}
+				{% block header %}
+				{{ page.header }}
+				{% endblock %}
+				{% endif %}
 				<div class="arti_date">
-					<ul class="left_date_side">
-						<li>December 25, 2017</li>
-						<li>Category: <a href="">Art</a><a href=""> Technology</a></li> 
-					</ul>
-					<ul class="right_side_date">
-						<li>Share this Article:</li>
-						<li><a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-						<li><a href=""><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-						<li><a href=""><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
-					</ul>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. </p>
-					<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+					<span >{{ node.field_start_date.value|date("F, d Y") }}</span>
+					<span class="city-cat">Category: {{ node.field_news_category.value|render }}</span>
+					{% if page.social_share %}
+					<div class="pull-right">
+						{{ page.social_share }}
+					</div>
+					{% endif %}
+					<div class="col-sm-12">
+						{{ node.body.value|raw }}
+					</div>
 				</div>
 			</div>
 		</div>
 
-	</div>   
+ 
 </div>
+
 <div class="container">
-	<div class="row">
-		<h3 class="main_head_text_article">Related Articles</h3>
-		<div class="col-md-4">
-			<div class="event-landing-main artile_landing">
-				<div class="img-box">
-				  <a href="/node/19">
-				<img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/city-tour.jpg"  alt="Event" typeof="Image" class="img-responsive">
-				</a>				
-				</div>
-					<div class="txt-box Article_box_news_tetx">
-					<span class="news_page_dt"><p>December 12, 2018</p></span>
-					<p><a href="/node/19" hreflang="en">City Tour 2018</a></p>
-					<p>Category:  <a href="/taxonomy/term/3" hreflang="en">Tourist</a><a href="/taxonomy/term/3" hreflang="en">Art</a><a href="/taxonomy/term/3" hreflang="en">Lifestyle</a></p>
-					<p class="para_article">Aboris exercition veniam laboris incididunt suid aliquip
-					</p>
-					<a href="/node/19" class="read" hreflang="en">Read More</a>
-					</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="event-landing-main artile_landing">
-				<div class="img-box">
-				  <a href="/node/19">
-				<img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/city-tour.jpg"  alt="Event" typeof="Image" class="img-responsive">
-				</a>				
-				</div>
-					<div class="txt-box Article_box_news_tetx">
-					<span class="news_page_dt"><p>December 12, 2018</p></span>
-					<p><a href="/node/19" hreflang="en">City Tour 2018</a></p>
-					<p>Category:  <a href="/taxonomy/term/3" hreflang="en">Tourist</a><a href="/taxonomy/term/3" hreflang="en">Art</a><a href="/taxonomy/term/3" hreflang="en">Lifestyle</a></p>
-					<p class="para_article">Aboris exercition veniam laboris incididunt suid aliquip
-					</p>
-					<a href="/node/19" class="read" hreflang="en">Read More</a>
-					</div>
-			</div>
-		</div>
-		<div class="col-md-4">
-			<div class="event-landing-main artile_landing">
-				<div class="img-box">
-				  <a href="/node/19">
-				<img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/city-tour.jpg"  alt="Event" typeof="Image" class="img-responsive">
-				</a>				
-				</div>
-					<div class="txt-box Article_box_news_tetx">
-					<span class="news_page_dt"><p>December 12, 2018</p></span>
-					<p><a href="/node/19" hreflang="en">City Tour 2018</a></p>
-					<p>Category:  <a href="/taxonomy/term/3" hreflang="en">Tourist</a><a href="/taxonomy/term/3" hreflang="en">Art</a><a href="/taxonomy/term/3" hreflang="en">Lifestyle</a></p>
-					<p class="para_article">Aboris exercition veniam laboris incididunt suid aliquip
-					</p>
-					<a href="/node/19" class="read" hreflang="en">Read More</a>
-					</div>
-			</div>
-		</div>
-	</div>
+{{ page.content.recent_article }}
 </div>
+
 <div class="container">
 	<div class="row">
 		<div class="comment_artical">
@@ -245,8 +188,7 @@
 			 </form>
 		</div>
 	</div>	
-</div>
-<style type="text/css">
+</div><style type="text/css">
 .box_article_page {
     position: relative;
     top: -170px;
@@ -407,6 +349,7 @@ span.news_page_dt p {
     margin-right: 10px;
 }
 </style>
+
 {% if page.footer %}
   {% block footer %}
     <footer class="footer" role="contentinfo">

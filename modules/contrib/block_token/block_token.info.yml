@@ -1,0 +1,13 @@
+name: Block Token
+type: module
+description: "Allows you to create the tokens for blocks on site."
+# core: 8.x
+dependencies:
+  - block
+  - token
+
+# Information added by Drupal.org packaging script on 2017-06-29
+version: '8.x-1.0-alpha1+1-dev'
+core: '8.x'
+project: 'block_token'
+datestamp: 1498762144

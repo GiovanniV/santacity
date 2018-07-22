@@ -51,6 +51,7 @@
  * @see html.html.twig
  */
 #}
+<div class="garage-main-container">
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {# Navbar #}
 {% if page.navigation or page.navigation_collapsible %}
@@ -102,98 +103,64 @@
 	{% endblock %}
 {% endif %}
 
-{# Main #}
-{% block main %}
-			<div class="container-fluid back">
-				<div class="event_in_bnr" style="background: url( {{ file_url(node.field_event_image.entity.uri.value) }}) no-repeat;"></div>
-				<div class="container">
-					<div class="col-md-7 wh">
-						{{ image }}
-						{# Header #}
-						
-							<div class="col-sm-12" role="heading">
-								
-								{% if page.breadcrumb %}
-								{% block breadcrumb %}
-								{{ page.breadcrumb }}
-								{% endblock %}
-								{% endif %}
-								
-								{% if page.header %}
-								{% block header %}
-								{{ page.header|without('pagetitle') }}
-								{% endblock %}
-								{% endif %}
-								
-							</div>
-							
-						
-						<span class="calender">
-							<p>{{ node.field_start_date.value|date("D") }}</p>
-							<p class="year">{{ node.field_start_date.value|date("M") }}.<br><b>{{ node.field_start_date.value|date("d") }}</b></p>
-						</span>
-						<p class="tour"><b>{{ node.label }}</b></p>
-						<p class="city-cat">Category: 
-						{% for key in node.field_category %}
-						<a href="">{{ key.name.value }}</a>
-						{% endfor %}
-						</p>
-						{% if page.social_share %}
-						<div class="pull-right">
-							{{ page.social_share }}
-						</div>
-						{% endif %}
-						
-						<p><b>Price:</b> ${{ node.field_event_ticket_price.value }}</p>
-						{{ node.body.value|raw }}
-						<br>
-						<a href="#" class="more">Resiter Now</a>
-					</div>
+{# Page Top #}
+{% if page.top %}
+	{% block top %}
+		<div class="page-top">
+			{{ page.top }}
+		</div>
+	{% endblock %}
+{% endif %}
 
-					<div class="col-md-offset-1 col-md-4 lft-white">
-						<div class="row"><h2>Event Information</h2>
-							<div class="">
-								<p><b>Date</b></p>
-								<p>{{ node.field_start_date.value|date("F d, Y") }}</p>
-							</div>
-							<div class="">
-								<p><b>Time</b></p>
-								<p>9:00am - 11:00am</p>
-							</div>
-							<div class="">
-								<p><b>Location</b></p>
-								<p>155 Someplace, Santa Ana, CA</p>
-							</div>
-						</div>
+<div class="garage-content-container">
+{# Content #}
+{% if page.content %}
+	{% block content %}
+		{{ page.content }}
+	{% endblock %}
+{% endif %}
 
-						<div class="row">
-							<h2>Contact Information</h2>
-							<div class="" style="">
-								<p><b>Phone</b></p>
-								<p>{{ node.field_event_phone.value }}</p>
-							</div>
-							<div class="">
-								<p><b>Email Address</b></p>
-								<p>{{ node.field_event_email.value }}</p>
-							</div>
-							<div class="">
-								<p><b>Website</b></p>
-								<p>{{ node.field_event_website.value }}</p>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-sm-12">
-					<br/>
-						{{ page.content|without('related_events', 'socialsharingblock') }}
-					</div>
-					<div class="col-sm-12">
-						{{ page.content.related_events }}
-					</div>
-				</div>
+<div class="container">
+<div class="col-sm-5 wh overlay">
+	{# Breadcrumb #}
+	{% if page.breadcrumb %}
+		{% block breadcrumb %}
+			<div class="col-sm-12" role="heading">
+				{{ page.breadcrumb }}
 			</div>
-      
-{% endblock %}
+		{% endblock %}
+	{% endif %}
+	
+	{# Header #}
+	{% if page.header %}
+		{% block header %}
+			<div class="col-sm-12" role="heading">
+				{{ page.header }}
+			</div>
+		{% endblock %}
+	{% endif %}
+	
+	{# Header #}
+	{% if page.sidebar_first %}
+		{% block sidebar_first %}
+			<div class="col-sm-12" role="heading">
+				{{ page.sidebar_first }}
+			</div>
+		{% endblock %}
+	{% endif %}
+	</div>
+</div>
+
+{# Page Bottom #}
+{% if page.bottom %}
+	{% block bottom %}
+		<div class="page-bottom">
+			{{ page.bottom }}
+		</div>
+	{% endblock %}
+{% endif %}
+
+</div>
 
 {% if page.footer %}
   {% block footer %}
@@ -202,3 +169,4 @@
     </footer>
   {% endblock %}
 {% endif %}
+</div>

@@ -98,3 +98,65 @@ header {
 	}
 }
 
+// Simple Page 
+.page-node-type-simple-pages {
+	.page-header {
+		padding: 0 0 10px 0;
+    margin: 0px;
+		font-size: 26px;
+		float: left;
+		&:after {
+			display: none;
+		}
+	}
+	.main-container {
+		padding-bottom: 25px;
+	}
+}
+.main-container {
+		padding-bottom: 25px;
+	}
+
+// Top Service
+.top_right {
+	.search-block-form {
+		max-width: unset !important;
+		float: none;
+    width: 100%;
+		form {
+			.input-group-btn {
+				right: 0px !important;
+			}
+			input {
+				border: none !important;
+				height: 57px;
+			}
+			button {
+				&.form-submit{
+					height: 57px;
+					background: #f3c70e;
+					color: #000;
+					width: 50px;
+				}
+			}
+		}
+		
+	}
+}
+
+// Garage Page
+.garage-main-container {
+	.garage-content-container {
+		position: relative;
+		.overlay {
+			position: absolute;
+			top: 0px;
+		}
+		.garage-list-view {
+			.view-content {
+				height: 350px;
+				overflow: auto;
+			}
+		}
+	}
+}

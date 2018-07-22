@@ -16,3 +16,44 @@ function santa_theme() {
 
   return $theme;
 }
+
+/**
+ * Implementing hook_preprocess_node
+ */
+function santa_preprocess_node(&$variables) {
+
+}
+
+/**
+ * Implementing hook_preprocess_block
+ */
+function santa_preprocess_block(&$variables) {
+  if (strpos($variables['content']['body'][0]['#text'], '{{ search_form }}') !== false) {
+    $block = \Drupal\block\Entity\Block::load('santacity_search');
+    $searchForm = \Drupal::entityTypeManager()->getViewBuilder('block')->view($block);
+    $searchForm = render($searchForm);
+    $variables['content']['body'][0]['#text'] = str_replace('{{ search_form }}', $searchForm, $variables['content']['body'][0]['#text']);
+  }
+
+  if (strpos($variables['content']['body'][0]['#text'], '{{ contact_form }}') !== false) {
+    /*
+    $webform = \Drupal::entityTypeManager()->getStorage('webform')->load('contact');
+    $view_builder = \Drupal::service('entity_type.manager')->getViewBuilder('webform');
+    $build = $view_builder->view($webform);
+    */
+
+    $webform = \Drupal::entityTypeManager()->getStorage('webform')->load('help');
+    $webform = $webform->getSubmissionForm();
+    $webform = render($webform);
+    $variables['content']['body'][0]['#text'] = str_replace('{{ contact_form }}', $webform, $variables['content']['body'][0]['#text']);
+  }
+
+  return $build;
+}
+
+/**
+ * Implementing hook_preprocess_field
+ */
+function santa_preprocess_field(&$variables, $hook) {
+
+}

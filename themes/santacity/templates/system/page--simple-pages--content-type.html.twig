@@ -189,15 +189,6 @@
         {% endblock %}
       {% endif %}
 			
-      {# Header #}
-      {% if page.header %}
-        {% block header %}
-          <div class="col-sm-12" role="heading">
-            {{ page.header }}
-          </div>
-        {% endblock %}
-      {% endif %}
-			
 			{% if page.feature and page.banner %}
 			<div class="col-md-12">
 			{# Feature #}
@@ -257,7 +248,29 @@
         {# Content #}
         {% block content %}
           <a id="main-content"></a>
+					
+					{# Header Social Share #}
+					{% if page.header or page.social_share %}
+					<div class="col-sm-12" role="heading">
+						{# Header #}
+						{% if page.header %}
+							{% block header %}
+								{{ page.header }}
+							{% endblock %}
+						{% endif %}
+						{% if page.social_share %}
+							{% block social_share %}
+							<div class="pull-right">
+								{{ page.social_share }}
+							</div>
+							{% endblock %}
+						{% endif %}
+					</div>
+					{% endif %}
+					<div class="col-sm-12">
           {{ page.content }}
+					</div>
+					
         {% endblock %}
       </section>
 

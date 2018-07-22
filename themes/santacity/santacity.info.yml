@@ -16,6 +16,8 @@ regions:
   top_service_right: 'Top Service Right'
   home_feature: 'Home Feature'
   breadcrumb: 'Breadcrumb'
+  page_title: 'Page Title'
+  social_share: 'Social Share'
   home_events: 'Home Events'
   top_left: 'Top Left'
   top_rigt: 'Top Right'
