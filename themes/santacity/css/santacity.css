@@ -431,8 +431,23 @@ footer.footer #block-logo p:nth-child(1) {
     height: 100%;
     left: 0;
     top: 0;
-    background: rgba(0,0,0,0.5);
+    background:rgba(58, 58, 58, 0.88);
 }
+.flex-direction-nav a {
+    z-index: 1;
+    }
+    section#block-homepageslider .flexslider {
+    margin: 0 0 30px;
+        border-radius: 0;
+    }
+    #block-homepageslider #carousel_1 .flex-viewport ul.slides li {
+       max-width: 171px !important;
+    }
+    #block-homepageslider #carousel_1 .flex-viewport ul.slides li .more_texts {
+    width: 100%;
+}
+
+
 
 .home-feature-content:after{
     content: '';
@@ -1092,11 +1107,28 @@ form .form-item .select-wrapper:after {
         height: 80px !important;
     }
     div#block-santacity-search {
-        max-width: 180px;
+        max-width: 170px;
     }
     div#navbar-collapse{
         padding: 0;
     }
+
+
+.top_service .top_right {
+    width: 40%;
+    margin-right: 40px;
+}
+.top_service ul li {
+    width: 290px !important;
+    }
+    .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
+    width: 56% !important;
+}
+div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
+    overflow:  hidden !important;
+    width: 92% !IMPORTANT;
+    margin:  auto !important;
+}
 }
 
 
@@ -1681,6 +1713,7 @@ span.calender p.year {    padding: 10px 20px;}
 .top_Notification .notifi_sec .niticy_inner_box p:nth-child(2) {
     font-size: 16px;
     margin-bottom: 8px;
+        color: #4a4949;
 }
 
 .top_Notification .notifi_sec a {color: #000;display: grid;}
@@ -1776,13 +1809,9 @@ span.calender p.year {    padding: 10px 20px;}
 .twitter_home .media-left img {width: 38px;}
 .text_home_page .media-body p { font-size: 14px;}
 .bottom_twit h4 {float: left; font-size: 16px;}
-.bottom_twit h3 {float: right; font-size: 16px;}
+.bottom_twit h3 {float: right;font-size: 14px;margin-top: 30px;}
 .clerfix {clear: both;}
-.bottom_twit h4 {
-    float: left;
-    margin: 21px 0;
-    font-size: 16px;
-}
+.bottom_twit h4 { float: left; margin: 29px 0 17px; font-size: 14px;}
 .bottom_twit a {color: #1da1f2;}
 .youtube .fb_home_head h1 {background: #ff0000;}
 .you_tube a {color: #f00;}
@@ -1847,6 +1876,9 @@ span.calender p.year {    padding: 10px 20px;}
     font-weight: 500;
 }
 
+#block-homepageslider #carousel_1 .flex-viewport ul.slides li {
+    margin: 10px;
+}
 
  /*police-department page css*/
      div#accordion {
@@ -1938,7 +1970,9 @@ span.calender p.year {    padding: 10px 20px;}
         background: #fff;
         width: 20px;
     }
-
+a:focus {
+    text-decoration: none;
+}
 
     .more-link.form-group a {
         background: #f3c70e;
@@ -2156,10 +2190,11 @@ span.calender p.year {    padding: 10px 20px;}
     section#block-latestbusinesseventsnews {
         margin-top: 40px;
     }
-
+    .views_slideshow_controls_text_previous a:hover { text-decoration: none !important;}
+    .views_slideshow_controls_text_next a:hover { text-decoration: none !important;}
     .views_slideshow_controls_text_previous,.views_slideshow_controls_text_next { font-size:0px; }
-    .views_slideshow_controls_text_previous{position: absolute;top: 50%;left: -1.5%;}
-    .views_slideshow_controls_text_next{position: absolute;left: 98.5%;top: 50%;}
+    .views_slideshow_controls_text_previous{position: absolute;top: 50%;left: -1.5%;  text-decoration: none !important}
+    .views_slideshow_controls_text_next{position: absolute;left: 98.5%;top: 50%; text-decoration: none !important;}
     .views_slideshow_controls_text_previous a,.views_slideshow_controls_text_next a{ font-size:0px; color:#333}
     .views_slideshow_controls_text_previous a:before{content: "\e257";
         font-family: "Glyphicons Halflings";
@@ -2178,16 +2213,16 @@ span.calender p.year {    padding: 10px 20px;}
 
 
 
-
-
 /*=============Home Page Responsive CSS===============*/
 
 
-@media screen only and (max-width:1024px){
 
+
+@media screen and (max-width: 1024px) {
 div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
     width: 100% !important;
     overflow: hidden;
+        height:700px !important;
 }
 div#block-santacity-search {
     max-width: 210px;
@@ -2198,6 +2233,10 @@ div#block-santacity-search {
 .top_service ul li{
     width: 290px;
 }
+
+    div#block-santacity-search {
+        max-width: 210px
+    }
 }
 
 @media screen only and (max-width:991px){
@@ -2207,6 +2246,7 @@ nav#block-mainnavigation .menu {
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .top_service ul li {
     width: 340px !important;
 }
@@ -2242,6 +2282,56 @@ footer.footer #block-logo p:nth-child(1) {
 }
 .economic_lft_box .col-sm-2 img{
     width: 70px;
+}
+}
+
+@media screen  and (max-width:991px) {
+    nav#block-mainnavigation .menu {
+        max-width: 80%;
+        margin-left: 0;
+        margin-top: 10px;
+        margin-bottom: 10px
+    }
+    .top_service ul li {
+        width: 340px!important
+    }
+    .region.region-top-service-right {
+        margin-bottom: 30px
+    }
+    div#views_slideshow_cycle_main_our_santa_ana-block {
+        height: 700px
+    }
+    .region.region-footer section#block-logo {
+        width: 100%;
+        text-align: center;
+        margin: 0 auto 40px
+    }
+    footer.footer #block-logo p:nth-child(1) {
+        float: none
+    }
+    #block-discover.col-sm-2,
+    #block-doingbusiness.col-sm-2,
+    #block-footermenucity.col-sm-2,
+    section#block-resident.col-sm-2 {
+        width: 100%!important;
+        margin:auto;
+        text-align: center;
+    }
+    .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
+    width: 66%;
+    }
+    .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container .form-item {
+    width: 34%;
+    float: left;
+    }
+}
+
+@media screen only and (max-width:850px){
+        div#views_slideshow_cycle_main_our_santa_ana-block {
+    height: 700px;
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
 }
 }
 @media screen and (min-width:767px) and (max-width:992px){
@@ -2307,30 +2397,109 @@ footer.footer #block-logo p:nth-child(1) {
     #views-exposed-form-events-block-1 .form-item {
         width: 100%;
     }
+    .top_service ul li {
+    width: 310px!important;
+    margin: 20px auto;
+    }
+
+}
+
+@media screen and (max-width:690px){
+    #block-hometopservice .top_service ul li {
+    width: 100% !important;
+    }
+    #block-hometopservice .top_service .top_left {
+    width: 100% !important;
+    }
+    #block-hometopservice .top_service .top_left ul {
+    padding: 0 !important;
+    }
+    .main-container {
+    padding-bottom: 25px;
+    width: 86%;
+    margin: auto !important;
+    }
+    .featured_text {
+    height: 195px;
+        width: 447px;
+    }
+    section#block-homepageslider section.slider ul.slides .featured_text h3 {
+    font-size:  18px;
+    }
+
+    section#block-homepageslider section.slider ul.slides .featured_text  p {
+    line-height: 21px;
+    font-size: 13px;
+    }
+
+    section#block-homepageslider section.slider ul.slides .featured_text a.featured_btn {
+    font-size:  12px;
+    padding: 9px 18px;
+    }
 }
 
 
-@media screen only and (max-width:767px){
+@media screen and (max-width:767px){
 
     .top_service ul li input{
         width:100%;
         float:left;
     }
-    .top_service .top_right ul {
-        padding-left: 1.5em;
+    .top_right .search-block-form form input {
+    height: 27px!important;
     }
+    
     #block-discover.col-sm-2,section#block-resident.col-sm-2,#block-footermenucity.col-sm-2,#block-doingbusiness.col-sm-2{
         width: 50%;
         float:  left;
         text-align:  center;
         margin-bottom: 14px !important;
     }
+        .top_service ul li input {
+        width: 100%;
+        float: left
+    }
+   
+    #block-discover.col-sm-2,
+    #block-doingbusiness.col-sm-2,
+    #block-footermenucity.col-sm-2,
+    section#block-resident.col-sm-2 {
+        width: 50%;
+        float: left;
+        text-align: center;
+        margin-bottom: 14px!important
+    }
+    .top_right .search-block-form form input {
+    height: 17px !important;
+    }
+  
+    .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
+    width: 86%;
+    }
+    .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container .form-item {
+    float:  left;
+    }
+    #block-hometopservice #block-santacity-search form#search-block-form input#edit-keys {
+    height: 20px !important;
+    }
+    #block-hometopservice .top_right .search-block-form form .input-group-btn {
+    right: -14px !important;
+    top: -21px !important;
+    }
 }
 
-@media screen only and (max-width:480px){
+@media screen and (max-width:480px){
     .page-heading section.block .field + .field {
         font-size: 28px;
     }
+       .page-heading section.block .field+.field {
+        font-size: 28px
+    }
+    .featured_text {
+        display: none;
+    }
 }
+
+
 
 
