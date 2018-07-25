@@ -3,6 +3,7 @@ use \Drupal\Core\Render\Element;
 use \Drupal\node\Entity\Node;
 use Drupal\taxonomy\Entity\Term;
 use \Drupal\block\Entity\Block;
+use \Drupal\block_content\BlockContentInterface;
 
 /**
  * @file
@@ -36,11 +37,17 @@ function santacity_theme_suggestions_page_alter(&$suggestions, $vars, $hook) {
  * Implements hook_theme_suggestions_HOOK_alter().
  */
 function santacity_theme_suggestions_block_alter(&$suggestions, $vars, $hook) {
+	$content = $vars['elements']['content'];
+	if (isset($content['#block_content']) && $content['#block_content'] instanceof BlockContentInterface) {
+    $bundle = $content['#block_content']->bundle();
+		$suggestions[] = 'block__'.$bundle.'__bundle';
+  }
 	if(isset($vars['elements']['#id'])) {
 		$block = Block::load($vars['elements']['#id']);
 		$regionName = $block->getRegion();
 		$suggestions[] = 'block__'.$regionName.'__region';
 	}
+	
 }
 
 

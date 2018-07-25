@@ -57,7 +57,6 @@ header#navbar .container {
 .main-container .region .breadcrumb {
     background: transparent;
     font-size: 16px;
-    margin-bottom: 0px;
     padding-left: 0;
 }
 
@@ -719,9 +718,6 @@ form .form-item .select-wrapper:after {
     width: 100% !important;
 }
 
-#block-exposedformlatest-news .form-item, #block-events-filter .form-item {
-   width: 100%;
-}
 
 #views-exposed-form-latest-news-latest-news input{
     margin: 20px 0;
@@ -855,7 +851,23 @@ form .form-item .select-wrapper:after {
         margin-bottom:30px;
         box-shadow: 0px 2px 5px #ccc;
     }
+    .view-id-our_santa_ana .owl-slider-wrapper.owl-carousel.owl-theme .owl-wrapper-outer .owl-wrapper .owl-item {
+    padding: 10px;
+    }
+    .view-id-our_santa_ana .owl-slider-wrapper .owl-prev,.view-id-our_santa_ana .owl-slider-wrapper .owl-next {
+    background: #0d2b89 !important;
+    opacity:  1 !important;
+    text-transform: capitalize !important;
+    padding: 8px 19px !important;
+    letter-spacing: 1px;
+    transition: all 1s ease;
+    }
+    .view-id-our_santa_ana .owl-slider-wrapper .owl-next:hover,.view-id-our_santa_ana .owl-slider-wrapper .owl-prev:hover {
+    background: #f3c70e !important;
+    color: #000 !important;
+    }
 
+     
     .city_text{
         padding: 15px;
         box-shadow: 1px 1px 8px 1px #ddd;
@@ -1245,6 +1257,9 @@ div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
     }
     .navbar-fixed-top .navbar-collapse, .navbar-fixed-bottom .navbar-collapse {
         max-height: 372px;
+    }
+     #block-libraryservices {
+    margin-bottom: 30px;
     }
 }
 
@@ -2414,11 +2429,7 @@ footer.footer #block-logo p:nth-child(1) {
     #block-hometopservice .top_service .top_left ul {
     padding: 0 !important;
     }
-    .main-container {
-    padding-bottom: 25px;
-    width: 86%;
-    margin: auto !important;
-    }
+    
     .featured_text {
     height: 195px;
         width: 447px;
@@ -2435,6 +2446,13 @@ footer.footer #block-logo p:nth-child(1) {
     section#block-homepageslider section.slider ul.slides .featured_text a.featured_btn {
     font-size:  12px;
     padding: 9px 18px;
+    }
+    .featured-news .view-filters .form-item input {
+    width: 90%;
+    margin-left: 10px;
+    }
+    .top_service .top_right,.top_service .top_left {
+    float: inherit;
     }
 }
 
@@ -2486,6 +2504,23 @@ footer.footer #block-logo p:nth-child(1) {
     right: -14px !important;
     top: -21px !important;
     }
+    .economic-banner .field.field--name-body {
+    width: 100%;
+    }
+    .economic-banner .field.field--name-body h3:before {
+    width: 150px;
+    right: 39%;
+    }
+    .featured-news .view-filters .form-item {
+    width: 33%;
+    float: left;
+    }
+    #block-exposedformlatest-news .form-item, #block-events-filter .form-item {
+    width: 30%;
+    float: left;
+        margin-right: 10px;
+    }
+
 }
 
 @media screen and (max-width:480px){
@@ -2498,8 +2533,46 @@ footer.footer #block-logo p:nth-child(1) {
     .featured_text {
         display: none;
     }
-}
+    section#block-socialsharingblock-2 {
+    margin-bottom: 10px;
+    }
+    .economic-banner .field.field--name-body h3:before {
+    right: 34%;
+    }
+    .featured-news .view-filters .form-item {
+    width: 100%;
+    }
+    .featured-news .view-filters .form-item input {
+    width: 100%;
+    }
+    form .form-item label {
+    display: none;
+    }
+    .featured-news .view-filters .form-item {
+    width: 100%;
+    margin: 20px 0 20px;
+    }
+    .path-frontpage form .form-item label {
+    display: initial;
+    }
 
+    #block-exposedformlatest-news .form-item, #block-events-filter .form-item {
+   width: 100%;
+    }
+}
+@media screen and (max-width:350px){
+.region.region-one-fourth .form-group .after-main .view-header a.view-all {
+    margin-top: 17px;
+    width: 48%;
+    }
+     .path-frontpage .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container .form-item {
+    width: 44%;
+    }
+    .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
+    width: 95%;
+    right: 0;
+    }
+}
 
 
 
