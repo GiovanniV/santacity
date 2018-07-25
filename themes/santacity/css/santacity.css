@@ -2225,7 +2225,80 @@ a:focus {
          border-radius:100%
         color:#fff; background:#f3c70e; padding:10px; border-radius:100%;box-shadow:0px 3px 5px #ccc }
 
+.back_resident > div {
+    background: url(http://dev-santacity.pantheonsite.io/themes/santacity/images/header-top-bg.png) no-repeat;
+    background-position: bottom center;
+    background-size: 320vh 60vh;
+    padding: 0px 0 67px;
+}
+.residen-icon i.fa.fa-home {
+    float: left;
+    font-size: 56px;
+    margin-bottom: 40px;
+    margin-right: 10px;
+}
+h5.qution {
+    font-size: 18px;
+}
+.inner_resident_page {
+    padding: 10px 40px;
+}
+.resding_enqury ul {
+    padding: 0;
+    list-style: none;
+}
+.resding_enqury ul li {
+    display: inline-block;
+    margin-right: 10px;
+        font-weight: 600;
 
+}
+.resding_enqury ul li a {
+    color: #000;
+        font-weight: 400;
+
+}
+.residen-icon {
+    padding-right: 70px;
+}
+.residen_box h3 {
+    font-size: 16px;
+    font-weight: 600;
+}
+.residen_box ul {
+    padding: 0;
+    width: 20%;
+    float: left;
+    list-style: none;
+}
+.residen_box ul li a {
+    color: #0e3dd5;
+    text-decoration: underline;
+    line-height: 23px;
+}
+.residen_box ul li a i {
+    margin-left: 6px;
+    font-size: 16px;
+}
+.resdine_city .city_text {
+   padding: 10px 40px 10px 10px;
+}
+.resdine_city .city_text h5 {
+    margin-bottom: 0;
+}
+.resdine_city .city_text h5 a {
+    color: #000;
+}
+.tex_resi h3 {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+section.back_resident {
+      margin-bottom: 40px;
+}
+/*.resdine_city .media {
+    height: 130px;
+}*/
 
 
 /*=============Home Page Responsive CSS===============*/
