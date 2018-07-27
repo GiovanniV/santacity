@@ -13,11 +13,12 @@
 
     beforeInit: function beforeInit(editor) {
       editor.on('widgetDefinition', function (event) {
-        var widgetDefinition = event.data;
+        console.log("555", event);
+				var widgetDefinition = event.data;
         if (widgetDefinition.name !== 'image') {
           return;
         }
-
+				alert(123);
         widgetDefinition.allowedContent = {
           img: {
             attributes: {
