@@ -46,19 +46,22 @@
         widgetDefinition.allowedContent.img.attributes['!data-entity-uuid'] = true;
 
         widgetDefinition.downcast = function (element) {
-          
+					console.log("Down", element);
+          element.attributes['data-entity-type'] = this.data['data-entity-type'];
+          element.attributes['data-entity-uuid'] = this.data['data-entity-uuid'];
         };
 
         widgetDefinition.upcast = function (element, data) {
+					console.log("Up", element, data);
           if (element.name !== 'img') {
             return;
           } else if (element.attributes['data-cke-realelement']) {
               return;
             }
 
-          //data['data-entity-type'] = element.attributes['data-entity-type'];
+          data['data-entity-type'] = element.attributes['data-entity-type'];
 
-          //data['data-entity-uuid'] = element.attributes['data-entity-uuid'];
+          data['data-entity-uuid'] = element.attributes['data-entity-uuid'];
 
           return element;
         };
