@@ -13,12 +13,11 @@
 
     beforeInit: function beforeInit(editor) {
       editor.on('widgetDefinition', function (event) {
-        console.log("555", event);
-				var widgetDefinition = event.data;
+        var widgetDefinition = event.data;
         if (widgetDefinition.name !== 'image') {
           return;
         }
-				alert(123);
+
         widgetDefinition.allowedContent = {
           img: {
             attributes: {
@@ -49,6 +48,8 @@
         widgetDefinition.downcast = function (element) {
           element.attributes['data-entity-type'] = this.data['data-entity-type'];
           element.attributes['data-entity-uuid'] = this.data['data-entity-uuid'];
+					element.attributes['data-entity-type'] = this.data['data-entity-type'] ? this.data['data-entity-type'] : 'image';
+					element.attributes['data-entity-uuid'] = this.data['data-entity-uuid'] ? this.data['data-entity-uuid'] : 0;
         };
 
         widgetDefinition.upcast = function (element, data) {
