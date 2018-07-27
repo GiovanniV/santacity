@@ -68,7 +68,6 @@ class Upload extends ImcePluginBase {
       $fs = \Drupal::service('file_system');
       foreach (array_filter($files) as $file) {
         // Set status and save
-        $file->setPermanent();
         $file->save();
         // Add to the folder and to js response.
         $name = $fs->basename($file->getFileUri());

@@ -428,12 +428,25 @@ class ImceFM {
    */
   public function getFileProperties($uri) {
     $properties = ['date' => filemtime($uri), 'size' => filesize($uri)];
+		if ($uuid = $this->getUuidFromUri($uri)) {
+			$properties['type'] = 'file';
+			$properties['uuid'] = $uuid;
+		}
     if (preg_match('/\.(jpe?g|png|gif)$/i', $uri) && $info = getimagesize($uri)) {
       $properties['width'] = $info[0];
       $properties['height'] = $info[1];
     }
     return $properties;
   }
+	
+	/**
+ * Returns UUID from URI
+ */
+	public function getUuidFromUri($uri) {
+		$nids = \Drupal::entityQuery('file')->condition('uri', $uri)->execute();
+		$file = \Drupal\file\Entity\File::load(reset($nids));
+		return $file ? $file->uuid() : NULL;
+	}
 
   /**
    * Returns js properties of a folder.
@@ -610,9 +623,16 @@ class ImceFM {
       if ($folder = $this->activeFolder) {
         $conf['active_path'] = $folder->getPath();
       }
-      elseif ($this->user->isAuthenticated() && $this->request && $path = $this->request->getSession()->get('imce_active_path')) {
-        if ($this->checkFolder($path)) {
-          $conf['active_path'] = $path; 
+      elseif ($this->request) {
+        // Check $_GET['init_path']
+        if (($path = $this->request->query->get('init_path')) && $this->checkFolder($path)) {
+          $conf['active_path'] = $path;
+        }
+        // Check session
+        elseif ($this->user->isAuthenticated() && $path = $this->request->getSession()->get('imce_active_path')) {
+          if ($this->checkFolder($path)) {
+            $conf['active_path'] = $path; 
+          }
         }
       }
     }
