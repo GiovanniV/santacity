@@ -39,20 +39,18 @@
         });
 
         var requiredContent = widgetDefinition.requiredContent.getDefinition();
-        requiredContent.attributes['data-entity-type'] = '';
-        requiredContent.attributes['data-entity-uuid'] = '';
+        requiredContent.attributes['data-entity-type'] = 'image';
+        requiredContent.attributes['data-entity-uuid'] = '0';
         widgetDefinition.requiredContent = new CKEDITOR.style(requiredContent);
         widgetDefinition.allowedContent.img.attributes['!data-entity-type'] = true;
         widgetDefinition.allowedContent.img.attributes['!data-entity-uuid'] = true;
 
         widgetDefinition.downcast = function (element) {
-					console.log("Down", element);
           element.attributes['data-entity-type'] = this.data['data-entity-type'];
           element.attributes['data-entity-uuid'] = this.data['data-entity-uuid'];
         };
 
         widgetDefinition.upcast = function (element, data) {
-					console.log("Up", element, data);
           if (element.name !== 'img') {
             return;
           } else if (element.attributes['data-cke-realelement']) {
