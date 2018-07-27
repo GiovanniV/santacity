@@ -38,9 +38,9 @@
           }
         });
 
-        var requiredContent = widgetDefinition.requiredContent.getDefinition();
-        requiredContent.attributes['data-entity-type'] = 'image';
-        requiredContent.attributes['data-entity-uuid'] = '0';
+        // var requiredContent = widgetDefinition.requiredContent.getDefinition();
+        // requiredContent.attributes['data-entity-type'] = '';
+        // requiredContent.attributes['data-entity-uuid'] = '';
         widgetDefinition.requiredContent = new CKEDITOR.style(requiredContent);
         widgetDefinition.allowedContent.img.attributes['!data-entity-type'] = true;
         widgetDefinition.allowedContent.img.attributes['!data-entity-uuid'] = true;
