@@ -14,20 +14,7 @@ class XmlUploadController extends ControllerBase {
    *   A simple renderable array.
    */
   public function content() {
-  	$current_user = \Drupal::currentUser();
-		$userRole = $current_user->getRoles();
-		
-		$xmlUploadForm = '';
-		if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
-			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\yuta\Form\XmlUploadForm', []);
-		}
-		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\yuta\Form\xmlListingForm', []);
-		
-		return [
-			'#theme' => 'xml_upload',
-			'#xml_upload_form' => $xmlUploadForm
-			'#xml_listing_form' => $xmlListingForm
-		];
+  	
   }
 
 
