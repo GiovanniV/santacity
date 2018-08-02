@@ -13,6 +13,14 @@ function santa_theme() {
 			]
     ],
   ];
+	
+	// XML 
+  $theme['xml_upload'] = [
+    'variables' => [
+      'xml_upload_form' => [],
+      'xml_listing_form' => [],
+    ],
+  ];
 
   return $theme;
 }
