@@ -1,7 +1,7 @@
 santa.xml_upload:
   path: '/xml-upload'
   defaults:
-    _controller: '\Drupal\santa\Controller\XmlUploadController::XmlController'
+    _controller: '\Drupal\yuta\Controller\XmlUploadController::content'
     _title: 'XML File'
   requirements:
     _permission: 'access content'
