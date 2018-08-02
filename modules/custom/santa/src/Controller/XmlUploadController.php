@@ -16,7 +16,7 @@ class XmlUploadController extends ControllerBase {
    * @return array
    *   A simple renderable array.
    */
-  public function XmlController() {
+  public function content() {
   	$current_user = \Drupal::currentUser();
 		$userRole = $current_user->getRoles();
 		
