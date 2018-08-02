@@ -1,7 +1,6 @@
 <?php
 namespace Drupal\santa\Controller;
 
-
 use Drupal\Core\Controller\ControllerBase;
 /**
  * Provides route responses for the Example module.
