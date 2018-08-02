@@ -1,10 +1,8 @@
 <?php
 namespace Drupal\santa\Controller;
 
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Drupal\Core\Controller\ControllerBase;
-use Drupal\taxonomy\Entity\Term;
 
+use Drupal\Core\Controller\ControllerBase;
 /**
  * Provides route responses for the Example module.
  */
