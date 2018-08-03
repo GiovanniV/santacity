@@ -38,8 +38,7 @@ class XmlUploadForm extends FormBase {
 			'#description' => t('Allowed extensions: gif png jpg jpeg'),
 			'#upload_validators' => array(
 				'file_validate_extensions' => array('xml'),
-				),
-			],
+			),
 		);
 		
 		$form['xml_file_upload']['submit'] = [
