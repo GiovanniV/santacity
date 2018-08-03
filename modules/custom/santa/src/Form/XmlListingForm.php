@@ -58,7 +58,7 @@ class XmlListingForm extends FormBase {
 				'#type' => 'radios',
 				'#name' => 'preview',
 				'#options' => [$record->file_id => $record->file_id],
-				'#attributes' => ['xm_title' => 'Listing of ' . $record->name],
+				'#attributes' => ['xml_title' => 'Listing of ' . $record->name],
 				'#ajax' => [
 					'callback' => '::xmlPreview',
 					'wrapper' => 'xml-table-content',
@@ -97,14 +97,14 @@ class XmlListingForm extends FormBase {
    */
   public function xmlPreview(array &$form, FormStateInterface $form_state) {
     $element = $form_state->getTriggeringElement();
-		dpm($element);
+		
 		$tableContent = '';
 		if(isset($element['#value']) && !empty($element['#value'])) {
 			$tableContent = $this->loadXmlRecordsTable($element['#value']);
 		}
 		
 		$form['xml_records'] = [
-			'#prefix' => '<div id="xml-table-content"><h2> Listing of '. $element['#attributes']['xml_title'] .'</h2><i>This is preview.If you would like to view the full resource, please download it above.</i>',
+			'#prefix' => '<div id="xml-table-content"><h4>'. $element['#attributes']['xml_title'] .'</h4><i>This is preview.If you would like to view the full resource, please download it above.</i>',
 			'#suffix' => '</div>',
 		];
 		
