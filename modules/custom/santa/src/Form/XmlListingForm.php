@@ -58,8 +58,7 @@ class XmlListingForm extends FormBase {
 				'#type' => 'radios',
 				'#name' => 'preview',
 				'#options' => [$record->file_id => $record->file_id],
-				'#fid' => $record->file_id,
-				'#xml_title' => 'Listing of ' . $record->name,
+				'#attributes' => ['xm_title' => 'Listing of ' . $record->name],
 				'#ajax' => [
 					'callback' => '::xmlPreview',
 					'wrapper' => 'xml-table-content',
