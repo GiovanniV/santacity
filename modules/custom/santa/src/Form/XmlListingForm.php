@@ -32,7 +32,7 @@ class XmlListingForm extends FormBase {
 		);
 		
 		$records = $this->getXmlFiles();
-		
+		dpm($records);
 		foreach ($records as $record) {
 			// Resources
 			$form['mytable'][$record->id]['resource'] = array(
