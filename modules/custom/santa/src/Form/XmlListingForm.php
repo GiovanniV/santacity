@@ -67,7 +67,7 @@ class XmlListingForm extends FormBase {
 			);
 		}
 		
-		$form['xml_form'] = [
+		$form['xml_records'] = [
 			'#prefix' => '<div id="xml-table-content">',
 			'#suffix' => '</div>',
 		];
@@ -96,7 +96,7 @@ class XmlListingForm extends FormBase {
     $element = $form_state->getTriggeringElement();
 		$fid = isset($element['#fid']) ? $element['#fid'] : '';
 		
-		$form = [
+		$form['xml_records'] = [
 			'#prefix' => '<div id="xml-table-content">',
 			'#suffix' => '</div>',
 			'#markup' => $this->loadXmlRecordsTable($fid),
