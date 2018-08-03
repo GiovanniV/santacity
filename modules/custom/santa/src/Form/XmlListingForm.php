@@ -96,13 +96,15 @@ class XmlListingForm extends FormBase {
     $element = $form_state->getTriggeringElement();
 		$fid = isset($element['#fid']) ? $element['#fid'] : '';
 		
+		$tableContent = $this->loadXmlRecordsTable($fid);
+		
 		$form['xml_records'] = [
 			'#prefix' => '<div id="xml-table-content">',
 			'#suffix' => '</div>',
-			'#markup' => 'asdasdasd',
 		];
 		
-		;
+		$form['xml_records']['tables'] = $tableContent;
+		
 		$form_state->setRebuild(TRUE);
 		
 		return $form['xml_records'];
@@ -113,9 +115,15 @@ class XmlListingForm extends FormBase {
 	*/
 	public function loadXmlRecordsTable($fid) {
 		$file =File::load($fid);
-    $path = file_create_url($file->getFileUri());
+    $xmlPath = file_create_url($file->getFileUri());
 		
-		return time();
+		$xml = simplexml_load_file($xmlPath);
+		
+		foreach($xml->children() as $record) {
+			dpm($record);
+		}
+		
+		return '';
 	} 
 	
   /**
