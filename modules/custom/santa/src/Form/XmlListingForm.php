@@ -54,7 +54,8 @@ class XmlListingForm extends FormBase {
 			// Preview
 			$form['mytable'][$record->id]['preview'] = array(
 				'#type' => 'radios',
-				'#options' => [$record->id => $record->id],
+				'#name' => 'preview',
+				'#options' => [$record->file_id => $record->file_id],
 			);
 		}
 		
