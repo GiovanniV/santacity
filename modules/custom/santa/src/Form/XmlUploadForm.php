@@ -57,6 +57,7 @@ class XmlUploadForm extends FormBase {
 			'#title' => t('XML File'),
 			'#upload_location' => 'public://xml/',
 			'#required' => true,
+			'#multiple' => false,
 			'#description' => t('Allowed extensions: gif png jpg jpeg'),
 			'#upload_validators' => array(
 				'file_validate_extensions' => array('xml'),
