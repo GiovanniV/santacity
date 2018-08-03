@@ -57,7 +57,7 @@ class XmlListingForm extends FormBase {
 				'#name' => 'preview',
 				'#options' => [$record->file_id => $record->file_id],
 				'#ajax' => [
-					'callback' => $this->xmlPreview(),
+					'callback' => '::xmlPreview',
 					'wrapper' => 'xml-table-content',
 					'progress' => [
 						'type' => 'throbber',
