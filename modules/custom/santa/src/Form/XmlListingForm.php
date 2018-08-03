@@ -35,9 +35,10 @@ class XmlListingForm extends FormBase {
 		$records = $this->getXmlFiles();
 		
 		foreach ($records as $record) {
+			$timeAgo = print t('(created during the last @time ago)', array('@time' => \Drupal::service('date.formatter')->formatTimeDiffSince($record->created_date)));;
 			// Resources
 			$form['xml'][$record->id]['resource'] = array(
-				'#plain_text' => $record->type,
+				'#plain_text' => $record->name . $timeAgo,
 			);
 			
 			// Type

@@ -41,7 +41,7 @@ class XmlUploadForm extends FormBase {
 			'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => 905)),
 		);
 		
-		$form['xml_file_upload']['type'] = array(
+		$form['xml_file_upload']['name'] = array(
 			'#type' => 'select',
 			'#title' => t('Type'),
 			'#required' => true,
@@ -84,16 +84,22 @@ class XmlUploadForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $inputData = $form_state->getValues();
-		dpm($inputData);
-    $this-saveXmlFile($inputData);
+		$this->saveXmlFile($inputData);
   }
 
   /**
   * Save Cultural Values
   **/
-  static function saveXmlFile($fieldValues) {
+  private function saveXmlFile($inputValues) {
     $connection = Database::getConnection();
 		
+		$fieldValues = [
+			'id' => '',
+			'name' => $inputValues['name'],
+			'type' => 'xml',
+			'file_id' => $inputValues['fid'],
+			'created_date' => time(),
+		];
 		if(empty($fieldValues['id'])) {
 			$connection->insert('xml_upload')
 				->fields($fieldValues)
