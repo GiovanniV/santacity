@@ -10,6 +10,7 @@ use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Database\Database;
 use Drupal\Core\Url;
+use Drupal\file\Entity\File;
 
 /**
  * Contribute form.
@@ -114,7 +115,7 @@ class XmlListingForm extends FormBase {
 	 *
 	*/
 	public function loadXmlRecordsTable($fid) {
-		$file =File::load($fid);
+		$file = File::load($fid);
     $xmlPath = file_create_url($file->getFileUri());
 		
 		//$xml = simplexml_load_file($xmlPath);
