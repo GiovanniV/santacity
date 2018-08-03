@@ -82,7 +82,7 @@ class XmlListingForm extends FormBase {
     $connection = Database::getConnection();
     $query = $connection->select('xml_upload', 'xml');
     $query->fields('xml');
-    $results = $query->execute()->fetchAssoc();
+    $results = $query->execute();
     return $results;
     
   }
