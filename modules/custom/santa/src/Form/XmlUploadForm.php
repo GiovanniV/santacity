@@ -109,8 +109,8 @@ class XmlUploadForm extends FormBase {
 			'created_date' => time(),
 		];
 		
-		dpm($fieldValues);
 		if(empty($fieldValues['id'])) {
+			unset($fieldValues['id']);
 			$connection->insert('xml_upload')
 				->fields($fieldValues)
 				->execute();
