@@ -85,9 +85,13 @@ class XmlUploadForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     $inputData = $form_state->getValues();
-		$file = File::load($inputValues['fid'][0]);
-		$file->setPermanent();
-		$file->save();
+		
+		if(!empty($inputData['fid'][0])) {
+			$file = File::load($inputData['fid'][0]);
+			$file->setPermanent();
+			$file->save();
+		}
+		
 		$this->saveXmlFile($inputData);
   }
 
