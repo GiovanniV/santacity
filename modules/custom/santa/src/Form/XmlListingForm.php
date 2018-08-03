@@ -57,6 +57,7 @@ class XmlListingForm extends FormBase {
 				'#type' => 'radios',
 				'#name' => 'preview',
 				'#options' => [$record->file_id => $record->file_id],
+				'#fid' => $record->file_id,
 				'#ajax' => [
 					'callback' => '::xmlPreview',
 					'wrapper' => 'xml-table-content',
@@ -116,10 +117,12 @@ class XmlListingForm extends FormBase {
 	*/
 	public function loadXmlRecordsTable($fid) {
 		$file = File::load($fid);
-    //$xmlPath = file_create_url($file->getFileUri());
-		
-		//$xml = simplexml_load_file($xmlPath);
+    dpm($fid);
 		dpm($file);
+		$xmlPath = file_create_url($file->getFileUri());
+		dpm($xmlPath);
+		
+		$xml = simplexml_load_file($xmlPath);
 		foreach($xml->children() as $record) {
 			dpm($record);
 		}
