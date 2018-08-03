@@ -48,7 +48,7 @@ class XmlListingForm extends FormBase {
 			$form['mytable'][$record->id]['download'] = array(
 				'#type' => 'link',
 				'#title' => $this->t('Download'),
-				'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => $record->id)),
+				'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => $record->file_id)),
 			);
 			
 			// Preview
@@ -82,7 +82,7 @@ class XmlListingForm extends FormBase {
     $connection = Database::getConnection();
     $query = $connection->select('xml_upload', 'xml');
     $query->fields('xml');
-    $results = $query->execute()->fetchAssoc();
+    $results = $query->execute();
     return $results;
     
   }
