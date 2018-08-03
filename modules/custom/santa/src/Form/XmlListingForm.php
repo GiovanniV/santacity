@@ -25,13 +25,38 @@ class xmlListingForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['mytable'] = array(
+    $form = [];
+		$form['mytable'] = array(
 			'#type' => 'table',
 			'#header' => array(t('Resource'), t('Type'), t('Download'), t('Preview')),
 		);
 		
 		$records = $this->getXmlFiles();
-	
+		
+		foreach ($records as $record) {
+			// Resources
+			$form['mytable'][$record->id]['resource'] = array(
+				'#plain_text' => $record->type,
+			);
+			
+			// Type
+			$form['mytable'][$record->id]['type'] = array(
+				'#plain_text' => 'csv',
+			);
+			
+			// Download
+			$form['mytable'][$record->id]['download'] = array(
+				'#type' => 'link',
+				'#title' => $this->t('Download'),
+				'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => $record->id)),
+			);
+			
+			// Preview
+			$form['mytable'][$record->id]['preview'] = array(
+				'#type' => 'radios',
+				'#options' => [$record->id => $record->id],
+			);
+		}
 		
 		return $form;
   }
