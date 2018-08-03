@@ -102,7 +102,7 @@ class XmlListingForm extends FormBase {
 			$tableContent = $this->loadXmlRecordsTable($element['#value']);
 		}
 		
-		
+		dpm($tableContent);
 		$form['xml_records'] = [
 			'#prefix' => '<div id="xml-table-content">',
 			'#suffix' => '</div>',
@@ -141,6 +141,7 @@ class XmlListingForm extends FormBase {
 			'#header' => $header,
 			'#rows' => $rows,
 		];
+		
 		return $form;
 	} 
 	
