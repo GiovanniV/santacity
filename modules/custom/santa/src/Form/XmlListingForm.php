@@ -115,10 +115,10 @@ class XmlListingForm extends FormBase {
 	 *
 	*/
 	public function loadXmlRecordsTable($fid) {
-		$file = File::load($fid);
-    $xmlPath = file_create_url($file->getFileUri());
+		$file = \Drupal\file\Entity\File::load($fid);
+		$xmlPath = file_create_url($file->getFileUri());
 		
-		//$xml = simplexml_load_file($xmlPath);
+		$xml = simplexml_load_file($xmlPath);
 		dpm($xmlPath);
 		foreach($xml->children() as $record) {
 			dpm($record);
