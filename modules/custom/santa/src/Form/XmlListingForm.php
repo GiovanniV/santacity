@@ -124,12 +124,24 @@ class XmlListingForm extends FormBase {
 		
 		$xml = simplexml_load_file($xmlPath);
 		
+		$header = $rows = [];
+		$item = 0;
+		$itemLimit = 2;
 		foreach($xml->children() as $record) {
-			$record = json_encode($record);
-			dpm($record);
+			if($item > $itemLimit)
+				break;;
+			$record = json_decode(json_encode($record));
+			$header = array_keys($record);
+			$rows[] = [$record];
+			$item++;
 		}
 		
-		return '';
+		$form = [
+			'#type' => 'table',
+			'#header' => $header,
+			'#rows' => $rows,
+		];
+		return $form;
 	} 
 	
   /**
