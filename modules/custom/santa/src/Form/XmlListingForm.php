@@ -129,8 +129,6 @@ class XmlListingForm extends FormBase {
 		foreach($xml->children() as $record) {
 			if($item > $itemLimit)
 				break;;
-			$record = json_encode($record);
-			dpm($record);
 			$record = (array)$record;
 			dpm($record);
 			$header = array_keys($record);
