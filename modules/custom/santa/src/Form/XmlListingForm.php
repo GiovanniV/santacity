@@ -124,8 +124,8 @@ class XmlListingForm extends FormBase {
 		
 		$xml = simplexml_load_file($xmlPath);
 		
-		dpm($xml->children());
 		foreach($xml->children() as $record) {
+			$record = json_decode($record);
 			dpm($record);
 		}
 		
