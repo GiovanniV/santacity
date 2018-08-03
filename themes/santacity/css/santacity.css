@@ -279,7 +279,10 @@ footer.footer #block-logo p:nth-child(1) {
 .webform-submission-form .form-item label {
     visibility: visible;
 }
-
+form table .form-item label {
+	visibility: visible;
+}
+		
 .form-item input[type=radio], .webform-submission-form .form-item input[type=checkbox] {
     height: auto;
 }
@@ -2619,9 +2622,6 @@ footer.footer #block-logo p:nth-child(1) {
     width: 100%;
     }
     form .form-item label {
-    display: none;
-    }
-		form table .form-item label {
     display: none;
     }
 		
