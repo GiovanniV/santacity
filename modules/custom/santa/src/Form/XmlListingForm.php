@@ -104,7 +104,7 @@ class XmlListingForm extends FormBase {
 		}
 		
 		$form['xml_records'] = [
-			'#prefix' => '<div id="xml-table-content"><h2> Listing of '. $element['#xml_title'] .'</h2><i>This is preview.If you would like to view the full resource, please download it above.</i>',
+			'#prefix' => '<div id="xml-table-content"><h2> Listing of '. $element['#attributes']['xml_title'] .'</h2><i>This is preview.If you would like to view the full resource, please download it above.</i>',
 			'#suffix' => '</div>',
 		];
 		
