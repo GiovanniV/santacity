@@ -130,9 +130,8 @@ class XmlListingForm extends FormBase {
 			if($item > $itemLimit)
 				break;;
 			$record = (array)$record;
-			dpm($record);
 			$header = array_keys($record);
-			$rows[] = [$record];
+			$rows[] = $record;
 			$item++;
 		}
 		
