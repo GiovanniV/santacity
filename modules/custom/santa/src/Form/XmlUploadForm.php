@@ -28,7 +28,8 @@ class XmlUploadForm extends FormBase {
     $form = [];
 		
 		$form['xml_file_upload'] = [
-			'#type' => 'container',
+			'#type' => 'fieldset',
+			'#title' => 'XML File Upload',
 		];
 
 		$form['xml_file_upload']['sample_xml'] = array(
