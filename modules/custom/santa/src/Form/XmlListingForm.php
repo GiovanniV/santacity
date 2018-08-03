@@ -98,7 +98,7 @@ class XmlListingForm extends FormBase {
     $element = $form_state->getTriggeringElement();
 		
 		$tableContent = '';
-		if(isset($element['#value']) && empty($element['#value'])) {
+		if(isset($element['#value']) && !empty($element['#value'])) {
 			$tableContent = $this->loadXmlRecordsTable($element['#value']);
 		}
 		
