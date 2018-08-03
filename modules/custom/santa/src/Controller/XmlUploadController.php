@@ -25,7 +25,7 @@ class XmlUploadController extends ControllerBase {
 		
 		return [
 			'#theme' => 'xml_upload',
-			'#xml_upload_form' => $xmlUploadForm
+			'#xml_upload_form' => $xmlUploadForm,
 			'#xml_listing_form' => $xmlListingForm
 		];
   }
