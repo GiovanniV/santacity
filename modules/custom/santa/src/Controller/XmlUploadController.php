@@ -21,7 +21,7 @@ class XmlUploadController extends ControllerBase {
 		if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
 			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', []);
 		}
-		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\xmlListingForm', []);
+		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', []);
 		
 		return [
 			'#theme' => 'xml_upload',
