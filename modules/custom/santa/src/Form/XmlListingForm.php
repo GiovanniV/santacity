@@ -26,7 +26,7 @@ class XmlListingForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
-    $form['mytable'] = array(
+    $form['xml'] = array(
 			'#type' => 'table',
 			'#header' => array(t('Resource'), t('Type'), t('Download'), t('Preview')),
 		);
@@ -35,29 +35,42 @@ class XmlListingForm extends FormBase {
 		dpm($records);
 		foreach ($records as $record) {
 			// Resources
-			$form['mytable'][$record->id]['resource'] = array(
+			$form['xml'][$record->id]['resource'] = array(
 				'#plain_text' => $record->type,
 			);
 			
 			// Type
-			$form['mytable'][$record->id]['type'] = array(
+			$form['xml'][$record->id]['type'] = array(
 				'#plain_text' => 'csv',
 			);
 			
 			// Download
-			$form['mytable'][$record->id]['download'] = array(
+			$form['xml'][$record->id]['download'] = array(
 				'#type' => 'link',
 				'#title' => $this->t('Download'),
 				'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => $record->file_id)),
 			);
 			
 			// Preview
-			$form['mytable'][$record->id]['preview'] = array(
+			$form['xml'][$record->id]['preview'] = array(
 				'#type' => 'radios',
 				'#name' => 'preview',
 				'#options' => [$record->file_id => $record->file_id],
+				'#ajax' => [
+					'callback' => $this->xmlPreview(),
+					'wrapper' => 'xml-table-content',
+					'progress' => [
+						'type' => 'throbber',
+						'message' => t('Loading Record...'),
+					],
+				],
 			);
 		}
+		
+		$form['xml_form'] = [
+			'#prefix' => '<div id="xml-table-content">',
+			'#suffix' => '</div>',
+		];
 		
 		return $form;
   }
@@ -75,6 +88,35 @@ class XmlListingForm extends FormBase {
   public function submitForm(array &$form, FormStateInterface $form_state) {
     
   }
+	
+  /**
+   * {@inheritdoc}
+   */
+  public function xmlPreview(array &$form, FormStateInterface $form_state) {
+    $element = $form_state->getTriggeringElement();
+		$fid = isset($element['#fid']) ? $element['#fid'] : '';
+		
+		$form = [
+			'#prefix' => '<div id="xml-table-content">',
+			'#suffix' => '</div>',
+			'#markup' => $this->loadXmlRecordsTable($fid),
+		];
+		
+		;
+		$form_state->setRebuild(TRUE);
+		
+		return $form;
+  }
+	
+	/**
+	 *
+	*/
+	public function loadXmlRecordsTable($fid) {
+		$file =File::load($fid);
+    $path = file_create_url($file->getFileUri());
+		
+		return time();
+	} 
 	
   /**
   * Get XML Files
