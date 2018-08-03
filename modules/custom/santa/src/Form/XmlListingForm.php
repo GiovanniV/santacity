@@ -131,7 +131,7 @@ class XmlListingForm extends FormBase {
 				break;;
 			$record = json_encode($record);
 			dpm($record);
-			$record = json_decode($record);
+			$record = (array)$record;
 			dpm($record);
 			$header = array_keys($record);
 			$rows[] = [$record];
