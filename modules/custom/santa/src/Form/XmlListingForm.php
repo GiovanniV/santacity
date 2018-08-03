@@ -102,7 +102,6 @@ class XmlListingForm extends FormBase {
 			$tableContent = $this->loadXmlRecordsTable($element['#value']);
 		}
 		
-		dpm($tableContent);
 		$form['xml_records'] = [
 			'#prefix' => '<div id="xml-table-content">',
 			'#suffix' => '</div>',
@@ -130,7 +129,10 @@ class XmlListingForm extends FormBase {
 		foreach($xml->children() as $record) {
 			if($item > $itemLimit)
 				break;;
-			$record = json_decode(json_encode($record));
+			$record = json_encode($record);
+			dpm($record);
+			$record = json_decode($record);
+			dpm($record);
 			$header = array_keys($record);
 			$rows[] = [$record];
 			$item++;
