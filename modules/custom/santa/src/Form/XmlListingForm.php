@@ -99,13 +99,13 @@ class XmlListingForm extends FormBase {
 		$form['xml_records'] = [
 			'#prefix' => '<div id="xml-table-content">',
 			'#suffix' => '</div>',
-			'#markup' => $this->loadXmlRecordsTable($fid),
+			'#markup' => 'asdasdasd',
 		];
 		
 		;
 		$form_state->setRebuild(TRUE);
 		
-		return $form;
+		return $form['xml_records'];
   }
 	
 	/**
