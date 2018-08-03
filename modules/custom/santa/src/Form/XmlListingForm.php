@@ -39,7 +39,7 @@ class XmlListingForm extends FormBase {
 			// Resources
 			$form['xml'][$record->id]['resource'] = array(
 				'#plain_text' => 'Listing of ' . $record->name . ' ' . $timeAgo,
-			);
+			)
 			
 			// Type
 			$form['xml'][$record->id]['type'] = array(
@@ -59,6 +59,7 @@ class XmlListingForm extends FormBase {
 				'#name' => 'preview',
 				'#options' => [$record->file_id => $record->file_id],
 				'#fid' => $record->file_id,
+				'#xml_title' => 'Listing of ' . $record->name,
 				'#ajax' => [
 					'callback' => '::xmlPreview',
 					'wrapper' => 'xml-table-content',
@@ -104,7 +105,7 @@ class XmlListingForm extends FormBase {
 		}
 		
 		$form['xml_records'] = [
-			'#prefix' => '<div id="xml-table-content"><h2> Listing of Active Businesses</h2><i>This is preview.If you would like to view the full resource, please download it above.</i>',
+			'#prefix' => '<div id="xml-table-content"><h2> Listing of '. $element['xml_title'] .'</h2><i>This is preview.If you would like to view the full resource, please download it above.</i>',
 			'#suffix' => '</div>',
 		];
 		
