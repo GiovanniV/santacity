@@ -32,7 +32,7 @@ function santa_preprocess_node(&$variables) {
 	if($variables['node']->getType() == 'business_permits') {
 		$nid = $variables['node']->id();
 		if($variables['node']->hasField('field_sample_xml')) {
-			dpm($variables['node']->get('field_sample_xml'));
+			dpm($variables['node']->get('field_sample_xml')->getValue());
 		}
 		$current_user = \Drupal::currentUser();
 		$userRole = $current_user->getRoles();
