@@ -45,7 +45,7 @@ class XmlListingForm extends FormBase {
 			
 			// Type
 			$form['xml'][$record->id]['type'] = array(
-				'#plain_text' => 'csv',
+				'#plain_text' => 'xml',
 			);
 			
 			// Download
