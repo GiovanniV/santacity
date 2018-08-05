@@ -26,7 +26,7 @@ class XmlUploadForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state, $node) {
+  public function buildForm(array $form, FormStateInterface $form_state) {
     $form = [];
 		
 		$form['xml_file_upload'] = [
