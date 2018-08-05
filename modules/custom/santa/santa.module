@@ -39,9 +39,9 @@ function santa_preprocess_node(&$variables) {
 		
 		$xmlUploadForm = '';
 		if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
-			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', [$id, $fid]);
+			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', []);
 		}
-		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', [$id, $fid]);
+		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', []);
 		
 		$variables['xmlUploadForm'] = $xmlUploadForm;
 		$variables['xmlListingForm'] = $xmlListingForm;
