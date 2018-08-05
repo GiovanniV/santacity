@@ -108,6 +108,7 @@ class XmlUploadForm extends FormBase {
 		
 		$fieldValues = [
 			'id' => '',
+			'nid' => $inputValues['nid'],
 			'name' => $inputValues['name'],
 			'type' => 'xml',
 			'file_id' => $inputValues['fid'][0],
