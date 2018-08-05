@@ -26,7 +26,7 @@ class XmlUploadForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state, $nid, $fid) {
     $form = [];
 		
 		$form['xml_file_upload'] = [
@@ -38,7 +38,7 @@ class XmlUploadForm extends FormBase {
 			'#type' => 'link',
 			'#title' => t('Sample XML'),
 			'#attributes' => ['class' => ['pull-right']],
-			'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => 905)),
+			'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => $fid)),
 		);
 		
 		$form['xml_file_upload']['name'] = array(
@@ -66,7 +66,7 @@ class XmlUploadForm extends FormBase {
 		
 		$form['xml_file_upload']['nid'] = [
 			'#type' => 'value',
-			'#value' => 'Import',
+			'#value' => $nid,
 		];
 		
 		$form['xml_file_upload']['submit'] = [
