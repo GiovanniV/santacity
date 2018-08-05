@@ -81,7 +81,7 @@ function santacity_preprocess_node($variables) {
 		$current_user = \Drupal::currentUser();
 		$userRole = $current_user->getRoles();
 		
-		$xmlUploadForm = '';
+		$xmlUploadForm = 'ads asd asd ';
 		if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
 			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', []);
 		}
