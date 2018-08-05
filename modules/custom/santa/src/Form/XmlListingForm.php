@@ -26,13 +26,13 @@ class XmlListingForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state, $nid = NULL) {
     $form['xml'] = array(
 			'#type' => 'table',
 			'#header' => array(t('Resource'), t('Type'), t('Download'), t('Preview')),
 		);
 		
-		$records = $this->getXmlFiles();
+		$records = $this->getXmlFiles($nid);
 		
 		foreach ($records as $record) {
 			$timeAgo = t('(created during the last @time months)', array('@time' => \Drupal::service('date.formatter')->formatTimeDiffSince($record->created_date)));;
@@ -151,6 +151,7 @@ class XmlListingForm extends FormBase {
   public function getXmlFiles($nid = '') {
     $connection = Database::getConnection();
     $query = $connection->select('xml_upload', 'xml');
+    $query->condition('xml.nid', $nid);
     $query->fields('xml');
     $results = $query->execute();
     return $results;
