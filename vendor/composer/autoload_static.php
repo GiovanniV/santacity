@@ -11,12 +11,13 @@ class ComposerStaticInitDrupal8
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         '5255c38a0faeba867671b61dfda6d864' => __DIR__ . '/..' . '/paragonie/random_compat/lib/random.php',
-        '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
+        '023d27dca8066ef29e6739335ea73bad' => __DIR__ . '/..' . '/symfony/polyfill-php70/bootstrap.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
-        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
+        'c65d09b6820da036953a371c8c73a9b1' => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook/polyfills.php',
         'e40631d46120a9c38ea139981f8dab26' => __DIR__ . '/..' . '/ircmaxell/password-compat/lib/password.php',
+        'def43f6c87e4f8dfd0c9e1b1bab14fe8' => __DIR__ . '/..' . '/symfony/polyfill-iconv/bootstrap.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -71,6 +72,7 @@ class ComposerStaticInitDrupal8
         ),
         'M' => 
         array (
+            'MetzWeb\\Instagram\\' => 18,
             'Masterminds\\' => 12,
         ),
         'G' => 
@@ -79,6 +81,10 @@ class ComposerStaticInitDrupal8
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
             'Goutte\\' => 7,
+        ),
+        'F' => 
+        array (
+            'Facebook\\' => 9,
         ),
         'D' => 
         array (
@@ -125,6 +131,7 @@ class ComposerStaticInitDrupal8
         'A' => 
         array (
             'Asm89\\Stack\\' => 12,
+            'Abraham\\TwitterOAuth\\' => 21,
         ),
     );
 
@@ -265,6 +272,10 @@ class ComposerStaticInitDrupal8
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'MetzWeb\\Instagram\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/cosenary/instagram/src',
+        ),
         'Masterminds\\' => 
         array (
             0 => __DIR__ . '/..' . '/masterminds/html5/src',
@@ -284,6 +295,10 @@ class ComposerStaticInitDrupal8
         'Goutte\\' => 
         array (
             0 => __DIR__ . '/..' . '/fabpot/goutte/Goutte',
+        ),
+        'Facebook\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/facebook/graph-sdk/src/Facebook',
         ),
         'Drupal\\Driver\\' => 
         array (
@@ -423,6 +438,10 @@ class ComposerStaticInitDrupal8
         array (
             0 => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack',
         ),
+        'Abraham\\TwitterOAuth\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/abraham/twitteroauth/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -496,6 +515,13 @@ class ComposerStaticInitDrupal8
             'Doctrine\\Common\\Annotations\\' => 
             array (
                 0 => __DIR__ . '/..' . '/doctrine/annotations/lib',
+            ),
+        ),
+        'C' => 
+        array (
+            'Carbon' => 
+            array (
+                0 => __DIR__ . '/..' . '/nesbot/carbon/src',
             ),
         ),
     );
