@@ -32,8 +32,7 @@ function santa_preprocess_page(&$variables) {
   // Hide title on basic page if configured.
   if ($node = \Drupal::routeMatch()->getParameter('node')) {
     if ($node->getType() == 'business_permits') {
-			kint($variables);
-      unset($variables['page']['content']['santacity_page_title']);
+			unset($variables['page']['#title']);
     }
   }
 }
