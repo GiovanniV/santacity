@@ -32,16 +32,16 @@ function santa_preprocess_node(&$variables) {
 	if($variables['node']->getType() == 'business_permits') {
 		$nid = $variables['node']->id();
 		if($variables['node']->hasField('field_sample_xml')) {
-			dpm($variables['node']->get('field_sample_xml')->getValue());
+			$fid = $variables['node']->get('field_sample_xml')->getValue()[0]['target_id'];
 		}
 		$current_user = \Drupal::currentUser();
 		$userRole = $current_user->getRoles();
 		
 		$xmlUploadForm = '';
 		if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
-			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', []);
+			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', $nid, $fid);
 		}
-		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', []);
+		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', $nid, $fid);
 		
 		$variables['xmlUploadForm'] = $xmlUploadForm;
 		$variables['xmlListingForm'] = $xmlListingForm;
