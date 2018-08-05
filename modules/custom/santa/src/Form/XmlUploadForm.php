@@ -26,7 +26,7 @@ class XmlUploadForm extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormStateInterface $form_state) {
+  public function buildForm(array $form, FormStateInterface $form_state, $node) {
     $form = [];
 		
 		$form['xml_file_upload'] = [
@@ -63,6 +63,11 @@ class XmlUploadForm extends FormBase {
 				'file_validate_extensions' => array('xml'),
 			),
 		);
+		
+		$form['xml_file_upload']['nid'] = [
+			'#type' => 'value',
+			'#value' => 'Import',
+		];
 		
 		$form['xml_file_upload']['submit'] = [
 			'#type' => 'submit',
