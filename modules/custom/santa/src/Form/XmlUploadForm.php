@@ -41,13 +41,6 @@ class XmlUploadForm extends FormBase {
 			'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => $fid)),
 		);
 		
-		$form['xml_file_upload']['name'] = array(
-			'#type' => 'select',
-			'#title' => t('Type'),
-			'#required' => true,
-			'#options' => [],
-		);
-		
 		$form['xml_file_upload']['fid'] = array(
 			'#type' => 'managed_file',
 			'#title' => t('XML File'),
@@ -105,7 +98,6 @@ class XmlUploadForm extends FormBase {
 		$fieldValues = [
 			'id' => '',
 			'nid' => $inputValues['nid'],
-			'name' => $inputValues['name'],
 			'type' => 'xml',
 			'file_id' => $inputValues['fid'][0],
 			'created_date' => time(),
