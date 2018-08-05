@@ -45,11 +45,7 @@ class XmlUploadForm extends FormBase {
 			'#type' => 'select',
 			'#title' => t('Type'),
 			'#required' => true,
-			'#options' => [
-				'Business Applications' => 'Business Applications',
-				'Business Existing more than a year' => 'Business Existing more than a year',
-				'Active Business' => 'Active Business',
-			],
+			'#options' => [],
 		);
 		
 		$form['xml_file_upload']['fid'] = array(
@@ -126,5 +122,6 @@ class XmlUploadForm extends FormBase {
 			
 		}
   }
-
+	
+	
 }

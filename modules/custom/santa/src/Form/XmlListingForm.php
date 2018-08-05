@@ -33,12 +33,14 @@ class XmlListingForm extends FormBase {
 		);
 		
 		$records = $this->getXmlFiles($nid);
+		$xml_node = node_load($nid);
+		$xml_title = $xml_node->getTitle();
 		
 		foreach ($records as $record) {
 			$timeAgo = t('(created during the last @time months)', array('@time' => \Drupal::service('date.formatter')->formatTimeDiffSince($record->created_date)));;
 			// Resources
 			$form['xml'][$record->id]['resource'] = array(
-				'#plain_text' => 'Listing of ' . $record->name . ' ' . $timeAgo,
+				'#plain_text' => 'Listing of ' . $xml_title . ' ' . $timeAgo,
 			);
 			
 			// Type
@@ -58,7 +60,7 @@ class XmlListingForm extends FormBase {
 				'#type' => 'radios',
 				'#name' => 'preview',
 				'#options' => [$record->file_id => $record->file_id],
-				'#attributes' => ['xml_title' => 'Listing of ' . $record->name],
+				'#attributes' => ['xml_title' => 'Listing of ' . $xml_title],
 				'#ajax' => [
 					'callback' => '::xmlPreview',
 					'wrapper' => 'xml-table-content',
