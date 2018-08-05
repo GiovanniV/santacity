@@ -73,10 +73,10 @@ function santacity_preprocess_page($variables) {
 
 
 /**
- * Implements hook_preprocess_page().
+ * Implements hook_preprocess_node().
  */
 function santacity_preprocess_node($variables) {
-	dpm($variables['node']->getType());
+	
 	if($variables['node']->getType() == 'business_permits') {
 		$current_user = \Drupal::currentUser();
 		$userRole = $current_user->getRoles();
