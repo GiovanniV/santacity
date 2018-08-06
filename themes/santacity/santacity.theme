@@ -81,7 +81,6 @@ function santacity_preprocess_select(&$variables, $hook) {
 		unset($variables['element']['#options']['All']);
 		$variables['element']['#options']['All'] = $variables['element']['#title'];
 	}
-	kint($variables['element']['#options']);
 	
 }
 
