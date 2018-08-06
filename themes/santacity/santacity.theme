@@ -77,9 +77,10 @@ function santacity_preprocess_page($variables) {
  */
 function santacity_preprocess_select(&$variables, $hook) {
 	$variables['element']['#testing'] = $variables['element']['#title'];
-	$variables['element']['#attributes']['placeholder'] = 'TEsting';
-	kint($variables['element']['#options']);
-	dpm($variables['element']['#options']);
+	if(isset($variables['element']['#options']['All'])) {
+		$variables['element']['#options']['All']->string = $variables['element']['#title'];
+	}
+	
 }
 
 /**
