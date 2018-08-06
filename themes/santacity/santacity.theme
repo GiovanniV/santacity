@@ -76,11 +76,6 @@ function santacity_preprocess_page($variables) {
  * Implements hook_preprocess_field().
  */
 function santacity_preprocess_select(&$variables, $hook) {
-	$variables['element']['#testing'] = $variables['element']['#title'];
-	if(isset($variables['element']['#options']['All'])) {
-		unset($variables['element']['#options']['All']);
-		$variables['element']['#options']['All'] = $variables['element']['#title'];
-	}
 	
 }
 
