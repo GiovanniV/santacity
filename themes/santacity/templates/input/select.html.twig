@@ -44,7 +44,7 @@
           </optgroup>
         {% elseif option.type == 'option' %}
           <option
-            value="{{ option.value }}"{{ option.selected ? ' selected="selected"' }}>{{ (option.value == 'All') ? title: option.label }}</option>
+            value="{{ option.value }}"{{ option.selected ? ' selected="selected"' }}>{{ (option.value == 'All') ? testing : option.label }}</option>
         {% endif %}
       {% endfor %}
     </select>
