@@ -76,7 +76,9 @@ function santacity_preprocess_page($variables) {
  * Implements hook_preprocess_field().
  */
 function santacity_preprocess_select(&$variables, $hook) {
-	kint($variables);
+	kint($variables['element']['#title']);
+	kint($variables['element']['#value']);
+	$variables['element']['#value'] = 'Ra';
 }
 
 /**
