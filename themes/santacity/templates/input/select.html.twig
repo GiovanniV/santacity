@@ -15,12 +15,11 @@
  * @see template_preprocess_select()
  */
 #}
-{{ testing }}
 {% spaceless %}
   {% if input_group %}
     <div class="input-group">
   {% endif %}
-		
+
   {% if prefix %}
     {{ prefix }}
   {% endif %}
@@ -44,9 +43,12 @@
             {% endfor %}
           </optgroup>
         {% elseif option.type == 'option' %}
-          <option
-            value="{{ option.value }}"{{ option.selected ? ' selected="selected"' }}>{{ (option.value == 'All') ? option.label : option.label }}</option>
-        {% endif %}
+				{# custom if statement #}
+				{% if option.label == '- Any -' %} 
+					{% set option = option|merge({ 'label': element['#title'] }) %}
+				{%  endif %}
+           <option value="{{ option.value }}"{{ option.selected ? ' selected="selected"' }}>{{ option.label }}</option>
+				{% endif %}
       {% endfor %}
     </select>
   {% if not attributes.offsetExists('multiple') %}
