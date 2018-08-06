@@ -128,14 +128,11 @@ class XmlListingForm extends FormBase {
 		
 		$header = $rows = [];
 		$item = 0;
-		$itemLimit = 10;
+		
 		foreach($xml->children() as $record) {
-			if($item >= $itemLimit)
-				break;
 			$record = (array)$record;
 			$header = array_keys($record);
 			$rows[] = $record;
-			$item++;
 		}
 		
 		$form = [
