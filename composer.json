@@ -29,7 +29,8 @@
         ],
         "merge-plugin": {
             "include": [
-                "core/composer.json"
+                "core/composer.json",
+								"modules/contrib/datatables/composer.json"
             ],
             "recurse": true,
             "replace": false,
