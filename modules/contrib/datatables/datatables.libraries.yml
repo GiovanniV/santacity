@@ -1,100 +1,30 @@
 datatables:
-  css:
-    theme:
-      css/theme/datatables.css: {}
+  version: 1.x
   js:
-    js/jquery.dataTables.js: {}
     js/datatables.js: {}
-    js/datatables-integration.js: {}
   dependencies:
     - core/jquery
-    - core/drupal
     - core/jquery.once
-    - core/debounce
     - core/drupalSettings
 
-datatables-default:
-  css:
-    theme:
-      css/theme/jquery.dataTables.css: {}
-  dependencies:
-    - datatables/datatables
-
-datatables-bootstrap:
+datatables_core:
+  version: 1.9
   js:
-    js/dataTables.bootstrap.js: {}
+    /libraries/datatables/media/js/jquery.dataTables.js: {}
   css:
-    theme:
-      css/theme/dataTables.bootstrap.css: {}
+    component:
+      /libraries/datatables/media/css/demo_table.css: {}
   dependencies:
-    - datatables/datatables
+    - core/jquery
 
-datatables-foundation:
+datatables_tabletools:
+  version: 1.1.4
   js:
-    js/dataTables.foundation.js: {}
+    /libraries/datatables/extras/TableTools/media/js/TableTools.js: {}
+    /libraries/datatables/extras/TableTools/media/js/ZeroClipboard.js: {}
   css:
-    theme:
-      css/theme/dataTables.foundation.css: {}
+    component:
+       /libraries/datatables/extras/TableTools/media/css/TableTools.css: {}
   dependencies:
-    - datatables/datatables
-
-datatables-jqueryui:
-  js:
-    js/dataTables.jqueryui.js: {}
-  css:
-    theme:
-      css/theme/dataTables.jqueryui.css: {}
-  dependencies:
-    - datatables/datatables
-
-datatables-jqueryui-themeroller:
-  css:
-    theme:
-      css/theme/jquery.dataTables_themeroller.css: {}
-  dependencies:
-    - datatables/datatables
-
-datatables-default-fixed-column:
-  js:
-    js/plugins/fixed_column/dataTables.fixedColumns.js: {}
-  css:
-    theme:
-      css/plugins/fixed_column/fixedColumns.dataTables.css: {}
-  dependencies:
-    - datatables/datatables
-
-datatables-bootstrap-fixed-column:
-  js:
-    js/plugins/fixed_column/dataTables.fixedColumns.js: {}
-  css:
-    theme:
-      css/plugins/fixed_column/fixedColumns.bootstrap.css: {}
-  dependencies:
-    - datatables/datatables
-
-datatables-foundation-fixed-column:
-  js:
-    js/plugins/fixed_column/dataTables.fixedColumns.js: {}
-  css:
-    theme:
-      css/plugins/fixed_column/fixedColumns.foundation.css: {}
-  dependencies:
-    - datatables/datatables
-
-datatables-jqueryui-fixed-column:
-  js:
-    js/plugins/fixed_column/dataTables.fixedColumns.js: {}
-  css:
-    theme:
-      css/plugins/fixed_column/fixedColumns.jqueryui.css: {}
-  dependencies:
-    - datatables/datatables
-
-datatables-select:
-  js:
-    js/plugins/select/dataTables.select.min.js: {}
-  css:
-    theme:
-      js/plugins/select/select.dataTables.min.css: {}
-  dependencies:
-    - datatables/datatables
+    - core/jquery
+    - datatables/datatables_core
