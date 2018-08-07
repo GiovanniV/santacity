@@ -23,16 +23,40 @@ class ExampleForm extends FormBase {
     return 'example_form';
   }
 
-  public function buildForm(array $form, FormStateInterface $form_state) {
-    // Form usage example.
-    $form['example_table'] = [
-      '#type' => 'table',
-      '#theme' => 'datatable',
-      '#header' => ['Column 01', 'Column 02', 'Column 03', 'Column 04'],
-      '#empty' => $this->t('Some text'),
-      '#rows' => [],
-    ];
-    //     ... another elements ...
+  public function buildForm(array $
+		$form['example'] = array(
+  '#type' => 'datatable',
+  '#draggable' => TRUE,
+  '#limit' => 25, // Use 0 for unlimited
+  '#structure' => array(
+    array(
+      '#type' => 'textfield',
+      '#title' => t('Name'),
+      '#default_value' => NULL,
+    ),
+    array(
+      '#type' => 'select',
+      '#title' => t('Favorite Color'),
+      '#default_value' => 'red',
+      '#options' => array(
+        'red' => 'Red', 
+        'green' => 'Green', 
+        'blue' => 'Blue'
+      ),
+    ),
+    array(
+      '#type' => 'checkbox',
+      '#title' => t('Likes Cats'),
+      '#return_value' => 1,
+      '#default_value' => 0,
+    )
+  ),
+  '#value' => array(
+    array('John Doe', 'green', 0),
+    array('Lauren Ipsum', 'red', 1),
+    array('Test', 'blue', 1),
+  ),
+);
     return $form;
   }
 
