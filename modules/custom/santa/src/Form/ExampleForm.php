@@ -30,7 +30,7 @@ class ExampleForm extends FormBase {
       '#theme' => 'datatable',
       '#header' => $header,
       '#empty' => $this->t('Some text'),
-      '#rows' => $this->getTableRows($header),
+      '#rows' => self::getTableRows($header),
       '#attributes' => [
         'class' => ['needed-class'],
         'datatable_options' => $this->getDataTableOptions(),
