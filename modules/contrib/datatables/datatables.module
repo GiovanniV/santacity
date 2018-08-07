@@ -2,14 +2,12 @@
 
 /**
  * @file
- * Contains datatables.module..
+ * Provides Views integration for the jQuery DataTables plugin.
  */
 
 use Drupal\Component\Utility\Html;
-use Drupal\Core\Url;
-use Drupal\Core\Template\Attribute;
-use Drupal\Core\Render\Element;
 use Drupal\Component\Utility\Unicode;
+use Drupal\field\Entity\FieldStorageConfig;
 
 /**
  * Implements hook_theme().
@@ -22,80 +20,34 @@ function datatables_theme($existing, $type, $theme, $path) {
         'rows' => NULL,
         'attributes' => NULL,
         'caption' => NULL,
-        'datatables' => NULL
       ],
+      'file' => 'datatables.theme.inc',
     ],
-    'datatables_ui_style_plugin_table' => [
-      'render element' => 'form',
-    ],
-    'datatables_exposed_form' => [
-      'render element' => 'element',
-    ]
   ];
 }
 
 /**
- * Prepares variables for datatables exposed filter.
+ * Display a view as a DataTables style.
  *
- * Default template: datatable-exposed-form.html.twig.
- *
- * @see template_preprocess_form.
+ * @see template_preprocess_views_view_table()
  */
-function template_preprocess_datatables_exposed_form(&$variables) {
-  $element = $variables['element'];
-  if (isset($element['#action'])) {
-    $element['#attributes']['action'] = \Drupal\Component\Utility\UrlHelper::stripDangerousProtocols($element['#action']);
-  }
-
-  Element::setAttributes($element, array('method', 'id'));
-  if (empty($element['#attributes']['accept-charset'])) {
-    $element['#attributes']['accept-charset'] = "UTF-8";
-  }
-
-  $element['#attributes']['class'][] = 'datatables-exposed-form';
-
-  $variables['attributes'] = $element['#attributes'];
-  $variables['children'] = $element['#children'];
-}
-
-/**
- * Prepares variables for views table templates.
- *
- * Default template: views-view-table.html.twig.
- *
- * @param array $variables
- *   An associative array containing:
- *   - view: A ViewExecutable object.
- *   - rows: The raw row data.
- */
-function template_preprocess_datatable_view_table(&$variables) {
-
+function template_preprocess_views_view_datatables(&$variables) {
   template_preprocess_views_view_table($variables);
-
-  if (!$variables['rows']) {
-    return;
-  }
-
-  $fixed_column_library = FALSE;
 
   $view = $variables['view'];
 
   $options = $view->style_plugin->options;
-  $options_pager = $view->pager->options;
   $handler = $view->style_plugin;
 
   $fields = &$view->field;
   $columns = $handler->sanitizeColumns($options['columns'], $fields);
 
   $position = 0;
-
-  /**
-   * Column settings
-   */
   foreach ($columns as $field => $column) {
     $column_options = NULL;
-    if (isset($options['info'][$field]['hidden_columns'])) {
-      switch ($options['info'][$field]['hidden_columns']) {
+
+    if (isset($options['hidden_columns'][$field])) {
+      switch ($options['hidden_columns'][$field]) {
         case 'expandable':
           $datatable_options['bExpandable'] = TRUE;
         // ... and fall through, since expandable columns are also hidden.
@@ -110,118 +62,67 @@ function template_preprocess_datatable_view_table(&$variables) {
     if ($field == $column && empty($fields[$field]->options['exclude'])) {
       // Overrides clicksort head defined in
       // template_preprocess_views_view_table().
+      $variables['header'][$field]['content'] = Html::escape(!empty($fields[$field]) ? $fields[$field]->label() : '');
+      unset($variables['header'][$field]['url']);
+      unset($variables['header'][$field]['sort_indicator']);
+
       if (empty($options['info'][$field]['sortable']) || !$fields[$field]->clickSortable()) {
         $column_options['bSortable'] = FALSE;
-      } else {
+      }
+      else {
+        $info = FieldStorageConfig::loadByName($fields[$field]->getEntityType(), $field);
+
         // Attempt to autodetect the type of field in order to handle sorting
         // correctly.
-        // @TODO compatible with D8 ... ?
-        if (Unicode::strlen($fields[$field]->last_render) != Unicode::strlen(strip_tags($fields[$field]->last_render))) {
-          $column_options['sType'] = 'html';
+        if (is_object($fields[$field]->last_render)) {
+          if (is_numeric($fields[$field]->last_render->__toString())) {
+            $column_options['sType'] = 'numeric';
+          }
+          elseif (Unicode::strlen($fields[$field]->last_render->__toString()) != Unicode::strlen(strip_tags($fields[$field]->last_render->__toString()))) {
+            $column_options['sType'] = 'html';
+          }
+          elseif ($info && $info->getType() == 'datetime') {
+            $column_options['sType'] = 'date';
+          }
         }
-        elseif (is_numeric($fields[$field]->last_render)) {
-          $column_options['sType'] = 'numeric';
-        }
-        elseif ($fields[$field] instanceof Drupal\views\Plugin\views\field\Date) {
-          $column_options['sType'] = 'date';
-        }
-        unset($variables['header'][$field]['url']);
+
         $column_options['bSortable'] = TRUE;
       }
-
       $datatable_options['aoColumns'][] = $column_options;
       $datatable_options['aoColumnHeaders'][] = $variables['header'][$field];
     }
 
-    /**
-     * Set default sort order.
-     */
-    $datatable_options['aaSorting'] = array();
+    // Set default sort order.
+    $datatable_options['aaSorting'] = [];
     if ($options['default'] == $field) {
-      $datatable_options['aaSorting'] = array(
-        array(
-          $position,
-          $options['order']
-        )
-      );
+      $datatable_options['aaSorting'] = [[$position, $options['order']]];
     }
 
     $position++;
   }
 
-  /**
-   * bExpandable option
-   * We attach the detail column setting if we have a expandable column.
-   * We initially disable sorting for this empty column
-   */
-  if(!empty($datatable_options['bExpandable'])) {
-    array_unshift($datatable_options['aoColumnHeaders'],array());
-
-    array_unshift($datatable_options['aoColumns'], array(
-      'bSortable' => false
-    ));
-  }
-
-
-  /**
-   * Enable table info display, if necessary.
-   */
+  // Enable table info display, if necessary.
   $datatable_options['bInfo'] = $options['elements']['table_info'];
   $datatable_options['bFilter'] = $options['elements']['search_box'];
   $datatable_options['bStateSave'] = $options['elements']['save_state'];
-  $datatable_options['processing'] = ($options['elements']['processing']) ? TRUE : FALSE;;
 
-  /**
-   * Pass the sDOM parameter, if one is specified.
-   */
+  $datatable_options['bLengthChange'] = $options['pages']['length_change'];
+  $datatable_options['iDisplayLength'] = (int) $options['pages']['display_length'];
+
+  // Enable ThemeRoller support, if necessary.
+  if ($options['layout']['themeroller']) {
+    $datatable_options['bJQueryUI'] = TRUE;
+  }
+
+  // Pass the sDOM parameter, if one is specified.
   if ($options['layout']['sdom']) {
     $datatable_options['sDom'] = $options['layout']['sdom'];
   }
 
-  /**
-   * Scrolling options
-   */
-  if ($options['layout']['scroll_y'] != '') {
-    $datatable_options['scrollY'] = $options['layout']['scroll_y'];
-  }
-  $datatable_options['scrollX'] = ($options['layout']['scroll_x']) ? TRUE : FALSE;
-  $datatable_options['scrollCollapse'] = ($options['layout']['scroll_collapse']) ? TRUE : FALSE;
-
-  /**
-   * Fixed columns
-   */
-  if ($options['plugins']['fixed_columns']['left_columns'] > 0 || $options['plugins']['fixed_columns']['right_columns'] > 0) {
-    // We load the js und css library for fixed columns
-    $fixed_column_library = TRUE;
-    $datatable_options['fixedColumns'] = array(
-      'leftColumns' => (int) $options['plugins']['fixed_columns']['left_columns'],
-      'rightColumns' => (int) $options['plugins']['fixed_columns']['right_columns']
-    );
-  }
-
-  /**
-   * Select plugin
-   *
-   * @todo: this is still very make-shift and it mixes concerns (selection,
-   * id, label).
-   */
-  if (!empty($options['plugins']['select']['row'])) {
-    $datatable_options['select']['style'] = 'single';
-    $datatable_options['select']['label_column_index'] = $options['plugins']['select']['label_column_index'];
-    $datatable_options['select']['id_column_index'] = $options['plugins']['select']['id_column_index'];
-    $variables['#attached']['library'][] = 'datatables/datatables-select';
-  }
-
-  /**
-   * Autowidth options
-   */
   $datatable_options['bAutoWidth'] = $options['layout']['autowidth'];
 
-  /**
-   * Pager Plugin settings
-   * Enable full_numbers pagination if selected and set the length changes
-   */
-  switch ($options_pager['pages']['pagination_style']) {
+  // Enable full_numbers pagination if selected.
+  switch ($options['pages']['pagination_style']) {
     case 'full_numbers':
       $datatable_options['sPaginationType'] = 'full_numbers';
       break;
@@ -236,225 +137,57 @@ function template_preprocess_datatable_view_table(&$variables) {
       break;
   }
 
-  $datatable_options['bLengthChange'] = $options_pager['pages']['length_change'];
-  $datatable_options['iDisplayLength'] = (int) $options_pager['pages']['display_length'];
-  // @TODO translate the the shown values
-  $datatable_options['lengthMenu'] = json_decode($options_pager['pages']['length_menu']);
+  // Enable TableTools plugin support, if necessary.
+  if ($options['elements']['table_tools']) {
+    $datatable_options['oTableTools'] = [
+      'sSwfPath' => base_path() . 'libraries/datatables/extras/TableTools/media/swf/copy_csv_xls_pdf.swf',
+    ];
 
-  /**
-   * Language translation
-   */
-  $datatable_options['oLanguage'] = array(
+    // If a custom sDom is passed, assume that "T" is added, otherwise add it
+    // manually.
+    if (!$options['layout']['sdom']) {
+      $datatable_options['sDom'] = 'T<"clear">lfrtip';
+    }
+
+    $variables['view']->element['#attached']['library'][] = 'datatables/datatables_tabletools';
+  }
+
+  $datatable_options['oLanguage'] = [
     'sEmptyTable' => t('No data available in table'),
-    'sInfo' => t('Start @_START_ to @_END_ of @_TOTAL_ entries', array(
-      '@_START_' => '_START_',
-      '@_END_' => '_END_',
-      '@_TOTAL_' => '_TOTAL_'
-    )),
+    'sInfo' => t('Start @START to @END of @TOTAL entries', [
+      '@START' => '_START_',
+      '@END' => '_END_',
+      '@TOTAL' => '_TOTAL_'
+    ]),
     'sInfoEmpty' => t('Showing 0 to 0 of 0 entries'),
-    'sInfoFiltered' => t('(filtered from @_MAX_ total entries)', array('@_MAX_' => '_MAX_')),
+    'sInfoFiltered' => t('(filtered from @MAX total entries)', ['@MAX' => '_MAX_']),
     'sInfoPostFix' => '',
     'sProcessing' => t('Processing...'),
-    'sLengthMenu' => t('Show @_MENU_ entries', array('@_MENU_' => '_MENU_')),
+    'sLengthMenu' => t('Show @MENU entries', ['@MENU' => '_MENU_']),
     'sLoadingRecords' => t('Loading...'),
     'sZeroRecords' => t('No matching records found'),
     'sSearch' => t('Search'),
-    'oPaginate' => array(
+    'oPaginate' => [
       'sFirst' => t('First'),
       'sPrevious' => t('Previous'),
       'sNext' => t('Next'),
       'sLast' => t('Last'),
-    ),
-    'oAria' => array(
+    ],
+    'oAria' => [
       'sSortAscending' => t(': activate to sort column ascending'),
       'sSortDescending' => t(': activate to sort column descending'),
-    ),
-  );
+    ],
+  ];
 
-  /**
-   * Load the default datatable CSS.
-   */
-  switch ($options['styling']['theme']) {
-    case 'default':
-      $variables['#attached']['library'][] = 'datatables/datatables-default';
-      if ($fixed_column_library) {
-        $variables['#attached']['library'][] = 'datatables/datatables-default-fixed-column';
-      }
-      break;
-    case 'bootstrap':
-      $variables['#attached']['library'][] = 'datatables/datatables-bootstrap';
-      if ($fixed_column_library) {
-        $variables['#attached']['library'][] = 'datatables/datatables-bootstrap-fixed-column';
-      }
-      break;
-    case 'foundation':
-      $variables['#attached']['library'][] = 'datatables/datatables-foundation';
-      if ($fixed_column_library) {
-        $variables['#attached']['library'][] = 'datatables/datatables-foundation-fixed-column';
-      }
-      break;
-    case 'jqueryui':
-      $variables['#attached']['library'][] = 'datatables/datatables-jqueryui';
-      if ($fixed_column_library) {
-        $variables['#attached']['library'][] = 'datatables/datatables-jqueryui-fixed-column';
-      }
-      break;
-    case 'jqueryui_themeroller':
-      $variables['#attached']['library'][] = 'datatables/datatables-jqueryui-themeroller';
-      if ($fixed_column_library) {
-        $variables['#attached']['library'][] = 'datatables/datatables-jqueryui-fixed-column';
-      }
-      $datatable_options['bJQueryUI'] = TRUE;
-      break;
+  // Generate unique id.
+  if (empty($variables['attributes']['id'])) {
+    $variables['attributes']['id'] = Html::getUniqueId('datatable');
   }
 
-  $variables['id'] = Html::getUniqueId('datatable');
-  $datatable_options['datatable_selector'] = '#' . $variables['id'];
+  $variables['attributes']['class'][] = 'display';
 
-  /**
-   * Ajax paging and ajax exposed forms.
-   */
-  if($view->style_plugin->view->ajaxEnabled() == TRUE){
-    $datatable_options['serverSide'] = TRUE;
-    $datatable_options['ajax']['url'] = \Drupal::url('datatables.views.ajax');
-    $datatable_options['ajax']['type'] = 'GET';
-    $datatable_options['ajax']['data'] = array(
-      // @todo: _drupal_ajax and _wrapper_format need to be adjusted, this is
-      // a lie :) we return straight JSON.
-      '_drupal_ajax' => 1,
-      '_wrapper_format' => 'drupal_ajax',
-      'pager_element' => isset($view->pager) ? $view->pager->getPagerId() : 0,
-      'view_args' => Html::escape(implode('/', $view->args)),
-      'view_base_path' => $view->getPath(),
-      'view_display_id' => $view->current_display,
-      'view_dom_id' => $view->dom_id,
-      'view_name' => $view->storage->id(),
-      'view_path' => Html::escape(Url::fromRoute('<current>')->toString()),
-      'total_items' => (int) $handler->view->total_rows
-    );
-    $datatable_options['deferLoading'] = (int) $handler->view->total_rows;
-    $datatable_options['deferRender'] = TRUE;
-  }
-
-  $classes = explode(' ', $options['styling']['class']);
-  $variables['attributes'] = new Attribute();
-  $variables['attributes']->addClass($classes);
-  $variables['datatables'] = $datatable_options;
-  $variables['#attached']['drupalSettings']['datatables'][$view->dom_id] = $datatable_options;
-}
-
-/**
- * Prepares variables for style plugin datatable templates.
- *
- * Default template: datatable-ui-style-plugin-table.html.twig.
- *
- * @param array $variables
- *   An associative array containing:
- *   - form: A render element representing the form.
- */
-function template_preprocess_datatables_ui_style_plugin_table(&$variables) {
-  $form = $variables['form'];
-
-  $header = array(
-    t('Field'),
-    t('Column'),
-    t('Align'),
-    t('Separator'),
-    array(
-      'data' => t('Sortable'),
-      'align' => 'center',
-    ),
-    array(
-      'data' => t('Default order'),
-      'align' => 'center',
-    ),
-    array(
-      'data' => t('Default sort'),
-      'align' => 'center',
-    ),
-    array(
-      'data' => t('Hide empty column'),
-      'align' => 'center',
-    ),
-    array(
-      'data' => t('Responsive'),
-      'align' => 'center',
-    ),
-    array(
-      'data' => t('Hidden column'),
-      'align' => 'center',
-    ),
-  );
-  $rows = array();
-  foreach (Element::children($form['columns']) as $id) {
-    $row = array();
-    $row[]['data'] = $form['info'][$id]['name'];
-    $row[]['data'] = $form['columns'][$id];
-    $row[]['data'] = $form['info'][$id]['align'];
-    $row[]['data'] = $form['info'][$id]['separator'];
-
-    if (!empty($form['info'][$id]['sortable'])) {
-      $row[] = array(
-        'data' => $form['info'][$id]['sortable'],
-        'align' => 'center',
-      );
-      $row[] = array(
-        'data' => $form['info'][$id]['default_sort_order'],
-        'align' => 'center',
-      );
-      $row[] = array(
-        'data' => $form['default'][$id],
-        'align' => 'center',
-      );
-    }
-    else {
-      $row[] = '';
-      $row[] = '';
-      $row[] = '';
-    }
-    $row[] = array(
-      'data' => $form['info'][$id]['empty_column'],
-      'align' => 'center',
-    );
-    $row[] = array(
-      'data' => $form['info'][$id]['responsive'],
-      'align' => 'center',
-    );
-
-    $row[] = array(
-      'data' => $form['info'][$id]['hidden_columns'],
-      'align' => 'center',
-    );
-    $rows[] = $row;
-  }
-
-  // Add the special 'None' row.
-  $rows[] = array(
-    array(
-      'data' => t('None'),
-      'colspan' => 6,
-    ),
-    array(
-      'align' => 'center',
-      'data' => $form['default'][-1],
-    ),
-    array(
-      'colspan' => 2,
-    ),
-  );
-
-  // Unset elements from the form array that are used to build the table so that
-  // they are not rendered twice.
-  unset($form['default']);
-  unset($form['info']);
-  unset($form['columns']);
-
-  $variables['table'] = array(
-    '#type' => 'table',
-    '#theme' => 'table__datatables_ui_style_plugin_table',
-    '#header' => $header,
-    '#rows' => $rows,
-  );
-
-  $variables['form'] = $form;
+  // Add DataTables classes and data attributes.
+  $variables['view']->element['#attached']['library'][] = 'datatables/datatables';
+  $variables['view']->element['#attached']['library'][] = 'datatables/datatables_core';
+  $variables['view']->element['#attached']['drupalSettings']['datatables']['#' . $variables['attributes']['id']] = $datatable_options;
 }
