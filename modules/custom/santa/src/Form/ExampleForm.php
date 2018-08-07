@@ -23,8 +23,8 @@ class ExampleForm extends FormBase {
     return 'example_form';
   }
 
-  public function buildForm(array $
-		$form['example'] = array(
+  public function buildForm(array $form, FormStateInterface $form_state) {
+    $form['example'] = array(
   '#type' => 'datatable',
   '#draggable' => TRUE,
   '#limit' => 25, // Use 0 for unlimited
