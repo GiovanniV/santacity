@@ -1,0 +1,100 @@
+datatables:
+  css:
+    theme:
+      css/theme/datatables.css: {}
+  js:
+    js/jquery.dataTables.js: {}
+    js/datatables.js: {}
+    js/datatables-integration.js: {}
+  dependencies:
+    - core/jquery
+    - core/drupal
+    - core/jquery.once
+    - core/debounce
+    - core/drupalSettings
+
+datatables-default:
+  css:
+    theme:
+      css/theme/jquery.dataTables.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-bootstrap:
+  js:
+    js/dataTables.bootstrap.js: {}
+  css:
+    theme:
+      css/theme/dataTables.bootstrap.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-foundation:
+  js:
+    js/dataTables.foundation.js: {}
+  css:
+    theme:
+      css/theme/dataTables.foundation.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-jqueryui:
+  js:
+    js/dataTables.jqueryui.js: {}
+  css:
+    theme:
+      css/theme/dataTables.jqueryui.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-jqueryui-themeroller:
+  css:
+    theme:
+      css/theme/jquery.dataTables_themeroller.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-default-fixed-column:
+  js:
+    js/plugins/fixed_column/dataTables.fixedColumns.js: {}
+  css:
+    theme:
+      css/plugins/fixed_column/fixedColumns.dataTables.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-bootstrap-fixed-column:
+  js:
+    js/plugins/fixed_column/dataTables.fixedColumns.js: {}
+  css:
+    theme:
+      css/plugins/fixed_column/fixedColumns.bootstrap.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-foundation-fixed-column:
+  js:
+    js/plugins/fixed_column/dataTables.fixedColumns.js: {}
+  css:
+    theme:
+      css/plugins/fixed_column/fixedColumns.foundation.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-jqueryui-fixed-column:
+  js:
+    js/plugins/fixed_column/dataTables.fixedColumns.js: {}
+  css:
+    theme:
+      css/plugins/fixed_column/fixedColumns.jqueryui.css: {}
+  dependencies:
+    - datatables/datatables
+
+datatables-select:
+  js:
+    js/plugins/select/dataTables.select.min.js: {}
+  css:
+    theme:
+      js/plugins/select/select.dataTables.min.css: {}
+  dependencies:
+    - datatables/datatables
