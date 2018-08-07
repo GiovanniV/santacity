@@ -1,0 +1,13 @@
+.dataTables_wrapper td.details-control {
+    background: url('../../css/images/details_open.png') no-repeat center center;
+    cursor: pointer;
+    width:20px;
+}
+.dataTables_wrapper tr.details td.details-control {
+    background: url('../../css/images/details_close.png') no-repeat center center;
+    width:20px;
+}
+
+.dataTables_wrapper tbody{
+    color:#000000;
+}

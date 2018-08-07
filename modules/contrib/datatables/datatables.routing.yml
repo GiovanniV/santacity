@@ -1,0 +1,8 @@
+datatables.views.ajax:
+  path: '/datatables/views/ajax'
+  defaults:
+    _controller: '\Drupal\datatables\Controller\DatatablesViewAjaxController::ajaxView'
+  options:
+    _theme: ajax_base_page
+  requirements:
+    _access: 'TRUE'

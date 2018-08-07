@@ -1,0 +1,14 @@
+{
+  "name": "drupal/datatables",
+  "type": "drupal-module",
+  "description": "Datatables integration",
+  "keywords": ["Drupal"],
+  "license": "GPL-2.0+",
+  "homepage": "http://drupal.org/project/datatables",
+  "minimum-stability": "dev",
+  "support": {
+    "issues": "http://drupal.org/project/issues/datatables",
+    "source": "http://cgit.drupalcode.org/datatables"
+  },
+  "require": { }
+}

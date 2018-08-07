@@ -1,0 +1,7 @@
+name: Datatables
+type: module
+description: Datatables integration
+core: 8.x
+package: Views
+dependencies:
+  - views
