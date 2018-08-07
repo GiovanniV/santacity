@@ -28,7 +28,7 @@ class ExampleForm extends FormBase {
     $form['example_table'] = [
       '#type' => 'table',
       '#theme' => 'datatable',
-      '#header' => $header,
+      '#header' => ['Column 01', 'Column 02', 'Column 03', 'Column 04'],
       '#empty' => $this->t('Some text'),
       '#rows' => [],
     ];
