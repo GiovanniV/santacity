@@ -8,7 +8,7 @@
       });
 
       // DataTable
-      var otable = $('#xml-preview').DataTable({
+      var table = $('#xml-preview').DataTable({
         "bLengthChange": false,
         "bFilter": false,
         "bInfo": false,
@@ -16,7 +16,7 @@
       });
 
       // Apply the search
-      otable.columns().every( function () {
+      table.api().columns().every( function () {
 
         var that = this;
         $( 'input', this.footer() ).on( 'keyup change', function () {
