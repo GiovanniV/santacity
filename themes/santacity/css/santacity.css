@@ -84,7 +84,9 @@ header#navbar .container {
     font-weight: 500;
     color: #000;
 }
-
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+  display: block;
+}
 .webform-breadcrumb ul.breadcrumb {
     text-align:  center;
 }
