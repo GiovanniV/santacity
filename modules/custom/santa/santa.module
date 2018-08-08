@@ -54,11 +54,9 @@ function santa_preprocess_node(&$variables) {
 			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', $nid, $fid);
 		}
 		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', $nid, $fid);
-		$exampleForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\ExampleForm');
 		
 		$variables['xmlUploadForm'] = $xmlUploadForm;
 		$variables['xmlListingForm'] = $xmlListingForm;
-		$variables['exampleForm'] = $exampleForm;
 	}
 }
 
