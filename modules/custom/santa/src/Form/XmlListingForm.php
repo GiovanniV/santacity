@@ -70,6 +70,17 @@ class XmlListingForm extends FormBase {
 					],
 				],
 			);
+			
+			// Operations (dropbutton) column.
+			$form['xml'][$id]['operations'] = array(
+				'#type' => 'operations',
+				'#links' => array(),
+			);
+			
+			$form['xml'][$id]['operations']['#links']['delete'] = array(
+				'title' => t('Delete'),
+				'url' => '/test',
+			);
 		}
 		
 		$form['xml_records'] = [
