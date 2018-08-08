@@ -10,9 +10,11 @@ home-slider:
     - core/jquery
 
 datatables:
-    version: 1.x
-    js:
-        js/datatables.js: {}
-    dependencies:
-        - core/jquery
+  version: 1.x
+  js:
+    js/datatables.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+    - core/drupalSettings
     
