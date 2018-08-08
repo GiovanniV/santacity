@@ -9,6 +9,7 @@
 				});
 				
 				$('#xml-preview-datatables tfoot tr').insertAfter($('#xml-preview-datatables thead tr'));
+				$('#xml-preview-datatables .dataTables_paginate').insertAfter($('#xml-preview-datatables').parents('.table-responsive'));
 				
 				// DataTable
 				var table = $('#xml-preview-datatables').DataTable({
