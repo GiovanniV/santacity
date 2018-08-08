@@ -717,7 +717,7 @@ form .form-item .select-wrapper:after {
     font-size: 12px;
 }
 
-#edit-submit-latest-news{
+form.views-exposed-form button.form-submit{
     margin-top: 0;
 }
 
@@ -1433,7 +1433,7 @@ span.calender p.year {    padding: 10px 20px;}
     right: 0px;
 }
 
-.featured-news .view-filters .form-actions #edit-submit-latest-news{ padding:6px 20px; margin-top:15px}
+form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:15px}
 
 
 /*News and artical*/
