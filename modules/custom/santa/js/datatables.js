@@ -9,7 +9,10 @@
 
       // DataTable
       var otable = $('#xml-preview').DataTable({
-        "bLengthChange": false
+        "bLengthChange": false,
+        "bFilter": false,
+        "bInfo": false,
+        "bDestroy": true,
       });
 
       // Apply the search
