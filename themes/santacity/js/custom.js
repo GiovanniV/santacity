@@ -1,6 +1,5 @@
-
 (function ($, Drupal) {
-	Drupal.behaviors.santadatatables = {
+	Drupal.behaviors.menu = {
 		attach: function (context, settings) {
 			
 			$(document).ready(function(){
