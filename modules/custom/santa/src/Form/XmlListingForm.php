@@ -141,9 +141,6 @@ class XmlListingForm extends FormBase {
 			'#rows' => $rows,
 			'#attached' => [
 				'library' => 'santa/datatables',
-			],
-			'#attributes' => [
-				'id' => ['xml-datatable'],
 			]
 		];
 		
