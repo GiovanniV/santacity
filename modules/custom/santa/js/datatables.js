@@ -7,7 +7,9 @@
 					var title = $(this).text();
 					$(this).html( '<input type="text" placeholder="Filter '+title+'" />' );
 				});
-
+				
+				$('#xml-preview-datatables tfoot tr').insertAfter($('#example thead tr'));
+				
 				// DataTable
 				var table = $('#xml-preview-datatables').DataTable({
 					"dom": '<"top">t<"bottom"p><"clear">',
