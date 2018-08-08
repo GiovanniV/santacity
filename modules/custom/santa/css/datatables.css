@@ -1,4 +1,6 @@
-
+.dataTables_wrapper .dataTables_paginate {
+	float: left;
+}
 tfoot {
   display: table-header-group;
 }
