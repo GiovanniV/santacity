@@ -77,6 +77,10 @@ class XmlListingForm extends FormBase {
 			'#suffix' => '</div>',
 		];
 		
+		$form['#attached'] = [
+			'library' => 'santa/datatables',
+		];
+		
 		return $form;
   }
 
@@ -139,6 +143,13 @@ class XmlListingForm extends FormBase {
 			'#type' => 'table',
 			'#header' => $header,
 			'#rows' => $rows,
+			'#attached' => [
+				'library' => 'santa/datatables',
+			],
+			'#attributes' => [
+				'id' => ['xml-datatable'],
+				'class' => [],
+			]
 		];
 		
 		return $form;
