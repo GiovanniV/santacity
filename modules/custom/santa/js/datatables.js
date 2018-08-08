@@ -4,7 +4,7 @@
 			$(document).ready(function(){
 				// Setup - add a text input to each footer cell
 				$('#xml-preview tfoot td').each( function () {
-					var title = $(this).html();
+					var title = $(this).text();
 					alert(title);
 					$(this).html( '<input type="text" placeholder="Filter '+title+'" />' );
 				});
