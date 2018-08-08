@@ -58,8 +58,7 @@ function santa_preprocess_node(&$variables) {
 		$variables['xmlUploadForm'] = $xmlUploadForm;
 		$variables['xmlListingForm'] = $xmlListingForm;
 		
-		$variables['#attached']['library'][] = 'https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js';
-    $variables['#attached']['library'][] = 'santa/datatables';
+		$variables['#attached']['library'][] = 'santa/datatables';
 	}
 }
 
