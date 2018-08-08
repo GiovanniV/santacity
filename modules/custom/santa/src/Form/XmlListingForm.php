@@ -145,9 +145,6 @@ class XmlListingForm extends FormBase {
 			'#rows' => $rows,
 			'#attributes' => [
 				'id' => ['xml-datatable'],
-				'datatable_options' > [
-					'bSort' => true,
-				]
 			]
 		];
 		
