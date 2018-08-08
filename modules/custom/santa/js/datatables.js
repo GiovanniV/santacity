@@ -8,7 +8,11 @@
       });
 
       // DataTable
-      var otable = $('#xml-preview').DataTable();
+      var otable = $('#xml-preview').DataTable({
+        "bLengthChange": false,
+        "bFilter": false,
+        "bInfo": false
+      });
 
       // Apply the search
       otable.columns().every( function () {
