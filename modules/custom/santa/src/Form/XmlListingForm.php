@@ -27,9 +27,23 @@ class XmlListingForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, $nid = NULL) {
+		
+		$current_user = \Drupal::currentUser();
+		$userRole = $current_user->getRoles();
+		
+		$showOperation = 0;
+		if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
+			$showOperation = 1;
+		}
+		
+		if($showOperation)
+			$header = array(t('Resource'), t('Type'), t('Download'), t('Preview'));
+		else
+			$header = array(t('Resource'), t('Type'), t('Download'), t('Preview'), t('Operations'));
+		
     $form['xml'] = array(
 			'#type' => 'table',
-			'#header' => array(t('Resource'), t('Type'), t('Download'), t('Preview')),
+			'#header' => $header,
 		);
 		
 		$records = $this->getXmlFiles($nid);
@@ -71,16 +85,19 @@ class XmlListingForm extends FormBase {
 				],
 			);
 			
-			// Operations (dropbutton) column.
-			$form['xml'][$record->id]['operations'] = array(
-				'#type' => 'operations',
-				'#links' => array(),
-			);
+			if($showOperation) {
+				// Operations (dropbutton) column.
+				$form['xml'][$record->id]['operations'] = array(
+					'#type' => 'operations',
+					'#links' => array(),
+				);
+				
+				$form['xml'][$record->id]['operations']['#links']['delete'] = array(
+					'title' => t('Delete'),
+					'url' => '/test',
+				);
+			}
 			
-			$form['xml'][$record->id]['operations']['#links']['delete'] = array(
-				'title' => t('Delete'),
-				'url' => '/test',
-			);
 		}
 		
 		$form['xml_records'] = [
