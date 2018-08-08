@@ -127,7 +127,7 @@ class XmlListingForm extends FormBase {
    */
   public function xmlPreview(array &$form, FormStateInterface $form_state) {
     $element = $form_state->getTriggeringElement();
-		dpm($form_state->setValues([]));
+		$form_state->setValues('');
 		$tableContent = '';
 		if(isset($element['#value']) && !empty($element['#value'])) {
 			$tableContent = $this->loadXmlRecordsTable($element['#value']);
