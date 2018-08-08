@@ -4,7 +4,7 @@
 			// Setup - add a text input to each footer cell
       $('#xml-preview tfoot td').each( function () {
         var title = $(this).text();
-        $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
+        $(this).html( '<input type="text" placeholder="Filter '+title+'" />' );
       });
 
       // DataTable
