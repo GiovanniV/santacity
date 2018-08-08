@@ -5,12 +5,11 @@
 				// Setup - add a text input to each footer cell
 				$('#xml-preview-datatables tfoot td', context).once().each( function () {
 					var title = $(this).text();
-					alert(title);
 					$(this).html( '<input type="text" placeholder="Filter '+title+'" />' );
 				});
 
 				// DataTable
-				var table = $('#xml-preview-datatables').DataTable({
+				var table = $('#xml-preview-datatables', context).once().DataTable({
 					"bLengthChange": false,
 					"bFilter": false,
 					"bInfo": false,
@@ -19,7 +18,6 @@
 
 				// Apply the search
 				table.columns().every( function () {
-
 					var that = this;
 					$( 'input', this.footer() ).on( 'keyup change', function () {
 						if ( that.search() !== this.value ) {
@@ -27,6 +25,7 @@
 						}
 					});
 				});
+				
 			});
 		
 		}
