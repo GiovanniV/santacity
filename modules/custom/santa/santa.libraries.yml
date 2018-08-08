@@ -8,3 +8,12 @@ home-slider:
     js/homeslider.js: {}
   dependencies:
     - core/jquery
+
+datatables:
+    version: 1.x
+    js:
+        js/jquery.dataTables.min.js: {}
+        js/datatables.js: {}
+    dependencies:
+        - core/jquery
+    
