@@ -697,7 +697,7 @@ form .form-item .select-wrapper:after {
     color: #000;
 }
 
- form .form-submit, .form-submit {
+ form.views-exposed-form .form-submit {
     margin-top: 20px;
     color: #000;
     border: 0;
@@ -710,14 +710,14 @@ form .form-item .select-wrapper:after {
     box-shadow: 2px 2px 12px #ccc;
 }
 
-  form .form-submit:after, .form-submit:after {
+  form.views-exposed-form .form-submit {
     content: '\e258';
     font-family: 'Glyphicons Halflings';
     padding-left: 10px;
     font-size: 12px;
 }
 
-.form-submit{
+form.views-exposed-form .form-submit{
     margin-top: 0;
 }
 
@@ -1433,7 +1433,7 @@ span.calender p.year {    padding: 10px 20px;}
     right: 0px;
 }
 
-.featured-news .view-filters .form-actions .form-submit{ padding:6px 20px; margin-top:15px}
+.featured-news .view-filters .form-actions #edit-submit-latest-news{ padding:6px 20px; margin-top:15px}
 
 
 /*News and artical*/
@@ -2036,7 +2036,7 @@ a:focus {
     #views-exposed-form-events-block-1 .form-actions {
         width:  25%;
     }
-    #views-exposed-form-events-block-1 .form-actions .form-submit{
+    #views-exposed-form-events-block-1 .form-actions #edit-submit-events{
        padding:7px 20px;
     }
 
