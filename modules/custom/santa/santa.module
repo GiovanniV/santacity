@@ -59,6 +59,7 @@ function santa_preprocess_node(&$variables) {
 		$variables['xmlListingForm'] = $xmlListingForm;
 		
 		$variables['#attached']['library'][] = 'santa/datatables';
+    $variables['#attached']['library'][] = 'santa/datatables_core';
 	}
 }
 
