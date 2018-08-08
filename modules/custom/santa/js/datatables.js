@@ -9,12 +9,7 @@
 				});
 
 				// DataTable
-				var table = $('#xml-preview-datatables').DataTable({
-					"bLengthChange": false,
-					"bFilter": false,
-					"bInfo": false,
-					"bDestroy": true,
-				});
+				var table = $('#xml-preview-datatables').DataTable();
 				console.log(table);
 				// Apply the search
 				table.columns().every( function () {
