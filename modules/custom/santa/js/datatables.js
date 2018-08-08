@@ -15,7 +15,7 @@
 					"bInfo": false,
 					"bDestroy": true,
 				});
-				console.log(table);
+				
 				// Apply the search
 				table.columns().every( function () {
 					var that = this;
