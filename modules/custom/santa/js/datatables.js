@@ -2,7 +2,6 @@
 	Drupal.behaviors.santadatatables = {
 		attach: function (context, settings) {
 			$(document).ready(function(){
-				alert(1111);
 				// Setup - add a text input to each footer cell
 				$('#xml-preview-datatables tfoot td').each( function () {
 					var title = $(this).text();
