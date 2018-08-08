@@ -1,9 +1,7 @@
 (function ($, Drupal) {
 	Drupal.behaviors.myBehavior = {
 		attach: function (context, settings) {
-			alert(111);
-			$('#xml-datatable').DataTable();
-			
+			console.log(111);
 			$('#xml-datatable tfoot th').each( function () {
 				var title = $(this).text();
 				$(this).html( '<input type="text" placeholder="Search '+title+'" />' );
