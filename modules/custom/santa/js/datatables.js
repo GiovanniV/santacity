@@ -1,5 +1,5 @@
 (function ($, Drupal) {
-	Drupal.behaviors.dataTables = {
+	Drupal.behaviors.santadatatables = {
 		attach: function (context, settings) {
 			console.log(111);
 			
