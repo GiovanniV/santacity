@@ -17,7 +17,7 @@
 				});
 
 				// Apply the search
-				table.api().columns().every( function () {
+				table.columns().every( function () {
 
 					var that = this;
 					$( 'input', this.footer() ).on( 'keyup change', function () {
