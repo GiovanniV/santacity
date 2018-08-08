@@ -143,7 +143,9 @@ class XmlListingForm extends FormBase {
 			'#type' => 'table',
 			'#header' => $header,
 			'#rows' => $rows,
-			
+			'#attributes' => [
+				'id' => ['xml-datatable'],
+			]
 		];
 		
 		return $form;
