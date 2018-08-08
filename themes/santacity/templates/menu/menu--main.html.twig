@@ -1,10 +1,4 @@
-{# All menu and submenu items #}
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <div class="collapse navbar-collapse">
+
       {% import _self as menus %}
       {#
         We call a macro which calls itself to render the full tree.
@@ -40,5 +34,3 @@
           </ul>
         {% endif %}
       {% endmacro %}
-
-    </div>
