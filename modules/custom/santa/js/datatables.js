@@ -2,7 +2,7 @@
 	Drupal.behaviors.santadatatables = {
 		attach: function (context, settings) {
 			// Setup - add a text input to each footer cell
-      $('#xml-preview tfoot th').each( function () {
+      $('#xml-preview tfoot tr').each( function () {
         var title = $(this).text();
         $(this).html( '<input type="text" placeholder="Search '+title+'" />' );
       });
