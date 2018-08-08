@@ -697,7 +697,7 @@ form .form-item .select-wrapper:after {
     color: #000;
 }
 
- form.views-exposed-form .form-submit {
+ form.views-exposed-form button.form-submit, form.views-exposed-form button.form-submit {
     margin-top: 20px;
     color: #000;
     border: 0;
@@ -710,14 +710,14 @@ form .form-item .select-wrapper:after {
     box-shadow: 2px 2px 12px #ccc;
 }
 
-  form.views-exposed-form .form-submit {
+  form.views-exposed-form button.form-submit:after, form.views-exposed-form button.form-submit:after {
     content: '\e258';
     font-family: 'Glyphicons Halflings';
     padding-left: 10px;
     font-size: 12px;
 }
 
-form.views-exposed-form .form-submit{
+#edit-submit-latest-news{
     margin-top: 0;
 }
 
