@@ -4,7 +4,7 @@
 			$(document).ready(function(){
 				
 				// DataTable
-				var table = $('#xml-preview-datatables', context).once().DataTable({
+				var table = $('#xml-preview-datatables').DataTable({
 					"bLengthChange": false,
 					"bFilter": false,
 					"bInfo": false,
