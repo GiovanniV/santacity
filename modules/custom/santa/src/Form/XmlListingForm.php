@@ -128,8 +128,9 @@ class XmlListingForm extends FormBase {
   public function xmlPreview(array &$form, FormStateInterface $form_state) {
     $element = $form_state->getTriggeringElement();
 		
-		foreach($form['xml'] as $key=> $value) {
-			$form['xml'][$key]['preview']['#default_value'] = '';
+		foreach($form['xml'] as $key => $value) {
+			dpm($form['xml'][$key]['preview']);
+			//$form['xml'][$key]['preview']['#default_value'] = '';
 		}
 		
 		$tableContent = '';
