@@ -697,7 +697,7 @@ form .form-item .select-wrapper:after {
     color: #000;
 }
 
- form #edit-submit-events, #edit-submit-latest-news {
+ form #edit-submit-events, .form-submit {
     margin-top: 20px;
     color: #000;
     border: 0;
@@ -710,14 +710,14 @@ form .form-item .select-wrapper:after {
     box-shadow: 2px 2px 12px #ccc;
 }
 
-  form #edit-submit-events:after, #edit-submit-latest-news:after {
+  form #edit-submit-events:after, .form-submit:after {
     content: '\e258';
     font-family: 'Glyphicons Halflings';
     padding-left: 10px;
     font-size: 12px;
 }
 
-#edit-submit-latest-news{
+.form-submit{
     margin-top: 0;
 }
 
@@ -1433,7 +1433,7 @@ span.calender p.year {    padding: 10px 20px;}
     right: 0px;
 }
 
-.featured-news .view-filters .form-actions #edit-submit-latest-news{ padding:6px 20px; margin-top:15px}
+.featured-news .view-filters .form-actions .form-submit{ padding:6px 20px; margin-top:15px}
 
 
 /*News and artical*/
