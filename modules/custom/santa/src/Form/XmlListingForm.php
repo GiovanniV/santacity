@@ -77,9 +77,6 @@ class XmlListingForm extends FormBase {
 			'#suffix' => '</div>',
 		];
     
-    $form['#attached']['library'][] = 'santa/datatables';
-    $form['#attached']['library'][] = 'santa/datatables_core';
-    
 		return $form;
   }
 
