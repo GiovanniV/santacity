@@ -37,9 +37,9 @@ class XmlListingForm extends FormBase {
 		}
 		
 		if($showOperation)
-			$header = array(t('Resource'), t('Type'), t('Download'), t('Preview'));
-		else
 			$header = array(t('Resource'), t('Type'), t('Download'), t('Preview'), t('Operations'));
+		else
+			$header = array(t('Resource'), t('Type'), t('Download'), t('Preview'));
 		
     $form['xml'] = array(
 			'#type' => 'table',
