@@ -15,11 +15,10 @@ datatables:
     theme:
       css/datatables.css: {}
   js:
+    js/jquery.dataTables.js: {}
     js/datatables.js: {}
   dependencies:
     - core/jquery
-    - core/jquery.once
-    - core/drupalSettings
 
 datatables_core:
   version: 1.9
