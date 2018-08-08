@@ -148,7 +148,7 @@ class XmlListingForm extends FormBase {
       ],
 			'#rows' => $rows,
       '#attributes' => [
-        'id' => 'xml-preview', 
+        'id' => 'xml-preview-datatables', 
       ]
 		];
 		
