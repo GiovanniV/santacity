@@ -1,7 +1,8 @@
 (function ($, Drupal) {
 	Drupal.behaviors.myBehavior = {
 		attach: function (context, settings) {
-			$('#xml-datatable').DataTable();
+			alert(111);
+			
 		}
 	};
 })(jQuery, Drupal);
