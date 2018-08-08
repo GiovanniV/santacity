@@ -11,6 +11,7 @@
 				// DataTable
 				var table = $('#xml-preview-datatables').DataTable({
 					"bLengthChange": false,
+					"bFilter": false,
 					"bInfo": false,
 					"bDestroy": true,
 				});
