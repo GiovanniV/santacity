@@ -127,7 +127,11 @@ class XmlListingForm extends FormBase {
    */
   public function xmlPreview(array &$form, FormStateInterface $form_state) {
     $element = $form_state->getTriggeringElement();
-		dpm($form_state->getValues());
+		
+		foreach($form['xml'] as $key => $value) {
+			$form['xml'][$key]['preview']['#default_value'] = '';
+		}
+		
 		$tableContent = '';
 		if(isset($element['#value']) && !empty($element['#value'])) {
 			$tableContent = $this->loadXmlRecordsTable($element['#value']);
@@ -140,7 +144,7 @@ class XmlListingForm extends FormBase {
 		
 		$form['xml_records']['tables'] = $tableContent;
 		
-		$form_state->setRebuild(TRUE);
+		// $form_state->setRebuild(TRUE);
 		
 		return $form['xml_records'];
   }
