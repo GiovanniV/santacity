@@ -3,7 +3,7 @@
 		attach: function (context, settings) {
 			$(document).ready(function(){
 				// Setup - add a text input to each footer cell
-				$('#xml-preview-datatables tfoot td', context).once('mySecondBehavior').each( function () {
+				$('#xml-preview-datatables tfoot td', context).once().each( function () {
 					var title = $(this).text();
 					$(this).html( '<input type="text" placeholder="Filter '+title+'" />' );
 				});
