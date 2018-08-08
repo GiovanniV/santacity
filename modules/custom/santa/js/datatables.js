@@ -2,7 +2,12 @@
 	Drupal.behaviors.santadatatables = {
 		attach: function (context, settings) {
 			$(document).ready(function(){
-				
+				// Setup - add a text input to each footer cell
+				$('#xml-preview-datatables tfoot td', context).once().each( function () {
+					var title = $(this).text();
+					$(this).html( '<input type="text" placeholder="Filter '+title+'" />' );
+				});
+
 				// DataTable
 				var table = $('#xml-preview-datatables').DataTable({
 					"bLengthChange": false,
@@ -10,16 +15,17 @@
 					"bInfo": false,
 					"bDestroy": true,
 				});
-				
-				// Setup - add a text input to each footer cell
-				$('#xml-preview-datatables tfoot td', context).once().each( function (i) {
-					var title = $(this).text();
-					var serach = $(this).html( '<input type="text" placeholder="Filter '+title+'" />' );
-					$(serach).appendTo(this).keyup(function(){table.fnFilter($(this).val(),i)})
+				console.log(table);
+				// Apply the search
+				table.columns().every( function () {
+					var that = this;
+					$( 'input', this.footer() ).on( 'keyup change', function () {
+						if ( that.search() !== this.value ) {
+							that.search(this.value).draw();
+						}
+					});
 				});
 
-
-				
 			});
 		
 		}
