@@ -8,11 +8,7 @@
       });
 
       // DataTable
-      var otable = $('#xml-preview').DataTable({
-        "bLengthChange": false,
-        "bFilter": false,
-        "bInfo": false
-      });
+      var otable = $('#xml-preview').DataTable();
 
       // Apply the search
       otable.columns().every( function () {
