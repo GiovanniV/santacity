@@ -144,7 +144,7 @@ class XmlListingForm extends FormBase {
 		
 		$form['xml_records']['tables'] = $tableContent;
 		
-		// $form_state->setRebuild(TRUE);
+		$form_state->setRebuild(TRUE);
 		
 		return $form['xml_records'];
   }
