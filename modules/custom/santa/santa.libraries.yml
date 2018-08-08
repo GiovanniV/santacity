@@ -27,7 +27,7 @@ datatables_core:
     /libraries/datatables/media/js/jquery.dataTables.js: {}
   css:
     component:
-      /libraries/datatables/media/css/demo_table.css: {}
+      /libraries/datatables/media/css/dataTables.bootstrap.css: {}
   dependencies:
     - core/jquery
 
