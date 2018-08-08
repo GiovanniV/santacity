@@ -39,10 +39,7 @@ regions:
   page_bottom: 'Page bottom'
   feature: 'Feature'
   banner: 'Banner'
-  
-libraries:
-  - santacity/global-scripts
-  
+
 libraries-extend:
   bootstrap/framework:
     - santacity/framework
