@@ -59,7 +59,7 @@ class XmlListingForm extends FormBase {
 			$form['xml'][$record->id]['preview'] = array(
 				'#type' => 'radios',
 				'#name' => 'preview',
-				'#options' => [$record->file_id => $record->file_id],
+				'#options' => [$record->file_id => ''],
 				'#attributes' => ['xml_title' => 'Listing of ' . $xml_title],
 				'#ajax' => [
 					'callback' => '::xmlPreview',
