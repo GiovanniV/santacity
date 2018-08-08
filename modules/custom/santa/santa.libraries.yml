@@ -15,7 +15,6 @@ datatables:
     theme:
       css/datatables.css: {}
   js:
-    js/jquery.dataTables.min.js: {}
     js/datatables.js: {}
   dependencies:
     - core/jquery
