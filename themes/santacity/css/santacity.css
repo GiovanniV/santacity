@@ -43,34 +43,30 @@ header#navbar {
 header#navbar .container {
     background: #fff0;
 }
-.dropdown-submenu {
-	position: relative;
-}
-
-.dropdown-submenu > .dropdown-menu {
-	top: 0;
-	left: 100%;
-	padding: 0px;
-}
-
-.dropdown-submenu:hover > .dropdown-menu {
-	display: block;
-}
 .dropdown-submenu > a:after {
   content: "\e080";
   display: inline-block;
   font-family: 'Glyphicons Halflings';
   font-style: normal;
   font-size: 10px;
-  float: right;
-  margin-top: 5px;
+  /* float: right; */
+  margin-top: -7px;
+  position: absolute;
+  right: 4px;
+  top: 50%;
 }
+.dropdown-submenu > a{position:relative;border-radius: 0px;} 
 .navbar-nav li:last-child > .dropdown-menu {
-  left: auto;
+  left: 100%;
   right: 0px;
+  float: left;
+  max-width: 320px !important;
+  min-width: 200px;
+  border-radius: 0px;
 }
 .navbar-nav li:last-child > .dropdown-menu a {
-  text-align: right !important;
+  text-align: left!important;
+  float: left;
 }
 .navbar-nav li:last-child > .dropdown-menu .dropdown-submenu > a:after {
   float: left;
@@ -79,7 +75,21 @@ header#navbar .container {
 .navbar-nav li:last-child > .dropdown-menu .dropdown-submenu > .dropdown-menu {
   left: -100%;
 }
+.dropdown-submenu {
+    position: relative;
+    border-radius: 0px !important;
+}
 
+.dropdown-submenu > .dropdown-menu {
+    top: -2px;
+    left: 99.9%;
+    padding: 0px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+    display: block;
+    border-radius: 0px !important;
+}
 .navbar-default .navbar-nav > li.active > a{
     background: transparent !important;
     border-bottom: solid 2px #f3c70e;
@@ -326,9 +336,9 @@ footer.footer #block-logo p:nth-child(1) {
     visibility: visible;
 }
 form table .form-item label {
-	visibility: visible;
+    visibility: visible;
 }
-		
+        
 .form-item input[type=radio], .webform-submission-form .form-item input[type=checkbox] {
     height: auto;
 }
@@ -568,12 +578,12 @@ p.city-cat+p {font-size: 12px;font-weight: 600;}
 
 .social-share-links {font-weight:600}
 .social-share-links {
-	display: inline-block;
-	padding-left: 15px;
+    display: inline-block;
+    padding-left: 15px;
 }
 .social-share-links section img {
-	width: 26px;
-	padding: 0 2px;
+    width: 26px;
+    padding: 0 2px;
 }
 .event_in_bnr+.container > div:nth-child(1) a.more {
     padding: 9px 16px 7px;
@@ -2670,7 +2680,7 @@ footer.footer #block-logo p:nth-child(1) {
     form .form-item label {
     display: none;
     }
-		
+        
     .featured-news .view-filters .form-item {
     width: 100%;
     margin: 20px 0 20px;
@@ -2699,3 +2709,27 @@ footer.footer #block-logo p:nth-child(1) {
 
 
 
+
+.navbar-default .navbar-nav > li > .dropdown-submenu > .dropdown-menu {
+    top: -5px;
+    left: 99.8%;
+}
+
+.navbar-default .navbar-nav > li > a +.dropdown-menu >li {
+    position: relative;
+}
+.heading-image-ribbon:after {
+    content: "";
+    width: 100%;
+    position: absolute;
+    height: 45px;
+    background: url(/themes/santacity/images/ribbon.png);
+    bottom: 0px;
+    background-position: top;
+    background-size: 100%;
+    color: #fff;
+    font-size: 20px;
+    float: left;
+    background-repeat: no-repeat;
+    z-index: 999;
+}
