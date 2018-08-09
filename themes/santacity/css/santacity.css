@@ -2711,11 +2711,12 @@ footer.footer #block-logo p:nth-child(1) {
 .navbar-default .navbar-nav > li > a +.dropdown-menu >li {
     position: relative;
 }
+.heading-image-ribbon{width:100%; overflow:hidden; position:relative;}
 .heading-image-ribbon:after {
     content: "";
-    width: 100%;
+    width: 100.7%;
     position: absolute;
-    height: 45px;
+    height: 40px;
     background: url(/themes/santacity/images/ribbon.png);
     bottom: 0px;
     background-position: top;
