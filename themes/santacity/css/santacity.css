@@ -2713,13 +2713,16 @@ footer.footer #block-logo p:nth-child(1) {
 }
 .heading-image-ribbon{width:100%; overflow:hidden; position:relative;}
 .heading-image-ribbon:after {
-    content: url(/themes/santacity/images/ribbon.png);
+    content: "";
     width: 100%;
+background:url(/themes/santacity/images/ribbon.png);
+background-repeat:no-repeat;
     position: absolute;
-    height: 40px;
-    bottom: 0px;
+    height: 38px;
+    bottom: -10px;
     color: #fff;
     font-size: 20px;
     float: left;
     z-index: 999;
+    background-size: 102%;
 }
