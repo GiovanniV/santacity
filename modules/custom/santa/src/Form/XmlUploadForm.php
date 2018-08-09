@@ -44,7 +44,7 @@ class XmlUploadForm extends FormBase {
 		$form['xml_file_upload']['fid'] = array(
 			'#type' => 'managed_file',
 			'#title' => t('XML File'),
-			'#upload_location' => 'public://xml/',
+			'#upload_location' => 'private://xml/',
 			'#required' => true,
 			'#multiple' => false,
 			'#description' => t('Allowed extensions: gif png jpg jpeg'),
