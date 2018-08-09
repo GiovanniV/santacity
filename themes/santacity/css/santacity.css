@@ -52,7 +52,20 @@ header#navbar .container {
   float: right;
   margin-top: 5px;
 }
-
+.navbar-nav li:last-child > .dropdown-menu {
+  left: auto;
+  right: 0px;
+}
+.navbar-nav li:last-child > .dropdown-menu a {
+  text-align: right !important;
+}
+.navbar-nav li:last-child > .dropdown-menu .dropdown-submenu > a:after {
+  float: left;
+  content: "\e079";
+}
+.navbar-nav li:last-child > .dropdown-menu .dropdown-submenu > .dropdown-menu {
+  left: -100%;
+}
 .navbar-default .navbar-nav > li.active > a{
     background: transparent !important;
     border-bottom: solid 2px #f3c70e;
