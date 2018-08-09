@@ -43,6 +43,19 @@ header#navbar {
 header#navbar .container {
     background: #fff0;
 }
+.dropdown-submenu {
+	position: relative;
+}
+
+.dropdown-submenu > .dropdown-menu {
+	top: 0;
+	left: 100%;
+	padding: 0px;
+}
+
+.dropdown-submenu:hover > .dropdown-menu {
+	display: block;
+}
 .dropdown-submenu > a:after {
   content: "\e080";
   display: inline-block;
@@ -66,19 +79,7 @@ header#navbar .container {
 .navbar-nav li:last-child > .dropdown-menu .dropdown-submenu > .dropdown-menu {
   left: -100%;
 }
-.dropdown-submenu {
-    position: relative;
-}
 
-.dropdown-submenu > .dropdown-menu {
-    top: 0;
-    left: 100%;
-    padding: 0px;
-}
-
-.dropdown-submenu:hover > .dropdown-menu {
-    display: block;
-}
 .navbar-default .navbar-nav > li.active > a{
     background: transparent !important;
     border-bottom: solid 2px #f3c70e;
