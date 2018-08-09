@@ -43,6 +43,15 @@ header#navbar {
 header#navbar .container {
     background: #fff0;
 }
+.dropdown-submenu > a:after {
+  content: "\e080";
+  display: inline-block;
+  font-family: 'Glyphicons Halflings';
+  font-style: normal;
+  font-size: 10px;
+  float: right;
+  margin-top: 5px;
+}
 
 .navbar-default .navbar-nav > li.active > a{
     background: transparent !important;
