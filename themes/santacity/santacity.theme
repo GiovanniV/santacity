@@ -112,7 +112,7 @@ function santacity_preprocess_field(&$variables, $hook) {
 	}
 }
 
-function YOURTHEME_menu_link(array $variables) {
+function santacity_menu_link(array $variables) {
 	$element = $variables['element'];
 	$sub_menu = '';
 
