@@ -331,6 +331,7 @@ footer.footer #block-logo p:nth-child(1) {
 }
 form table .form-item label {
     visibility: visible;
+		display: block;
 }
         
 .form-item input[type=radio], .webform-submission-form .form-item input[type=checkbox] {
