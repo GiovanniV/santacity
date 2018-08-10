@@ -706,7 +706,7 @@ a.more:after,a.read:after { content: "\f105";font-family: FontAwesome;font-style
 
  form .form-item label {
     width:  100%;
-    visibility: hidden;
+    display: none;
 }
 
  form .form-item input {
