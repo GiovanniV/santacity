@@ -105,6 +105,7 @@ header#navbar .container {
     background: transparent;
     font-size: 16px;
     padding-left: 0;
+		padding-top: 30px;
 }
 
 .main-container .region .breadcrumb > li + li:before{
