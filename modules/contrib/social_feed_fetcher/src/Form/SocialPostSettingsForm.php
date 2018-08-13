@@ -334,7 +334,7 @@ class SocialPostSettingsForm extends ConfigFormBase {
       $form['instagram']['feed'] = [
         '#type' => 'item',
         '#title' => $this->t('Feed URL'),
-        '#markup' => $this->t('https://api.instagram.com/v1/users/self/feed?access_token=@access_token&count=@picture_count',
+        '#markup' => $this->t('https://api.instagram.com/v1/users/self?access_token=@access_token&count=@picture_count',
           [
             '@access_token' => $config->get('in_access_token'),
             '@picture_count' => $config->get('in_picture_count'),

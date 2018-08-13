@@ -84,7 +84,7 @@ class InstagramSettingsForm extends ConfigFormBase {
       $form['feed'] = [
         '#type' => 'item',
         '#title' => $this->t('Feed URL'),
-        '#markup' => $this->t('https://api.instagram.com/v1/users/self/feed?access_token=@access_token&count=@picture_count',
+        '#markup' => $this->t('https://api.instagram.com/v1/users/self?access_token=@access_token&count=@picture_count',
           [
             '@access_token' => $config->get('access_token'),
             '@picture_count' => $config->get('picture_count'),
