@@ -401,7 +401,11 @@ class BigPipe {
     // Set up a variable to store the content of placeholders that have multiple
     // occurrences.
     $multi_occurrence_placeholders_content = [];
-
+		
+		if(empty($fragments)) {
+			print_r($cumulative_assets);
+			print_r($html);
+		}
     foreach ($fragments as $fragment) {
       // If the fragment isn't one of the no-JS placeholders, it is the HTML in
       // between placeholders and it must be printed & flushed immediately. The
