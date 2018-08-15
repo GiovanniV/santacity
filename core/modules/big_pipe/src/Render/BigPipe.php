@@ -405,6 +405,7 @@ class BigPipe {
 		if(empty($fragments)) {
 			print_r($cumulative_assets);
 			print_r($html);
+			exit;
 		}
     foreach ($fragments as $fragment) {
       // If the fragment isn't one of the no-JS placeholders, it is the HTML in
