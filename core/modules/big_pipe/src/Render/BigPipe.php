@@ -403,8 +403,8 @@ class BigPipe {
     $multi_occurrence_placeholders_content = [];
 		
 		if(empty($fragments)) {
-			print_r($cumulative_assets);
-			print_r($html);
+			kint($cumulative_assets);
+			kint($html);
 			exit;
 		}
     foreach ($fragments as $fragment) {
