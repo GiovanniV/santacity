@@ -26,3 +26,4 @@ if (file_exists($local_settings)) {
 $settings['install_profile'] = 'standard';
 ini_set("pcre.backtrack_limit", 100000000000);
 ini_set("pcre.recursion_limit", 10000000000);
+$settings['big_pipe_override_enabled'] = TRUE;
