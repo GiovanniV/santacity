@@ -1,0 +1,13 @@
+name: 'Webform Layout Container'
+description: 'Provides a layout container element to add to a webform.'
+# core: 8.x
+package: Webform
+dependencies:
+  - webform
+type: module
+
+# Information added by Drupal.org packaging script on 2017-06-28
+version: '8.x-1.1'
+core: '8.x'
+project: 'webform_layout_container'
+datestamp: 1498658644
