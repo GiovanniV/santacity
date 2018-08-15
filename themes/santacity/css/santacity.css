@@ -2733,6 +2733,6 @@ footer.footer #block-logo p:nth-child(1) {
 table thead {
 	background: #f1efef; 
 }
-table tbody :nth-child(even) {
+table tbody tr:nth-child(even) {
 	background: #f1efef; 
 }
