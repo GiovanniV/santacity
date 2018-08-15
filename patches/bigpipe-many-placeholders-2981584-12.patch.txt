@@ -1,0 +1,143 @@
+diff --git a/core/modules/big_pipe/src/Render/BigPipe.php b/core/modules/big_pipe/src/Render/BigPipe.php
+index e646348d83..d418975a0d 100644
+--- a/core/modules/big_pipe/src/Render/BigPipe.php
++++ b/core/modules/big_pipe/src/Render/BigPipe.php
+@@ -388,15 +388,11 @@ protected function sendPreBody($pre_body, array $no_js_placeholders, AttachedAss
+    *   simplify debugging.
+    */
+   protected function sendNoJsPlaceholders($html, $no_js_placeholders, AttachedAssetsInterface $cumulative_assets) {
+-    // Split the HTML on every no-JS placeholder string.
+-    $prepare_for_preg_split = function ($placeholder_string) {
+-      return '(' . preg_quote($placeholder_string, '/') . ')';
+-    };
+-    $preg_placeholder_strings = array_map($prepare_for_preg_split, array_keys($no_js_placeholders));
+-    $fragments = preg_split('/' . implode('|', $preg_placeholder_strings) . '/', $html, NULL, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
++    $placeholder_keys = array_keys($no_js_placeholders);
++    $fragments = $this->splitTextOnPlaceholders($html, $placeholder_keys);
+ 
+     // Determine how many occurrences there are of each no-JS placeholder.
+-    $placeholder_occurrences = array_count_values(array_intersect($fragments, array_keys($no_js_placeholders)));
++    $placeholder_occurrences = array_count_values(array_intersect($fragments, $placeholder_keys));
+ 
+     // Set up a variable to store the content of placeholders that have multiple
+     // occurrences.
+@@ -754,4 +750,48 @@ protected function getPlaceholderOrder($html, $placeholders) {
+     return $ordered_placeholder_ids;
+   }
+ 
++  /**
++   * Splits a text into fragments.
++   *
++   * Will create an array of fragments of text, separated by placeholders.
++   * The result includes the placeholders themselves. Note that the order
++   * of the placeholders matters.
++   *
++   * Examples:
++   *
++   * splitTextOnPlaceholders('some example text', ['e', 'ex']);
++   *  array ('som', 'e', ' ', 'e', 'xampl', 'e', ' t', 'e', 'xt')
++   *
++   * splitTextOnPlaceholders('some example text', ['ex', 'e']);
++   *  array ('som', 'e', ' ', 'ex', 'ampl', 'e', ' t', 'ex', 't')
++   *
++   * @param string $text
++   *   The text to split.
++   * @param string[] $placeholders
++   *   The strings to split on.
++   *
++   * @return string[]
++   *   The created fragments.
++   */
++  protected function splitTextOnPlaceholders($text, array $placeholders) {
++    $prepare_for_preg_split = function ($placeholder_string) {
++      return '(' . preg_quote($placeholder_string, '/') . ')';
++    };
++    $preg_placeholder_strings = array_map($prepare_for_preg_split, $placeholders);
++    $pattern = '/' . implode('|', $preg_placeholder_strings) . '/';
++    if (strlen($pattern) < 31000) {
++      // Only small (<31K) patterns can be handled by preg_split.
++      $flags = PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE;
++      $result = preg_split($pattern, $text, NULL, $flags);
++    }
++    else {
++      // For large amounts of placeholders we use a simpler but slower approach.
++      foreach ($placeholders as $placeholder) {
++        $text = str_replace($placeholder, "\x1F" . $placeholder . "\x1F", $text);
++      }
++      $result = array_filter(explode("\x1F", $text));
++    }
++    return $result;
++  }
++
+ }
+diff --git a/core/modules/big_pipe/tests/src/Unit/Render/ManyPlaceholderTest.php b/core/modules/big_pipe/tests/src/Unit/Render/ManyPlaceholderTest.php
+new file mode 100644
+index 0000000000..c1d2778513
+--- /dev/null
++++ b/core/modules/big_pipe/tests/src/Unit/Render/ManyPlaceholderTest.php
+@@ -0,0 +1,65 @@
++<?php
++
++namespace Drupal\Tests\big_pipe\Unit\Render;
++
++use Drupal\big_pipe\Render\BigPipe;
++use Drupal\big_pipe\Render\BigPipeResponse;
++use Drupal\Core\Config\ConfigFactoryInterface;
++use Drupal\Core\Render\HtmlResponse;
++use Drupal\Core\Render\RendererInterface;
++use Drupal\Tests\UnitTestCase;
++use Symfony\Component\EventDispatcher\EventDispatcherInterface;
++use Symfony\Component\HttpFoundation\RequestStack;
++use Symfony\Component\HttpFoundation\Session\SessionInterface;
++use Symfony\Component\HttpKernel\HttpKernelInterface;
++
++/**
++ * Class ManyPlaceholderTest.
++ *
++ * @package Drupal\Tests\big_pipe\Unit\Render\Placeholder
++ *
++ * @coversDefaultClass \Drupal\big_pipe\Render\BigPipe
++ *
++ * @group big_pipe
++ */
++class ManyPlaceholderTest extends UnitTestCase {
++
++  /**
++   * Minimal testcase for the fragment extraction with many placeholders.
++   */
++  public function testManyPlaceHolders() {
++    // Mock all the dependencies.
++    $renderer = $this->createMock(RendererInterface::class);
++    $session = $this->createMock(SessionInterface::class);
++    $requestStack = new RequestStack();
++    $kernel = $this->createMock(HttpKernelInterface::class);
++    $eventDispatcher = $this->createMock(EventDispatcherInterface::class);
++    $configFactory = $this->createMock(ConfigFactoryInterface::class);
++    $bigpipe = new BigPipe($renderer, $session, $requestStack, $kernel, $eventDispatcher, $configFactory);
++    $htmlResponse = HtmlResponse::create();
++    $response = new BigPipeResponse($htmlResponse);
++
++    // Add many placeholders.
++    $manyPlaceholders = [];
++    for ($i = 0; $i < 400; $i++) {
++      $manyPlaceholders[$this->randomMachineName(80)] = $this->randomMachineName(80);
++    }
++    $attachments = [
++      'library' => [],
++      'big_pipe_nojs_placeholders' => $manyPlaceholders,
++    ];
++    $response->setAttachments($attachments);
++
++    // Construct html with all required tags.
++    $content = '<html><body>content<drupal-big-pipe-scripts-bottom-marker>script-bottom<drupal-big-pipe-scripts-bottom-marker></body></html>';
++    $response->setContent($content);
++
++    // Capture the result to avoid PHPUnit complaining.
++    ob_start();
++    $bigpipe->sendContent($response);
++    $result = ob_get_clean();
++
++    $this->assertNotEmpty($result);
++  }
++
++}
