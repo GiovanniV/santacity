@@ -1953,7 +1953,7 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:15px}
  /*police-department page css*/
      div#accordion {
         border:none;
-        box-shadow:0px 3px 4px #ddd;
+       /* box-shadow:0px 3px 4px #ddd; */
         padding: 10px 10px;
         position: relative;
     }
