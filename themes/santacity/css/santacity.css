@@ -2739,3 +2739,17 @@ table tbody tr:nth-child(even) {
 .table-bordered > thead > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td {
 	border: none;
 }
+html, body {
+    height: 100%;
+    margin: 0;
+}
+#wrap {
+    padding: 10px;
+    min-height: -webkit-calc(100% - 100px);     /* Chrome */
+    min-height: -moz-calc(100% - 100px);     /* Firefox */
+    min-height: calc(100% - 100px);     /* native */
+}
+.footer {
+    position: relative;
+    clear:both;
+}
