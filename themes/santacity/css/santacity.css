@@ -2743,13 +2743,10 @@ html, body {
     height: 100%;
     margin: 0;
 }
-#wrap {
-    padding: 10px;
-    min-height: -webkit-calc(100% - 100px);     /* Chrome */
-    min-height: -moz-calc(100% - 100px);     /* Firefox */
-    min-height: calc(100% - 100px);     /* native */
-}
+
 .footer {
-    position: relative;
-    clear:both;
+    position: fixed;
+    width:100%;
+		bottom:0px;
+		margin-top: 150px;
 }
