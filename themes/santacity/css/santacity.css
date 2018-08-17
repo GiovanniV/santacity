@@ -2740,7 +2740,6 @@ table tbody tr:nth-child(even) {
 	border: none;
 }
 body {
-	height: 100vh;
 	margin-bottom: 160px;
 }
 .footer {
