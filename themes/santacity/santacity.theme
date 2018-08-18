@@ -24,11 +24,15 @@ function santacity_preprocess_block(&$variables) {
   if (isset($content['#block_content']) && $content['#block_content'] instanceof BlockContentInterface) {
 		if ($content['#block_content']->bundle() == 'view') {
       $blockContent = $content['#block_content'];
-			if($blockContent->hasField('field_display_name')) {
-				kint($blockContent->get('field_display_name')->getValue());
-				die();
+			if($blockContent->hasField('field_name')) {
+				$variables['view_name'] = $blockContent->get('field_name')->getValue()[0]['value']);
 			}
-			
+			if($blockContent->hasField('field_display_name')) {
+				$variables['display_name'] = $blockContent->get('field_display_name')->getValue()[0]['value']);
+			}
+			if($blockContent->hasField('field_event_category')) {
+				$variables['event_category'] = $blockContent->get('field_event_category')->getValue()[0]['value']);
+			}
     }
 
   }
