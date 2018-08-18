@@ -20,7 +20,15 @@ function santacity_preprocess_region(&$variables) {
 }
 
 function santacity_preprocess_block(&$variables) {
-	kint($variables['elements']['content']['#type']);
+	$content = $variables['elements']['content'];
+  if (isset($content['#block_content']) && $content['#block_content'] instanceof BlockContentInterface) {
+
+    if ($content['#block_content']->bundle() == 'view') {
+      kint($content);
+			die();
+    }
+
+  }
 	
 }
 
