@@ -45,9 +45,6 @@
  * @see template_process()
  */
 #}
-{{ view_name }}
-{{ display_name }}
-{{ event_category }}
 {%
   set classes = [
     'block',
@@ -62,7 +59,8 @@
     <h3{{ title_attributes.addClass('block-title') }}>{{ label }}</h3>
   {% endif %}
   {{ title_suffix }}
-
-  {{ drupal_view({{ view_name|raw }}, 'block_1') }}
+	{{ content.body }}
+	{{ view_content }}
+  {{ drupal_view('events', 'block_1') }}
 </section>
 
