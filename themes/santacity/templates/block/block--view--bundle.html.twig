@@ -46,7 +46,6 @@
  */
 #}
 {{ kint(content.field_display_name) }}
-{{ kint(content.field_event_category) }}
 {%
   set classes = [
     'block',
@@ -61,7 +60,7 @@
     <h3{{ title_attributes.addClass('block-title') }}>{{ label }}</h3>
   {% endif %}
   {{ title_suffix }}
-	{{ content.body }}
+	
   {{ drupal_view('events', 'block_1') }}
 </section>
 
