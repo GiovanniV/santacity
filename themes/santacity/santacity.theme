@@ -22,9 +22,9 @@ function santacity_preprocess_region(&$variables) {
 function santacity_preprocess_block(&$variables) {
 	$content = $variables['elements']['content'];
   if (isset($content['#block_content']) && $content['#block_content'] instanceof BlockContentInterface) {
-
+		kint($content['#block_content']->bundle());
     if ($content['#block_content']->bundle() == 'view') {
-      kint($content);
+      
 			die();
     }
 
