@@ -25,8 +25,7 @@ function santacity_preprocess_block(&$variables) {
 		kint($content['#block_content']->bundle());
 		//die();
     if ($content['#block_content']->bundle() == 'view') {
-      
-			die();
+      kint($content);
     }
 
   }
