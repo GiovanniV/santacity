@@ -20,7 +20,8 @@ function santacity_preprocess_region(&$variables) {
 }
 
 function santacity_preprocess_block(&$variables) {
-	kint($variables['block']->region);
+	kint($variables);
+	die();
 }
 
 /**
