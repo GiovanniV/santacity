@@ -45,6 +45,7 @@
  * @see template_process()
  */
 #}
+{%set view_name = 'events' %}
 {%
   set classes = [
     'block',
@@ -61,6 +62,6 @@
   {{ title_suffix }}
 	{{ content.body }}
 	{{ view_content }}
-  {{ drupal_view('events', 'block_1') }}
+  {{ drupal_view({{ view_name }}, 'block_1') }}
 </section>
 
