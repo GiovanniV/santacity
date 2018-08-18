@@ -25,7 +25,7 @@ function santacity_preprocess_block(&$variables) {
 		if ($content['#block_content']->bundle() == 'view') {
       $blockContent = $content['#block_content'];
 			if($blockContent->hasField('field_display_name')) {
-				kint($blockContent->get('field_display_name'));
+				kint($blockContent->get('field_display_name')->getValue());
 				die();
 			}
 			
