@@ -31,7 +31,7 @@ function santacity_preprocess_block(&$variables) {
 				$variables['display_name'] = $blockContent->get('field_display_name')->getValue()[0]['value'];
 			}
 			if($blockContent->hasField('field_event_category')) {
-				$variables['event_category'] = $blockContent->get('field_event_category')->getValue()[0]['value'];
+				$variables['event_category'] = $blockContent->get('field_event_category')->getValue()[0]['target_id'];
 			}
     }
 
