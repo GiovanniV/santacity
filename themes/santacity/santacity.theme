@@ -34,13 +34,7 @@ function santacity_preprocess_block(&$variables) {
 				$variables['event_category'] = $blockContent->get('field_event_category')->getValue()[0]['target_id'];
 			}
 			
-			$variables['view_content'] = [
-				'#type' => 'view',
-				'#name' => $variables['view_name'],
-				'#display_id' => $variables['display_name'],
-				'#arguments' => [$variables['event_category']],
-				'#weight' => 30,
-			];
+			dpm($variables['view_name']);
     }
 
   }
