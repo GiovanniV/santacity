@@ -23,8 +23,12 @@ function santacity_preprocess_block(&$variables) {
 	$content = $variables['elements']['content'];
   if (isset($content['#block_content']) && $content['#block_content'] instanceof BlockContentInterface) {
 		if ($content['#block_content']->bundle() == 'view') {
-      kint($content['#block_content']);
-			die();
+      $blockContent = $content['#block_content'];
+			if($blockContent->hasField('field_display_name')) {
+				kint($blockContent->get('field_display_name'));
+				die();
+			}
+			
     }
 
   }
