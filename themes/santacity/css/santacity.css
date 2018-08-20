@@ -2740,7 +2740,7 @@ table tbody tr:nth-child(even) {
 	border: none;
 }
 body {
-	padding-bottom: 160px;
+	padding-bottom: 200px;
 }
 .footer {
     position: absolute;

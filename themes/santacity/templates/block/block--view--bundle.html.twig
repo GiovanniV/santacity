@@ -59,7 +59,7 @@
     <h3{{ title_attributes.addClass('block-title') }}>{{ label }}</h3>
   {% endif %}
   {{ title_suffix }}
-
-  {{ drupal_view('events', 'block_1') }}
+	{{ content.body }}
+  {{ drupal_view(view_name, display_name, event_category) }}
 </section>
 
