@@ -218,6 +218,14 @@ div#navbar-collapse {
 .btn-boxes .btn-box button {
 	font-size: 20px;
 }
+.map-bubble-container {
+	border-right: 9px solid #f3c70e;
+	padding: 5px;
+}
+.map-bubble-container .read,
+.map-bubble-container .read:after {
+	font-size: 12px;
+}
 
 .santacityheader .lng-dropdown{
     padding-top: 2px;
