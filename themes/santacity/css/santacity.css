@@ -17,14 +17,14 @@ body {
     margin-top: 0px;
     position: relative;
     z-index: 5;
-    max-width: 1920px;
+    width:100%;
     margin-right: auto;
     margin-left: auto;
 		box-sizing: border-box;
 		-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
 		-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
 		clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-    height: 200px;
+    height: auto;
     width: 100%;
     background: yellow;
 }
@@ -32,7 +32,9 @@ body {
 	-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
 	-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
 	clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-	bottom: 5px;
+	margin-bottom: 11px;
+	width: 100%;
+	height: auto;
 }
 .region.region-page-heading .heading-image-ribbon:after {
 	content: unset;
