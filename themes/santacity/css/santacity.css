@@ -14,7 +14,6 @@ body {
 
 
 .region.region-page-heading {
-    margin-top: -12vw;
     position: relative;
     z-index: 5;
     max-width: 1920px;
