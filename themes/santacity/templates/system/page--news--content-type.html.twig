@@ -2,7 +2,7 @@
 {% include 'header.html.twig' %}
 <div class="container-fluid back" style="background: url( {{ file_url(node.field_news_image.entity.uri.value) }}) no-repeat;">
 	<div class="container">
-			<div class="col-md-12 wh">
+		<div class="col-md-12 wh">
 				<div class="box_article_page">
 					{% if page.breadcrumb %}
 					{% block breadcrumb %}
@@ -29,44 +29,41 @@
 					</div>
 				</div>
 			</div>
+		{{ page.content.recent_article }}
 
-	</div>
-
-{{ page.content.recent_article }}
-
-	<div class="comment_artical">
+		<div class="comment_artical">
 			<h3 class="main_head_text_article">Comments</h3>
-			  <!-- Left-aligned media object -->
-				  <div class="media">
-				    <div class="media-left">
-				      <img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
-				    </div>
-				    <div class="media-body">
-				      <h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
-				      <p class="date">December 18 ,2018</p>
-				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-				    </div>
-				  </div>
-				  <div class="media">
-				    <div class="media-left">
-				      <img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
-				    </div>
-				    <div class="media-body">
-				      <h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
-				      <p class="date">December 18 ,2018</p>
-				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-				    </div>
-				  </div>
-				  <div class="media">
-				    <div class="media-left">
-				      <img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
-				    </div>
-				    <div class="media-body">
-				      <h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
-				      <p class="date">December 18 ,2018</p>
-				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
-				    </div>
-				  </div>
+				<!-- Left-aligned media object -->
+					<div class="media">
+						<div class="media-left">
+							<img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
+							<p class="date">December 18 ,2018</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="media-left">
+							<img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
+							<p class="date">December 18 ,2018</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+						</div>
+					</div>
+					<div class="media">
+						<div class="media-left">
+							<img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
+						</div>
+						<div class="media-body">
+							<h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
+							<p class="date">December 18 ,2018</p>
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+						</div>
+					</div>
 		</div>
 		<div class="add_new_comment_page">
 			<h3 class="main_head_text_article">Add New Comment</h3>
@@ -78,6 +75,7 @@
 			</div>
 			 </form>
 		</div>
+	</div>	
 </div>	
 <style type="text/css">
 .box_article_page {
