@@ -208,6 +208,16 @@ div#navbar-collapse {
     font-family: 'Poppins', sans-serif;
 }
 
+.btn-boxes {
+	display: table;
+	width: 100%;
+}
+.btn-boxes .btn-box {
+	display: table-cell;
+}
+.btn-boxes .btn-box button {
+	font-size: 20px;
+}
 
 .santacityheader .lng-dropdown{
     padding-top: 2px;
