@@ -25,7 +25,7 @@
 				// Permit
 				$('.xml-file-upload-form input[type="radio"]').on('click', function() {
 					alert(123);
-					$('.xml-file-upload-form input[type="radio"]').attr("checked", false);
+					$('.xml-file-upload-form input[type="radio"]').not(this).attr("checked", false);
 				});
 				
 			});
