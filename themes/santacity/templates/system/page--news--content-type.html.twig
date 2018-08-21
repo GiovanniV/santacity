@@ -1,6 +1,6 @@
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {% include 'header.html.twig' %}
-<div class="container-fluid back content-overlay-container" style="background: url( {{ file_url(node.field_news_image.entity.uri.value) }}) no-repeat; background-size: cover;">
+<div class="container-fluid back content-overlay-container" style="background: url( {{ file_url(node.field_news_image.entity.uri.value) }}) no-repeat; background-size: contain;">
 	<div class="container">
 		<div class="col-md-12 wh">
 				<div class="box_article_page">
