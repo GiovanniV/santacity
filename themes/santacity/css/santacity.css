@@ -20,6 +20,22 @@ body {
     max-width: 1920px;
     margin-right: auto;
     margin-left: auto;
+		box-sizing: border-box;
+		-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+		-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+		clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+    height: 250px;
+    width: 100%;
+    background: yellow;
+}
+.region.region-page-heading .heading-image-ribbon img {
+	-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	bottom: 5px;
+}
+.region.region-page-heading .heading-image-ribbon img:after {
+	content: '';
 }
 .event_in_bnr+.container {
     margin-top: -290px;
