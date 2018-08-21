@@ -23,8 +23,8 @@
 				);
 				
 				// Permit
-				$('.xml-file-upload-form input[type="radio"]').on('click', function() {
-					
+				$('.xml-file-upload-form input[type="radio"]').on('change', function() {
+					alert(123);
 					$('.xml-file-upload-form input[type="radio"]').attr("checked", false);
 				});
 				
