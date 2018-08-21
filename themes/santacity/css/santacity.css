@@ -35,7 +35,7 @@ body {
 	bottom: 5px;
 }
 .region.region-page-heading .heading-image-ribbon:after {
-	content: '';
+	content: unset;
 }
 .event_in_bnr+.container {
     margin-top: -290px;
