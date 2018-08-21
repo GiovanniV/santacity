@@ -54,191 +54,251 @@
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {% include 'header.html.twig' %}
 <div class="container-fluid back">
-  <div class="container">
-    <div class="col-md-7 wh">
+				<div class="event_in_bnr" style="background: url( {{ file_url(node.field_news_image.entity.uri.value) }}) no-repeat;"></div>
+<div class="container">
 
-      <ul class="breadcrumb">
-  <li><a href="#">Home</a></li>
-  <li><a href="#">Library Services</a></li>
- <li><a href="#">Upcoming Events</a></li>
-  <li><a href="#" class="active">City Tour 2018</a></li>
-</ul>
-<span class="calender"><p>Tues</p><p class="year">Dec.<br><b>12</b></p></span>
-<p class="tour"><b>City Tour 2018</b></p>
-<p class="city-cat">Category: <a href="#">Art</a> <a href="#">Technology</a></p>
-<p class="text-right">Share This Event <a href=""><img src="image/facebook.jpg"></a> <a href=""><img src="image/twitter.jpg"></a> <a href=""><img src="image/pinterest.jpg"></a></p>
-<p><b>Price:</b> $25.00</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-<br><br>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</p><br>
-<a href="#" class="more">Resiter Now</a>
+		<div class="col-md-12 wh">
+			<div class="box_article_page">
+				{% if page.breadcrumb %}
+				{% block breadcrumb %}
+				{{ page.breadcrumb }}
+				{% endblock %}
+				{% endif %}
+				
+				{% if page.header %}
+				{% block header %}
+				{{ page.header }}
+				{% endblock %}
+				{% endif %}
+				<div class="arti_date">
+					<span >{{ node.field_start_date.value|date("F, d Y") }}</span>
+					<span class="city-cat">Category: {{ node.field_news_category.value|render }}</span>
+					{% if page.social_share %}
+					<div class="pull-right">
+						{{ page.social_share }}
+					</div>
+					{% endif %}
+					<div class="col-sm-12">
+						{{ node.body.value|raw }}
+					</div>
+				</div>
+			</div>
+		</div>
+
+ 
 </div>
 
-<div class="col-md-offset-1 col-md-4 lft-white"><div class="row"><h2>Event Information</h2>
-    <div class=""><p><b>Date</b></p>
-    <p>December 12, 2018</p></div>
-    <div class="">
-      <p><b>Time</b></p>
-      <p>9:00am - 11:00am</p>
-    </div>
-    <div class=""><p><b>Location</b></p>
-    <p>155 Someplace, Santa Ana, CA</p>
+<div class="container">
+{{ page.content.recent_article }}
 </div>
-    
-</div>
-    
-    
-    <div class="row"><h2>Contact Information
 
-</h2>
-    <div class="" style=""><p><b>Phone</b></p>
-    <p>(123) 456-7890</p></div>
-    <div class="">
-      <p><b>Email Address</b></p>
-      <p>somemail@gmail.com</p>
-    </div>
-    <div class=""><p><b>Website</b></p>
-    <p>somewebsite.com</p>
-</div>
-</div>
-</div>
-  </div>
-
-
-</div>
-<style type="text/css">
-div.media-body { padding-left: 5px;}
-h2.feature {    color: #333333;    font-size: 30px;}
-li.media { box-shadow: 2px 3px 5px #dfdfdf;display: flex;align-items: center;margin-bottom: 10px;}
-h2.news-filter{color: #333333;    font-size: 25px; margin-top: 25px;}
-li.active{ border-right: 7px solid #f3c70e }
-p.dat {font-weight: 300;font-size: 12px;color:  #5f5f5f;margin-bottom: 5px;/* clear: both; */}
-p.media-heading { font-size:  16px; color:  #333333;margin-bottom: 5px;}
-p.by-category{font-weight: 300;font-size: 12px;color:  #5f5f5f;margin-bottom: 5px;}
-p.by-category a { text-decoration: underline;}
-.main-row .col-md-8 {    background: url(../image/news.jpg) no-repeat;background-size: cover;}
-.main-row .col-md-8 > .col-md-6{position: absolute;bottom: 20px;left: 20px;background: rgba(0, 0, 0, 0.7);color:  #fff;padding: 10px;}
-.main-row .col-md-8 > .col-md-6 p {    padding:  0px;    margin:  0px;    color: #fff;    font-size: 14px;}
-.main-row .col-md-8 > .col-md-6 p.media-heading {  font-weight:  600; font-size: 18px;}
-.main-row .col-md-8 > .col-md-6 a {    color: #fff;}
-.main-row .col-md-8 > .col-md-6 p.armor{    font-size:15px; padding-top:15px;    padding-bottom: 10px;}
-.after-main{ margin-top: 30px; }
-a.read { border: 1px solid #333; padding: 3px 15px; color: #333; border-radius: 10px; margin-right: 15px; text-decoration: none; font-size: 14px;}
-a.more { background: #f3c70e; padding: 6px 10px;  margin-top: 10px; color: #333 !important;  font-weight: bold;  border-radius: 10px;}
-.after-main .col-md-9 {    padding: 0px;}
-.back{ background: url("../image/back.jpg") no-repeat; background-size: cover;    padding: 250px 0px 200px;    position: relative; }
-.wh{ background: #fff;position: absolute;  box-shadow: 0px 0px 5px #e1e1e1;}
-ul.breadcrumb{ background: none; padding: 10px 0px; }
-ul.breadcrumb a {    color:  #333;    font-size:  14px;    background: none;}
-ul.breadcrumb a.active {    color:  #000;    font-size:  14px; font-weight:600}
-ul.breadcrumb a:after {    content: "\f105";    font-family: FontAwesome;    font-style: normal;    font-weight: 100;    text-decoration: inherit;    color: #333;    font-size: 16px;
- padding-right: 0.8em;   padding-left: 0.8em; }
-ul.breadcrumb a.active:after {content: ""; font-family: FontAwesome; font-style: normal; font-weight: 100; text-decoration: inherit; color: #333; font-size: 16px; padding-right: 0.8em; padding-left: 0.8em;}
-.back .container { position:  relative; top: -100px;}
-span.calender {    background:  #fff;    text-align:  center;    float: left;    box-shadow: 3px 3px 5px #dfdfdf;    margin-right: 20px;}
-span.calender p.year { background: #f3c70e;    margin-bottom: 0px;    line-height: 23px;}
-span.calender p { padding: 5px 15px; margin-bottom: 0px; }
-p.year b { font-size: 38px; font-weight: 500;}
-p.tour { font-size: 24px; padding-left: 10px;}
-p.tour b {  font-weight: 600;}
-p.city-cat a { color: #333; text-decoration: underline; padding-right: 5px;}
-p.city-cat {font-size: 12px;color: #333;}
-.wh p {margin-bottom: 2px;}
-p.city-cat+p {font-size: 12px;font-weight: 600;}
-.wh p:last-child {  font-size: 14px;}
-span.calender p.year {  padding: 15px 25px;}
-p.text-right i:nth-child(1) { background: #3b5998; color:  #fff; font-weight:  100; font-size:  13px; margin-right:7px; margin-left: 5px;}
-p.text-right i:nth-child(2) { background: #1da1f2; color:  #fff; font-weight:  100; font-size:  13px;margin-right:7px}
-p.text-right i:nth-child(3) { background: #d60b0b; color:  #fff;font-weight:  100; font-size:  13px;}
-.lft-white h2 { font-size: 28px; color:#333}
-.lft-white h2:before{ content: "\f073"; font-family: FontAwesome;font-style: normal;font-weight: 500;text-decoration: inherit;color: #333;font-size: 30px;padding-right: 0.2em;padding-left: 0em;}
-.col-md-offset-1.col-md-4.lft-white {position:  absolute; right:  0px; padding: 0px 15px;}
-.lft-white .row{ background: #fff; margin-bottom: 35px; }
-.lft-white h2 { font-size: 28px; color:#333}
-.lft-white p { margin-bottom: 0px;color: #333;}
-.lft-white p b {font-weight: 600;}
-p.bot-mar { margin-bottom: 10px;}
-.lft-white .row { display:  block;padding: 10px; box-shadow: 0px 0px 5px #e1e1e1;}
-.lft-white .row div { margin-top: 7px;}
-.lft-white .row:nth-child(2) h2:before { content: "\f095"; font-family: FontAwesome;font-style: normal;font-weight: 500;text-decoration: inherit;color: #333;font-size: 30px;padding-right: 0.2em;
-    padding-left: 0em;}
-a.more:after,a.read:after { content: "\f105";font-family: FontAwesome;font-style: normal;text-decoration: inherit;color: #333;font-size: 16px;padding-left: 0.3em;}
-.after-main span.calender { background: #fff; text-align: center; float: left; margin-right: 20px; position: absolute; left: 30px; top: 10px;box-shadow: 0px 0px 3px #dfdfdf;}
-.img-box{ width: 100%; }
-.img-box img{ width: 100% }
-.img-box span.calender p.year {
-    padding: 0px 13px;
+<div class="container">
+	<div class="row">
+		<div class="comment_artical">
+			<h3 class="main_head_text_article">Comments</h3>
+			  <!-- Left-aligned media object -->
+				  <div class="media">
+				    <div class="media-left">
+				      <img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
+				    </div>
+				    <div class="media-body">
+				      <h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
+				      <p class="date">December 18 ,2018</p>
+				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+				    </div>
+				  </div>
+				  <div class="media">
+				    <div class="media-left">
+				      <img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
+				    </div>
+				    <div class="media-body">
+				      <h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
+				      <p class="date">December 18 ,2018</p>
+				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+				    </div>
+				  </div>
+				  <div class="media">
+				    <div class="media-left">
+				      <img src="http://dev-santacity.pantheonsite.io/sites/default/files/2018-07/article1.jpg" class="media-object" style="width:60px">
+				    </div>
+				    <div class="media-body">
+				      <h4 class="media-heading">Lorem ipsum dolor sit amet</h4>
+				      <p class="date">December 18 ,2018</p>
+				      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+				    </div>
+				  </div>
+		</div>
+		<div class="add_new_comment_page">
+			<h3 class="main_head_text_article">Add New Comment</h3>
+			<form class="comment">
+			<input class="contact__form-input" type="text" placeholder="Subject">
+			<textarea class="contact__form-textarea" type="text" placeholder="Comment"></textarea>
+			<div class="comment_btn">
+				<a href="">Submit <i class="fa fa-angle-right" aria-hidden="true"></i> </a>
+			</div>
+			 </form>
+		</div>
+	</div>	
+</div><style type="text/css">
+.box_article_page {
+    position: relative;
+    top: -170px;
+    background: #ffff;
+    padding: 30px 29px;
+    box-shadow: 0px 0px 13px #dcdcdc;
+        margin-bottom: -100px;
 }
-.img-box span.calender p {
-    padding: 0px 15px;
-    margin-bottom: 0px;
+.top_inner_article ul {
+    padding: 0;
+    list-style: none;
 }
-.txt-box p.media-heading {
-    font-size: 18px;
-    color: #333333;
-    margin-bottom: 3px;
-    padding-top: 10px;
-}.txt-box p.by-category {
-    font-weight: 400;
-    font-size: 12px;
-    color: #5f5f5f;
-    margin-bottom: 5px;
+.top_inner_article ul li a {
+    color: #000;
 }
-.txt-box p.by-category b {
+.top_inner_article ul li i {
+    margin-left: 10px;
+}
+.top_inner_article ul li {
+    display: inline-block;
+    margin-right: 12px;
+}
+.top_inner_article ul li:nth-child(4) {
+    font-weight: 600;
+}
+h2.artivle_text {
+    font-weight: 600;
+        font-size: 40px;
+}
+.arti_date ul {
+    padding: 0;
+    list-style: none;
+}
+.arti_date ul li {
+    display: inline-block;
+    font-size: 16px;
+    margin-right: 28px;
+}
+.arti_date ul.left_date_side {
+    float: left;
+}
+.arti_date a {
+    color: #000;
+    text-decoration: underline;
+}
+.arti_date ul.right_side_date {
+    float: right;
+}
+.arti_date ul.right_side_date li {
+    font-weight: 600;
+}
+.arti_date ul.right_side_date i.fa.fa-facebook {
+    background: #3b5998;
+    color: #fff;
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+}
+.arti_date ul.right_side_date i.fa.fa-twitter {
+    background: #1da1f2;
+    color: #fff;
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+}
+.arti_date ul.right_side_date i.fa.fa-pinterest-p {
+    background: #d71212;
+    color: #fff;
+    width: 30px;
+    text-align: center;
+    height: 30px;
+    border-radius: 50%;
+    line-height: 30px;
+}
+.arti_date p {
+    font-size: 16px;
+    line-height: 26px;
+    clear: both;
+}
+.main_head_text_article {
     font-weight: 700;
 }
-.txt-box {
-    padding-left: 10px;
+.artile_landing img {
+    height: 198px;
+    margin-bottom: 8px;
 }
-.after-main > .col-md-9 > .row > .col-md-4 >div {
-    box-shadow:2px 4px 7px #dfdfdf;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
+span.news_page_dt p {
+    margin-bottom: 4px;
 }
-ul.pagination li a {
-    color: #333;
-    padding-right: 8px;
-    font-size: 17px;
+.txt-box.Article_box_news_tetx p:nth-child(2) a {
+    color: #000;
+    font-weight: 600;
+    font-size: 22px;
 }
-ul.pagination li a.active {
-    text-decoration: underline;
-    font-weight: bold;
+.txt-box.Article_box_news_tetx p:nth-child(2) {
+    margin: 0px;
 }
-ul.pagination li a.active {
-    text-decoration:  underline;
-    font-weight:  bold;
+.Article_box_news_tetx {
+    padding-right:30px;
 }
-ul.pagination {
+.comment_artical .media-left img {
+    border-radius: 50%;
+    height: 57px;
+}
+.comment_artical .media-left {
+    float: left;
+    margin-right: 20px;
+}
+.comment_artical .media-body h4.media-heading {
+    font-weight: 600;
+    margin-bottom: 0;
+}
+.add_new_comment_page form.comment input {
+    width: 40%;
+    padding: 10px 20px;
+    border-radius: 14px;
+    border: none;
+    outline: none;
+    box-shadow: 0px 1px 4px #bfbfbf;
+}
+.add_new_comment_page form.comment textarea {
+    width: 100%;
+    margin: 20px 0;
+    height: 160px;
+    color: #000;
+    border-radius: 12px;
+    padding: 20px;
+    outline: none;
+    border: none;
+    box-shadow: 0px 2px 11px #dedede;
+}
+.add_new_comment_page form.comment {
     margin-top: 20px;
-    margin-bottom: 10px;
 }
-ul.pagination li:nth-child(7) a:after{content: "\f105";
-    font-family: FontAwesome;
-    font-style: normal;
-    text-decoration: inherit;
-    color: #333;
-    font-size: 16px;
-    padding-left: 0.3em;}
-ul.pagination li:last-child a:after{content: "\f101";
-    font-family: FontAwesome;
-    font-style: normal;
-    text-decoration: inherit;
-    color: #333;
-    font-size: 16px;
-    padding-left: 0.3em;}
-@media screen and (max-width:1024px){
-.main-row .col-md-4,.main-row .col-md-8,.after-main .col-md-9{width:100%;display:block;max-width: 100%;flex: 0 0 100%;}
-.main-row .col-md-8 > .col-md-6 { position: relative;  bottom: 0px;  left: 0px;  }
-.after-main .col-md-3{ display:none}
-.after-main .col-md-9 li.media { display: block;  margin-bottom: 15px; padding-bottom: 10px;}
-.after-main .col-md-9 li.media a.pull-left { float:none;}
-.col-md-7.wh {    padding-bottom: 15px;position: relative;}
-.col-md-offset-1.col-md-4.lft-white { position: relative; top: 26px;}
-span.calender { margin-right: 15px;}
-span.calender p.year {    padding: 10px 20px;}
+.comment_btn a {
+    background: #f3c70e;
+    padding: 11px 30px;
+    font-weight: 600;
+    font-size: 17px;
+    color: #000;
+    border-radius: 12px;
 }
-
+.comment_btn {
+    margin-top: 20px;
+}
+.comment_btn a i {
+    margin-left: 6px;
+    font-size: 18px;
+}
+.artile_landing {
+    min-height: 390px;
+}
+.arti_date ul.right_side_date li {
+    margin-right: 10px;
+}
 </style>
 
 
