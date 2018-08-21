@@ -14,7 +14,7 @@ body {
 
 
 .region.region-page-heading {
-    margin-top: -12vw;
+    margin-top: 0px;
     position: relative;
     z-index: 5;
     max-width: 1920px;
@@ -208,6 +208,27 @@ div#navbar-collapse {
     font-family: 'Poppins', sans-serif;
 }
 
+.btn-boxes {
+	display: table;
+	width: 100%;
+}
+.btn-boxes .btn-box {
+	display: table-cell;
+}
+.btn-boxes .btn-box button {
+	font-size: 20px;
+}
+.map-bubble-container {
+	border-left: 8px solid #f3c70e;
+	padding: 5px;
+}
+.map-bubble-container .read-more {
+	margin-top: 10px;
+}
+.map-bubble-container .read,
+.map-bubble-container .read:after {
+	font-size: 12px;
+}
 
 .santacityheader .lng-dropdown{
     padding-top: 2px;
@@ -260,7 +281,8 @@ div#navbar-collapse {
 .page-heading section.block .field + .field {
     position: absolute;
     width: 100%;
-    top: 65%;
+    bottom: 0;
+		margin-bottom: 35px;
     left: 0%;
     text-align: center;
     font-size: 52px;
