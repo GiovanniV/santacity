@@ -219,7 +219,7 @@ div#navbar-collapse {
 	font-size: 20px;
 }
 .map-bubble-container {
-	border-right: 9px solid #f3c70e;
+	border-left: 8px solid #f3c70e;
 	padding: 5px;
 }
 .map-bubble-container .read,
