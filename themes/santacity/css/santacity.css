@@ -1667,6 +1667,9 @@ span.news_page_dt p {
 .arti_date ul.right_side_date li {
     margin-right: 10px;
 }
+.owl-wrapper .owl-item {
+	padding: 10px;
+}
 .map-filter-overlay-container .filter-container {
     position: absolute;
     z-index: 1;
