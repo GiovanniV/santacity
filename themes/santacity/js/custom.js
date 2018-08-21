@@ -23,9 +23,9 @@
 				);
 				
 				// Permit
-				$('.xml-file-upload-form input[type="radio"]').on('click', function() {
+				$('.xml-file-upload-form input').on('click', function() {
 					alert(123);
-					$('.xml-file-upload-form input[type="radio"]').not(this).attr("checked", false);
+					$('.xml-file-upload-form input').not(this).attr("checked", false);
 				});
 				
 			});
