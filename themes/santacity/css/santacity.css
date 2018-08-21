@@ -34,8 +34,7 @@ body {
 	clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
 	bottom: 5px;
 }
-.region.region-page-heading .heading-image-ribbon:a
-fter {
+.region.region-page-heading .heading-image-ribbon:after {
 	content: '';
 }
 .event_in_bnr+.container {
