@@ -24,7 +24,7 @@ body {
 		-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
 		-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
 		clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-    height: 250px;
+    height: 200px;
     width: 100%;
     background: yellow;
 }
@@ -34,7 +34,8 @@ body {
 	clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
 	bottom: 5px;
 }
-.region.region-page-heading .heading-image-ribbon img:after {
+.region.region-page-heading .heading-image-ribbon:a
+fter {
 	content: '';
 }
 .event_in_bnr+.container {
