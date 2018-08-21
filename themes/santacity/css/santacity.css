@@ -1509,8 +1509,10 @@ span.calender p.year {    padding: 10px 20px;}
 }
 .back{padding:0px}
 .content-overlay-container {
-	margin-top: -11px;
+	margin-top: -20px;
 	padding-top: 100px;
+	background-size: cover;
+
 }
 .box_article_page {
 	position: relative;
