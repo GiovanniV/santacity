@@ -21,6 +21,12 @@
 						$(this).removeClass("open");
 					}
 				);
+				
+				// Permit
+				$('.xml-file-upload-form radio').on('click', function() {
+					$('.xml-file-upload-form radio').not(this).attr("checked", false);
+				});
+				
 			});
 			
 			
