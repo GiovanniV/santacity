@@ -11,7 +11,7 @@
 			/** Set Page Heading **/
 			var header_outer_height = $('header').outerHeight();
 			var heading_height = admin_toolbar_outer_height + toolbar_outer_height + header_outer_height;
-			$('.region-page-heading').css('top', heading_height + 'px');
+			// $('.region-page-heading').css('top', heading_height + 'px');
 			
 			$(document).ready(function(){
 				$(".nav li.expanded").hover(
