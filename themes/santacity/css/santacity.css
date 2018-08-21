@@ -1510,7 +1510,7 @@ span.calender p.year {    padding: 10px 20px;}
 	position: relative;
 	background: #ffff;
 	padding: 30px 29px;
-	box-shadow: 0px 0px 13px #dcdcdc;
+	box-shadow: 0px 2px 8px #dcdcdc
 }
 .top_inner_article ul {
 	padding: 0;
