@@ -944,10 +944,10 @@ form.views-exposed-form button.form-submit{
         margin-bottom:30px;
         box-shadow: 0px 2px 5px #ccc;
     }
-    .view-id-our_santa_ana .owl-slider-wrapper.owl-carousel.owl-theme .owl-wrapper-outer .owl-wrapper .owl-item {
+    .owl-slider-wrapper.owl-carousel.owl-theme .owl-wrapper-outer .owl-wrapper .owl-item {
     padding: 10px;
     }
-    .view-id-our_santa_ana .owl-slider-wrapper .owl-prev,.view-id-our_santa_ana .owl-slider-wrapper .owl-next {
+    .owl-slider-wrapper .owl-prev,.owl-slider-wrapper .owl-next {
     background: #0d2b89 !important;
     opacity:  1 !important;
     text-transform: capitalize !important;
@@ -955,7 +955,7 @@ form.views-exposed-form button.form-submit{
     letter-spacing: 1px;
     transition: all 1s ease;
     }
-    .view-id-our_santa_ana .owl-slider-wrapper .owl-next:hover,.view-id-our_santa_ana .owl-slider-wrapper .owl-prev:hover {
+    .owl-slider-wrapper .owl-next:hover,.owl-slider-wrapper .owl-prev:hover {
     background: #f3c70e !important;
     color: #000 !important;
     }
