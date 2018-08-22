@@ -98,39 +98,7 @@ function santa_preprocess_field(&$variables, $hook) {
  */
 function santa_cronapi() {
   $items = array();
-
-  $items['event_expire_job'] = array(
-    'title' => t('Event Expire'),
-    'callback' => 'event_expire_job',
-    'enabled' => true,
-    'callback arguments' => array('cronjob1'),
-    'enabled' => FALSE,
-    'tags' => array('santa'),
-    'settings' => array(
-      'example_plugin' => array(
-        'example_setting' => 'example_value',
-      ),
-    ),
-    'scheduler' => array(
-      'name' => 'crontab',
-      'crontab' => array(
-        'rules' => array('* * * * *'),
-      ),
-    ),
-    'launcher' => array(
-      'name' => 'serial',
-      'serial' => array(
-        'thread' => 'any',
-      ),
-    ),
-    'logger' => array(
-      'name' => 'cache',
-      'cache' => array(
-        'bin' => 'my_cache_bin',
-      ),
-    ),
-  );
-
+  $items['event_expire_job'] = array();
   return $items;
 }
 
