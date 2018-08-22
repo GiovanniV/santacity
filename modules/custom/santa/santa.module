@@ -114,10 +114,20 @@ function event_expire($job) {
 		$node->save();
 	}
 	 */
-	$nodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'cultural_events']);
+	
+	$eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
+  foreach ($eventNodes as $eventNode) {
+		dpm($eventNode->get('field_start_date')->getValue());
 		
-  foreach ($nodes as $node) {
-    $node->setPublished(false);
-    $node->save();
+    // $eventNode->setPublished(false);
+    // $eventNode->save();
+  }
+	
+	// New Cotent Type
+	$newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
+  foreach ($newsNodes as $newsNode) {
+		dpm($newsNode->get('field_news_date')->getValue());
+    // $newsNode->setPublished(false);
+    // $newsNode->save();
   }
 }
