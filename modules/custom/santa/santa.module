@@ -90,4 +90,34 @@ function santa_preprocess_block(&$variables) {
  */
 function santa_preprocess_field(&$variables, $hook) {
 
+
+}
+
+/**
+ * Implements hook_cronapi().
+ */
+function santa_cron() {
+  $items = array();
+  $items['event_expire'] = array();
+  return $items;
+}
+
+/**
+ * The callback for the cron job,
+ */
+function event_expire($job) {
+	/* $nids = \Drupal::entityQuery('node')->condition('type','my_custom_type')->execute();
+	$nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
+	
+	foreach ($nodes as $node) {
+		$node->setPublished(false);
+		$node->save();
+	}
+	 */
+	$nodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'cultural_events']);
+		
+  foreach ($nodes as $node) {
+    $node->setPublished(false);
+    $node->save();
+  }
 }
