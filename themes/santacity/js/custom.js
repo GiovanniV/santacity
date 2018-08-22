@@ -13,12 +13,6 @@
 			var heading_height = admin_toolbar_outer_height + toolbar_outer_height + header_outer_height;
 			// $('.region-page-heading').css('top', heading_height + 'px');
 			
-			
-				// Permit
-				$('.xml-listing-form-container input').click(function() {
-					alert(123);
-					$('.xml-listing-form-container input').not(this).attr("checked", false);
-				});
 			$(document).ready(function(){
 				$(".nav li.expanded").hover(
 					function(){
@@ -28,6 +22,11 @@
 					}
 				);
 				
+				// Permit
+				$('.xml-listing-form-container input').click(function() {
+					alert(123);
+					$('.xml-listing-form-container input').not(this).attr("checked", false);
+				});
 				
 			});
 			
