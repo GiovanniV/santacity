@@ -96,17 +96,8 @@ function santa_preprocess_field(&$variables, $hook) {
 /**
  * Implements hook_cronapi().
  */
-function santa_cronapi() {
-  $items = array();
-  $items['event_expire_job'] = array();
-  return $items;
-}
-
-/**
- * The callback for the cron job,
- */
-function event_expire_job($job) {
-	/* $nids = \Drupal::entityQuery('node')->condition('type','my_custom_type')->execute();
+function santa_cron() {
+  /* $nids = \Drupal::entityQuery('node')->condition('type','my_custom_type')->execute();
 	$nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
 	
 	foreach ($nodes as $node) {
@@ -130,4 +121,11 @@ function event_expire_job($job) {
     // $newsNode->setPublished(false);
     // $newsNode->save();
   }
+}
+
+/**
+ * The callback for the cron job,
+ */
+function event_expire_job($job) {
+	
 }
