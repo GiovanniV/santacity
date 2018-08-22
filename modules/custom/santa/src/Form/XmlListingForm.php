@@ -27,6 +27,9 @@ class XmlListingForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, $nid = NULL) {
+		$form['#attributes'] = [
+			'class' => ['xml-listing-form-container'],
+		];
 		
 		$current_user = \Drupal::currentUser();
 		$userRole = $current_user->getRoles();
