@@ -99,11 +99,18 @@ function santa_preprocess_field(&$variables, $hook) {
 function santa_cronapi() {
   $items = array();
 
-  $items['event_expire'] = array(
+  $items['event_expire_job'] = array(
     'title' => t('Event Expire'),
-    'callback' => 'event_expire',
+    'callback' => 'event_expire_job',
     'enabled' => true,
+    'callback arguments' => array('cronjob1'),
+    'enabled' => FALSE,
     'tags' => array('santa'),
+    'settings' => array(
+      'example_plugin' => array(
+        'example_setting' => 'example_value',
+      ),
+    ),
     'scheduler' => array(
       'name' => 'crontab',
       'crontab' => array(
@@ -130,7 +137,7 @@ function santa_cronapi() {
 /**
  * The callback for the cron job,
  */
-function event_expire() {
+function event_expire_job($job) {
 	/* $nids = \Drupal::entityQuery('node')->condition('type','my_custom_type')->execute();
 	$nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
 	
