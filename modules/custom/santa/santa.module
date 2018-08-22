@@ -114,7 +114,7 @@ function event_expire($job) {
 		$node->save();
 	}
 	 */
-	
+	dpm(1212);
 	$eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
   foreach ($eventNodes as $eventNode) {
 		dpm($eventNode->get('field_start_date')->getValue());
