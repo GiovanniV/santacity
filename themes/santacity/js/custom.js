@@ -15,9 +15,9 @@
 			
 			
 				// Permit
-				$('.xml-file-upload-form input').click(function() {
+				$('.xml-listing-form-container input').click(function() {
 					alert(123);
-					$('.xml-file-upload-form input').not(this).attr("checked", false);
+					$('.xml-listing-form-container input').not(this).attr("checked", false);
 				});
 			$(document).ready(function(){
 				$(".nav li.expanded").hover(
