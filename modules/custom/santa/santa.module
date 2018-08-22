@@ -97,36 +97,42 @@ function santa_preprocess_field(&$variables, $hook) {
  * Implements hook_cronapi().
  */
 function santa_cron() {
-	dpm(123);
-  /* $nids = \Drupal::entityQuery('node')->condition('type','my_custom_type')->execute();
-	$nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
-	
-	foreach ($nodes as $node) {
-		$node->setPublished(false);
-		$node->save();
-	}
-	 */
-	
+	event_expire_job();
+	news_expire_job();
+}
+
+/**
+ * The callback for the cron job,
+ */
+function event_expire_job() {
 	$eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
-  foreach ($eventNodes as $eventNode) {
-		dpm($eventNode->get('field_start_date')->getValue());
 		
-    // $eventNode->setPublished(false);
-    // $eventNode->save();
-  }
-	
-	// New Cotent Type
-	$newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
-  foreach ($newsNodes as $newsNode) {
-		dpm($newsNode->get('field_news_date')->getValue());
-    // $newsNode->setPublished(false);
-    // $newsNode->save();
+  foreach ($eventNodes as $eventNode) {
+    $eventDate = $eventNode->get('field_start_date')->getValue();
+		$eventDateTimestamp = strtotime($eventDate[0]['value']);
+		$currentTimestamp = time();
+		
+		if($eventDateTimestamp < $currentTimestamp) {
+			$eventNode->setPublished(false);
+			$eventNode->save();
+		}
   }
 }
 
 /**
  * The callback for the cron job,
  */
-function event_expire_job($job) {
-	
+function news_expire_job() {
+	$newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
+		
+  foreach ($newsNodes as $newsNode) {
+    $newsDate = $newsNode->get('field_news_date')->getValue();
+		$newsDateTimestamp = strtotime($newsDate[0]['value']);
+		$currentTimestamp = time();
+		
+		if($newsDateTimestamp < $currentTimestamp) {
+			$newsNode->setPublished(false);
+			$newsNode->save();
+		}
+  }
 }
