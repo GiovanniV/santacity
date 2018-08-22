@@ -24,7 +24,6 @@
 				
 				// Permit
 				$('.xml-listing-form-container input').click(function() {
-					alert(123);
 					$('.xml-listing-form-container input').not(this).attr("checked", false);
 				});
 				
