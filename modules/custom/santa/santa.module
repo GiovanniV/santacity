@@ -96,8 +96,19 @@ function santa_preprocess_field(&$variables, $hook) {
 /**
  * Implements hook_cronapi().
  */
-function santa_cron() {
-  /* $nids = \Drupal::entityQuery('node')->condition('type','my_custom_type')->execute();
+function santa_cronapi() {
+  $items = array();
+  $items['event_expire'] = [
+		'callback arguments' => array('event_expire'),
+	];
+  return $items;
+}
+
+/**
+ * The callback for the cron job,
+ */
+function event_expire() {
+	/* $nids = \Drupal::entityQuery('node')->condition('type','my_custom_type')->execute();
 	$nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
 	
 	foreach ($nodes as $node) {
@@ -105,7 +116,7 @@ function santa_cron() {
 		$node->save();
 	}
 	 */
-	dpm(1212);
+	
 	$eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
   foreach ($eventNodes as $eventNode) {
 		dpm($eventNode->get('field_start_date')->getValue());
@@ -118,15 +129,7 @@ function santa_cron() {
 	$newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
   foreach ($newsNodes as $newsNode) {
 		dpm($newsNode->get('field_news_date')->getValue());
-		
     // $newsNode->setPublished(false);
     // $newsNode->save();
   }
-}
-
-/**
- * The callback for the cron job,
- */
-function event_expire($job) {
-	
 }
