@@ -97,6 +97,7 @@ function santa_preprocess_field(&$variables, $hook) {
  * Implements hook_cronapi().
  */
 function santa_cron() {
+	dpm(123);
   /* $nids = \Drupal::entityQuery('node')->condition('type','my_custom_type')->execute();
 	$nodes =  \Drupal\node\Entity\Node::loadMultiple($nids);
 	
