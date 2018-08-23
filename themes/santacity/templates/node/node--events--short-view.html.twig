@@ -4,9 +4,8 @@
 	</a>
 	<div class="media-body">
 		<a href="{{ url }}">
-		{{ kint(content.field_event_time) }}
 		
-		<p>{{ content.field_event_time.value|date('h:i A') }} - {{ content.field_event_time.end_value|date('h:i A') }}</p>
+		<p>{{ content.field_event_time.start_date|date('h:i A') }} - {{ content.field_event_time.end_date|date('h:i A') }}</p>
 		</a>
 		<h4 class="media-heading">
 			<a href="{{ url }}"></a>
