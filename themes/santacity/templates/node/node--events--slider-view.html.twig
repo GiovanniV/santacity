@@ -1,0 +1,19 @@
+<div class="event-landing-main">
+<div class="img-box">
+<a href="{{ url }}">
+{{ content.field_event_image }}
+</a>
+<span class="calender">
+<p>{{ event_date[0]['value']|date('D') }}</p>
+<p>{{ event_date[0]['value']|date('M') }}.<b>{{ event_date[0]['value']|date('d') }}</b></p></span>
+</div>
+<div class="txt-box">
+<p class="media-heading"><a href{{ url }}" hreflang="en">{{ label }}</a></p>
+<p class="by-category">Category:  {{ content.field_category }}</p>
+<p class="by-category"><b>Date:</b> {{ event_date[0]['value']|date('M, d, Y') }}</p>
+<p class="by-category"><b>Time:</b> 
+{{ event_time[0]['value']|date('h:i A') }} - {{ event_time[0]['end_value']|date('h:i A') }}
+</p>
+<a href="{{ url }}" class="read" hreflang="en">Read More</a>
+</div>
+</div>
