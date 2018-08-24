@@ -1,6 +1,6 @@
 <div class="media"> 
 	<a href="{{ url }}">
-		{{ kint(content.field_start_date[0][start_date] ) }}
+		{{ kint(content.field_start_date[0]['value'][start_date] ) }}
 		<div class="media-left"><small>{{ content.field_start_date[0]['value']|date("M") }}</small><span>{{ content.field_start_date[0]['value']|date("d") }}</span></div>
 	</a>
 	<div class="media-body">
