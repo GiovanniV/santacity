@@ -92,6 +92,11 @@ function santacity_preprocess_node__events(&$variables) {
 	if($variables['node']->hasField('field_event_time')) {
 		$variables['event_time'] = $variables['node']->get('field_event_time')->getValue();
 	}
+	if($variables['node']->hasField('field_category')) {
+		$category = $variables['node']->get('field_category')->getValue();
+		kint($category);
+		
+	}
 }
 
 /**
