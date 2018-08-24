@@ -122,6 +122,9 @@ function santacity_preprocess_page(&$variables) {
 			if($node->hasField('field_event_time')) {
 				$variables['event_time'] = $node->get('field_event_time')->getValue();
 			}
+			if($node->hasField('field_category')) {
+				$variables['category'] = $node->get('field_category')->view();
+			}
 		}
 	}
 }

@@ -85,10 +85,7 @@
 							</p>
 						</span>
 						<p class="tour"><b>{{ node.label }}</b></p>
-						<p class="city-cat">Category:  {{ node.field_category }}
-						{% for key in node.field_category %}
-						<a href="">{{ key.name.value }}</a>
-						{% endfor %}
+						<p class="city-cat">Category:  {{ category }}
 						</p>
 						{% if page.social_share %}
 						<div class="pull-right">
