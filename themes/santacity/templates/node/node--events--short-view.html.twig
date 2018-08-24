@@ -1,22 +1,5 @@
 <div class="media"> 
 	<a href="{{ url }}">
 		{{ dpm(content.field_start_date) }}
-		{{ set start_date = content.field_start_date[0]['start_date']['#attributes']['datetime'] }}
-		{{ set end_date = content.field_start_date[0]['end_date']['#attributes']['datetime'] }}
 		
-		{{ set start_time = content.field_event_time[0]['start_date']['#attributes']['datetime'] }}
-		{{ set end_time = content.field_event_time[0]['end_date']['#attributes']['datetime'] }}
-		
-		<div class="media-left"><small>{{ start_date|date("M") }}</small><span>{{ start_date|date("d") }}</span></div>
-	</a>
-	<div class="media-body">
-		<a href="{{ url }}">
-		
-		<p>{{ start_time|date('h:i A') }} - {{ end_time|date('h:i A') }}</p>
-		</a>
-		<h4 class="media-heading">
-			<a href="{{ url }}"></a>
-			<a href="{{ url }}" hreflang="en">{{ label }}</a>
-		</h4>
-	</div>
 </div>
