@@ -1,5 +1,15 @@
 <div class="media"> 
 	<a href="{{ url }}">
-		{% set keys = content.field_start_date|keys %}
-		{{ kint(keys) }}
+		<div class="media-left"><small>{{ event_date[0]['value']|date("M") }}</small><span>{{ event_date[0]['value']|date("d") }}</span></div>
+	</a>
+	<div class="media-body">
+		<a href="{{ url }}">
+		
+		<p>{{ event_time[0]['value']|date('h:i A') }} - {{ event_time[0]['end_value']|date('h:i A') }}</p>
+		</a>
+		<h4 class="media-heading">
+			<a href="{{ url }}"></a>
+			<a href="{{ url }}" hreflang="en">{{ label }}</a>
+		</h4>
+	</div>
 </div>
