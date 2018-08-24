@@ -1,6 +1,6 @@
 <div class="media"> 
 	<a href="{{ url }}">
-	
+		{{ dpm(content.field_start_date) }}
 		{{ set start_date = content.field_start_date[0]['start_date']['#attributes']['datetime']; }}
 		{{ set end_date = content.field_start_date[0]['end_date']['#attributes']['datetime']; }}
 		
