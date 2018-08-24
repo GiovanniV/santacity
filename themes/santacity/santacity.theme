@@ -86,7 +86,8 @@ function santacity_preprocess_node($variables) {
  * Implements hook_preprocess_node().
  */
 function santacity_preprocess_node__events__notification($variables) {
-	dpm(1234566);
+	$node = $variables['node'];
+	kint($node->get('field_start_date')->getValue());
 }
 
 /**
