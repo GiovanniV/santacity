@@ -102,7 +102,7 @@ function santacity_preprocess_node__events(&$variables) {
 /**
  * Implements hook_preprocess_page().
  */
-function santacity_preprocess_page($variables) {
+function santacity_preprocess_page(&$variables) {
 	$node = \Drupal::routeMatch()->getParameter('node');
 
 	if ($node instanceof \Drupal\node\NodeInterface) {
