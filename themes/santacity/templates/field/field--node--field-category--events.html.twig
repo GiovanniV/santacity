@@ -52,11 +52,11 @@
     label_display == 'visually_hidden' ? 'sr-only',
   ]
 %}
-
 {% for item in items %}
-	{% if not loop.last %}
-		<span{{ item.attributes }}>{{ item.content }} - </span>
-	{% else %}
-		<span{{ item.attributes }}>{{ item.content }}</span>
-	{% endif %}
+  {% if loop.last %}
+    {% set separator = '' %}
+  {% else %}
+    {% set separator = ', ' %}
+  {% endif %}
+  {{ item.content }}{{ separator }}
 {% endfor %}
