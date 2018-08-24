@@ -1,5 +1,5 @@
 <div class="media"> 
 	<a href="{{ url }}">
-		{{ dpm(content.field_start_date) }}
-		
+		{% set keys = content.field_start_date|keys %}
+		{{ kint(keys) }}
 </div>
