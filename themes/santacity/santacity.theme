@@ -115,6 +115,13 @@ function santacity_preprocess_page($variables) {
 				$variables['socialsharing'] = $block_view;
 
 			}
+			
+			if($variables['node']->hasField('field_start_date')) {
+				$variables['event_date'] = $variables['node']->get('field_start_date')->getValue();
+			}
+			if($variables['node']->hasField('field_event_time')) {
+				$variables['event_time'] = $variables['node']->get('field_event_time')->getValue();
+			}
 		}
 	}
 }

@@ -80,8 +80,10 @@
 							
 						
 						<span class="calender">
-							<p>{{ node.field_start_date.value|date("D") }}</p>
-							<p class="year">{{ node.field_start_date.value|date("M") }}.<br><b>{{ node.field_start_date.value|date("d") }}</b></p>
+							<p>{{ event_date[0]['value']|date('D') }}</p>
+							<p>{{ event_date[0]['value']|date('M') }}.<strong>{{ event_date[0]['value']|date('d') }}</strong> - 
+							{{ event_date[0]['end_value']|date('M') }}.<strong>{{ event_date[0]['end_value']|date('d') }}</strong>
+							</p>
 						</span>
 						<p class="tour"><b>{{ node.label }}</b></p>
 						<p class="city-cat">Category: 
@@ -105,15 +107,15 @@
 						<div class="row"><h2>Event Information</h2>
 							<div class="">
 								<p><b>Date</b></p>
-								<p>{{ node.field_start_date.value|date("F d, Y") }}</p>
+								<p>{{ event_date[0]['value']|date('M, d, Y') }} - {{ event_date[0]['end_value']|date('M, d, Y') }}</p>
 							</div>
 							<div class="">
 								<p><b>Time</b></p>
-								<p>9:00am - 11:00am</p>
+								<p>{{ event_time[0]['value']|date('h:i A') }} - {{ event_time[0]['end_value']|date('h:i A') }}</p>
 							</div>
 							<div class="">
 								<p><b>Location</b></p>
-								<p>155 Someplace, Santa Ana, CA</p>
+								<p>{{ node.field_address.value }}</p>
 							</div>
 						</div>
 
