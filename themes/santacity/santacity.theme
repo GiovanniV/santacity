@@ -116,11 +116,11 @@ function santacity_preprocess_page($variables) {
 
 			}
 			
-			if($variables['node']->hasField('field_start_date')) {
-				$variables['event_date'] = $variables['node']->get('field_start_date')->getValue();
+			if($node->hasField('field_start_date')) {
+				$variables['event_date'] = $node->get('field_start_date')->getValue();
 			}
-			if($variables['node']->hasField('field_event_time')) {
-				$variables['event_time'] = $variables['node']->get('field_event_time')->getValue();
+			if($node->hasField('field_event_time')) {
+				$variables['event_time'] = $node->get('field_event_time')->getValue();
 			}
 		}
 	}
