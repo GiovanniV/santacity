@@ -68,6 +68,28 @@ function santacity_theme_suggestions_block_alter(&$suggestions, $vars, $hook) {
 
 
 /**
+ * Implements hook_preprocess_node().
+ */
+function santacity_preprocess_node($variables) {
+	$function = __FUNCTION__ . '__' . $variables['node']->getType();
+	if (function_exists($function)) {
+    $function($variables, $hook);
+  }
+	
+	$function = __FUNCTION__ . '__' . $variables['node']->getType() . '__' . $variables['view_mode'];
+	if (function_exists($function)) {
+    $function($variables, $hook);
+  } 
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function santacity_preprocess_node__events__notification($variables) {
+	dpm($variables);
+}
+
+/**
  * Implements hook_preprocess_page().
  */
 function santacity_preprocess_page($variables) {
