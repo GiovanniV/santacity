@@ -13,6 +13,7 @@
 			var heading_height = admin_toolbar_outer_height + toolbar_outer_height + header_outer_height;
 			// $('.region-page-heading').css('top', heading_height + 'px');
 			
+			$('.node-preview-container').css('margin-top', '50px');
 			$(document).ready(function(){
 				$(".nav li.expanded").hover(
 					function(){
