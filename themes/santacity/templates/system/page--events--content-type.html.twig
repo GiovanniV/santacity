@@ -77,11 +77,10 @@
 								{% endif %}
 								
 							</div>
-							
 						
 						<span class="calender">
 							<p>{{ event_date[0]['value']|date('D') }}</p>
-							<p>{{ event_date[0]['value']|date('M') }}.<strong>{{ event_date[0]['value']|date('d') }}</strong> - 
+							<p class="year">{{ event_date[0]['value']|date('M') }}.<strong>{{ event_date[0]['value']|date('d') }}</strong> - 
 							{{ event_date[0]['end_value']|date('M') }}.<strong>{{ event_date[0]['end_value']|date('d') }}</strong>
 							</p>
 						</span>
