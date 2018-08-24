@@ -94,7 +94,7 @@ function santacity_preprocess_node__events(&$variables) {
 	}
 	if($variables['node']->hasField('field_category')) {
 		$category = $variables['node']->get('field_category')->getValue();
-		kint($category);
+		//kint($category);
 		
 	}
 }
