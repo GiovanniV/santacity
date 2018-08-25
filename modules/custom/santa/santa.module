@@ -109,7 +109,7 @@ function event_expire_job() {
 		
   foreach ($eventNodes as $eventNode) {
     $eventDate = $eventNode->get('field_start_date')->getValue();
-		$eventDateTimestamp = strtotime($eventDate[0]['value']);
+		$eventDateTimestamp = strtotime($eventDate[0]['end_value']);
 		$currentTimestamp = time();
 		
 		if($eventDateTimestamp < $currentTimestamp) {
