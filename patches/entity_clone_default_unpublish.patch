@@ -1,0 +1,12 @@
+diff --git a/modules/contrib/entity_clone/src/EntityClone/Content/ContentEntityCloneBase.php b/modules/contrib/entity_clone/src/EntityClone/Content/ContentEntityCloneBase.php
+index b3b7de1f..f9c9cf24 100755
+--- a/modules/contrib/entity_clone/src/EntityClone/Content/ContentEntityCloneBase.php
++++ b/modules/contrib/entity_clone/src/EntityClone/Content/ContentEntityCloneBase.php
+@@ -73,6 +73,7 @@ public function cloneEntity(EntityInterface $entity, EntityInterface $cloned_ent
+     }
+ 
+     $this->setClonedEntityLabel($entity, $cloned_entity);
++		$cloned_entity->setPublished(false);
+     $cloned_entity->save();
+     return $cloned_entity;
+   }

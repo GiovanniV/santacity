@@ -73,6 +73,7 @@ class ContentEntityCloneBase implements EntityHandlerInterface, EntityCloneInter
     }
 
     $this->setClonedEntityLabel($entity, $cloned_entity);
+		$cloned_entity->setPublished(false);
     $cloned_entity->save();
     return $cloned_entity;
   }
