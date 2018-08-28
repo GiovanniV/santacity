@@ -112,13 +112,20 @@
 
       map.googleMap = googleMap;
 
-      google.maps.event.addListener(
-        map.googleMap,
-        'click',
-        function (e) {
+      var singleClick;
+      var timer;
+      google.maps.event.addListener(map.googleMap, 'click', function (e) {
+        // Create 500ms timeout to wait for double click.
+        singleClick = setTimeout(function () {
           map.clickCallback({lat: e.latLng.lat(), lng: e.latLng.lng()});
-        }
-      );
+        }, 500);
+        timer = Date.now();
+      });
+
+      google.maps.event.addListener(map.googleMap, 'dblclick', function (e) {
+        clearTimeout(singleClick);
+        map.doubleClickCallback({lat: e.latLng.lat(), lng: e.latLng.lng()});
+      });
 
       google.maps.event.addListener(map.googleMap, 'rightclick', function (e) {
         map.contextClickCallback({lat: e.latLng.lat(), lng: e.latLng.lng()});
@@ -217,23 +224,12 @@
       this.googleMap.fitBounds(boundaries);
     }
   };
-  GeolocationGoogleMap.prototype.setCenterByBehavior = function (centreBehavior) {
-    centreBehavior = centreBehavior || this.centreBehavior;
-
-    Drupal.geolocation.GeolocationMapBase.prototype.setCenterByBehavior.call(this, centreBehavior);
-    switch (centreBehavior) {
-      case 'preset':
-        this.addInitializedCallback(function (map) {
-          if (map.settings.google_map_settings.zoom) {
-            google.maps.event.addListenerOnce(map.googleMap, 'zoom_changed', function () {
-              if (map.settings.google_map_settings.zoom < map.googleMap.getZoom()) {
-                map.googleMap.setZoom(map.settings.google_map_settings.zoom);
-              }
-            });
-          }
-        });
-        break;
+  GeolocationGoogleMap.prototype.setZoom = function (zoom) {
+    if (typeof zoom === 'undefined') {
+      zoom = this.settings.google_map_settings.zoom;
     }
+
+    this.googleMap.setZoom(parseInt(zoom));
   };
   GeolocationGoogleMap.prototype.setCenterByCoordinates = function (coordinates, accuracy, identifier) {
     Drupal.geolocation.GeolocationMapBase.prototype.setCenterByCoordinates.call(this, coordinates, accuracy, identifier);

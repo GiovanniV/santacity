@@ -18,8 +18,6 @@
  * @name CommonMapSettings
  * @property {Object} settings
  * @property {CommonMapUpdateSettings} dynamic_map
- * @property {String} client_location.enable
- * @property {String} client_location.update_map
  * @property {Boolean} markerScrollToResult
  */
 
@@ -145,7 +143,7 @@
     }
 
     // Trigger geolocation bounds specific behavior.
-    ajaxSettings.submit = $.extend(ajaxSettings.submit, ['geolocation_common_map_bounds_changed']);
+    ajaxSettings.submit = $.extend(ajaxSettings.submit, {geolocation_common_map_dynamic_view: true});
 
     return ajaxSettings;
   };

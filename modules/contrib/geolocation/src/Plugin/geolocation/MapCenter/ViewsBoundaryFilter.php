@@ -2,7 +2,9 @@
 
 namespace Drupal\geolocation\Plugin\geolocation\MapCenter;
 
-use Drupal\views\Plugin\views\style\StylePluginBase;
+use Drupal\geolocation\MapCenterInterface;
+use Drupal\geolocation\MapCenterBase;
+use Drupal\geolocation\ViewsContextTrait;
 
 /**
  * Derive center from boundary filter.
@@ -13,43 +15,42 @@ use Drupal\views\Plugin\views\style\StylePluginBase;
  *   description = @Translation("Fit map to boundary filter."),
  * )
  */
-class ViewsBoundaryFilter extends ViewsFilterCenterBase {
+class ViewsBoundaryFilter extends MapCenterBase implements MapCenterInterface {
 
-  protected $viewsFilterPluginId = 'geolocation_filter_boundary';
+  use ViewsContextTrait;
 
   /**
    * {@inheritdoc}
    */
-  public function getAvailableMapCenterOptions(array $context) {
-    $options = parent::getAvailableMapCenterOptions($context);
+  public function getAvailableMapCenterOptions($context) {
+    $options = [];
 
-    // Preserve compatibility to v1.
-    $prefixed_options = [];
-    foreach ($options as $option_id => $option) {
-      $prefixed_options['boundary_filter_' . $option_id] = $option;
+    if ($displayHandler = self::getViewsDisplayHandler($context)) {
+      /** @var \Drupal\views\Plugin\views\filter\FilterPluginBase $filter */
+      foreach ($displayHandler->getHandlers('filter') as $filter_id => $filter) {
+        if ($filter->getPluginId() == 'geolocation_filter_boundary') {
+
+          // Preserve compatibility to v1.
+          $options['boundary_filter_' . $filter_id] = $this->t('Boundary filter') . ' - ' . $filter->adminLabel();
+        }
+      }
     }
 
-    return $prefixed_options;
+    return $options;
   }
 
   /**
    * {@inheritdoc}
    */
-  public function getMapCenter($center_option_id, array $center_option_settings, array $context = []) {
-    $center_definition = parent::getMapCenter($center_option_id, $center_option_settings, $context);
+  public function alterMap(array $map, $center_option_id, array $center_option_settings, $context = NULL) {
+    $map = parent::alterMap($map, $center_option_id, $center_option_settings, $context);
 
-    if (
-      empty($context['views_style'])
-      || !is_a($context['views_style'], StylePluginBase::class)
-    ) {
-      return $center_definition;
+    if (!($displayHandler = self::getViewsDisplayHandler($context))) {
+      return $map;
     }
 
-    /** @var \Drupal\views\Plugin\views\style\StylePluginBase $views_style */
-    $views_style = $context['views_style'];
-
     /** @var \Drupal\geolocation\Plugin\views\filter\ProximityFilter $handler */
-    $handler = $views_style->displayHandler->getHandler('filter', $center_option_id);
+    $handler = $displayHandler->getHandler('filter', substr($center_option_id, 16));
     if (
       isset($handler->value['lat_north_east'])
       && $handler->value['lat_north_east'] !== ""
@@ -60,19 +61,30 @@ class ViewsBoundaryFilter extends ViewsFilterCenterBase {
       && isset($handler->value['lng_south_west'])
       && $handler->value['lng_south_west'] !== ""
     ) {
-      $center_definition = array_replace_recursive(
-        $center_definition,
-        [
-          'lat_north_east' => (float) $handler->value['lat_north_east'],
-          'lng_north_east' => (float) $handler->value['lng_north_east'],
-          'lat_south_west' => (float) $handler->value['lat_south_west'],
-          'lng_south_west' => (float) $handler->value['lng_south_west'],
-          'behavior' => 'fitboundaries',
-        ]
-      );
+      $map['#attached'] = array_merge_recursive($map['#attached'], [
+        'library' => [
+          'geolocation/map_center.viewsBoundaryFilter',
+        ],
+        'drupalSettings' => [
+          'geolocation' => [
+            'maps' => [
+              $map['#id'] => [
+                'map_center' => [
+                  'views_boundary_filter' => [
+                    'latNorthEast' => (float) $handler->value['lat_north_east'],
+                    'lngNorthEast' => (float) $handler->value['lng_north_east'],
+                    'latSouthWest' => (float) $handler->value['lat_south_west'],
+                    'lngSouthWest' => (float) $handler->value['lng_south_west'],
+                  ],
+                ],
+              ],
+            ],
+          ],
+        ],
+      ]);
     }
 
-    return $center_definition;
+    return $map;
   }
 
 }

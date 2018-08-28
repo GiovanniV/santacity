@@ -46,21 +46,32 @@
     /** @type {Map} */
     var leafletMap = L.map(this.container.get(0), {
       center: [this.lat, this.lng],
-      zoom: this.settings.leaflet_settings.zoom
+      zoom: this.settings.leaflet_settings.zoom,
+      zoomControl: false
     });
 
     var markerLayer = L.layerGroup().addTo(leafletMap);
 
-    L.tileLayer('https://b.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    // Set the tile layer.
+    var tileLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(leafletMap);
 
     this.leafletMap = leafletMap;
     this.markerLayer = markerLayer;
+    this.tileLayer = tileLayer;
 
     this.addPopulatedCallback(function(map) {
+      var singleClick;
       map.leafletMap.on('click', /** @param {LeafletMouseEvent} e */ function(e) {
-        map.clickCallback({lat: e.latlng.lat, lng: e.latlng.lng});
+        singleClick = setTimeout(function () {
+          map.clickCallback({lat: e.latlng.lat, lng: e.latlng.lng});
+        }, 500);
+      });
+
+      map.leafletMap.on('dblclick', /** @param {LeafletMouseEvent} e */ function (e) {
+        clearTimeout(singleClick);
+        map.doubleClickCallback({lat: e.latlng.lat, lng: e.latlng.lng});
       });
 
       map.leafletMap.on('contextmenu', /** @param {LeafletMouseEvent} e */ function(e) {
@@ -73,9 +84,55 @@
   }
   GeolocationLeafletMap.prototype = Object.create(Drupal.geolocation.GeolocationMapBase.prototype);
   GeolocationLeafletMap.prototype.constructor = GeolocationLeafletMap;
+  GeolocationLeafletMap.prototype.setZoom = function (zoom) {
+    if (typeof zoom === 'undefined') {
+      zoom = this.settings.leaflet_settings.zoom;
+    }
+    zoom = parseInt(zoom);
+    this.leafletMap.setZoom(zoom);
+  };
   GeolocationLeafletMap.prototype.setCenterByCoordinates = function (coordinates, accuracy, identifier) {
     Drupal.geolocation.GeolocationMapBase.prototype.setCenterByCoordinates.call(this, coordinates, accuracy, identifier);
-    this.leafletMap.panTo(coordinates);
+
+    if (typeof accuracy === 'undefined') {
+      this.leafletMap.panTo(coordinates);
+      return;
+    }
+
+    var circle = this.addAccuracyIndicatorCircle(coordinates, accuracy);
+
+    this.leafletMap.fitBounds(circle.getBounds());
+
+    setInterval(fadeCityCircles, 300);
+
+    function fadeCityCircles() {
+      var fillOpacity = circle.options.fillOpacity;
+      fillOpacity -= 0.03;
+
+      var opacity = circle.options.opacity;
+      opacity -= 0.06;
+
+      if (
+          opacity > 0
+          && fillOpacity > 0
+      ) {
+        circle.setStyle({
+          fillOpacity: fillOpacity,
+          stroke: opacity
+        });
+      }
+      else {
+        circle.remove()
+      }
+    }
+  };
+  GeolocationLeafletMap.prototype.addAccuracyIndicatorCircle = function (location, accuracy) {
+    return L.circle(location, accuracy, {
+      color: '#4285F4',
+      opacity: 0.3,
+      fillColor: '#4285F4',
+      fillOpacity: 0.15
+    }).addTo(this.leafletMap);
   };
   GeolocationLeafletMap.prototype.setMapMarker = function (markerSettings) {
     if (typeof markerSettings.setMarker !== 'undefined') {
@@ -95,6 +152,13 @@
 
     currentMarker.locationWrapper = markerSettings.locationWrapper;
 
+    if (typeof markerSettings.label === 'string') {
+      currentMarker.bindTooltip(markerSettings.label, {
+        permanent: true,
+        direction: 'top'
+      });
+    }
+
     Drupal.geolocation.GeolocationMapBase.prototype.setMapMarker.call(this, currentMarker);
 
     return currentMarker;
@@ -113,6 +177,18 @@
     var group = new L.featureGroup(locations);
 
     this.leafletMap.fitBounds(group.getBounds());
+  };
+  GeolocationLeafletMap.prototype.addControl = function (element) {
+    (new (L.Control.extend({
+      options: {
+        position: typeof element.dataset.controlPosition === 'undefined' ? 'topleft' : element.dataset.controlPosition
+      },
+      onAdd: function(map) {
+        element.style.display = 'block';
+        L.DomEvent.disableClickPropagation(element);
+        return element;
+      }
+    }))).addTo(this.leafletMap);
   };
 
   Drupal.geolocation.GeolocationLeafletMap = GeolocationLeafletMap;

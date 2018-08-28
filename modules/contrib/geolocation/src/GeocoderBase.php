@@ -3,7 +3,6 @@
 namespace Drupal\geolocation;
 
 use Drupal\Core\Plugin\PluginBase;
-use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Class GeocoderBase.
@@ -68,29 +67,38 @@ abstract class GeocoderBase extends PluginBase implements GeocoderInterface {
   /**
    * {@inheritdoc}
    */
-  public function attachments($input_id) {
-    return [];
-  }
-
-  /**
-   * {@inheritdoc}
-   */
   public function formAttachGeocoder(array &$render_array, $element_name) {
-    return NULL;
-  }
+    $settings = $this->getSettings();
 
-  /**
-   * {@inheritdoc}
-   */
-  public function formValidateInput(FormStateInterface $form_state) {
-    return TRUE;
-  }
-
-  /**
-   * {@inheritdoc}
-   */
-  public function formProcessInput(array &$input, $element_name) {
-    return TRUE;
+    $render_array['geolocation_geocoder_address'] = [
+      '#type' => 'search',
+      '#title' => $settings['label'] ?: $this->t('Address'),
+      '#placeholder' => $settings['label'] ?: $this->t('Address'),
+      '#description' => $settings['description'] ?: $this->t('Enter an address to retrieve location.'),
+      '#description_display' => 'after',
+      '#maxlength' => 256,
+      '#size' => 25,
+      '#attributes' => [
+        'class' => [
+          'geolocation-geocoder-address',
+          'form-autocomplete',
+        ],
+        'data-source-identifier' => $element_name,
+      ],
+      '#attached' => [
+        'drupalSettings' => [
+          'geolocation' => [
+            'geocoder' => [
+              $this->getPluginId() => [
+                'inputIds' => [
+                  $element_name,
+                ],
+              ],
+            ],
+          ],
+        ],
+      ],
+    ];
   }
 
   /**

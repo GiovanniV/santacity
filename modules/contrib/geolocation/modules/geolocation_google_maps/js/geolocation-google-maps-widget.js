@@ -17,7 +17,7 @@
    */
   Drupal.behaviors.geolocationGoogleMapsWidget = {
     attach: function (context, drupalSettings) {
-      $('.geolocation-map-widget', context).each(function (index, item) {
+      $('.geolocation-map-widget', context).once('geolocation-google-maps-widget-processed').each(function (index, item) {
         var widgetId = $(item).attr('id').toString();
         var widget = Drupal.geolocation.widget.getWidgetById(widgetId);
         if (!widget) {
@@ -30,12 +30,10 @@
           }
 
           if (identifier === 'google_control_locate' || identifier === 'google_control_geocoder') {
-            var delta = widget.getNextDelta();
-            if (delta || delta === 0) {
-              widget.addInput(location);
-              widget.addMarker(location, delta);
-              widget.locationAddedCallback(location);
-            }
+            var delta = widget.addInput(location);
+            widget.addMarker(location, delta);
+            widget.locationAddedCallback(location);
+            widget.map.fitMapToMarkers();
           }
         });
       });

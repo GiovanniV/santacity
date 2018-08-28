@@ -1,0 +1,451 @@
+diff --git a/config/schema/geolocation.schema.yml b/config/schema/geolocation.schema.yml
+index 8884f7e..9f8cf87 100644
+--- a/config/schema/geolocation.schema.yml
++++ b/config/schema/geolocation.schema.yml
+@@ -268,6 +268,18 @@ field.widget.settings.geolocation_googlegeocoder:
+   type: mapping
+   label: 'Geolocation Google Geocoder Widget settings'
+   mapping:
++    default_longitude:
++      type: string
++      label: 'Default Longitude'
++    default_latitude:
++      type: string
++      label: 'Default Latitude'
++    auto_client_location:
++      type: string
++      label: 'Automatically use client location'
++    auto_client_location_marker:
++      type: string
++      label: 'Automatically set marker as well'
+     populate_address_field:
+       type: string
+       label: 'Store address'
+diff --git a/css/geolocation-widget-googlegeocoder.css b/css/geolocation-widget-googlegeocoder.css
+index e6f0c91..f0d51fc 100644
+--- a/css/geolocation-widget-googlegeocoder.css
++++ b/css/geolocation-widget-googlegeocoder.css
+@@ -72,16 +72,16 @@
+   -moz-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease;
+   transition: all 0.5s ease;
+-  text-align: right;
+-  margin-left: 10%;
+   width: 40%;
++  max-width: 350px;
+   border-radius: 0 0 2px 2px;
+-  padding: 0 2%;
++  padding: 0 1em;
+   top: -20px;
+   color: rgb(255,255,255);
+ }
+ .geocode-controls-wrapper .geolocation-map-indicator.has-location {
+   top: 0;
++  padding-top: 2px;
+   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+ }
+ 
+diff --git a/js/geolocation-geocoder.js b/js/geolocation-geocoder.js
+index 752fba0..f96fbd0 100644
+--- a/js/geolocation-geocoder.js
++++ b/js/geolocation-geocoder.js
+@@ -42,16 +42,9 @@
+       .append($('<button class="submit" />'))
+       // Create clear button
+       .append($('<button class="clear" />'))
+-      // Create clear button
++      // Create indicator
+       .append($('<div class="geolocation-map-indicator" />'));
+ 
+-    // Add the default indicator if the values aren't blank.
+-    if (map.lat !== '' && map.lng !== '') {
+-      map.controls.children('.geolocation-map-indicator')
+-        .addClass('has-location')
+-        .text(map.lat + ', ' + map.lng);
+-    }
+-
+     map.googleMap.controls[google.maps.ControlPosition.TOP_LEFT].push(map.controls.get(0));
+ 
+     map.controls.children('input.input').first().autocomplete({
+@@ -74,7 +67,7 @@
+         // Set the map viewport.
+         map.googleMap.fitBounds(ui.item.address.geometry.viewport);
+         // Set the map marker.
+-        Drupal.geolocation.setMapMarker(ui.item.address.geometry.location, map);
++        Drupal.geolocation.geocoder.setMapMarker(ui.item.address.geometry.location, map);
+         Drupal.geolocation.geocoder.resultCallback(ui.item.address);
+       }
+     });
+@@ -85,7 +78,7 @@
+         if (status === google.maps.GeocoderStatus.OK) {
+           map.googleMap.fitBounds(results[0].geometry.viewport);
+           // Set the map marker.
+-          Drupal.geolocation.setMapMarker(results[0].geometry.location, map);
++          Drupal.geolocation.geocoder.setMapMarker(results[0].geometry.location, map);
+           Drupal.geolocation.geocoder.resultCallback(results[0]);
+         }
+         else {
+@@ -164,4 +157,18 @@
+     });
+   };
+ 
++  /**
++   * Extend geolocation core setMapMarker to also add text to indicator.
++   *
++   * @param {Object} latLng - A location (latLng) object from google maps API.
++   * @param {Object} map - The settings object that contains all of the necessary metadata for this map.
++   */
++  Drupal.geolocation.geocoder.setMapMarker = function (latLng, map) {
++    Drupal.geolocation.setMapMarker(latLng, map);
++    // Add a visual indicator.
++    $(map.controls).children('.geolocation-map-indicator')
++      .text(Drupal.t('Latitude') + ': ' + latLng.lat() + ' ' + Drupal.t('Longitude') + ': ' + latLng.lng())
++      .addClass('has-location');
++  };
++
+ })(jQuery, Drupal, _);
+diff --git a/js/geolocation-widget-googlegeocoder.js b/js/geolocation-widget-googlegeocoder.js
+index 78b6361..cd1bb90 100644
+--- a/js/geolocation-widget-googlegeocoder.js
++++ b/js/geolocation-widget-googlegeocoder.js
+@@ -4,9 +4,17 @@
+  */
+ 
+ /**
+- * @param {Object} drupalSettings.geolocation.widgetSettings
+- * @param {String} drupalSettings.geolocation.widgetSettings.addressFieldTarget
++ * @name GeocoderWidgetSettings
++ * @property {String} addressFieldTarget
++ * @property {String} autoClientLocation
++ * @property {String} autoClientLocationMarker
++ * @property {String} locationSet
+  */
++
++/**
++ * @param {GeocoderWidgetSettings[]} drupalSettings.geolocation.widgetSettings
++ */
++
+ (function ($, Drupal, drupalSettings) {
+   'use strict';
+ 
+@@ -29,7 +37,7 @@
+   Drupal.behaviors.geolocationGeocoderWidget = {
+     attach: function (context, settings) {
+       // Ensure iterables.
+-      settings.geolocation = settings.geolocation || {widgetMaps: []};
++      settings.geolocation = settings.geolocation || {widgetMaps: [], widgetSettings: []};
+       // Make sure the lazy loader is available.
+       if (typeof Drupal.geolocation.loadGoogle === 'function') {
+         // First load the library from google.
+@@ -42,34 +50,6 @@
+   };
+ 
+   /**
+-   * Adds the click listeners to the map.
+-   *
+-   * @param {object} map - The current map object.
+-   */
+-  Drupal.geolocation.geocoderWidget.addClickListener = function (map) {
+-    // Used for a single click timeout.
+-    var singleClick;
+-
+-    /**
+-     * Add the click listener.
+-     *
+-     * @param {{latLng:object}} e
+-     */
+-    google.maps.event.addListener(map.googleMap, 'click', function (e) {
+-      // Create 500ms timeout to wait for double click.
+-      singleClick = setTimeout(function () {
+-        Drupal.geolocation.geocoderWidget.setHiddenInputFields(e.latLng, map);
+-        Drupal.geolocation.setMapMarker(e.latLng, map);
+-      }, 500);
+-    });
+-
+-    // Add a doubleclick listener.
+-    google.maps.event.addListener(map.googleMap, 'dblclick', function (e) {
+-      clearTimeout(singleClick);
+-    });
+-  };
+-
+-  /**
+    * Runs after the google maps api is available
+    *
+    * @param {object} maps - The google map object.
+@@ -78,6 +58,9 @@
+   function initialize(maps, context) {
+     // Process drupalSettings for every Google map present on the current page.
+     $.each(maps, function (widget_id, map) {
++      if (typeof (drupalSettings.geolocation.widgetSettings[widget_id]) === 'undefined') {
++        drupalSettings.geolocation.widgetSettings[widget_id] = [];
++      }
+ 
+       // Get the container object.
+       map.container = $('#' + map.id, context).first();
+@@ -90,6 +73,28 @@
+         // Add any missing settings.
+         map.settings = $.extend(Drupal.geolocation.defaultSettings(), map.settings);
+ 
++        // If the browser supports W3C Geolocation API.
++        if (typeof (drupalSettings.geolocation.widgetSettings[widget_id].autoClientLocation) != 'undefined') {
++          if (
++            drupalSettings.geolocation.widgetSettings[widget_id].autoClientLocation
++            && navigator.geolocation
++            && !drupalSettings.geolocation.widgetSettings[widget_id].locationSet
++          ) {
++            navigator.geolocation.getCurrentPosition(function (position) {
++              map.googleMap.setCenter({
++                lat: position.coords.latitude,
++                lng: position.coords.longitude
++              });
++
++              if (typeof (drupalSettings.geolocation.widgetSettings[widget_id].autoClientLocationMarker) != 'undefined') {
++                if (drupalSettings.geolocation.widgetSettings[widget_id].autoClientLocationMarker) {
++                  Drupal.geolocation.geocoder.setMapMarker(new google.maps.LatLng(position.coords.latitude, position.coords.longitude), map);
++                }
++              }
++            });
++          }
++        }
++
+         // Set the lat / lng if not already set.
+         if (map.lat === 0 || map.lng === 0) {
+           map.lat = $('.canvas-' + map.id + ' .geolocation-hidden-lat').attr('value');
+@@ -102,11 +107,17 @@
+         // Add the geocoder to the map.
+         Drupal.geolocation.geocoder.add(map);
+ 
++        if (typeof (drupalSettings.geolocation.widgetSettings[widget_id].locationSet) != 'undefined') {
++          if (drupalSettings.geolocation.widgetSettings[widget_id].locationSet) {
++            Drupal.geolocation.geocoder.setMapMarker(new google.maps.LatLng(map.lat, map.lng), map);
++          }
++        }
++
+         Drupal.geolocation.geocoder.addResultCallback(function (address) {
+           Drupal.geolocation.geocoderWidget.setHiddenInputFields(address.geometry.location, map);
+         });
+ 
+-        if (typeof drupalSettings.geolocation.widgetSettings.addressFieldTarget !== 'undefined') {
++        if (typeof drupalSettings.geolocation.widgetSettings[widget_id].addressFieldTarget !== 'undefined') {
+           var targetField = drupalSettings.geolocation.widgetSettings.addressFieldTarget;
+ 
+           Drupal.geolocation.geocoder.addResultCallback(function (address) {
+@@ -203,6 +214,35 @@
+   }
+ 
+   /**
++   * Adds the click listeners to the map.
++   *
++   * @param {object} map - The current map object.
++   */
++  Drupal.geolocation.geocoderWidget.addClickListener = function (map) {
++    // Used for a single click timeout.
++    var singleClick;
++
++    /**
++     * Add the click listener.
++     *
++     * @param {{latLng:object}} e
++     */
++    google.maps.event.addListener(map.googleMap, 'click', function (e) {
++      // Create 500ms timeout to wait for double click.
++      singleClick = setTimeout(function () {
++        Drupal.geolocation.geocoderWidget.setHiddenInputFields(e.latLng, map);
++        Drupal.geolocation.geocoder.setMapMarker(e.latLng, map);
++      }, 500);
++    });
++
++    // Add a doubleclick listener.
++    google.maps.event.addListener(map.googleMap, 'dblclick', function (e) {
++      clearTimeout(singleClick);
++    });
++  };
++
++
++  /**
+    * Set the latitude and longitude values to the input fields
+    *
+    * @param {object} latLng - A location (latLng) object from google maps API.
+diff --git a/js/geolocation.js b/js/geolocation.js
+index e5027c4..b30e8ef 100644
+--- a/js/geolocation.js
++++ b/js/geolocation.js
+@@ -279,11 +279,6 @@
+         }
+       }
+     }
+-
+-    // Add a visual indicator.
+-    $(map.controls).children('.geolocation-map-indicator')
+-      .text(latLng.lat() + ', ' + latLng.lng())
+-      .addClass('has-location');
+   };
+ 
+ })(jQuery, _, Drupal, drupalSettings);
+diff --git a/src/Plugin/Field/FieldWidget/GeolocationGooglegeocoderWidget.php b/src/Plugin/Field/FieldWidget/GeolocationGooglegeocoderWidget.php
+index 17736bc..3b7d187 100644
+--- a/src/Plugin/Field/FieldWidget/GeolocationGooglegeocoderWidget.php
++++ b/src/Plugin/Field/FieldWidget/GeolocationGooglegeocoderWidget.php
+@@ -40,8 +40,12 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
+    */
+   public static function defaultSettings() {
+     $settings = [
+-      'populate_address_field' => NULL,
++      'populate_address_field' => FALSE,
+       'target_address_field' => NULL,
++      'default_longitude' => NULL,
++      'default_latitude' => NULL,
++      'auto_client_location' => FALSE,
++      'auto_client_location_marker' => FALSE,
+     ];
+     $settings += parent::defaultSettings();
+     $settings += self::getGoogleMapDefaultSettings();
+@@ -56,7 +60,35 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
+     $settings = $this->getSettings();
+     $element = [];
+ 
+-    $element += $this->getGoogleMapsSettingsForm($settings);
++    $element['default_longitude'] = [
++      '#type' => 'textfield',
++      '#title' => $this->t('Default Longitude'),
++      '#description' => $this->t('The default center point, before a value is set.'),
++      '#default_value' => $settings['default_longitude'],
++    ];
++
++    $element['default_latitude'] = [
++      '#type' => 'textfield',
++      '#title' => $this->t('Default Latitude'),
++      '#description' => $this->t('The default center point, before a value is set.'),
++      '#default_value' => $settings['default_latitude'],
++    ];
++
++    $element['auto_client_location'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Automatically use client location, when no value is set'),
++      '#default_value' => $settings['auto_client_location'],
++    ];
++    $element['auto_client_location_marker'] = [
++      '#type' => 'checkbox',
++      '#title' => $this->t('Automatically set marker to client location as well'),
++      '#default_value' => $settings['auto_client_location_marker'],
++      '#states' => [
++        'visible' => [
++          ':input[name="fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings][auto_client_location]"]' => ['checked' => TRUE],
++        ],
++      ],
++    ];
+ 
+     /** @var \Drupal\Core\Entity\EntityFieldManager $field_manager */
+     $field_manager = \Drupal::service('entity_field.manager');
+@@ -71,29 +103,28 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
+       }
+     }
+ 
+-    if (empty($address_fields)) {
+-      return $element;
++    if (!empty($address_fields)) {
++      $element['populate_address_field'] = [
++        '#type' => 'checkbox',
++        '#title' => $this->t('Store retrieved address data in address field?'),
++        '#default_value' => $settings['populate_address_field'],
++      ];
++
++      $element['target_address_field'] = [
++        '#type' => 'select',
++        '#title' => $this->t('Select target field to append address data.'),
++        '#description' => $this->t('Only fields of type "address" with a cardinality of 1 are available.'),
++        '#options' => $address_fields,
++        '#default_value' => $settings['target_address_field'],
++        '#states' => [
++          'visible' => [
++            ':input[name="fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings][populate_address_field]"]' => ['checked' => TRUE],
++          ],
++        ],
++      ];
+     }
+ 
+-    $element['populate_address_field'] = [
+-      '#type' => 'checkbox',
+-      '#title' => $this->t('Store retrieved address data in address field?'),
+-      '#default_value' => $settings['populate_address_field'],
+-    ];
+-
+-    $element['target_address_field'] = [
+-      '#type' => 'select',
+-      '#title' => $this->t('Select target field to append address data.'),
+-      '#description' => $this->t('Only fields of type "address" with a cardinality of 1 are available.'),
+-      '#options' => $address_fields,
+-      '#default_value' => $settings['target_address_field'],
+-      '#states' => [
+-        // Only show this field when the 'toggle_me' checkbox is enabled.
+-        'visible' => [
+-          ':input[name="fields[' . $this->fieldDefinition->getName() . '][settings_edit_form][settings][populate_address_field]"]' => ['checked' => TRUE],
+-        ],
+-      ],
+-    ];
++    $element += $this->getGoogleMapsSettingsForm($settings);
+ 
+     return $element;
+   }
+@@ -105,12 +136,24 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
+     $summary = [];
+     $settings = $this->getSettings();
+ 
+-    $summary = array_merge($summary, $this->getGoogleMapsSettingsSummary($settings));
++    $summary[] = t('Default center longitude @default_longitude and latitude @default_latitude', [
++      '@default_longitude' => $settings['default_longitude'],
++      '@default_latitude' => $settings['default_latitude'],
++    ]);
++
++    if (!empty($settings['auto_client_location'])) {
++      $summary[] = t('Will use client location automatically by default');
++      if (!empty($settings['auto_client_location_marker'])) {
++        $summary[] = t('Will set client location marker automatically by default');
++      }
++    }
+ 
+     if (!empty($settings['populate_address_field'])) {
+-      $summary[] = t('Geocoded address will be stored in @field', array('@field' => $settings['target_address_field']));
++      $summary[] = t('Geocoded address will be stored in @field', ['@field' => $settings['target_address_field']]);
+     }
+ 
++    $summary = array_merge($summary, $this->getGoogleMapsSettingsSummary($settings));
++
+     return $summary;
+   }
+ 
+@@ -146,8 +189,8 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
+     $lng = $items[$delta]->lng;
+ 
+     // Get the default values for existing field.
+-    $lat_default_value = isset($lat) ? $lat : NULL;
+-    $lng_default_value = isset($lng) ? $lng : NULL;
++    $lat_default_value = isset($lat) ? $lat : $settings['default_latitude'];
++    $lng_default_value = isset($lng) ? $lng : $settings['default_longitude'];
+ 
+     // Hidden lat,lng input fields.
+     $element['lat'] = [
+@@ -176,7 +219,13 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
+         'library' => ['geolocation/geolocation.widgets.googlegeocoder'],
+         'drupalSettings' => [
+           'geolocation' => [
+-            'widgetSettings' => [],
++            'widgetSettings' => [
++              $canvas_id => [
++                'autoClientLocation' => $settings['auto_client_location'] ? TRUE : FALSE,
++                'autoClientLocationMarker' => $settings['auto_client_location_marker'] ? TRUE : FALSE,
++                'locationSet' => (!empty($lat) && !empty($lng)),
++              ],
++            ],
+             'widgetMaps' => [
+               $canvas_id => [
+                 'id' => $canvas_id,
+@@ -192,7 +241,7 @@ class GeolocationGooglegeocoderWidget extends WidgetBase {
+       ],
+     ];
+     if ($settings['populate_address_field']) {
+-      $element['map_canvas']['#attached']['drupalSettings']['geolocation']['widgetSettings']['addressFieldTarget'] = $settings['target_address_field'];
++      $element['map_canvas']['#attached']['drupalSettings']['geolocation']['widgetSettings'][$canvas_id]['addressFieldTarget'] = $settings['target_address_field'];
+ 
+       foreach ([
+         'country_code',

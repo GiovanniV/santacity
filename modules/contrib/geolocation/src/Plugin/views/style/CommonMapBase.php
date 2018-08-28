@@ -124,7 +124,7 @@ class CommonMapBase extends StylePluginBase {
   public function render() {
 
     if (empty($this->options['geolocation_field'])) {
-      \Drupal::messenger()->addMessage("The geolocation common map ' . $this->view->id() . ' views style was called without a geolocation field defined in the views style settings.", 'error');
+      \Drupal::messenger()->addMessage('The geolocation common map ' . $this->view->id() . ' views style was called without a geolocation field defined in the views style settings.', 'error');
       return [];
     }
 
@@ -177,7 +177,6 @@ class CommonMapBase extends StylePluginBase {
      * Dynamic map handling.
      */
     if (!empty($this->options['dynamic_map']['enabled'])) {
-
       if (
         !empty($this->options['dynamic_map']['update_target'])
         && $this->view->displayHandlers->has($this->options['dynamic_map']['update_target'])
@@ -194,7 +193,6 @@ class CommonMapBase extends StylePluginBase {
         'views_refresh_delay' => $this->options['dynamic_map']['views_refresh_delay'],
         'update_view_id' => $this->view->id(),
         'update_view_display_id' => $update_view_display_id,
-        'enable_refresh_event' => TRUE,
       ];
 
       if (substr($this->options['dynamic_map']['update_handler'], 0, strlen('boundary_filter_')) === 'boundary_filter_') {
@@ -219,91 +217,22 @@ class CommonMapBase extends StylePluginBase {
       }
     }
 
-    $centre = [];
+    $build = $this->mapCenterManager->alterMap($build, $this->options['centre'], $this);
 
-    // Maps will not load without any centre defined.
-    if (!is_array($this->options['centre'])) {
-      return $build;
+    if ($this->view->getRequest()->get('geolocation_common_map_dynamic_view')) {
+      if (empty($build['#attributes'])) {
+        $build['#attributes'] = [];
+      }
+      $build['#attributes'] = array_replace_recursive($build['#attributes'], [
+        'data-preserve-map-center' => TRUE,
+      ]);
     }
 
-    /*
-     * Centre handling.
-     */
-    foreach ($this->options['centre'] as $option_id => $option) {
-      // Ignore if not enabled.
-      if (empty($option['enable'])) {
-        continue;
-      }
-
-      // Compatibility to v1.
-      if (empty($option['map_center_id'])) {
-        $option['map_center_id'] = $option_id;
-      }
-
-      // Failsafe.
-      if (!$this->mapCenterManager->hasDefinition($option['map_center_id'])) {
-        $option['map_center_id'] = $option_id = 'fit_bounds';
-      }
-
-      /** @var \Drupal\geolocation\MapCenterInterface $map_center_plugin */
-      $map_center_plugin = $this->mapCenterManager->createInstance($option['map_center_id']);
-      $current_map_center = $map_center_plugin->getMapCenter($option_id, empty($option['settings']) ? [] : $option['settings'], ['views_style' => $this]);
-
-      if (
-        isset($current_map_center['behavior'])
-        && !isset($centre['behavior'])
-      ) {
-        $centre['behavior'] = $current_map_center['behavior'];
-      }
-
-      if (
-        (
-          !isset($centre['lat'])
-          && !isset($centre['lng'])
-        )
-        ||
-        (
-          !isset($centre['lat_north_east'])
-          && !isset($centre['lng_north_east'])
-          && !isset($centre['lat_south_west'])
-          && !isset($centre['lng_south_west'])
-        )
-      ) {
-        if (
-          isset($current_map_center['lat'])
-          && isset($current_map_center['lng'])
-        ) {
-          $centre['lat'] = $current_map_center['lat'];
-          $centre['lng'] = $current_map_center['lng'];
-        }
-        // Break if center bounds are already set.
-        elseif (
-          isset($centre['lat_north_east'])
-          && isset($centre['lng_north_east'])
-          && isset($centre['lat_south_west'])
-          && isset($centre['lng_south_west'])
-        ) {
-          $centre['lat_north_east'] = $current_map_center['lat_north_east'];
-          $centre['lng_north_east'] = $current_map_center['lng_north_east'];
-          $centre['lat_south_west'] = $current_map_center['lat_south_west'];
-          $centre['lng_south_west'] = $current_map_center['lng_south_west'];
-        }
-      }
+    if ($this->mapProviderManager->hasDefinition($this->options['map_provider_id'])) {
+      $build = $this->mapProviderManager
+        ->createInstance($this->options['map_provider_id'], $this->options['map_provider_settings'])
+        ->alterCommonMap($build, $this->options['map_provider_settings'], ['view' => $this]);
     }
-
-    if (!empty($centre)) {
-      $build['#centre'] = $centre ?: ['lat' => 0, 'lng' => 0];
-    }
-
-    if ($this->view->getRequest()->get('geolocation_common_map_bounds_changed')) {
-      $build['#centre'] = [
-        'behavior' => 'preserve',
-      ];
-    }
-
-    $build = $this->mapProviderManager
-      ->createInstance($this->options['map_provider_id'], $this->options['map_provider_settings'])
-      ->alterCommonMap($build, $this->options['map_provider_settings'], ['view' => $this]);
 
     return $build;
   }
@@ -364,6 +293,7 @@ class CommonMapBase extends StylePluginBase {
     }
     elseif (!empty($this->options['marker_icon_path'])) {
       $icon_token_uri = $this->viewsTokenReplace($this->options['marker_icon_path'], $this->rowTokens[$row->index]);
+      $icon_token_uri = preg_replace('/\s+/', '', $icon_token_uri);
       $icon_url = file_url_transform_relative(file_create_url($icon_token_uri));
     }
 
@@ -635,7 +565,7 @@ class CommonMapBase extends StylePluginBase {
     /*
      * Centre handling.
      */
-    $form['centre'] = $this->mapCenterManager->getCenterOptionsForm((array) $this->options['centre'], ['views_style' => $this]);
+    $form['centre'] = $this->mapCenterManager->getCenterOptionsForm((array) $this->options['centre'], $this);
 
     /*
      * Advanced settings

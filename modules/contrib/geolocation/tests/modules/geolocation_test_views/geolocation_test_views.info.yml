@@ -1,19 +1,13 @@
-# core: '8.x'
+core: '8.x'
 name: 'Geolocation Views Test'
 type: module
 description: 'Support module for Geolocation Views tests'
 package: Testing
 dependencies:
-  - geolocation
-  - geolocation_google_maps
-  - geolocation_leaflet
-  - views
-  - node
-  - field
+  - geolocation:geolocation
+  - geolocation:geolocation_google_maps
+  - geolocation:geolocation_leaflet
+  - drupal:views
+  - drupal:node
+  - drupal:field
 hidden: true
-
-# Information added by Drupal.org packaging script on 2018-07-04
-version: '8.x-2.0-beta1+66-dev'
-core: '8.x'
-project: 'geolocation'
-datestamp: 1530714826

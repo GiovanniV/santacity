@@ -45,7 +45,7 @@ abstract class MapCenterBase extends PluginBase implements MapCenterInterface, C
   /**
    * {@inheritdoc}
    */
-  public function getSettingsForm($option_id = NULL, array $context = [], array $settings = []) {
+  public function getSettingsForm($option_id = NULL, array $settings = [], $context = NULL) {
     $form = [];
 
     return $form;
@@ -59,7 +59,7 @@ abstract class MapCenterBase extends PluginBase implements MapCenterInterface, C
   /**
    * {@inheritdoc}
    */
-  public function getAvailableMapCenterOptions(array $context) {
+  public function getAvailableMapCenterOptions($context) {
     return [
       $this->getPluginId() => $this->getPluginDefinition()['name'],
     ];
@@ -68,8 +68,12 @@ abstract class MapCenterBase extends PluginBase implements MapCenterInterface, C
   /**
    * {@inheritdoc}
    */
-  public function getMapCenter($center_option_id, array $center_option_settings, array $context = []) {
-    return [];
+  public function alterMap(array $map, $center_option_id, array $center_option_settings, $context = NULL) {
+    $map['#centre'] = [
+      'lat' => 0,
+      'lng' => 0,
+    ];
+    return $map;
   }
 
 }

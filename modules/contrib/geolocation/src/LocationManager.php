@@ -41,8 +41,7 @@ class LocationManager extends DefaultPluginManager {
    *   Location instance.
    */
   public function getLocationPlugin($id, array $configuration = []) {
-    $definitions = $this->getDefinitions();
-    if (empty($definitions[$id])) {
+    if (!$this->hasDefinition($id)) {
       return FALSE;
     }
     try {
@@ -63,13 +62,13 @@ class LocationManager extends DefaultPluginManager {
    *
    * @param array $settings
    *   Settings.
-   * @param array $context
+   * @param mixed $context
    *   Optional context.
    *
    * @return array
    *   Form.
    */
-  public function getLocationOptionsForm(array $settings, array $context = []) {
+  public function getLocationOptionsForm(array $settings, $context = NULL) {
     $form = [
       '#type' => 'table',
       '#prefix' => t('<h3>Centre options</h3>Please note: Each option will, if it can be applied, supersede any following option.'),
@@ -89,10 +88,10 @@ class LocationManager extends DefaultPluginManager {
       ],
     ];
 
-    foreach ($this->getDefinitions() as $map_center_id => $map_center_definition) {
+    foreach ($this->getDefinitions() as $location_id => $location_definition) {
       /** @var \Drupal\geolocation\LocationInterface $mapCenter */
-      $map_center = $this->createInstance($map_center_id);
-      foreach ($map_center->getAvailableLocationOptions($context) as $option_id => $label) {
+      $location = $this->createInstance($location_id);
+      foreach ($location->getAvailableLocationOptions($context) as $option_id => $label) {
         $option_enable_id = uniqid($option_id . '_enabled');
         $weight = isset($settings[$option_id]['weight']) ? $settings[$option_id]['weight'] : 0;
         $form[$option_id] = [
@@ -120,16 +119,16 @@ class LocationManager extends DefaultPluginManager {
             '#default_value' => $weight,
             '#attributes' => ['class' => ['geolocation-centre-option-weight']],
           ],
-          'map_center_id' => [
+          'location_plugin_id' => [
             '#type' => 'value',
-            '#value' => $map_center_id,
+            '#value' => $location_id,
           ],
         ];
 
-        $option_form = $map_center->getSettingsForm(
+        $option_form = $location->getSettingsForm(
           $option_id,
-          $context,
-          empty($settings[$option_id]['settings']) ? [] : $settings[$option_id]['settings']
+          empty($settings[$option_id]['settings']) ? [] : $settings[$option_id]['settings'],
+          $context
         );
 
         if (!empty($option_form)) {
@@ -148,6 +147,43 @@ class LocationManager extends DefaultPluginManager {
     uasort($form, [SortArray::class, 'sortByWeightProperty']);
 
     return $form;
+  }
+
+  /**
+   * Get location center coordinates.
+   *
+   * @param array $settings
+   *   Center option settings.
+   * @param mixed $context
+   *   Context.
+   *
+   * @return array
+   *   Centre value.
+   */
+  public function getLocation(array $settings, $context = NULL) {
+    $center = [];
+
+    foreach ($settings as $option_id => $option) {
+      // Ignore if not enabled.
+      if (empty($option['enable'])) {
+        continue;
+      }
+
+      if (!$this->hasDefinition($option['location_plugin_id'])) {
+        continue;
+      }
+
+      /** @var \Drupal\geolocation\LocationInterface $location_plugin */
+      $location_plugin = $this->createInstance($option['location_plugin_id']);
+      $plugin_center = $location_plugin->getCoordinates($option_id, empty($option['settings']) ? [] : $option['settings'], $context);
+
+      if (!empty($plugin_center)) {
+        // Break on first found center.
+        return $plugin_center;
+      }
+    }
+
+    return $center;
   }
 
 }
