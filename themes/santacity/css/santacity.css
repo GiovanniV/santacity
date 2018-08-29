@@ -2950,10 +2950,14 @@ table tbody tr:nth-child(even) {
 	border: none;
 }
 body {
-	padding-bottom: 160px;
+	padding-bottom: 170px;
 }
 .footer {
     position: absolute;
     bottom: 0;
     width: 100%;
+}
+.copyright-container {
+	text-align: center;
+	padding: 10px;
 }
