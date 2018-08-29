@@ -1587,6 +1587,12 @@ h2.artivle_text {
     line-height: 26px;
     clear: both;
 }
+.news-cotent ul {
+	list-style: disc;
+}
+.news-cotent ul li {
+	display: list-item; 
+}
 .main_head_text_article {
     font-weight: 700;
 }
