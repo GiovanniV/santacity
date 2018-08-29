@@ -97,6 +97,7 @@ function santa_preprocess_field(&$variables, $hook) {
  * Implements hook_cronapi().
  */
 function santa_cron() {
+	\Drupal::logger('santa_cron')->notice('Event & New cron tab');
 	event_expire_job();
 	news_expire_job();
 }
