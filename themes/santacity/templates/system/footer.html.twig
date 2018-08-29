@@ -1,7 +1,10 @@
 {% if page.footer %}
   {% block footer %}
     <footer class="footer" role="contentinfo">
-		<div class="{{ container }}">{{ page.footer }}</div>
+		<div class="{{ container }}">
+		{{ page.footer }}
+		{{ page.copyright }}
+		</div>
     </footer>
   {% endblock %}
 {% endif %}

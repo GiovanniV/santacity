@@ -35,6 +35,7 @@ regions:
   content_left: 'Content Left'
   content_right: 'Content Right'
   footer: 'Footer'
+  copyright: 'Copy Right'
   page_top: 'Page top'
   page_bottom: 'Page bottom'
   feature: 'Feature'
