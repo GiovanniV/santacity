@@ -137,3 +137,10 @@ function news_expire_job() {
 		}
   }
 }
+
+/**
+ * Implements hook_entity_presave().
+ */
+function santa_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
+  dpm($entity->bundle());
+}
