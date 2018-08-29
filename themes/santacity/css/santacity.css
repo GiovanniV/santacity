@@ -2109,7 +2109,9 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:15px}
     margin: 10px;
     padding: 0px 20px;
     display: block;
-		margin-left: 190px;
+}
+.flexslider-content-part .flex-direction-nav {
+	display: none;
 }
 .featured_text a.featured_btn {
     background: #f3c70e;
