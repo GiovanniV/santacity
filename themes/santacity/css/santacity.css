@@ -309,7 +309,7 @@ footer.footer {
 
 footer.footer .block-block-content {
     border-right: solid 2px #464646;
-    min-height: 150px;
+    /* min-height: 150px; */
 }
 
 footer.footer .block-block-content:last-child,footer.footer .block-block-content:first-child {
