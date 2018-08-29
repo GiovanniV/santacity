@@ -2015,6 +2015,7 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:15px}
     border-radius: 9px;
     padding: 5px 22px 6px 10px;
     position: relative;
+		margin-left: 190px;
 }
 .head_follows a.Follow_page:before {
     content: '\f105 ';
