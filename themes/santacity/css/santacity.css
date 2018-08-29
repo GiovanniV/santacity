@@ -1594,7 +1594,6 @@ h2.artivle_text {
 	display: list-item; 
 	list-style-type: disc;
 	list-style-position: inside;
-	padding: 10px 0 10px 20px;
 	text-indent: -1em;
 }
 .main_head_text_article {
