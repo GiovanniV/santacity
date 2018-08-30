@@ -1,0 +1,501 @@
+diff --git a/scheduler.install b/scheduler.install
+index 5be1a0d..e2ef1c1 100644
+--- a/scheduler.install
++++ b/scheduler.install
+@@ -88,3 +88,18 @@ function scheduler_uninstall() {
+   // Delete the scheduled content view.
+   \Drupal::configFactory()->getEditable('views.view.scheduler_scheduled_content')->delete();
+ }
++
++/**
++ * Reset date and time formats to default.
++ *
++ * @see https://www.drupal.org/node/2799869
++ */
++function scheduler_update_8001() {
++  $config = \Drupal::configFactory()->getEditable('scheduler.settings');
++  $config
++    ->set('date_format', 'Y-m-d H:i:s')
++    ->set('date_only_format', 'Y-m-d')
++    ->set('time_only_format', 'H:i:s')
++    ->save();
++  return 'Date and time formats reset.';
++}
+diff --git a/scheduler.module b/scheduler.module
+index a25df5a..9a86da5 100644
+--- a/scheduler.module
++++ b/scheduler.module
+@@ -129,15 +129,10 @@ function scheduler_form_node_form_alter(&$form, FormStateInterface $form_state)
+   $date_formatter = \Drupal::service('date.formatter');
+   $descriptions = [];
+   if ($date_only_allowed && ($date_only_format != $date_format)) {
+-    $descriptions['format'] = t('Format: %date_only_format or %standard_format.', [
+-      '%date_only_format' => $date_formatter->format(time(), 'custom', $date_only_format),
+-      '%standard_format' => $date_formatter->format(time(), 'custom', $date_format),
+-    ]);
++    $descriptions['format'] = t('Enter a date or a date and time.');
+   }
+   else {
+-    $descriptions['format'] = t('Format: %standard_format.', [
+-      '%standard_format' => $date_formatter->format(time(), 'custom', $date_format),
+-    ]);
++    $descriptions['format'] = t('Enter a date and time.');
+   }
+ 
+   // Show the default time so users know what they will get if they do not enter
+@@ -245,43 +240,6 @@ function scheduler_node_view(array &$build, EntityInterface $node, EntityViewDis
+ }
+ 
+ /**
+- * Implements hook_node_validate().
+- *
+- * @deprecated hook_node_validate() and hook_node_submit() have been removed.
+- *
+- * @see https://www.drupal.org/node/2420295
+- * @see https://www.drupal.org/node/2490570
+- * @see https://www.drupal.org/node/2490578
+- */
+-function scheduler_node_validate($node, array $form, FormStateInterface $form_state) {
+-  // Adjust the entered times for timezone consideration. Note, we must check
+-  // to see if the value is numeric. If it is, assume we have already done the
+-  // strtotime conversion. This prevents us running strtotime on a value we have
+-  // already converted. This is needed because Drupal 6 removed 'submit' and
+-  // added 'presave' and all this happens at different times.
+-  $date_format = \Drupal::config('scheduler.settings')->get('date_format');
+-  $date_formatter = \Drupal::service('date.formatter');
+-
+-  if (!empty($node->publish_on->value) && !is_numeric($node->publish_on->value)) {
+-    $publishtime = $node->publish_on->value;
+-    if ($publishtime === FALSE) {
+-      $form_state->setErrorByName('publish_on', t("The 'publish on' value does not match the expected format of %time", [
+-        '%time' => $date_formatter->format(REQUEST_TIME, 'custom', $date_format),
+-      ]));
+-    }
+-  }
+-
+-  if (!empty($node->unpublish_on->value) && !is_numeric($node->unpublish_on->value)) {
+-    $unpublishtime = $node->unpublish_on->value;
+-    if ($unpublishtime === FALSE) {
+-      $form_state->setErrorByName('unpublish_on', t("The 'unpublish on' value does not match the expected format of %time", [
+-        '%time' => $date_formatter->format(REQUEST_TIME, 'custom', $date_format),
+-      ]));
+-    }
+-  }
+-}
+-
+-/**
+  * Implements hook_ENTITY_TYPE_presave() for node entities.
+  */
+ function scheduler_node_presave(EntityInterface $node) {
+@@ -322,10 +280,9 @@ function scheduler_node_presave(EntityInterface $node) {
+       // been prevented by other modules. Those modules have to display a
+       // message themselves explaining why publication is denied.
+       if ($publication_allowed) {
+-        $date_format = $config->get('date_format');
+         $date_formatter = \Drupal::service('date.formatter');
+         drupal_set_message(t('This post is unpublished and will be published @publish_time.', [
+-          '@publish_time' => $date_formatter->format($node->publish_on->value, 'custom', $date_format),
++          '@publish_time' => $date_formatter->format($node->publish_on->value, 'long'),
+         ]), 'status', FALSE);
+       }
+     }
+@@ -425,12 +382,11 @@ function scheduler_preprocess_node(&$variables) {
+   $date_formatter = \Drupal::service('date.formatter');
+   /* @var $node \Drupal\node\NodeInterface */
+   $node = $variables['node'];
+-  $date_format = \Drupal::config('scheduler.settings')->get('date_format');
+   if (!empty($node->publish_on->value) && $node->publish_on->value && is_numeric($node->publish_on->value)) {
+-    $variables['publish_on'] = $date_formatter->format($node->publish_on->value, 'custom', $date_format);
++    $variables['publish_on'] = $date_formatter->format($node->publish_on->value, 'long');
+   }
+   if (!empty($node->unpublish_on->value) && $node->unpublish_on->value && is_numeric($node->unpublish_on->value)) {
+-    $variables['unpublish_on'] = $date_formatter->format($node->unpublish_on->value, 'custom', $date_format);
++    $variables['unpublish_on'] = $date_formatter->format($node->unpublish_on->value, 'long');
+   }
+ }
+ 
+diff --git a/src/Form/SchedulerAdminForm.php b/src/Form/SchedulerAdminForm.php
+index b1048f6..acc49ba 100644
+--- a/src/Form/SchedulerAdminForm.php
++++ b/src/Form/SchedulerAdminForm.php
+@@ -75,7 +75,6 @@ class SchedulerAdminForm extends ConfigFormBase {
+     $now = $this->t('Example: %date', [
+       '%date' => $this->dateFormatter->format(REQUEST_TIME, 'custom', $date_format),
+     ]);
+-    $url = Url::fromUri('http://php.net/manual/en/function.date.php');
+     $form['date_format'] = [
+       '#type' => 'textfield',
+       '#title' => $this->t('Date format'),
+@@ -84,11 +83,10 @@ class SchedulerAdminForm extends ConfigFormBase {
+       '#maxlength' => 20,
+       '#required' => TRUE,
+       '#field_suffix' => ' <small>' . $now . '</small>',
+-      '#description' => $this->t('The format for entering scheduled dates and times. For the date use the letters %date_letters and for the time use %time_letters. See @url for more details.', [
+-        '%date_letters' => $this->setting('date_letters'),
+-        '%time_letters' => $this->setting('time_letters'),
+-        '@url' => $this->l($this->t('the PHP date() function'), $url),
+-      ]),
++      // Show this field for info (temporarily), but do not allow changes.
++      // @see https://www.drupal.org/node/2799869
++      '#description' => $this->t('The Scheduler format is no longer configurable and has been set to the default.'),
++      '#disabled' => TRUE,
+     ];
+ 
+     // Options for setting date-only with default time.
+@@ -124,38 +122,6 @@ class SchedulerAdminForm extends ConfigFormBase {
+    * {@inheritdoc}
+    */
+   public function validateForm(array &$form, FormStateInterface $form_state) {
+-    // Replace all contiguous whitespaces (including tabs and newlines) with a
+-    // single plain space.
+-    $form_state->setValue(['date_format'], trim(preg_replace('/\s+/', ' ', $form_state->getValue(['date_format']))));
+-
+-    // Validate the letters used in the scheduler date format. All punctuation
+-    // is accepted, so remove everything except word characters then check that
+-    // there is nothing else which is not in the list of acceptable date/time
+-    // letters.
+-    $no_punctuation = preg_replace('/[^\w+]/', '', $form_state->getValue(['date_format']));
+-    if (preg_match_all('/[^' . $this->setting('date_letters') . $this->setting('time_letters') . ']/', $no_punctuation, $extra)) {
+-      $form_state->setErrorByName('date_format', $this->t('You may only use the letters %date_letters for the date and %time_letters for the time. Remove the extra characters %extra', [
+-        '%date_letters' => $this->setting('date_letters'),
+-        '%time_letters' => $this->setting('time_letters'),
+-        '%extra' => implode(' ', $extra[0]),
+-      ]));
+-    };
+-
+-    // The format must have a date part.
+-    $date_only_format = $this->getDateOnlyFormat($form_state->getValue(['date_format']));
+-    if ($date_only_format == '') {
+-      $form_state->setErrorByName('date_format', $this->t('You must enter a valid date part for the format. Use the letters %date_letters', [
+-        '%date_letters' => $this->setting('date_letters'),
+-      ]));
+-    }
+-
+-    // Check that either the date format has a time part or the date-only option
+-    // is turned on.
+-    $time_only_format = $this->getTimeOnlyFormat($form_state->getValue(['date_format']));
+-    if ($time_only_format == '' && !$form_state->getValue(['allow_date_only'])) {
+-      $form_state->setErrorByName('date_format', $this->t('You must either include a time within the date format or enable the date-only option.'));
+-    }
+-
+     // If date-only is enabled then check if a valid default time was entered.
+     // Leading zeros and seconds can be omitted, eg. 6:30 is considered valid.
+     if ($form_state->getValue(['allow_date_only'])) {
+@@ -176,68 +142,15 @@ class SchedulerAdminForm extends ConfigFormBase {
+    * {@inheritdoc}
+    */
+   public function submitForm(array &$form, FormStateInterface $form_state) {
+-    // Extract the date part and time part of the full format, for use with the
+-    // default time functionality. Assume the date and time time parts begin and
+-    // end with a letter, but any punctuation between these will be retained.
+-    $format = $form_state->getValue(['date_format']);
+-    $time_only_format = $this->getTimeOnlyFormat($format);
+-    $date_only_format = $this->getDateOnlyFormat($format);
+-
+     $this->config('scheduler.settings')
+-      ->set('time_only_format', $time_only_format)
+-      ->set('date_only_format', $date_only_format)
+-      ->set('date_format', $format)
+       ->set('allow_date_only', $form_state->getValue(['allow_date_only']))
+       ->set('default_time', $form_state->getValue('default_time'))
+       ->save();
+ 
+-    if (empty($time_only_format)) {
+-      drupal_set_message($this->t('The date part of the Scheduler format is %date_part. There is no time part', ['%date_part' => $date_only_format]));
+-    }
+-    else {
+-      drupal_set_message($this->t('The date part of the Scheduler format is %date_part and the time part is %time_part.', ['%date_part' => $date_only_format, '%time_part' => $time_only_format]));
+-    }
+-
+     parent::submitForm($form, $form_state);
+   }
+ 
+   /**
+-   * Returns the time part of a date format.
+-   *
+-   * For example, when given the string 'Y-m-d H:s:i' it will return 'H:s:i'.
+-   *
+-   * @param string $format
+-   *   A date format compatible with the PHP date() function.
+-   *
+-   * @return string
+-   *   The time part of the date format, or an empty string if it does not
+-   *   contain a time part.
+-   */
+-  protected function getTimeOnlyFormat($format) {
+-    $time_start = strcspn($format, $this->setting('time_letters'));
+-    $time_length = strlen($format) - strcspn(strrev($format), $this->setting('time_letters')) - $time_start;
+-    return substr($format, $time_start, $time_length);
+-  }
+-
+-  /**
+-   * Returns the date part of a date format.
+-   *
+-   * For example, when given the string 'Y-m-d H:s:i' it will return 'Y-m-d'.
+-   *
+-   * @param string $format
+-   *   A date format compatible with the PHP date() function.
+-   *
+-   * @return string
+-   *   The date part of the date format, or an empty string if it does not
+-   *   contain a date part.
+-   */
+-  protected function getDateOnlyFormat($format) {
+-    $date_start = strcspn($format, $this->setting('date_letters'));
+-    $date_length = strlen($format) - strcspn(strrev($format), $this->setting('date_letters')) - $date_start;
+-    return substr($format, $date_start, $date_length);
+-  }
+-
+-  /**
+    * Helper method to access the settings of this module.
+    *
+    * @param string $key
+diff --git a/tests/src/Functional/SchedulerAdminSettingsTest.php b/tests/src/Functional/SchedulerAdminSettingsTest.php
+index 29547d7..7c8a999 100644
+--- a/tests/src/Functional/SchedulerAdminSettingsTest.php
++++ b/tests/src/Functional/SchedulerAdminSettingsTest.php
+@@ -11,44 +11,42 @@ class SchedulerAdminSettingsTest extends SchedulerBrowserTestBase {
+ 
+   /**
+    * Test the admin settings page.
+-   *
+-   * The default time functionality is covered separately in the DefaultTime
+-   * test file.
+    */
+   public function testAdminSettings() {
+     $this->drupalLogin($this->adminUser);
+-    $config = $this->config('scheduler.settings');
+-    $time_letters = $config->get('time_letters');
+-    $date_letters = $config->get('date_letters');
+-
+-    // Save the form with no change from default values.
+-    $this->drupalPostForm('admin/config/content/scheduler', [], t('Save configuration'));
+-    $this->assertText(sprintf('The date part of the Scheduler format is %s and the time part is %s.', 'Y-m-d', 'H:i:s'), 'The save message correctly shows the default format date and time parts.');
+-
+-    // Set a different but valid date and time format.
+-    $edit = ['date_format' => 'd.m.Y H:i'];
+-    $this->drupalPostForm('admin/config/content/scheduler', $edit, t('Save configuration'));
+-    $this->assertText(sprintf('The date part of the Scheduler format is %s and the time part is %s.', 'd.m.Y', 'H:i'), 'The save message correctly shows the changed format date and time parts.');
+-
+-    // Set a date format with no time, and allow date only.
+-    $edit = ['date_format' => 'Y/m/d', 'allow_date_only' => TRUE];
+-    $this->drupalPostForm('admin/config/content/scheduler', $edit, t('Save configuration'));
+-    $this->assertText(sprintf('The date part of the Scheduler format is %s. There is no time part', 'Y/m/d'), 'The save message correctly shows the date part with no time part.');
+-
+-    // Try to save a format with no time, without allowing date only.
+-    $edit = ['date_format' => 'Y/m/d', 'allow_date_only' => FALSE];
+-    $this->drupalPostForm('admin/config/content/scheduler', $edit, t('Save configuration'));
+-    $this->assertText(sprintf('You must either include a time within the date format or enable the date-only option.', $time_letters), 'The correct error message is shown when no time part is entered.');
+-
+-    // Try to save a format with no date part.
+-    $edit = ['date_format' => 'H:i:s'];
+-    $this->drupalPostForm('admin/config/content/scheduler', $edit, t('Save configuration'));
+-    $this->assertText(sprintf('You must enter a valid date part for the format. Use the letters %s', $date_letters), 'The correct error message is shown when no date part is entered.');
+-
+-    // Try to save with invalid date format letters.
+-    $edit = ['date_format' => 'd/m/ZY XH:i'];
+-    $this->drupalPostForm('admin/config/content/scheduler', $edit, t('Save configuration'));
+-    $this->assertText(sprintf('You may only use the letters %s for the date and %s for the time. Remove the extra characters %s', $date_letters, $time_letters, 'Z X'), 'The correct error message is shown when invalid letters are entered.');
++
++    // Check that the correct default time is added to the scheduled date.
++    // For testing we use an offset of 6 hours 30 minutes (23400 seconds).
++    $this->seconds = 23400;
++    // If the test happens to be run at a time when '+1 day' puts the calculated
++    // publishing date into a different daylight-saving period then formatted
++    // time can be an hour different. To avoid these failures we use a fixed
++    // string when asserting the message and looking for field values.
++    // @see https://www.drupal.org/node/2809627
++    $this->seconds_formatted = '06:30:00';
++    // In $edit use '6:30' not '06:30:00' to test flexibility.
++    $settings = [
++      'allow_date_only' => TRUE,
++      'default_time' => '6:30',
++    ];
++    $this->drupalPostForm('admin/config/content/scheduler', $settings, t('Save configuration'));
++
++    // Verify that the values have been saved correctly.
++    $this->assertTrue($this->config('scheduler.settings')->get('allow_date_only'), 'The config setting for allow_date_only is stored correctly.');
++    $this->assertEqual($this->config('scheduler.settings')->get('default_time'), $this->seconds_formatted, 'The config setting for default_time is stored correctly.');
++
++    // Try to save an invalid time value.
++    $settings = [
++      'allow_date_only' => TRUE,
++      'default_time' => '123',
++    ];
++    $this->drupalPostForm('admin/config/content/scheduler', $settings, t('Save configuration'));
++    // Verify that an error is displayed and the value has not been saved.
++    $this->assertEqual($this->config('scheduler.settings')->get('default_time'), $this->seconds_formatted, 'The config setting for default_time has not changed.');
++    $this->assertText('The default time should be in the format HH:MM:SS', 'When an invalid default time is entered the correct error message is displayed.');
++
++    // Show the status report, which includes the Scheduler timecheck.
++    $this->drupalGet('admin/reports/status');
+   }
+ 
+ }
+diff --git a/tests/src/Functional/SchedulerDefaultTimeTest.php b/tests/src/Functional/SchedulerDefaultTimeTest.php
+index a06927f..a0d0a22 100644
+--- a/tests/src/Functional/SchedulerDefaultTimeTest.php
++++ b/tests/src/Functional/SchedulerDefaultTimeTest.php
+@@ -3,62 +3,30 @@
+ namespace Drupal\Tests\scheduler\Functional;
+ 
+ /**
+- * Tests the components of the Scheduler interface which use the Date module.
++ * Tests the default time functionality.
+  *
+  * @group scheduler
+  */
+ class SchedulerDefaultTimeTest extends SchedulerBrowserTestBase {
+ 
+   /**
+-   * Test the default time functionality.
++   * Test the default time functionality during content creation and edit.
+    */
+   public function testDefaultTime() {
+-    $this->drupalLogin($this->adminUser);
+-    // Show the timecheck report.
+-    $this->drupalGet('admin/reports/status');
++    $this->drupalLogin($this->schedulerUser);
++    $config = $this->config('scheduler.settings');
++    $date_formatter = \Drupal::service('date.formatter');
++
++    // For this test we use an offset of 6 hours 30 minutes (23400 seconds).
++    $seconds = 23400;
+ 
+-    // Check that the correct default time is added to the scheduled date.
+-    // For testing we use an offset of 6 hours 30 minutes (23400 seconds).
+-    $this->seconds = 23400;
+     // If the test happens to be run at a time when '+1 day' puts the calculated
+     // publishing date into a different daylight-saving period then formatted
+     // time can be an hour different. To avoid these failures we use a fixed
+     // string when asserting the message and looking for field values.
+     // @see https://www.drupal.org/node/2809627
+-    $this->seconds_formatted = '06:30:00';
+-    // In $edit use '6:30' not '06:30:00' to test flexibility.
+-    $edit = [
+-      'date_format' => 'Y-m-d H:i:s',
+-      'allow_date_only' => TRUE,
+-      'default_time' => '6:30',
+-    ];
+-    $this->drupalPostForm('admin/config/content/scheduler', $edit, t('Save configuration'));
+-
+-    // Verify that the values have been saved correctly.
+-    $this->assertTrue($this->config('scheduler.settings')->get('allow_date_only'), 'The config setting for allow_date_only is stored correctly.');
+-    $this->assertEqual($this->config('scheduler.settings')->get('default_time'), $this->seconds_formatted, 'The config setting for default_time is stored correctly.');
+-
+-    // Check that it is not possible to enter a date format without a time if
+-    // the 'date only' option is not enabled.
+-    $edit = [
+-      'date_format' => 'Y-m-d',
+-      'allow_date_only' => FALSE,
+-    ];
+-    $this->drupalPostForm('admin/config/content/scheduler', $edit, t('Save configuration'));
+-    $this->assertRaw(t('You must either include a time within the date format or enable the date-only option.'), 'It is not possible to enter a date format without a time if the "date only" option is not enabled.');
+-
+-    // Try to save an invalid time value.
+-    $edit = [
+-      'allow_date_only' => TRUE,
+-      'default_time' => '123',
+-    ];
+-    $this->drupalPostForm('admin/config/content/scheduler', $edit, t('Save configuration'));
+-    // Verify that an error is displayed and the value has not been saved.
+-    $this->assertEqual($this->config('scheduler.settings')->get('default_time'), $this->seconds_formatted, 'The config setting for default_time has not changed.');
+-    $this->assertText('The default time should be in the format HH:MM:SS', 'When an invalid default time is entered the correct error message is displayed.');
+-
+-    // Check that the default time works correctly for a user creating content.
+-    $this->drupalLogin($this->schedulerUser);
++    $seconds_formatted = '06:30:00';
++    $config->set('default_time', $seconds_formatted)->save();
+ 
+     // We cannot easily test the exact validation messages as they contain the
+     // REQUEST_TIME, which can be one or more seconds in the past. Best we can
+@@ -68,13 +36,13 @@ class SchedulerDefaultTimeTest extends SchedulerBrowserTestBase {
+     $unpublish_validation_message = 'The Unpublish on date is invalid.';
+ 
+     // First test with the "date only" functionality disabled.
+-    $this->config('scheduler.settings')->set('allow_date_only', FALSE)->save();
++    $config->set('allow_date_only', FALSE)->save();
+ 
+     // Test that entering a time is required.
+     $edit = [
+       'title[0][value]' => 'No time ' . $this->randomString(15),
+-      'publish_on[0][value][date]' => \Drupal::service('date.formatter')->format(strtotime('+1 day', REQUEST_TIME), 'custom', 'Y-m-d'),
+-      'unpublish_on[0][value][date]' => \Drupal::service('date.formatter')->format(strtotime('+2 day', REQUEST_TIME), 'custom', 'Y-m-d'),
++      'publish_on[0][value][date]' => $date_formatter->format(strtotime('+1 day', REQUEST_TIME), 'custom', 'Y-m-d'),
++      'unpublish_on[0][value][date]' => $date_formatter->format(strtotime('+2 day', REQUEST_TIME), 'custom', 'Y-m-d'),
+     ];
+     // Create a node and check that the expected error messages are shown.
+     $this->drupalPostForm('node/add/' . $this->type, $edit, t('Save'));
+@@ -82,25 +50,34 @@ class SchedulerDefaultTimeTest extends SchedulerBrowserTestBase {
+     $this->assertSession()->pageTextContains($unpublish_validation_message, 'By default it is required to enter a time when scheduling content for unpublication.');
+ 
+     // Allow the user to enter only a date with no time.
+-    $this->config('scheduler.settings')->set('allow_date_only', TRUE)->save();
++    $config->set('allow_date_only', TRUE)->save();
+ 
+     // Create a node and check that the expected error messages are not shown.
+     $this->drupalPostForm('node/add/' . $this->type, $edit, t('Save'));
+     $this->assertSession()->pageTextNotContains($publish_validation_message, 'If the default time option is enabled the user can skip the time when scheduling content for publication.');
+     $this->assertSession()->pageTextNotContains($unpublish_validation_message, 'If the default time option is enabled the user can skip the time when scheduling content for unpublication.');
+ 
+-    // Check that the publish-on information is shown after saving.
+-    $publish_time = $edit['publish_on[0][value][date]'] . ' ' . $this->seconds_formatted;
+-    $args = ['@publish_time' => $publish_time];
++    // Check that the scheduled information is shown after saving.
++    $publish_time = strtotime('+1 day midnight', REQUEST_TIME) + $seconds;
++    $unpublish_time = strtotime('+2 day midnight', REQUEST_TIME) + $seconds;
++    $args = ['@publish_time' => $date_formatter->format($publish_time, 'long')];
+     $this->assertRaw(t('This post is unpublished and will be published @publish_time.', $args), 'The user is informed that the content will be published on the requested date, on the default time.');
+ 
+-    // Check that the default time has been added to the scheduler form on edit.
+-    // Protect in case the node was not created. The checks will still fail.
++    // Protect in case the node was not created.
+     if ($node = $this->drupalGetNodeByTitle($edit['title[0][value]'])) {
++      // Check that the correct scheduled dates are stored in the node.
++      $this->assertEqual($node->publish_on->value, $publish_time, 'The node publish_on value is stored correctly.');
++      $this->assertEqual($node->unpublish_on->value, $unpublish_time, 'The node unpublish_on value is stored correctly.');
++
++      // Check that the default time has been added to the form on edit.
+       $this->drupalGet('node/' . $node->id() . '/edit');
++      $this->assertFieldByName('publish_on[0][value][time]', $seconds_formatted, 'The default time offset has been added to the date field when scheduling content for publication.');
++      $this->assertFieldByName('unpublish_on[0][value][time]', $seconds_formatted, 'The default time offset has been added to the date field when scheduling content for unpublication.');
++
++    }
++    else {
++      $this->fail('The expected node was not found.');
+     }
+-    $this->assertFieldByName('publish_on[0][value][time]', $this->seconds_formatted, 'The default time offset has been added to the date field when scheduling content for publication.');
+-    $this->assertFieldByName('unpublish_on[0][value][time]', $this->seconds_formatted, 'The default time offset has been added to the date field when scheduling content for unpublication.');
+   }
+ 
+ }
+diff --git a/tests/src/Functional/SchedulerPastDatesTest.php b/tests/src/Functional/SchedulerPastDatesTest.php
+index 265ab94..14d74b2 100644
+--- a/tests/src/Functional/SchedulerPastDatesTest.php
++++ b/tests/src/Functional/SchedulerPastDatesTest.php
+@@ -29,8 +29,8 @@ class SchedulerPastDatesTest extends SchedulerBrowserTestBase {
+     // enters a publication date that is in the past.
+     $edit = [
+       'title[0][value]' => 'Past ' . $this->randomString(10),
+-      'publish_on[0][value][date]' => \Drupal::service('date.formatter')->format(strtotime('-1 day'), 'custom', 'Y-m-d'),
+-      'publish_on[0][value][time]' => \Drupal::service('date.formatter')->format(strtotime('-1 day'), 'custom', 'H:i:s'),
++      'publish_on[0][value][date]' => \Drupal::service('date.formatter')->format(strtotime('-1 day', REQUEST_TIME), 'custom', 'Y-m-d'),
++      'publish_on[0][value][time]' => \Drupal::service('date.formatter')->format(strtotime('-1 day', REQUEST_TIME), 'custom', 'H:i:s'),
+     ];
+     $this->drupalPostForm('node/' . $node->id() . '/edit', $edit, t('Save'));
+     $this->assertRaw(t("The 'publish on' date must be in the future"), 'An error message is shown by default when the publication date is in the past.');
+@@ -61,12 +61,13 @@ class SchedulerPastDatesTest extends SchedulerBrowserTestBase {
+     $publish_time = $edit['publish_on[0][value][date]'] . ' ' . $edit['publish_on[0][value][time]'];
+     $this->assertNoText(t("The 'publish on' date must be in the future"), 'No error message is shown when the publication date is in the past and the "schedule" behavior is chosen.');
+     $this->assertText(sprintf('%s %s has been updated.', $this->typeName, SafeMarkup::checkPlain($edit['title[0][value]'])), 'The node is saved successfully when the publication date is in the past and the "schedule" behavior is chosen.');
+-    $this->assertText(t('This post is unpublished and will be published @publish_time.', ['@publish_time' => $publish_time]), 'The node is scheduled to be published when the publication date is in the past and the "schedule" behavior is chosen.');
++    $this->assertText(t('This post is unpublished and will be published'), 'The node is scheduled to be published when the publication date is in the past and the "schedule" behavior is chosen.');
+ 
+     // Reload the node and check that it is unpublished but scheduled correctly.
+     $this->nodeStorage->resetCache([$node->id()]);
+     $node = $this->nodeStorage->load($node->id());
+     $this->assertFalse($node->isPublished(), 'The node has been unpublished when the publication date is in the past and the "schedule" behavior is chosen.');
++    $this->assertEqual($node->publish_on->value, strtotime('-1 day', REQUEST_TIME), 'The node has the correct publish_on date stored.'); // @todo: check but remove      
+     $this->assertEqual(\Drupal::service('date.formatter')->format($node->publish_on->value, 'custom', 'Y-m-d H:i:s'), $publish_time, 'The node is scheduled for the required date');
+ 
+     // Simulate a cron run and check that the node is published.
