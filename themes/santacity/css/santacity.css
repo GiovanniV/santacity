@@ -2962,3 +2962,8 @@ body {
 	padding: 10px;
 	background-color: #1b1a1a;
 }
+.ckeditor-accordion-container > dl dt > a,
+.ckeditor-accordion-container > dl dt.active > a {
+	background: yellow;
+	color: #000;
+}
