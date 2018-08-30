@@ -79,9 +79,9 @@
 							</div>
 						
 						<span class="calender">
-							<p>{{ event_date[0]['value']|date('D') }}</p>
-							<p class="year">{{ event_date[0]['value']|date('M') }}.<strong>{{ event_date[0]['value']|date('d') }}</strong> - 
-							{{ event_date[0]['end_value']|date('M') }}.<strong>{{ event_date[0]['end_value']|date('d') }}</strong>
+							<p>{{ event_date[0]['value']|format_date("custom", 'D') }}</p>
+							<p class="year">{{ event_date[0]['value']|format_date("custom", "M") }}.<strong>{{ event_date[0]['value']|format_date("custom", 'd') }}</strong> - 
+							{{ event_date[0]['end_value']|format_date("custom", 'M') }}.<strong>{{ event_date[0]['end_value']|format_date("custom", 'd') }}</strong>
 							</p>
 						</span>
 						<p class="tour"><b>{{ node.label }}</b></p>
@@ -103,11 +103,11 @@
 						<div class="row"><h2>Event Information</h2>
 							<div class="">
 								<p><b>Date</b></p>
-								<p>{{ event_date[0]['value']|date('M, d, Y') }} - {{ event_date[0]['end_value']|date('M, d, Y') }}</p>
+								<p>{{ event_date[0]['value']|format_date("custom", 'M, d, Y') }} - {{ event_date[0]['end_value']|format_date("custom", 'M, d, Y') }}</p>
 							</div>
 							<div class="">
 								<p><b>Time</b></p>
-								<p>{{ event_time[0]['value']|date('h:i A') }} - {{ event_time[0]['end_value']|date('h:i A') }}</p>
+								<p>{{ event_time[0]['value']|format_date("custom", 'h:i A') }} - {{ event_time[0]['end_value']|format_date("custom", 'h:i A') }}</p>
 							</div>
 							<div class="">
 								<p><b>Location</b></p>
