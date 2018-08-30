@@ -2963,7 +2963,14 @@ body {
 	background-color: #1b1a1a;
 }
 .ckeditor-accordion-container > dl dt > a,
-.ckeditor-accordion-container > dl dt.active > a {
+.ckeditor-accordion-container > dl dt > a:hover,
+.ckeditor-accordion-container > dl dt > a:focus,
+.ckeditor-accordion-container > dl dt.active > a,
+.ckeditor-accordion-container > dl dt.active > a:focus,
+.ckeditor-accordion-container > dl dt.active > a:hover {
 	background: yellow;
-	color: #000;
+	color: #333333;
+}
+.ckeditor-accordion-container > dl dt > .ckeditor-accordion-toggle:after {
+	color: #333333;
 }
