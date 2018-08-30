@@ -154,9 +154,9 @@ function news_expire($node = '') {
  */
 function santa_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
   if($entity->bundle() === 'events') {
-		event_expire();
+		event_expire($entity);
 	}
 	if($entity->bundle() === 'news') {
-		news_expire();
+		news_expire($entity);
 	}
 }
