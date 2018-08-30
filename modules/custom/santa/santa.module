@@ -105,7 +105,7 @@ function santa_cron() {
 /**
  * The callback for the cron job,
  */
-function event_expire_job() {
+function event_expire_job($nid = '') {
 	$eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
 		
   foreach ($eventNodes as $eventNode) {
@@ -142,5 +142,10 @@ function news_expire_job() {
  * Implements hook_entity_presave().
  */
 function santa_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
-  dpm($entity->bundle());
+  if($entity->bundle() === 'events') {
+		event_expire_job();
+	}
+	if($entity->bundle() === 'news') {
+		news_expire_job();
+	}
 }
