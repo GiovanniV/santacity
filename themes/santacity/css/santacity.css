@@ -2970,7 +2970,6 @@ body {
 .ckeditor-accordion-container > dl dt.active > a:hover {
 	background: yellow;
 	color: #333333;
-}
-.ckeditor-accordion-container > dl dt > .ckeditor-accordion-toggle:after {
-	color: #333333;
+.ckeditor-accordion-container > dl dt > .ckeditor-accordion-toggle:before, .ckeditor-accordion-container > dl dt > .ckeditor-accordion-toggle:after {
+	background: #333333;
 }
