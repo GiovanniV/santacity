@@ -98,15 +98,21 @@ function santa_preprocess_field(&$variables, $hook) {
  */
 function santa_cron() {
 	\Drupal::logger('santa_cron')->notice('Event & New cron tab');
-	event_expire_job();
-	news_expire_job();
+	event_expire();
+	news_expire();
 }
 
 /**
  * The callback for the cron job,
  */
-function event_expire_job($nid = '') {
-	$eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
+function event_expire($node = '') {
+	if(!empty($node)) {
+		$eventNodes = [$node];
+	}
+	else {
+		$eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
+	}
+	
 		
   foreach ($eventNodes as $eventNode) {
     $eventDate = $eventNode->get('field_start_date')->getValue();
@@ -123,9 +129,14 @@ function event_expire_job($nid = '') {
 /**
  * The callback for the cron job,
  */
-function news_expire_job() {
-	$newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
-		
+function news_expire($node = '') {
+	if(!empty($node)) {
+		$eventNodes = [$node];
+	}
+	else {
+		$$newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
+	}
+	
   foreach ($newsNodes as $newsNode) {
     $newsDate = $newsNode->get('field_news_date')->getValue();
 		$newsDateTimestamp = strtotime($newsDate[0]['value']);
@@ -143,9 +154,9 @@ function news_expire_job() {
  */
 function santa_entity_presave(Drupal\Core\Entity\EntityInterface $entity) {
   if($entity->bundle() === 'events') {
-		event_expire_job();
+		event_expire();
 	}
 	if($entity->bundle() === 'news') {
-		news_expire_job();
+		news_expire();
 	}
 }

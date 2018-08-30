@@ -1,4 +1,7 @@
 <?php
+$config_directories = array(
+	CONFIG_SYNC_DIRECTORY => 'E:/xampp/tmp',
+);
 
 $settings['install_profile'] = 'standard';
 ini_set("pcre.backtrack_limit", 100000000000);
