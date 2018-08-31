@@ -126,6 +126,9 @@ function santacity_preprocess_page(&$variables) {
 				$variables['category'] = $node->get('field_category')->view();
 			}
 		}
+		if($node->getType() == 'news') {
+			$variables['comments'] = $node->get('comment')->view();
+		}
 	}
 }
 
