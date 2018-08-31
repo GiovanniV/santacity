@@ -2976,3 +2976,15 @@ body {
 .ckeditor-accordion-container > dl dt > .ckeditor-accordion-toggle:before, .ckeditor-accordion-container > dl dt > .ckeditor-accordion-toggle:after {
 	background: #FFF;
 }
+.paragraph--type--price {
+	display: table-row;
+}
+.paragraph--type--price .field--item {
+	display: table-row;
+}
+.paragraph--type--price .field--item:after {
+	content: ' - ';
+}
+.paragraph--type--price .field--item:last-child {
+	content: '';
+}
