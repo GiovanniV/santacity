@@ -125,6 +125,12 @@ function santacity_preprocess_page(&$variables) {
 			if($node->hasField('field_category')) {
 				$variables['category'] = $node->get('field_category')->view();
 			}
+			if($node->hasField('field_price_details')) {
+				$variables['price_details'] = $node->get('field_price_details')->view();
+			}
+			if($node->hasField('field_booking_url')) {
+				$variables['booking_url'] = $node->get('field_booking_url')->view();
+			}
 		}
 		if($node->getType() == 'news') {
 			$variables['comments'] = $node->get('comment')->view();
