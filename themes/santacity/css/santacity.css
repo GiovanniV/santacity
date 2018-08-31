@@ -1511,6 +1511,7 @@ span.calender p.year {    padding: 10px 20px;}
 	background: #ffff;
 	padding: 30px 29px;
 	box-shadow: 0px 2px 8px #dcdcdc
+	z-index: 1;
 }
 .top_inner_article ul {
 	padding: 0;
