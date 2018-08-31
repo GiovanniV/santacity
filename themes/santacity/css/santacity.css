@@ -28,6 +28,19 @@ body {
 	width: 100%;
 	height: auto;
 }
+.clip-container {
+	-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	background: red;
+}
+.clip-content {
+	-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
+	margin-bottom: 11px;
+	width: 100%;
+}
 .region.region-page-heading .heading-image-ribbon:after {
 	content: unset;
 }
