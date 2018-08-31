@@ -26,19 +26,18 @@
  * @see comment_preprocess_field()
  */
 #}
-<section{{ attributes }}>
+<div class="comment_artical">
   {% if comments and not label_hidden %}
     {{ title_prefix }}
-    <h2{{ title_attributes }}>{{ label }}</h2>
+		<h3 class="main_head_text_article">{{ label }}</h3>
     {{ title_suffix }}
   {% endif %}
 
   {{ comments }}
-
+</div>
   {% if comment_form %}
 	<div class="add_new_comment_page">
 		<h3 class="main_head_text_article">{{ 'Add new comment'|t }}</h3>
     {{ comment_form }}
+	</div>
   {% endif %}
-
-</section>
