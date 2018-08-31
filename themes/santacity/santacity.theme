@@ -129,7 +129,7 @@ function santacity_preprocess_page(&$variables) {
 				$variables['price_details'] = $node->get('field_price_details')->view();
 			}
 			if($node->hasField('field_booking_url')) {
-				$variables['booking_url'] = $node->get('field_booking_url')->view();
+				$variables['booking_url'] = $node->get('field_booking_url')->view('full');
 			}
 		}
 		if($node->getType() == 'news') {
