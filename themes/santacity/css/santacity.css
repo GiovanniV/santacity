@@ -1631,7 +1631,7 @@ span.news_page_dt p {
     font-weight: 600;
     margin-bottom: 0;
 }
-.add_new_comment_page form.comment input {
+.add_new_comment_page form input {
     width: 40%;
     padding: 10px 20px;
     border-radius: 14px;
@@ -1639,7 +1639,7 @@ span.news_page_dt p {
     outline: none;
     box-shadow: 0px 1px 4px #bfbfbf;
 }
-.add_new_comment_page form.comment textarea {
+.add_new_comment_page form textarea {
     width: 100%;
     margin: 20px 0;
     height: 160px;
@@ -1650,7 +1650,7 @@ span.news_page_dt p {
     border: none;
     box-shadow: 0px 2px 11px #dedede;
 }
-.add_new_comment_page form.comment {
+.add_new_comment_page form {
     margin-top: 20px;
 }
 .comment_btn a {
