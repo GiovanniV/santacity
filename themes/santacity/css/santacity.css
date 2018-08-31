@@ -28,28 +28,6 @@ body {
 	width: 100%;
 	height: auto;
 }
-.clip-container {
-	margin-top: 0px;
-	position: relative;
-	z-index: 5;
-	width:100%;
-	margin-right: auto;
-	margin-left: auto;
-	box-sizing: border-box;
-	-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-	-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-	clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-	height: auto;
-	width: 100%;
-	background: yellow;
-}
-.clip-content {
-	-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-	-moz-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-	clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
-	margin-bottom: 11px;
-	width: 100%;
-}
 .region.region-page-heading .heading-image-ribbon:after {
 	content: unset;
 }
@@ -2058,10 +2036,11 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:15px}
 
 .follow-us-container {
     background: url(/themes/santacity/images/wrapper-bg-2.png) no-repeat;
-    background-position: center;
+    background-size: 100%;
     padding: 70px 0;
     margin-top: -50px;
     position:  relative;
+		
 }
 
 .follow-us-container .head_follows {
