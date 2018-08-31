@@ -1621,7 +1621,7 @@ span.news_page_dt p {
 }
 .comment_artical .media-left img {
     border-radius: 50%;
-    height: 57px;
+    width: 50px;
 }
 .comment_artical .media-left {
     float: left;
