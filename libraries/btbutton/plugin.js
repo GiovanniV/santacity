@@ -117,6 +117,9 @@
                                 $el.prepend('<span style="word-spacing: -1em;" class="bs-icon-left glyphicon ' + this.data.bsiconleft + '">&nbsp;</span>\n');
                             }
                         }
+												else {
+													
+												}
 
                         if (this.data.hasOwnProperty('bsiconright')) {
                             jQuery('.bs-icon-right', $el).remove();
