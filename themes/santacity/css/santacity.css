@@ -231,6 +231,7 @@ div#navbar-collapse {
 .map-bubble-container {
 	border-left: 8px solid #f3c70e;
 	padding: 5px;
+	font-size: 13px;
 }
 .map-bubble-container .read-more {
 	margin-top: 10px;
