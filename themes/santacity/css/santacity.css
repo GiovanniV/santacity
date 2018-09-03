@@ -2888,7 +2888,12 @@ footer.footer #block-logo p:nth-child(1) {
     form .form-item label {
     display: none;
     }
-        
+    .show-label form .form-item label {
+			display: block;
+		}
+		.fixed-width-form-control form .form-item .form-control {
+			width: 300px;
+		}
     .featured-news .view-filters .form-item {
     width: 100%;
     margin: 20px 0 20px;
