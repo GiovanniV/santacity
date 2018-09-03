@@ -18,7 +18,7 @@ body {
 		clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
     height: auto;
     width: 100%;
-    background: yellow;
+    background: #e7c632;
 }
 .region.region-page-heading .heading-image-ribbon img {
 	-webkit-clip-path: polygon(0% 0%, 0% 95%, 50% 100%, 100% 95%, 100% 0%);
@@ -505,9 +505,8 @@ form table .form-item label {
     background:  url(/themes/santacity/images/wrapper-bg-1.png) no-repeat;
     background-size: 100% 100%;
     position: relative;
-    min-height: 850px;
     padding-top: 50px;
-    padding-bottom: 50px;
+    padding-bottom: 100px;
     color: #fff;
     background-position: center center;
 }
@@ -812,8 +811,9 @@ form.views-exposed-form button.form-submit{
     margin: 20px 0;
 }
 
-
-
+.view-our-santa-ana form.views-exposed-form {
+	padding: 25px 0px;
+}
 
 
 /* =========== R Heading Css =========== */
