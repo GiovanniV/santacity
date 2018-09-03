@@ -28,6 +28,18 @@
 					$('.xml-listing-form-container input').not(this).attr("checked", false);
 				});
 				
+				$('.gm-style img').mouseenter(function() {
+					$(this).attr('src', '/themes/santacity/images/orange.png');
+				});
+				
+				$('.gm-style img').mouseleave(function() {
+					$(this).attr('src', '/themes/santacity/images/orange.png');
+				});
+				
+				$('body').click(function(){
+					
+				})
+				
 			});
 			
 			

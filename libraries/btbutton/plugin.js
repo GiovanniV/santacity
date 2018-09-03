@@ -129,11 +129,17 @@
                         }
 
                         if (this.data.hasOwnProperty('faiconleft')) {
-                            jQuery('.fa-icon-left', $el).remove();
+                            console.log($el);
+														jQuery('.fa-icon-left', $el).remove();
                             if (this.data.faiconleft) {
                                 $el.prepend('<i style="word-spacing: -1em;" class="fa fa-icon-left ' + this.data.faiconleft + '">&nbsp;</i>\n');
-                            }
+                            }else {
+															console.log(111);
+														}
                         }
+												else {
+													console.log(1111);
+												}
 
                         if (this.data.hasOwnProperty('faiconright')) {
                             jQuery('.fa-icon-right', $el).remove();

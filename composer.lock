@@ -984,7 +984,7 @@
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/geolocation",
-                "reference": "966ed1b24717558e18675a7ed6fb64f595de7434"
+                "reference": "4939c38afb7bbf68566bfc2ba0e74829c1d21ee6"
             },
             "require": {
                 "drupal/core": "*"
@@ -1005,8 +1005,8 @@
                     "dev-2.x": "2.x-dev"
                 },
                 "drupal": {
-                    "version": "8.x-2.0-beta1+117-dev",
-                    "datestamp": "1535448480",
+                    "version": "8.x-2.0-beta1+122-dev",
+                    "datestamp": "1535966280",
                     "security-coverage": {
                         "status": "not-covered",
                         "message": "Dev releases are not covered by Drupal security advisories."
@@ -1033,7 +1033,7 @@
                 "source": "http://git.drupal.org/project/geolocation.git",
                 "issues": "https://www.drupal.org/project/issues/geolocation"
             },
-            "time": "2018-08-28T09:35:52+00:00"
+            "time": "2018-09-03T09:16:19+00:00"
         },
         {
             "name": "drupal/social_feed_fetcher",

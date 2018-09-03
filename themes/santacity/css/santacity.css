@@ -810,7 +810,9 @@ form.views-exposed-form button.form-submit{
 #views-exposed-form-latest-news-latest-news input{
     margin: 20px 0;
 }
-
+.gm-style img + div  {
+	height: unset !important;
+}
 .view-our-santa-ana form.views-exposed-form {
 	padding: 25px 0px;
 }
