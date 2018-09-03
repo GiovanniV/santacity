@@ -2976,10 +2976,10 @@ body {
 .ckeditor-accordion-container > dl dt.active > a:focus,
 .ckeditor-accordion-container > dl dt.active > a:hover {
 	background: yellow;
-	color: #FFF;
+	color: #333333;
 }
 .ckeditor-accordion-container > dl dt > .ckeditor-accordion-toggle:before, .ckeditor-accordion-container > dl dt > .ckeditor-accordion-toggle:after {
-	background: #FFF;
+	background: #333333;
 }
 .paragraph--type--price {
 	display: table-row;
