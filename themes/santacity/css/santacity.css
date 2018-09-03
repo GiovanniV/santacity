@@ -238,6 +238,7 @@ div#navbar-collapse {
 .map-bubble-container .read,
 .map-bubble-container .read:after {
 	font-size: 12px;
+	display: inline-block;
 }
 
 .santacityheader .lng-dropdown{
