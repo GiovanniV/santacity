@@ -1812,7 +1812,7 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:15px}
     margin-bottom: 50px;
 }
 
-.top_service ul li svg {
+.top_service ul li i {
     height: 56px;
     background: #415cb5;
     width: 54px !IMPORTANT;
@@ -1824,7 +1824,7 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:15px}
     margin-right: 11px;
     float: left;
 }
-.top_service .top_right ul li:nth-child(1) svg {
+.top_service .top_right ul li:nth-child(1) i {
     margin-right: 0;
     background: #f3c70e;
     color: #000;
