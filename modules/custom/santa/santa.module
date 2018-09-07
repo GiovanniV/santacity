@@ -29,7 +29,22 @@ function santa_theme() {
  * Implements hook_preprocess_page().
  */
 function santa_preprocess_page(&$variables) {
-  
+  $variables['attributes']['class'] = [];
+	$language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+	
+	$variables['attributes']['class'][] = 'node-' . $nid;
+	
+	$variables['#attached']['drupalSettings']['language'] = $language;
+	
+	$variables['#attached']['drupalSettings']['tranlateClass'] = '';
+	if(isset($variables['node'])) {
+		$nid = $variables['node']->id();
+		
+		if($variables['node']->hasTranslation($language)) {
+			$variables['attributes']['class'][] = 'notranslate';
+			$variables['#attached']['drupalSettings']['tranlateClass'] = 'notranslate';
+		}
+	}
 }
 
 /**

@@ -51,6 +51,7 @@
  * @see html.html.twig
  */
 #}
+<div class="{{ attributes.class }}" >
 {% set container = theme.settings.fluid_container ? 'container-fluid' : 'container' %}
 {% include 'header.html.twig' %}
 {# Page Top #}
@@ -257,3 +258,4 @@
 {% endif %}
 
 {% include 'footer.html.twig' %}
+</div>

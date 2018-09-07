@@ -1,4 +1,4 @@
-(function ($, Drupal) {
+(function ($, Drupal, drupalSettings) {
 	Drupal.behaviors.menu = {
 		attach: function (context, settings) {
 			
@@ -23,6 +23,8 @@
 					}
 				);
 				
+				$('body').addClass(drupalSettings.tranlateClass);
+				doGTranslate('en|' + drupalSettings.language);
 				// Permit
 				$('.xml-listing-form-container input').click(function() {
 					$('.xml-listing-form-container input').not(this).attr("checked", false);
@@ -41,9 +43,6 @@
 				})
 				
 			});
-			
-			
-		
 		}
 	};
-})(jQuery, Drupal);
+})(jQuery, Drupal, drupalSettings);
