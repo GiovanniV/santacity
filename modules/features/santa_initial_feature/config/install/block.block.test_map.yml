@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.our_santa_ana
+  module:
+    - block_class
+    - block_token
+    - system
+    - views
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: discover-sant-container
+  block_token:
+    token_value: 0
+id: test_map
+theme: santacity
+region: bottom
+weight: -26
+provider: null
+plugin: 'views_block:our_santa_ana-map'
+settings:
+  id: 'views_block:our_santa_ana-map'
+  label: ''
+  provider: views
+  label_display: '0'
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /test-page
+    negate: false
+    context_mapping: {  }

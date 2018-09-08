@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:61e18de9-2ddf-4102-9913-3eba115029db'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: locationandhoursadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 223
+provider: null
+plugin: 'block_content:61e18de9-2ddf-4102-9913-3eba115029db'
+settings:
+  id: 'block_content:61e18de9-2ddf-4102-9913-3eba115029db'
+  label: 'Location and Hours Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/185\r\n/node/186\r\n/node/254\r\n/node/260\r\n/node/252\r\n/node/253\r\n/node/288\r\n/node/90"
+    negate: false
+    context_mapping: {  }

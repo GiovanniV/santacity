@@ -1,0 +1,16 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - social_feed_fetcher
+title: 'Default cron handler'
+id: social_feed_fetcher_cron
+weight: 0
+module: social_feed_fetcher
+callback: social_feed_fetcher_cron
+scheduler:
+  id: simple
+launcher:
+  id: serial
+logger:
+  id: database

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:61054a40-1feb-4057-bc8e-597f1894af76'
+  module:
+    - block_class
+    - block_content
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: col-sm-2
+id: resident
+theme: santacity
+region: footer
+weight: -7
+provider: null
+plugin: 'block_content:61054a40-1feb-4057-bc8e-597f1894af76'
+settings:
+  id: 'block_content:61054a40-1feb-4057-bc8e-597f1894af76'
+  label: Resident
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility: {  }

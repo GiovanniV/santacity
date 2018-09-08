@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3f55d5f7-88c1-48e1-b92d-18a04c58dc6d'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: placestogobody
+theme: santacity
+region: sidebar_first
+weight: 176
+provider: null
+plugin: 'block_content:3f55d5f7-88c1-48e1-b92d-18a04c58dc6d'
+settings:
+  id: 'block_content:3f55d5f7-88c1-48e1-b92d-18a04c58dc6d'
+  label: 'Places to Go Body'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/306
+    negate: false
+    context_mapping: {  }

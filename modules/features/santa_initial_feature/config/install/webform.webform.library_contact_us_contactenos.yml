@@ -1,0 +1,147 @@
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: library_contact_us_contactenos
+title: 'Library Contact Us / Contáctenos'
+description: ''
+category: ''
+elements: "please_choose_your_language_preference_:\n  '#type': select\n  '#title': 'Please Choose Your Language Preference:'\n  '#options':\n    english: English\n    spanish: Español\n  '#required': true\nflexbox:\n  '#type': webform_flexbox\n  i_would_like_to_contact_the_following_:\n    '#type': select\n    '#title': 'I would like to contact the following:'\n    '#options':\n      'Newhope Library': 'Newhope Library'\n      'Main Library': 'Main Library'\n      'Garfield Community Center': 'Garfield Community Center'\n      'Jerome Center': 'Jerome Center'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: english\n  select_a_topic_:\n    '#type': select\n    '#title': 'Select a topic:'\n    '#options':\n      'Newhope Library': 'General library'\n      'Main Library': 'Catalog and/or research'\n      'Garfield Community Center': 'Online database, eBook, eAudiobook, or eMagazine'\n      'Jerome Center': Programming\n      'Our website': 'Our website'\n      'Computer Lab': 'Computer Lab'\n      Complaint: Complaint\n      Other: Other\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: english\nflexbox_01:\n  '#type': webform_flexbox\n  type_your_comment_or_question_below_:\n    '#type': textfield\n    '#title': 'Type your comment or question below:'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: english\n  any_additional_comments_:\n    '#type': textfield\n    '#title': 'Any additional comments?'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: english\nflexbox_02:\n  '#type': webform_flexbox\n  first_name_:\n    '#type': textfield\n    '#title': 'First Name:'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: english\n  last_name_:\n    '#type': textfield\n    '#title': 'Last Name:'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: english\nmarkup:\n  '#type': webform_markup\n  '#states':\n    visible:\n      ':input[name=\"please_choose_your_language_preference_\"]':\n        value: english\n  '#markup': '<h4>How Do We Contact You?</h4>'\ngive_us_your_email_phone_number_or_library_card_so_we_can_contac:\n  '#type': textfield\n  '#title': 'Give us your email, phone number or library card so we can contact you:'\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"please_choose_your_language_preference_\"]':\n        value: english\nflexbox_03:\n  '#type': webform_flexbox\n  me_gustaria_comunicarme_con_:\n    '#type': select\n    '#title': 'Me gustaría comunicarme con: '\n    '#options':\n      'Newhope Library': 'Newhope Library'\n      'Main Library': 'Main Library'\n      'Garfield Community Center': 'Garfield Community Center'\n      'Jerome Center': 'Jerome Center'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: spanish\n  sobre_el_siguiente_tema_:\n    '#type': select\n    '#title': 'Sobre el siguiente tema:'\n    '#options':\n      'La biblioteca en general': 'La biblioteca en general'\n      'Base de Datos': 'Base de Datos'\n      'Colección de Libros y Revistas/Periódicos': 'Colección de Libros y Revistas/Periódicos'\n      'Servicios de información': 'Servicios de información'\n      'Base de datos, libros electrónicos, libros en audio, o revistas electrónicas': 'Base de datos, libros electrónicos, libros en audio, o revistas electrónicas'\n      Programas: Programas\n      'Nuestra pagina web': 'Nuestra pagina web'\n      'Salón de Computación': 'Salón de Computación'\n      'Salón de Historia': 'Salón de Historia'\n      QUEJA: QUEJA\n      Other: Other\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: spanish\nflexbox_04:\n  '#type': webform_flexbox\n  escriba_su_comentario_o_pregunta_en_la_casilla_:\n    '#type': textfield\n    '#title': 'Escriba su comentario o pregunta en la casilla:'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: spanish\n  _algun_otro_comentario_:\n    '#type': textfield\n    '#title': '¿Algún otro comentario?'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: spanish\nflexbox_05:\n  '#type': webform_flexbox\n  nombre:\n    '#type': textfield\n    '#title': 'Primero Nombre:'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: spanish\n  yapellido:\n    '#type': textfield\n    '#title': 'y Apellido'\n    '#required': true\n    '#states':\n      visible:\n        ':input[name=\"please_choose_your_language_preference_\"]':\n          value: spanish\nmarkup_01:\n  '#type': webform_markup\n  '#states':\n    visible:\n      ':input[name=\"please_choose_your_language_preference_\"]':\n        value: spanish\n  '#markup': '<h4>&iquest;Como podemos contactarlo?</h4>'\npara_poder_comunicarnos_con_usted_incluya_su_direccion_de_correo:\n  '#type': textfield\n  '#title': 'Para poder comunicarnos con usted, incluya su dirección de correo electrónico, número de teléfono o el número de su tarjeta de la biblioteca.'\n  '#required': true\n  '#states':\n    visible:\n      ':input[name=\"please_choose_your_language_preference_\"]':\n        value: spanish\n"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_login: false
+  form_login_message: ''
+  submission_label: ''
+  submission_log: false
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_login: false
+  submission_login_message: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_start_label: ''
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }

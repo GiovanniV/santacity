@@ -1,0 +1,6 @@
+abs_urls: true
+admin_theme: true
+roles_profiles:
+  administrator:
+    public: admin
+    private: admin

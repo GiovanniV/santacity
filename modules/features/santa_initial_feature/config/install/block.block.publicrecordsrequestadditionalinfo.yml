@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:f731f6ef-e127-4314-9574-e264d1e182da'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: publicrecordsrequestadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 113
+provider: null
+plugin: 'block_content:f731f6ef-e127-4314-9574-e264d1e182da'
+settings:
+  id: 'block_content:f731f6ef-e127-4314-9574-e264d1e182da'
+  label: 'Public Records Request Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /city-hall/clerk-council/public-records-request
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:536d9be4-cb3b-42aa-a2f4-1318e3f1a49e'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: employmentbody
+theme: santacity
+region: sidebar_first
+weight: 156
+provider: null
+plugin: 'block_content:536d9be4-cb3b-42aa-a2f4-1318e3f1a49e'
+settings:
+  id: 'block_content:536d9be4-cb3b-42aa-a2f4-1318e3f1a49e'
+  label: 'Employment Body'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /services/residents/employment
+    negate: false
+    context_mapping: {  }

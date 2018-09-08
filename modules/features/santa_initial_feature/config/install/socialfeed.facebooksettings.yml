@@ -1,0 +1,18 @@
+page_name: CityofSantaAna
+app_id: '243828936236036'
+secret_key: f2f9597ec80c54ce0ca2b35002b52b55
+no_feeds: 10
+all_types: true
+post_type: ''
+display_pic: false
+display_video: false
+trim_length: 120
+teaser_text: 'Read More'
+hashtag: true
+time_stamp: true
+time_format: d-M-Y
+submit: 'Save configuration'
+form_build_id: form-jktUBSIwZFrdhypFvuYTq4me9Y99PSnUbFu4SHHqKLE
+form_token: snUio00MTWya97utTnxPluYEhCYjt83ose2KLxlTI2g
+form_id: facebook_settings_form
+op: 'Save configuration'

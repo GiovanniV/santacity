@@ -1,0 +1,37 @@
+cdn_provider: ''
+favicon:
+  mimetype: image/vnd.microsoft.icon
+  path: ''
+  url: 'http://santacity/themes/santacity/favicon.ico'
+  use_default: true
+schemas:
+  bootstrap: 8000
+  santacity: 8000
+table_bordered: 1
+table_responsive: '-1'
+table: ''
+logo:
+  path: 'public://branding_0.png'
+  url: ''
+  use_default: false
+breadcrumb_home: 1
+navbar_position: fixed-top
+features:
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+  node_user_picture: true
+region_wells:
+  navigation: ''
+  left_navigation: ''
+  navigation_collapsible: ''
+  header: ''
+  highlighted: ''
+  help: ''
+  content: ''
+  sidebar_first: ''
+  sidebar_second: well
+  page_heading: ''
+  page_one_fourth: ''
+  page_three_fourth: ''
+  footer: ''

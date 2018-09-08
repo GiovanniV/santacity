@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.latest_news
+  module:
+    - block_class
+    - system
+    - views
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+id: views_block__latest_news_block_1
+theme: santacity
+region: content
+weight: 14
+provider: null
+plugin: 'views_block:latest_news-block_1'
+settings:
+  id: 'views_block:latest_news-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+visibility:
+  request_path:
+    id: request_path
+    pages: /police-department
+    negate: false
+    context_mapping: {  }

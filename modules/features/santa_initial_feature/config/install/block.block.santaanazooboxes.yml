@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e57a97cb-d1c9-4103-8d38-72b5dfc38711'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: santaanazooboxes
+theme: santacity
+region: content
+weight: 72
+provider: null
+plugin: 'block_content:e57a97cb-d1c9-4103-8d38-72b5dfc38711'
+settings:
+  id: 'block_content:e57a97cb-d1c9-4103-8d38-72b5dfc38711'
+  label: 'Santa Ana Zoo Boxes'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/239
+    negate: false
+    context_mapping: {  }

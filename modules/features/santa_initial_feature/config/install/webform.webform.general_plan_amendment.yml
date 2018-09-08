@@ -1,0 +1,180 @@
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: general_plan_amendment
+title: 'General Plan Amendment'
+description: ''
+category: ''
+elements: "flexbox:\n  '#type': webform_flexbox\n  source_of_request_:\n    '#type': textfield\n    '#title': 'Source Of Request:'\n  amendment_number_gpa_:\n    '#type': textfield\n    '#title': 'Amendment Number GPA:'\n  email:\n    '#type': textfield\n    '#title': Email\n    '#title_display': before\nmarkup_01:\n  '#type': webform_markup\n  '#markup': '<h4><strong>Nature Of The Request:&nbsp;</strong></h4>'\nflexbox_01:\n  '#type': webform_flexbox\n  nature_of_the_request_to_redesignate_the_area_described_below_fr:\n    '#type': textarea\n    '#title': 'To Redesignate The Area Described Below From:'\n  to_:\n    '#type': textarea\n    '#title': 'To:'\nthe_area_is_bounded_by_:\n  '#type': textarea\n  '#title': 'The Area Is Bounded By:'\nexisting_zoning_in_the_area:\n  '#type': select\n  '#title': 'Existing Zoning in the Area: '\n  '#options':\n    - 'Will be consistent with the proposed GPA.'\n    - 'Will not be consistent and will need to be changed.'\nflexbox_02:\n  '#type': webform_flexbox\n  vi_explain_how_the_proposed_gpa_will_assist_in_implementing_the_:\n    '#type': textarea\n    '#title': 'Explain how the proposed GPA will assist in implementing the Framework and Policy portions of the General Plan.'\n    '#title_display': before\n  are_there_other_plans_which_need_to_be_taken_into_consideration_:\n    '#type': textarea\n    '#title': 'Are there other plans which need to be taken into consideration? These may include but not be limited to redevelopment plans, historic preservation districts, economic development areas, transportation corridors, height districts, etc. Please list or explain how the proposed GPA interacts with these plans.'\n    '#title_display': before\n"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_login: false
+  form_login_message: ''
+  submission_label: ''
+  submission_log: false
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_login: false
+  submission_login_message: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_start_label: ''
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: 'Thank You!'
+  confirmation_message: 'Your submission has been received.'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: ebeck@360-biz.com
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'General Plan Amendment Submission'
+      body: "Submitted on [webform_submission:created]<br />\nSubmitted by: [webform_submission:values:email:value]<br />\n<br />\n<strong>Submitted values are</strong>:<br />\nSource Of Request: [webform_submission:values:source_of_request_:value]<br />\nAmendment Number GPA: [webform_submission:values:amendment_number_gpa_:value]<br />\nEmail: [webform_submission:values:email:value]<br />\n<br />\n<br />\n<br />\n<br />\n<a href=\"http://santa-ana.360-biz.com/admin/structure/webform/manage/general_plan_amendment/results/submissions\">View Submissions Here</a>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

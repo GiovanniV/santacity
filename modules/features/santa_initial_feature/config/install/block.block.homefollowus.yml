@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:fb9288c3-770a-4bab-ae03-08b108dda67a'
+  module:
+    - block_class
+    - block_content
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+id: homefollowus
+theme: santacity
+region: follow_us
+weight: -22
+provider: null
+plugin: 'block_content:fb9288c3-770a-4bab-ae03-08b108dda67a'
+settings:
+  id: 'block_content:fb9288c3-770a-4bab-ae03-08b108dda67a'
+  label: 'Home Follow Us'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '<front>'
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:bc9eaa1e-471e-4567-86d7-fe4bf553f9bb'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: humanresourcesdepartmentadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 94
+provider: null
+plugin: 'block_content:bc9eaa1e-471e-4567-86d7-fe4bf553f9bb'
+settings:
+  id: 'block_content:bc9eaa1e-471e-4567-86d7-fe4bf553f9bb'
+  label: 'Human Resources Department Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/838\r\n/city-hall/departments/human-resources-department/employee-salary-and-benefit-information\r\n/city-hall/departments/human-resources-department/post-employment-benefits\r\n/node/841\r\n/node/842\r\n/node/843\r\n/node/844\r\n/node/774\r\n/node/784\r\n/node/783\r\n/node/779\r\n/node/785"
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:4db150a2-774d-4e1d-90cc-6dcb8d978a51'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: communityworkshopsadditioninfo
+theme: santacity
+region: sidebar_first
+weight: 23
+provider: null
+plugin: 'block_content:4db150a2-774d-4e1d-90cc-6dcb8d978a51'
+settings:
+  id: 'block_content:4db150a2-774d-4e1d-90cc-6dcb8d978a51'
+  label: 'Community Workshops Addition Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/600
+    negate: false
+    context_mapping: {  }

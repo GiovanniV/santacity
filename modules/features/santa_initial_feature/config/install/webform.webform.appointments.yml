@@ -1,0 +1,180 @@
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: appointments
+title: 'History Room Appointment'
+description: ''
+category: ''
+elements: "markup:\n  '#type': webform_markup\n  '#markup': 'Please fill out the&nbsp;<a href=\"http://www.santa-ana.org/library/history/documents/ResearchRequestForm.pdf\" target=\"_blank\">Research-Photo Request Form</a>&nbsp;for any research and/or photo requests. For appointments to use the History Room, please fill out the form below.'\nmarkup_01:\n  '#type': webform_markup\n  '#markup': '<p align=\"justify\">Please schedule appointments a week (7 days) in advance at minimum. We will not be able to accommodate same day or next day appointments. You will receive an e-mail to confirm that we will be able to accommodate your appointment request. You will also be provided check-in information at this time. Please bring this confirmation with you when you check in for your appointment:</p>'\nmarkup_02:\n  '#type': webform_markup\n  '#markup': '<p align=\"justify\">Your appointment is not confirmed until you have recieved an official confimation email.</p>'\nflexbox:\n  '#type': webform_flexbox\n  first_name_:\n    '#type': textfield\n    '#title': 'First Name:'\n    '#required': true\n  last_name_:\n    '#type': textfield\n    '#title': 'Last Name:'\n    '#required': true\nflexbox_01:\n  '#type': webform_flexbox\n  phone_number_:\n    '#type': tel\n    '#title': 'Phone Number:'\n    '#required': true\n  email_address_:\n    '#type': email\n    '#title': 'Email Address:'\n    '#required': true\nwhat_brings_you_to_the_history_room_check_all_that_apply_:\n  '#type': webform_checkboxes_other\n  '#title': 'What Brings You To The History Room? (Check All That Apply)'\n  '#options':\n    'Obituary Search (OC Register or other publications)': 'Obituary Search (OC Register or other publications)'\n    'Article Search (OC Register or other publications)': 'Article Search (OC Register or other publications)'\n    'Property Search (Background information on homes or businesses)': 'Property Search (Background information on homes or businesses)'\n    'Biography Search (Background and other historical information on individuals or organizations)': 'Biography Search (Background and other historical information on individuals or organizations)'\n    'Photo Search (Browse through historical photos of Santa Ana)': 'Photo Search (Browse through historical photos of Santa Ana)'\n    'Information Search (Anything not listed above)': 'Information Search (Anything not listed above)'\n  '#other__option_label': Other\n  '#other__placeholder': ''\n  '#required': true\nwhich_of_our_services_will_you_be_requiring_check_all_that_apply:\n  '#type': webform_checkboxes_other\n  '#title': 'Which Of Our Services Will You Be Requiring? (Check All That Apply)'\n  '#options':\n    'Microfiche Reader (Microfilm)': 'Microfiche Reader (Microfilm)'\n    'Printer and/or Scanner': 'Printer and/or Scanner'\n    'Online Search (Property records, biography and information searches)': 'Online Search (Property records, biography and information searches)'\n    Yearbooks: Yearbooks\n    'Phone books (White Pages or Yellow Pages)': 'Phone books (White Pages or Yellow Pages)'\n    'Reference Materials (Books, magazines, photos or other documents on Santa Ana)': 'Reference Materials (Books, magazines, photos or other documents on Santa Ana)'\n  '#other__option_label': Other\n  '#other__placeholder': ''\n  '#required': true\nwhat_are_you_searching_for_give_as_much_detail_as_possible_:\n  '#type': textarea\n  '#title': 'What Are You Searching For? (Give As Much Detail As Possible)'\nmarkup_05:\n  '#type': webform_markup\n  '#markup': '<h2>Appointment Date And Time</h2>'\nmarkup_06:\n  '#type': webform_markup\n  '#markup': \"<br />\\nAppointments must be scheduled during our business hours, Monday through Friday from 12:00 p.m. - 4:00 p.m. &amp; Saturdays from 12:00 p.m. - 4:00 p.m. by appointment only.<br />\\n<br />\\nIf your request is urgent, please contact the library directly and we can try and assist you as best we can.\"\nflexbox_02:\n  '#type': webform_flexbox\n  what_day_would_you_like_to_make_your_appointment_:\n    '#type': date\n    '#title': 'What Day Would You Like To Make Your Appointment?'\n    '#required': true\n    '#min': '+7 days'\n    '#datepicker': true\n    '#date_date_format': m/d/Y\n  what_time_would_you_like_to_make_your_appointment_:\n    '#type': webform_time\n    '#title': 'What Time Would You Like To Make Your Appointment?'\n    '#required': true\n    '#timepicker': true\n    '#time_format': 'g:i A'\n    '#min': '12:00:00'\n    '#max': '15:30:00'\n    '#step': '1800'\nmarkup_08:\n  '#type': webform_markup\n  '#markup': '<h2>Appointment Cancellation Or Rescheduling Procedure</h2>'\nmarkup_09:\n  '#type': webform_markup\n  '#markup': \"If you are going to be late, need to cancel or reschedule your appointment, please contact the library or history room staff ASAP.\\n<p>Reference Desk Phone: <a href=\\\"tel: 7146475267\\\">(714)-647-5267</a><br />\\nHistory Room Phone: <a href=\\\"tel: 7146475280\\\">(714) 647-5280</a><br />\\nHistory Room E-mail: <a href=\\\"mailto:SAHR@santa-ana.org\\\">SAHR@santa-ana.org</a></p>\"\n"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_login: false
+  form_login_message: ''
+  submission_label: ''
+  submission_log: false
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_login: false
+  submission_login_message: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_start_label: ''
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: 'Thank You!'
+  confirmation_message: 'Your submission has been received.'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: ebeck@360-biz.com
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Appointments Submission'
+      body: "Submitted on [webform_submission:created]<br />\nSubmitted by: [webform_submission:values:email_address_:value]<br />\nSubmitted values are:<br />\nFirst Name: [webform_submission:values:first_name_:value]<br />\nLast Name: [webform_submission:values:last_name_:value]<br />\nPhone Number: [webform_submission:values:phone_number_:value]<br />\nEmail_Address_:[webform_submission:values:email_address_:value]<br />\nWhat Day Would You Like To Make Your Appointment?:[webform_submission:values:what_day_would_you_like_to_make_your_appointment_:value]<br />\nWhat Time Would You Like To Make Your Appointment?:[webform_submission:values:what_time_would_you_like_to_make_your_appointment_:value]<br />\n<br />\n<br />\n<a href=\"http://santa-ana.360-biz.com/admin/structure/webform/manage/appointments/results/submissions\">View Submissions Here</a><br />\n<br />\n<br />\n&nbsp;"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

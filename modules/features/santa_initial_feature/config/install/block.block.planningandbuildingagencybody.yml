@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:a233580e-acb4-48d2-8d1e-794ae1c66164'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: planningandbuildingagencybody
+theme: santacity
+region: sidebar_first
+weight: 181
+provider: null
+plugin: 'block_content:a233580e-acb4-48d2-8d1e-794ae1c66164'
+settings:
+  id: 'block_content:a233580e-acb4-48d2-8d1e-794ae1c66164'
+  label: 'Planning and Building Agency Body'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/290
+    negate: false
+    context_mapping: {  }

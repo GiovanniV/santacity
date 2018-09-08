@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:26f5ea01-943d-4925-a746-f2ef641012e7'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: publicworksagencyadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 238
+provider: null
+plugin: 'block_content:26f5ea01-943d-4925-a746-f2ef641012e7'
+settings:
+  id: 'block_content:26f5ea01-943d-4925-a746-f2ef641012e7'
+  label: 'Public Works Agency Additional Info '
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/651
+    negate: false
+    context_mapping: {  }

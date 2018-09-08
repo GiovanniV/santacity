@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.simple_pages
+id: node.simple_pages
+target_entity_type_id: node
+target_bundle: simple_pages
+default_langcode: site_default
+language_alterable: false

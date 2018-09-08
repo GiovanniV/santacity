@@ -1,0 +1,89 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - filter.format.full_html
+  module:
+    - ckeditor
+format: full_html
+editor: ckeditor
+settings:
+  toolbar:
+    rows:
+      -
+        -
+          name: Formatting
+          items:
+            - Bold
+            - Italic
+            - JustifyRight
+            - Cut
+            - Outdent
+            - Undo
+            - Copy
+            - DrupalFontAwesome
+            - Underline
+            - PasteText
+            - Redo
+            - Paste
+            - PasteFromWord
+            - Maximize
+            - Strike
+            - Superscript
+            - JustifyLeft
+            - Indent
+            - Subscript
+            - JustifyBlock
+            - JustifyCenter
+            - '-'
+            - RemoveFormat
+        -
+          name: Lists
+          items:
+            - BulletedList
+            - NumberedList
+        -
+          name: Media
+          items:
+            - Blockquote
+            - DrupalImage
+            - DrupalLink
+            - DrupalUnlink
+            - ImceLink
+            - Table
+            - HorizontalRule
+        -
+          name: 'Block Formatting'
+          items:
+            - Font
+            - FontSize
+            - Format
+            - Styles
+        -
+          name: Tools
+          items:
+            - ShowBlocks
+            - Source
+      -
+        -
+          name: Bootstrap
+          items:
+            - Accordion
+            - Templates
+            - btbutton
+  plugins:
+    language:
+      language_list: un
+    stylescombo:
+      styles: "button.more.primary|Button Primary\r\na.more|Read More\r\na.more|Link\r\nbutton.more.secondary|Button Secondary"
+    templates:
+      template_path: ''
+      replace_content: 0
+image_upload:
+  status: false
+  scheme: public
+  directory: inline-images
+  max_size: ''
+  max_dimensions:
+    width: null
+    height: null

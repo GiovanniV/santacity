@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:885ea438-b1b1-4cc2-9ed4-eb5babbdb395'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: fireboxes
+theme: santacity
+region: content
+weight: 42
+provider: null
+plugin: 'block_content:885ea438-b1b1-4cc2-9ed4-eb5babbdb395'
+settings:
+  id: 'block_content:885ea438-b1b1-4cc2-9ed4-eb5babbdb395'
+  label: 'Fire Boxes'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/519
+    negate: false
+    context_mapping: {  }

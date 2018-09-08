@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:5da5004e-820f-4848-ab67-40d1b2144952'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: upcomingeventsadditionalinfo_2
+theme: santacity
+region: sidebar_first
+weight: 56
+provider: null
+plugin: 'block_content:5da5004e-820f-4848-ab67-40d1b2144952'
+settings:
+  id: 'block_content:5da5004e-820f-4848-ab67-40d1b2144952'
+  label: 'Upcoming Events Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/326\r\n"
+    negate: false
+    context_mapping: {  }
