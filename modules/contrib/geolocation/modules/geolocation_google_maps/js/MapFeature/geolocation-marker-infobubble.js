@@ -70,17 +70,13 @@
         function (map, featureSettings) {
           map.addMarkerAddedCallback(function (currentMarker) {
             var content = currentMarker.locationWrapper.find('.location-content').html();
-						
-						if (content.length < 1) {
+
+            if (content.length < 1) {
               return;
             }
 
             google.maps.event.addListener(currentMarker, 'click', function () {
-							$.each(map.mapMarkers, function(index, test) {
-								test.setIcon('/themes/santacity/images/black.png');
-							});
-            
-							currentMarker.setIcon('/themes/santacity/images/orange.png');
+
               if (typeof currentMarker.infoBubble === 'undefined') {
                 currentMarker.infoBubble = new InfoBubble({
                   map: map.googleMap,
