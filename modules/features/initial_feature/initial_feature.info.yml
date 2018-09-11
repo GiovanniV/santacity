@@ -33,6 +33,7 @@ dependencies:
   - owlcarousel
   - paragraphs
   - path
+  - pathauto
   - rdf
   - redirect
   - search
