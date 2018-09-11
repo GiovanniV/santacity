@@ -1,0 +1,13 @@
+diff --git a/src/Commands/FeaturesCommands.php b/src/Commands/FeaturesCommands.php
+index 79807b6..3b0827c 100644
+--- a/src/Commands/FeaturesCommands.php
++++ b/src/Commands/FeaturesCommands.php
+@@ -312,7 +312,7 @@ class FeaturesCommands extends DrushCommands {
+   public function importAll($options = self::OPTIONS_IMPORT_ALL) {
+     $assigner = $this->featuresOptions($options);
+     $currentBundle = $assigner->getBundle();
+-    $namespace = $currentBundle->isDefault() ? '' : $currentBundle->getMachineName();
++    $namespace = $currentBundle->getMachineName();
+ 
+     $manager = $this->manager;
+     $packages = $manager->getPackages();
