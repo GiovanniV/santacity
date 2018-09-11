@@ -312,7 +312,7 @@ class FeaturesCommands extends DrushCommands {
   public function importAll($options = self::OPTIONS_IMPORT_ALL) {
     $assigner = $this->featuresOptions($options);
     $currentBundle = $assigner->getBundle();
-    $namespace = $currentBundle->isDefault() ? '' : $currentBundle->getMachineName();
+    $namespace = $currentBundle->getMachineName();
 
     $manager = $this->manager;
     $packages = $manager->getPackages();
