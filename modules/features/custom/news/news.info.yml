@@ -1,0 +1,29 @@
+name: News
+description: 'Provides News content type and related configuration. '
+type: module
+core: 8.x
+dependencies:
+  - block
+  - block_class
+  - block_token
+  - comment
+  - content_translation
+  - datetime
+  - field
+  - file
+  - flexslider_fields
+  - flexslider_views
+  - image
+  - imce
+  - language
+  - menu_ui
+  - node
+  - owlcarousel
+  - path
+  - scheduler
+  - system
+  - taxonomy
+  - text
+  - user
+  - views
+  - views_slideshow

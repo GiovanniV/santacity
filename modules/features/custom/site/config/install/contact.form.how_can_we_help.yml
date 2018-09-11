@@ -1,0 +1,11 @@
+langcode: en
+status: true
+dependencies: {  }
+id: how_can_we_help
+label: 'How Can We Help'
+recipients:
+  - webmaster@example.com
+reply: ''
+weight: 0
+message: ''
+redirect: ''
