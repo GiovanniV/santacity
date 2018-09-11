@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b0ecdbf6-48fa-4325-8a56-c5c94fb983cf'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: ocstreetcaradditionalinfo_2
+theme: santacity
+region: sidebar_first
+weight: 49
+provider: null
+plugin: 'block_content:b0ecdbf6-48fa-4325-8a56-c5c94fb983cf'
+settings:
+  id: 'block_content:b0ecdbf6-48fa-4325-8a56-c5c94fb983cf'
+  label: 'OC Streetcar Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/411
+    negate: false
+    context_mapping: {  }

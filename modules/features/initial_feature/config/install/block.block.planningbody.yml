@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b144fb6a-24af-4513-8add-6b29f66b6010'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: planningbody
+theme: santacity
+region: sidebar_first
+weight: 182
+provider: null
+plugin: 'block_content:b144fb6a-24af-4513-8add-6b29f66b6010'
+settings:
+  id: 'block_content:b144fb6a-24af-4513-8add-6b29f66b6010'
+  label: 'Planning Body'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/287
+    negate: false
+    context_mapping: {  }

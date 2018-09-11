@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:view:1b13d2ff-563a-479b-ad83-5a2f45a496de'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: container
+  block_token:
+    token_value: 0
+id: clerkofthecouncilnews
+theme: santacity
+region: bottom
+weight: 15
+provider: null
+plugin: 'block_content:1b13d2ff-563a-479b-ad83-5a2f45a496de'
+settings:
+  id: 'block_content:1b13d2ff-563a-479b-ad83-5a2f45a496de'
+  label: 'Clerk of the Council News'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /cc
+    negate: false
+    context_mapping: {  }

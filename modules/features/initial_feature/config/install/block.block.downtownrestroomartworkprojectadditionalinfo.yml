@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:f5043d2c-8b35-4bb8-b77b-64e409ae74a5'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: downtownrestroomartworkprojectadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 73
+provider: null
+plugin: 'block_content:f5043d2c-8b35-4bb8-b77b-64e409ae74a5'
+settings:
+  id: 'block_content:f5043d2c-8b35-4bb8-b77b-64e409ae74a5'
+  label: 'Downtown Restroom Artwork Project Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/453
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:view:b98dfd26-6e5e-46d9-9906-c24a5df4002c'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: container
+  block_token:
+    token_value: 0
+id: planningandbuildingevents
+theme: santacity
+region: bottom
+weight: 4
+provider: null
+plugin: 'block_content:b98dfd26-6e5e-46d9-9906-c24a5df4002c'
+settings:
+  id: 'block_content:b98dfd26-6e5e-46d9-9906-c24a5df4002c'
+  label: 'Planning and Building Events'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /pb
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:ab4cd22f-c677-4cd8-b33d-4de77b617ffb'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: codeenforcementdivisionadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 105
+provider: null
+plugin: 'block_content:ab4cd22f-c677-4cd8-b33d-4de77b617ffb'
+settings:
+  id: 'block_content:ab4cd22f-c677-4cd8-b33d-4de77b617ffb'
+  label: 'Code Enforcement Division Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /services/planning-and-building-agency/code-enforcement-division
+    negate: false
+    context_mapping: {  }

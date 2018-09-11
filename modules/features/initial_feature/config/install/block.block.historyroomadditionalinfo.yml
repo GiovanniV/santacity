@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:78e78862-5ff3-469a-8ab3-fd352112261b'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: historyroomadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 220
+provider: null
+plugin: 'block_content:78e78862-5ff3-469a-8ab3-fd352112261b'
+settings:
+  id: 'block_content:78e78862-5ff3-469a-8ab3-fd352112261b'
+  label: 'History Room Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/233\r\n/node/270\r\n/node/263\r\n/node/272\r\n/node/271\r\n/node/262\r\n/node/264\r\n/node/943\r\n/node/941\r\n/node/939"
+    negate: false
+    context_mapping: {  }

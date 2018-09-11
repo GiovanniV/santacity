@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:page_heading:15541a31-8cd0-4374-8838-2af5d33e24be'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: defaultbanneroldcityhall
+theme: santacity
+region: page_heading
+weight: 0
+provider: null
+plugin: 'block_content:15541a31-8cd0-4374-8838-2af5d33e24be'
+settings:
+  id: 'block_content:15541a31-8cd0-4374-8838-2af5d33e24be'
+  label: 'Default Banner'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/ca/*\r\n/events/\r\n/events/*\r\n/city-hall\r\n/city-hall/*\r\n/node/887\r\n/node/887/*\r\n/node/mayor-and-city-council/\r\n/node/mayor-and-city-council/*"
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,55 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.our_santa_ana.body
+    - field.field.node.our_santa_ana.field_geolocation
+    - field.field.node.our_santa_ana.field_image
+    - field.field.node.our_santa_ana.field_type
+    - node.type.our_santa_ana
+  module:
+    - geolocation
+    - image
+    - options
+    - text
+    - user
+id: node.our_santa_ana.default
+targetEntityType: node
+bundle: our_santa_ana
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  field_geolocation:
+    weight: 103
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: geolocation_latlng
+    region: content
+  field_image:
+    weight: 102
+    label: above
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_type:
+    weight: 104
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  links:
+    weight: 100
+    region: content
+hidden:
+  langcode: true

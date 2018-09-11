@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0c6c4404-ac97-442c-ade7-8d830360d42a'
+  module:
+    - block_class
+    - block_content
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: eco_steps
+id: economy4
+theme: santacity
+region: top
+weight: -17
+provider: null
+plugin: 'block_content:0c6c4404-ac97-442c-ade7-8d830360d42a'
+settings:
+  id: 'block_content:0c6c4404-ac97-442c-ade7-8d830360d42a'
+  label: 'Economy 4'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /economic-development
+    negate: false
+    context_mapping: {  }

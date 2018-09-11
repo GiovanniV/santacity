@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:view:10c4df7e-e4c1-4e65-bcd9-3e97c330afbc'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: container
+  block_token:
+    token_value: 0
+id: libraryevents
+theme: santacity
+region: bottom
+weight: 0
+provider: null
+plugin: 'block_content:10c4df7e-e4c1-4e65-bcd9-3e97c330afbc'
+settings:
+  id: 'block_content:10c4df7e-e4c1-4e65-bcd9-3e97c330afbc'
+  label: 'Library Events'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/64
+    negate: false
+    context_mapping: {  }

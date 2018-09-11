@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e684634f-46d7-4a91-9b77-727b5abad742'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: edspinfographicsadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 31
+provider: null
+plugin: 'block_content:e684634f-46d7-4a91-9b77-727b5abad742'
+settings:
+  id: 'block_content:e684634f-46d7-4a91-9b77-727b5abad742'
+  label: 'EDSP Infographics Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/273\r\n/node/454\r\n/node/888\r\n/node/478\r\n"
+    negate: false
+    context_mapping: {  }

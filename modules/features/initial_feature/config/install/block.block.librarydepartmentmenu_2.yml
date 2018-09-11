@@ -1,0 +1,37 @@
+langcode: en
+status: false
+dependencies:
+  content:
+    - 'block_content:basic:a5ecf664-22be-4302-9507-e873e55edf64'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: librarydepartmentmenu_2
+theme: santacity
+region: sidebar_first
+weight: 267
+provider: null
+plugin: 'block_content:a5ecf664-22be-4302-9507-e873e55edf64'
+settings:
+  id: 'block_content:a5ecf664-22be-4302-9507-e873e55edf64'
+  label: 'Library Department Menu'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: '/library/services/teenspace/*'
+    negate: false
+    context_mapping: {  }

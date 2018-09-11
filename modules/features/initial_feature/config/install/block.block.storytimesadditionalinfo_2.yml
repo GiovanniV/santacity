@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:a2fd9d29-1e5d-45c9-b7a6-573bad35208f'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: storytimesadditionalinfo_2
+theme: santacity
+region: sidebar_first
+weight: 117
+provider: null
+plugin: 'block_content:a2fd9d29-1e5d-45c9-b7a6-573bad35208f'
+settings:
+  id: 'block_content:a2fd9d29-1e5d-45c9-b7a6-573bad35208f'
+  label: 'Storytimes Additional Info'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /services/library-services/storytimes
+    negate: false
+    context_mapping: {  }

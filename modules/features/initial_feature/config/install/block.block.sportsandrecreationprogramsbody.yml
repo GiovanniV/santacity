@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:9f5e169d-cb54-4f4b-8e06-1a400fb97e44'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: sportsandrecreationprogramsbody
+theme: santacity
+region: sidebar_first
+weight: 193
+provider: null
+plugin: 'block_content:9f5e169d-cb54-4f4b-8e06-1a400fb97e44'
+settings:
+  id: 'block_content:9f5e169d-cb54-4f4b-8e06-1a400fb97e44'
+  label: 'Sports and Recreation Programs Body'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/296
+    negate: false
+    context_mapping: {  }

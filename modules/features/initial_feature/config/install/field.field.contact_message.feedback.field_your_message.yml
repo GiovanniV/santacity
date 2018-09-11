@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - contact.form.feedback
+    - field.storage.contact_message.field_your_message
+id: contact_message.feedback.field_your_message
+field_name: field_your_message
+entity_type: contact_message
+bundle: feedback
+label: 'Your Message'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string_long

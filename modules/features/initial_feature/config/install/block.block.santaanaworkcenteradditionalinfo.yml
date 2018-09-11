@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:98bc8ba9-cc63-4d2b-8001-d3959acae9ee'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: santaanaworkcenteradditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 247
+provider: null
+plugin: 'block_content:98bc8ba9-cc63-4d2b-8001-d3959acae9ee'
+settings:
+  id: 'block_content:98bc8ba9-cc63-4d2b-8001-d3959acae9ee'
+  label: 'Santa Ana Work Center Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/168\r\n/node/277\r\n/node/251\r\n/node/255\r\n/node/274\r\n/node/268\r\n/node/266\r\n/node/256"
+    negate: false
+    context_mapping: {  }

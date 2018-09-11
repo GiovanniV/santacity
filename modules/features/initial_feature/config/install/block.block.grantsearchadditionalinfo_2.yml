@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:c4584e19-5b19-4298-949b-3aa875300d9f'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: grantsearchadditionalinfo_2
+theme: santacity
+region: sidebar_first
+weight: 56
+provider: null
+plugin: 'block_content:c4584e19-5b19-4298-949b-3aa875300d9f'
+settings:
+  id: 'block_content:c4584e19-5b19-4298-949b-3aa875300d9f'
+  label: 'Social and Demographic Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/910
+    negate: false
+    context_mapping: {  }

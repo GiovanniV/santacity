@@ -1,0 +1,52 @@
+name: 'Initial Feature'
+type: module
+core: 8.x
+dependencies:
+  - backup_migrate
+  - block
+  - block_class
+  - block_content
+  - block_token
+  - comment
+  - contact
+  - ctools
+  - datetime
+  - datetime_range
+  - dropdown_language
+  - entity_reference_revisions
+  - field
+  - file
+  - flexslider_fields
+  - flexslider_views
+  - geolocation
+  - geolocation_google_maps
+  - help
+  - image
+  - lang_dropdown
+  - language
+  - link
+  - md_slider
+  - menu_link_content
+  - menu_ui
+  - node
+  - options
+  - owlcarousel
+  - paragraphs
+  - path
+  - rdf
+  - redirect
+  - search
+  - shortcut
+  - simplenews
+  - social_media
+  - system
+  - taxonomy
+  - telephone
+  - text
+  - time_range
+  - tour
+  - user
+  - views
+  - views_slideshow
+  - webform
+version: 8.x-1.0

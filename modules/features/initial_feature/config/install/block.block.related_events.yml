@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.events
+  module:
+    - block_class
+    - block_token
+    - node
+    - views
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: related_events
+theme: santacity
+region: content
+weight: 79
+provider: null
+plugin: 'views_block:events-block_4'
+settings:
+  id: 'views_block:events-block_4'
+  label: 'Related Events'
+  provider: views
+  label_display: visible
+  views_label: 'Related Events'
+  items_per_page: none
+visibility:
+  node_type:
+    id: node_type
+    bundles:
+      events: events
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

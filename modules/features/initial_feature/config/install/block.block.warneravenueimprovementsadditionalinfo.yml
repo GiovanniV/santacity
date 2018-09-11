@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:b1e8021a-337d-43d9-8458-898eb622f710'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: warneravenueimprovementsadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 254
+provider: null
+plugin: 'block_content:b1e8021a-337d-43d9-8458-898eb622f710'
+settings:
+  id: 'block_content:b1e8021a-337d-43d9-8458-898eb622f710'
+  label: 'Warner Avenue Improvements Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /warner-avenue-improvements-0
+    negate: false
+    context_mapping: {  }

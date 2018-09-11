@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:ee082049-7bc0-498e-940c-2664baee1a04'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: neighborhoodinitiativessidemenuintro
+theme: santacity
+region: sidebar_first
+weight: 46
+provider: null
+plugin: 'block_content:ee082049-7bc0-498e-940c-2664baee1a04'
+settings:
+  id: 'block_content:ee082049-7bc0-498e-940c-2664baee1a04'
+  label: 'Neighborhood Initiatives Side Menu Intro'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/123
+    negate: false
+    context_mapping: {  }

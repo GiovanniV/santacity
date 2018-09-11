@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:e4e67841-c324-4367-a974-980f85f1a5ad'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: policereserveprogramadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 238
+provider: null
+plugin: 'block_content:e4e67841-c324-4367-a974-980f85f1a5ad'
+settings:
+  id: 'block_content:e4e67841-c324-4367-a974-980f85f1a5ad'
+  label: 'Police Reserve Program Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/585
+    negate: false
+    context_mapping: {  }

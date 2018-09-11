@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:81656707-33d3-41d9-989e-f71a56cb4a89'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: informationfornewresidentsadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 262
+provider: null
+plugin: 'block_content:81656707-33d3-41d9-989e-f71a56cb4a89'
+settings:
+  id: 'block_content:81656707-33d3-41d9-989e-f71a56cb4a89'
+  label: 'Information for New Residents Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/water-service-pay-water-bill\r\n/utility-services-low-income-households\r\n/node/232\r\n/node/74\r\n/node/70\r\n/residents/information-for-new-residents/water-service-pay-water-bill\r\n/residents/information-for-new-residents/utility-services-low-income-households\r\n/services/residents/information-for-new-residents/utility-services-low-income-households\r\n/services/residents/information-for-new-residents/water-service-pay-water-bill\r\n/node/50"
+    negate: false
+    context_mapping: {  }

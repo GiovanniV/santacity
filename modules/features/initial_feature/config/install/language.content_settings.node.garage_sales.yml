@@ -1,0 +1,10 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.garage_sales
+id: node.garage_sales
+target_entity_type_id: node
+target_bundle: garage_sales
+default_langcode: site_default
+language_alterable: false

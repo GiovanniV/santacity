@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:6047f0ca-922e-44c9-a769-76857ee800db'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: careercenteradditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 103
+provider: null
+plugin: 'block_content:6047f0ca-922e-44c9-a769-76857ee800db'
+settings:
+  id: 'block_content:6047f0ca-922e-44c9-a769-76857ee800db'
+  label: 'Career Center Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/363\r\n/node/71\r\n/node/79\r\n/node/80\r\n/node/73\r\n/node/81\r\n/node/89\r\n/node/77"
+    negate: false
+    context_mapping: {  }

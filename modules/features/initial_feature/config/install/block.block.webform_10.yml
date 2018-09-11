@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - webform.webform.assignment_alert
+  module:
+    - block_class
+    - block_token
+    - system
+    - webform
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: webform_10
+theme: santacity
+region: content
+weight: 1
+provider: null
+plugin: webform_block
+settings:
+  id: webform_block
+  label: 'Assignment Alert'
+  provider: webform
+  label_display: '0'
+  webform_id: assignment_alert
+  default_data: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/955
+    negate: false
+    context_mapping: {  }

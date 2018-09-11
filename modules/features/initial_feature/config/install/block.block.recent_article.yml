@@ -1,0 +1,38 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.latest_news
+  module:
+    - block_class
+    - block_token
+    - ctools
+    - views
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: recent_article
+theme: santacity
+region: content
+weight: 78
+provider: null
+plugin: 'views_block:latest_news-recent_article'
+settings:
+  id: 'views_block:latest_news-recent_article'
+  label: 'Related Articles'
+  provider: views
+  label_display: visible
+  views_label: 'Related Articles'
+  items_per_page: none
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      news: news
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'

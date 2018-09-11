@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:3833af3d-bca5-468b-b03e-f344af33cff6'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: poolandspaownersdiveintothesewatersavingtipsadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 127
+provider: null
+plugin: 'block_content:3833af3d-bca5-468b-b03e-f344af33cff6'
+settings:
+  id: 'block_content:3833af3d-bca5-468b-b03e-f344af33cff6'
+  label: 'Pool and Spa Owners: Dive Into These Water Saving Tips Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /pool-and-spa-owners-dive-these-water-saving-tips
+    negate: false
+    context_mapping: {  }

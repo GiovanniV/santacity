@@ -1,0 +1,39 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:12d819ed-9dd0-41a1-a51f-e5557d2f57dc'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - ctools
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: libraryservices
+theme: santacity
+region: sidebar_first
+weight: 144
+provider: null
+plugin: 'block_content:12d819ed-9dd0-41a1-a51f-e5557d2f57dc'
+settings:
+  id: 'block_content:12d819ed-9dd0-41a1-a51f-e5557d2f57dc'
+  label: 'Library Services'
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      simple_pages: simple_pages
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
