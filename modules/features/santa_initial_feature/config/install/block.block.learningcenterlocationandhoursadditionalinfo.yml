@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:89744b46-d49b-4db7-bdaa-3bc769825e41'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: learningcenterlocationandhoursadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 220
+provider: null
+plugin: 'block_content:89744b46-d49b-4db7-bdaa-3bc769825e41'
+settings:
+  id: 'block_content:89744b46-d49b-4db7-bdaa-3bc769825e41'
+  label: 'Learning Center Location and Hours Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/354\r\n/node/351\r\n/node/176"
+    negate: false
+    context_mapping: {  }

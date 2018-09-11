@@ -1,0 +1,29 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_class
+    - md_slider
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: bnner_bx
+id: latestnews
+theme: santacity
+region: banner
+weight: 0
+provider: null
+plugin: 'md_slider_block:latest_news'
+settings:
+  id: 'md_slider_block:latest_news'
+  label: 'Latest News'
+  provider: md_slider
+  label_display: '0'
+visibility:
+  request_path:
+    id: request_path
+    pages: /latest-news
+    negate: false
+    context_mapping: {  }

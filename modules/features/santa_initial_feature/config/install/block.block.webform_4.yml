@@ -1,0 +1,36 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - webform.webform.review_panelist_application_form
+  module:
+    - block_class
+    - block_token
+    - system
+    - webform
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: webform_4
+theme: santacity
+region: content
+weight: 8
+provider: null
+plugin: webform_block
+settings:
+  id: webform_block
+  label: 'Review Panelist Application'
+  provider: webform
+  label_display: '0'
+  webform_id: review_panelist_application_form
+  default_data: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/949
+    negate: false
+    context_mapping: {  }

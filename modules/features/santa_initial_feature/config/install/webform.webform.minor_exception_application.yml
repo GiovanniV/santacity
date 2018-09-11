@@ -1,0 +1,180 @@
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: minor_exception_application
+title: 'Minor Exception Application'
+description: ''
+category: ''
+elements: "flexbox:\n  '#type': webform_flexbox\n  first_name_:\n    '#type': textfield\n    '#title': 'First Name:'\n    '#required': true\n  last_name_:\n    '#type': textfield\n    '#title': 'Last Name:'\n    '#required': true\nflexbox_01:\n  '#type': webform_flexbox\n  email_:\n    '#type': email\n    '#title': 'Email:'\n    '#required': true\n  application_number_:\n    '#type': textfield\n    '#title': 'Application Number:'\nmarkup:\n  '#type': webform_markup\n  '#markup': '<h3>I. Minor Exception Requirement</h3>'\nmarkup_01:\n  '#type': webform_markup\n  '#markup': 'A Minor Exception is required when properties are proposed with development standards below the minimum standards of the zone. A minor exception is allowed only when extraordinary or exceptional circumstances are applicable to the property involved or the use proposed.'\nmarkup_02:\n  '#type': webform_markup\n  '#markup': '<h3>II. Minor Exception Purpose</h3>'\nclearly_state_the_ordinance_requirements_requested_for_minor_exc:\n  '#type': textarea\n  '#title': 'Clearly State The Ordinance Requirements Requested For Minor Exception:'\nmarkup_03:\n  '#type': webform_markup\n  '#markup': '<h3>III. Minor Exception Justification</h3>'\nmarkup_04:\n  '#type': webform_markup\n  '#markup': 'The minor exception procedure is intended to provide relief from zoning ordinance regulations which result in unintended inequities or hardships when applied to specific properties and must not be a grant of special privilege. (See Santa Ana Municipal Code Sections 41-638 (a) (2) (i), (ii), (iii), (iv)). The Zoning Administrator, Planning Commission, and City Council must make affirmative findings on all four (4) items listed in the above mentioned Code sections if this request is to be approved. Your concise responses to the following four (4) criteria are essential. (Please read Code Sections 41-638 (a) (2) (i), (ii), (iii), (iv) carefully. They have been reproduced at the end of this form for your convenience.)'\nflexbox_02:\n  '#type': webform_flexbox\n  section_41_638_a_2_i_special_circumstances_applicable_:\n    '#type': textarea\n    '#title': 'Section 41-638 (a) (2) (i) (Special Circumstances Applicable):'\n  section_41_638_a_2_ii_preservation_of_substantial_property_right:\n    '#type': textarea\n    '#title': 'Section 41-638 (a) (2) (ii) (Preservation Of Substantial Property Rights):'\nflexbox_03:\n  '#type': webform_flexbox\n  section_41_638_a_2_iii_public_welfare_and_surrounding_property_:\n    '#type': textarea\n    '#title': 'Section 41-638 (a) (2) (iii) (Public Welfare And Surrounding Property):'\n  section_41_638_a_2_iv_effect_upon_general_plan_:\n    '#type': textarea\n    '#title': 'Section 41-638 (a) (2) (iv) (Effect Upon General Plan):'\nmarkup_05:\n  '#type': webform_markup\n  '#markup': \"<h3>Sec. 41-638. Standards for granting applications for minor exceptions, variances and conditional use permit and appeals.</h3>\\n\\n<ul>\\n\\t<li>(a) The council, planning commission and zoning administrator may grant according to the procedure outlined in this chapter:\\n\\t<ul>\\n\\t\\t<li>(2) Variances from and minor exceptions to the provisions of the Municipal Code when it appears that all of the following have been established:\\n\\t\\t<ul>\\n\\t\\t\\t<li>(i) That because of special circumstances applicable to the subject property, including size, shape, topography, location or surroundings, the strict application of the zoning ordinance is found to deprive the subject property of privileges not otherwise at variance with the intent and purpose of the provisions of this chapter;</li>\\n\\t\\t\\t<li>(ii) That the granting of a variance or minor exception is necessary for the preservation and enjoyment of one or more substantial property rights;</li>\\n\\t\\t\\t<li>(iii) That the granting of a variance or minor exception will not be materially detrimental to the public welfare or injurious to surrounding property;</li>\\n\\t\\t\\t<li>(iv) That the granting of a variance or minor exception will not adversely affect the general plan of the city.</li>\\n\\t\\t</ul>\\n\\t\\t</li>\\n\\t</ul>\\n\\t</li>\\n\\t<li>(b) In granting any conditional use permit, variance or minor exception, the zoning administrator, planning commission or council may impose such conditions as are deemed necessary and desirable to protect the public health, safety or welfare in accordance with the purpose and intent of this chapter. (Code 1952, &sect; 9250.8; Ord. No. NS-455, &sect; 1, 6-20-60; Ord. No. NS-989, &sect; 1, 11-17-69; Ord. No. NS-1507, &sect; 12, 11-19-79; Ord. No. NS-1732, &sect; 50, 6-25-84)</li>\\n</ul>\\n\\n<h3>Sec. 41-638.1. Minor exceptions from off-street parking requirements.</h3>\\n\\n<ul>\\n\\t<li>(a) Minor exceptions from the off-street parking regulations referenced in this section shall be subject to grant or denial based upon the standards set forth in this section and not upon the standards set forth in section 41-638.</li>\\n\\t<li>(b) A minor exception from the requirement that required parking areas be integrated such that a vehicle need not enter a street to move from one aisle to another may be granted if:\\n\\t<ul>\\n\\t\\t<li>(i) The stalls in an aisle are all reserved or assigned so as to be unavailable for parking by persons permitted to park in another aisle; or</li>\\n\\t\\t<li>(ii) A parking area serves an office use and is immediately across a street or alley from it; or</li>\\n\\t\\t<li>(iii) The parking area is wholly or partly within a structure.</li>\\n\\t</ul>\\n\\t</li>\\n\\t<li>(c) A minor exception may be granted from the provisions of this chapter requiring each use to have its required number of off-street parking stalls to allow two (2) or more independent uses to share required parking stalls provided no conflict will arise between parking for one use and parking for another due to differences in time of primary utilization of parking as between uses.</li>\\n\\t<li>(d) A minor exception may be granted from the off-street parking design requirements of this chapter to allow for tandem parking serving any nonresidential use if the parking area is adequately managed by a valet service or parking management service.</li>\\n\\t<li>(e) No minor exceptions shall be granted under this section if the effect would be to substantially increase difficulties of vehicle maneuverability or traffic congestion. Any minor exception granted under this section may be conditioned to avoid such adverse impacts, including the condition of maintaining parking according to an approved parking site and/or management plan. (Ord. No. NS-1602, &sect; 8, 10-26-81; Ord. No. NS-1831, &sect; 4, 2-3-86)</li>\\n</ul>\"\n"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_login: false
+  form_login_message: ''
+  submission_label: ''
+  submission_log: false
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_login: false
+  submission_login_message: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_start_label: ''
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: 'Thank You!'
+  confirmation_message: 'Your submission has been received.'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: ebeck@360-biz.com
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Minor Exception Application Submission'
+      body: "Submitted on [webform_submission:created]<br />\nSubmitted by: [webform_submission:values:email:value]<br />\n<br />\n<strong>Submitted values are:</strong><br />\nFirst Name: [webform_submission:values:first_name_:value]<br />\nLast Name: [webform_submission:values:last_name_:value]<br />\nApplication Number: [webform_submission:values:application_number_:value]<br />\nEmail: [webform_submission:values:email_:value]<br />\n<br />\n<br />\n<a href=\"http://santa-ana.360-biz.com/admin/structure/webform/manage/minor_exception_application/results/submissions\">View Submissions Here</a>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

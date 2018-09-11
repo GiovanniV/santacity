@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:page_heading:cbe95025-4fd0-4e5d-8df5-1ae34709ef51'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: libraryservicespagetitle
+theme: santacity
+region: page_heading
+weight: 3
+provider: null
+plugin: 'block_content:cbe95025-4fd0-4e5d-8df5-1ae34709ef51'
+settings:
+  id: 'block_content:cbe95025-4fd0-4e5d-8df5-1ae34709ef51'
+  label: 'Library Services Page Title'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/64\r\n/node/64/*\r\n/library/*"
+    negate: false
+    context_mapping: {  }

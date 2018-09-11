@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:0e0e2be1-ce01-4e6e-9d17-8b56e6c65993'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: garfieldcommsidemenu
+theme: santacity
+region: sidebar_first
+weight: 93
+provider: null
+plugin: 'block_content:0e0e2be1-ce01-4e6e-9d17-8b56e6c65993'
+settings:
+  id: 'block_content:0e0e2be1-ce01-4e6e-9d17-8b56e6c65993'
+  label: 'Garfield Comm Side Menu'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/196\r\n/node/200\r\n/node/155\r\n/node/151\r\n/node/196\r\n/node/150\r\n"
+    negate: false
+    context_mapping: {  }

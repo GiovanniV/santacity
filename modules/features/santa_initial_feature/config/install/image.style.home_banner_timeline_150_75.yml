@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies: {  }
+name: home_banner_timeline_150_75
+label: 'Home Banner Timeline 150*75'
+effects:
+  d638ecf1-2fbf-4ae3-a7c4-fc7508bf13ef:
+    uuid: d638ecf1-2fbf-4ae3-a7c4-fc7508bf13ef
+    id: image_scale
+    weight: 1
+    data:
+      width: 150
+      height: 75
+      upscale: true
+  b5f72457-0854-4512-9cef-320eafb8e25b:
+    uuid: b5f72457-0854-4512-9cef-320eafb8e25b
+    id: image_resize
+    weight: 2
+    data:
+      width: 150
+      height: 75

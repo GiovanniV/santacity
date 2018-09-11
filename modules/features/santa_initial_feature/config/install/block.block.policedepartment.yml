@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:45faa4de-8dee-4a20-a6b1-c7737c4683cb'
+  module:
+    - block_class
+    - block_content
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+id: policedepartment
+theme: santacity
+region: sidebar_first
+weight: 142
+provider: null
+plugin: 'block_content:45faa4de-8dee-4a20-a6b1-c7737c4683cb'
+settings:
+  id: 'block_content:45faa4de-8dee-4a20-a6b1-c7737c4683cb'
+  label: 'Police Department '
+  provider: block_content
+  label_display: visible
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /police-department
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:26280d08-22c9-4581-98df-5bc4ebd6aa88'
+  module:
+    - block_class
+    - block_content
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+id: latestbusinesseventsnews
+theme: santacity
+region: content
+weight: 15
+provider: null
+plugin: 'block_content:26280d08-22c9-4581-98df-5bc4ebd6aa88'
+settings:
+  id: 'block_content:26280d08-22c9-4581-98df-5bc4ebd6aa88'
+  label: 'Latest Business Events & News'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /economic-development
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:94d5b5c0-9c28-46a7-a865-bb05fa8c2e45'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: waterconservationbody
+theme: santacity
+region: sidebar_first
+weight: 254
+provider: null
+plugin: 'block_content:94d5b5c0-9c28-46a7-a865-bb05fa8c2e45'
+settings:
+  id: 'block_content:94d5b5c0-9c28-46a7-a865-bb05fa8c2e45'
+  label: 'Water Conservation Body'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /node/725
+    negate: false
+    context_mapping: {  }

@@ -1,0 +1,180 @@
+langcode: en
+status: open
+dependencies: {  }
+open: null
+close: null
+uid: 1
+template: false
+archive: false
+id: request_for_return_of_property
+title: 'Request for Return of Property'
+description: ''
+category: ''
+elements: "markup_02:\n  '#type': webform_markup\n  '#markup': '<h2>Section I&nbsp;</h2>'\nmarkup_03:\n  '#type': webform_markup\n  '#markup': '<h3>Details of Incident&nbsp;</h3>'\nflexbox:\n  '#type': webform_flexbox\n  case_number_:\n    '#type': textfield\n    '#title': 'Case Number:'\n    '#title_display': before\n    '#required': true\n  date_incident_occurred_:\n    '#type': textfield\n    '#title': 'Date Incident Occurred:'\n    '#title_display': before\n    '#required': true\nflexbox_01:\n  '#type': webform_flexbox\n  location_of_incident_:\n    '#type': textfield\n    '#title': 'Location of Incident:'\n    '#title_display': before\n    '#required': true\n  type_of_incident_:\n    '#type': textfield\n    '#title': 'Type of Incident:'\n    '#required': true\nmarkup_04:\n  '#type': webform_markup\n  '#markup': '<h2>Section II</h2>'\nmarkup_05:\n  '#type': webform_markup\n  '#markup': '<h3>Description of Property You Want Released</h3>'\ndescription_of_property_you_want_released:\n  '#type': textarea\n  '#title': Description_of_Property_You_Want_Released\n  '#title_display': invisible\n  '#required': true\ni_am_entitled_to_the_above_property_because_one_or_more_of_the_f:\n  '#type': checkboxes\n  '#title': 'I am entitled to the above property because one or more of the following applies to my case (check all that you feel apply):'\n  '#options':\n    - 'Record of Ownership (Upload)'\n    - 'Court Order (Upload)'\n    - 'Property was removed from my possession and is described in the above police report.'\n  '#required': true\nupload_:\n  '#type': managed_file\n  '#title': 'Upload:'\n  '#multiple': 2\n  '#required': true\n  '#states':\n    visible:\n      -\n        ':input[name=\"i_am_entitled_to_the_above_property_because_one_or_more_of_the_f[0]\"]':\n          checked: true\n      - or\n      -\n        ':input[name=\"i_am_entitled_to_the_above_property_because_one_or_more_of_the_f[1]\"]':\n          checked: true\nflexbox_02:\n  '#type': webform_flexbox\n  first_name_:\n    '#type': textfield\n    '#title': 'First Name:'\n    '#required': true\n  last_name_:\n    '#type': textfield\n    '#title': 'Last Name:'\n    '#required': true\n  email:\n    '#type': textfield\n    '#title': Email\n    '#title_display': before\n    '#required': true\nflexbox_03:\n  '#type': webform_flexbox\n  date_of_request_:\n    '#type': date\n    '#title': 'Date of Request:'\n    '#title_display': before\n    '#datepicker': true\n    '#required': true\n  daytime_telephone_:\n    '#type': tel\n    '#title': 'Daytime Telephone:'\n    '#title_display': before\n    '#required': true\naddress_:\n  '#type': webform_address\n  '#title': 'Address:'\n  '#address_2__access': false\n  '#city__title': City\n  '#state_province__title': State\n  '#postal_code__title': 'Zip Code'\n  '#country__access': false\n  '#required': true\nmarkup_01:\n  '#type': webform_markup\n  '#markup': '<strong>NOTE: </strong>If your property is considered evidence in a criminal case it may not be released immediately - if at all.&nbsp;'\n"
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  form_submit_once: false
+  form_exception_message: ''
+  form_open_message: ''
+  form_close_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_reset: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_login: false
+  form_login_message: ''
+  submission_label: ''
+  submission_log: false
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_login: false
+  submission_login_message: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_start_label: ''
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_track: ''
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  confirmation_type: page
+  confirmation_title: 'Thank You!'
+  confirmation_message: 'Your submission has been received.'
+  confirmation_url: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  token_update: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    label: Email
+    handler_id: email
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: ebeck@360-biz.com
+      to_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      subject: 'Request for Return of Property Submission'
+      body: "Submitted on [webform_submission:created]<br />\nSubmitted by: [webform_submission:values:email:value]<br />\n<br />\n<strong>Submitted values are:</strong><br />\nCase Number: [webform_submission:values:case_number_:value]<br />\nDate Incident Occurred: [webform_submission:values:date_incident_occurred_:value]<br />\nLocation of Incident: [webform_submission:values:location_of_incident_:value]<br />\nDate of Request: [webform_submission:values:date_of_request_:value]<br />\nDaytime Telephone: [webform_submission:values:daytime_telephone_:value]<br />\nFirst Name: [webform_submission:values:first_name_:value]<br />\nLast Name: [webform_submission:values:last_name_:value]<br />\nEmail: [webform_submission:values:email:value]<br />\n<br />\n<br />\n<a href=\"http://santa-ana.360-biz.com/admin/structure/webform/manage/request_for_return_of_property/results/submissions\">View Submissions Here</a>"
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      html: true
+      attachments: false
+      twig: false
+      debug: false
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''

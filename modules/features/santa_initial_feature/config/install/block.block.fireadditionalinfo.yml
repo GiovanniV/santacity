@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:a91502a9-a5d1-4efd-b76e-007b57f32045'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: fireadditionalinfo
+theme: santacity
+region: sidebar_first
+weight: 106
+provider: null
+plugin: 'block_content:a91502a9-a5d1-4efd-b76e-007b57f32045'
+settings:
+  id: 'block_content:a91502a9-a5d1-4efd-b76e-007b57f32045'
+  label: 'Fire Additional Info'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/services/orange-county-fire-authority/chiefs-corner\r\n/services/orange-county-fire-authority/general-information\r\n/services/orange-county-fire-authority/fire-prevention\r\n/services/orange-county-fire-authority/community-programs\r\n/services/orange-county-fire-authority/emergency-medical-services\r\n/services/orange-county-fire-authority/monthly-reports"
+    negate: false
+    context_mapping: {  }

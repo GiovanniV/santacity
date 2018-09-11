@@ -1,0 +1,13 @@
+langcode: en
+status: true
+dependencies: {  }
+name: latest_news
+label: 'Latest News 105*80'
+effects:
+  b64d4295-3cab-4574-94f1-744ff75c4c6b:
+    uuid: b64d4295-3cab-4574-94f1-744ff75c4c6b
+    id: image_resize
+    weight: 1
+    data:
+      width: 105
+      height: 80

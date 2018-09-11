@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:bbecb2f6-fe22-452d-9930-60b1ba475c2a'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: planningdivision
+theme: santacity
+region: sidebar_first
+weight: 112
+provider: null
+plugin: 'block_content:bbecb2f6-fe22-452d-9930-60b1ba475c2a'
+settings:
+  id: 'block_content:bbecb2f6-fe22-452d-9930-60b1ba475c2a'
+  label: 'Planning Division '
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /jobs/planning-and-building-agency/planning-division
+    negate: false
+    context_mapping: {  }

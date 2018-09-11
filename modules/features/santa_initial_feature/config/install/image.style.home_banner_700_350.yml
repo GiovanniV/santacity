@@ -1,0 +1,21 @@
+langcode: en
+status: true
+dependencies: {  }
+name: home_banner_700_350
+label: 'Home Banner 750*350'
+effects:
+  ac1a8054-64c8-408a-a563-2448640ebf8e:
+    uuid: ac1a8054-64c8-408a-a563-2448640ebf8e
+    id: image_scale
+    weight: 1
+    data:
+      width: 750
+      height: 350
+      upscale: false
+  2cdfa150-9276-435d-8e34-475781f9023f:
+    uuid: 2cdfa150-9276-435d-8e34-475781f9023f
+    id: image_resize
+    weight: 2
+    data:
+      width: 750
+      height: 350

@@ -1,0 +1,37 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:31c51cb9-4a18-4e59-8b18-e36458130d67'
+  module:
+    - block_class
+    - block_content
+    - block_token
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+  block_token:
+    token_value: 0
+id: commonthemesandideas
+theme: santacity
+region: sidebar_first
+weight: 103
+provider: null
+plugin: 'block_content:31c51cb9-4a18-4e59-8b18-e36458130d67'
+settings:
+  id: 'block_content:31c51cb9-4a18-4e59-8b18-e36458130d67'
+  label: 'Common Themes and Ideas'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: "/node/610\r\n/node/605\r\n/node/608\r\n/node/612\r\n/node/590\r\n/node/607\r\n/node/606\r\n/node/602\r\n/node/609"
+    negate: false
+    context_mapping: {  }

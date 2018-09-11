@@ -1,0 +1,34 @@
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:245e13a9-a980-47ac-ac75-e9d2becabc6e'
+  module:
+    - block_class
+    - block_content
+    - system
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: 'economic_area economic-banner'
+id: economybanner
+theme: santacity
+region: top
+weight: -20
+provider: null
+plugin: 'block_content:245e13a9-a980-47ac-ac75-e9d2becabc6e'
+settings:
+  id: 'block_content:245e13a9-a980-47ac-ac75-e9d2becabc6e'
+  label: 'Economy Banner'
+  provider: block_content
+  label_display: '0'
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  request_path:
+    id: request_path
+    pages: /economic-development
+    negate: false
+    context_mapping: {  }
