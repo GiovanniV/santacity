@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: santa_time_only
-label: 'Santa Time Only'
-locked: false
-pattern: 'h:i A'
