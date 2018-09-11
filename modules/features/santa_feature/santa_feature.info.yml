@@ -38,6 +38,7 @@ dependencies:
   - rename_admin_paths
   - scheduler
   - shortcut
+  - simplenews
   - system
   - taxonomy
   - telephone
