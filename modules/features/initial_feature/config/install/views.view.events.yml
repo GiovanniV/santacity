@@ -2,21 +2,22 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_mode.node.notification
+    - core.entity_view_mode.node.short_view
+    - core.entity_view_mode.node.slider_view
     - field.storage.node.field_category
     - field.storage.node.field_event_image
-    - field.storage.node.field_event_time
     - field.storage.node.field_start_date
     - node.type.events
     - system.menu.main
     - taxonomy.vocabulary.event_category
   module:
-    - datetime
     - datetime_range
     - image
     - node
+    - owlcarousel
     - taxonomy
     - user
-    - views_slideshow
 id: events
 label: Events
 module: views
@@ -93,456 +94,18 @@ display:
           separator: ''
           hide_empty: false
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-        field_category:
-          id: field_category
-          table: node__field_category
-          field: field_category
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_start_date:
-          id: field_start_date
-          table: node__field_start_date
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: 'M d, Y'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_event_time:
-          id: field_event_time
-          table: node__field_event_time
-          field: field_event_time
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: daterange_default
-          settings:
-            timezone_override: ''
-            format_type: html_time
-            separator: '-'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_event_image:
-          id: field_event_image
-          table: node__field_event_image
-          field: field_event_image
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: image
-          settings:
-            image_style: ''
-            image_link: content
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_start_date_1:
-          id: field_start_date_1
-          table: node__field_start_date
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: '<p>D</p><p class="year">M.<br><b>d</b></p>'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        view_node:
-          id: view_node
+        rendered_entity:
+          id: rendered_entity
           table: node
-          field: view_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: true
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: read
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: '0'
-          element_class: read
-          element_label_type: '0'
-          element_label_class: read
-          element_label_colon: false
-          element_wrapper_type: '0'
-          element_wrapper_class: read
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: 'Read More'
-          output_url_as_text: false
-          absolute: false
-          entity_type: node
-          plugin_id: entity_link
-        nothing:
-          id: nothing
-          table: views
-          field: nothing
+          field: rendered_entity
           relationship: none
           group_type: group
           admin_label: ''
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: "<div class=\"event-landing-main\">\n<div class=\"img-box\">\n{{ field_event_image }}\n<span class=\"calender\">{{ field_start_date_1 }}</span>\n</div>\n<div class=\"txt-box\">\n<p class=\"media-heading\">{{ title }}</p>\n<p class=\"by-category\">Category:  {{ field_category }}</p>\n<p class=\"by-category\"><b>Date:</b> {{ field_start_date }}</p>\n<p class=\"by-category\"><b>Time:</b> {{ field_event_time }}</p>\n{{ view_node }}\n</div>\n</div>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -578,8 +141,10 @@ display:
           empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: false
-          plugin_id: custom
+          hide_alter_empty: true
+          view_mode: slider_view
+          entity_type: node
+          plugin_id: rendered_entity
       filters:
         status:
           value: '1'
@@ -609,7 +174,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          operator: '='
+          operator: word
           value: ''
           group: 1
           exposed: true
@@ -627,6 +192,7 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+              super_admin: '0'
             placeholder: ''
           is_grouped: false
           group_info:
@@ -641,8 +207,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           fields:
-            title: title
-            nothing: nothing
+            rendered_entity: rendered_entity
           plugin_id: combine
         field_category_target_id:
           id: field_category_target_id
@@ -735,21 +300,30 @@ display:
             group_items: {  }
           plugin_id: datetime
       sorts:
-        created:
-          id: created
-          table: node_field_data
-          field: created
-          order: DESC
-          entity_type: node
-          entity_field: created
-          plugin_id: date
+        field_start_date_value_1:
+          id: field_start_date_value_1
+          table: node__field_start_date
+          field: field_start_date_value
           relationship: none
           group_type: group
           admin_label: ''
+          order: ASC
           exposed: false
           expose:
             label: ''
-          granularity: second
+          plugin_id: standard
+        field_event_time_value:
+          id: field_event_time_value
+          table: node__field_event_time
+          field: field_event_time_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: false
+          expose:
+            label: ''
+          plugin_id: standard
       title: 'Upcoming Events'
       header: {  }
       footer: {  }
@@ -779,7 +353,6 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
@@ -787,10 +360,39 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_category'
-        - 'config:field.storage.node.field_event_image'
-        - 'config:field.storage.node.field_event_time'
-        - 'config:field.storage.node.field_start_date'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.rss'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.business_permits.default'
+        - 'config:core.entity_view_display.node.business_permits.teaser'
+        - 'config:core.entity_view_display.node.events.slider_view'
+        - 'config:core.entity_view_display.node.events.teaser'
+        - 'config:core.entity_view_display.node.garage_sales.default'
+        - 'config:core.entity_view_display.node.garage_sales.teaser'
+        - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.teaser'
+        - 'config:core.entity_view_display.node.notification.default'
+        - 'config:core.entity_view_display.node.notification.teaser'
+        - 'config:core.entity_view_display.node.our_santa_ana.default'
+        - 'config:core.entity_view_display.node.our_santa_ana.teaser'
+        - 'config:core.entity_view_display.node.page.teaser'
+        - 'config:core.entity_view_display.node.police_department.default'
+        - 'config:core.entity_view_display.node.police_department.teaser'
+        - 'config:core.entity_view_display.node.residents.default'
+        - 'config:core.entity_view_display.node.residents.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_pages.default'
+        - 'config:core.entity_view_display.node.simple_pages.teaser'
+        - 'config:core.entity_view_display.node.social_post.default'
+        - 'config:core.entity_view_display.node.social_post.teaser'
+        - 'config:core.entity_view_display.node.events.default'
+        - 'config:core.entity_view_display.node.events.notification'
+        - 'config:core.entity_view_display.node.events.short_view'
+        - 'config:core.entity_view_display.node.page.default'
   block_1:
     display_plugin: block
     id: block_1
@@ -866,51 +468,6 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        field_start_date_value:
-          id: field_start_date_value
-          table: node__field_start_date
-          field: field_start_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_start_date_value_op
-            label: 'Event Date'
-            description: ''
-            use_operator: false
-            operator: field_start_date_value_op
-            identifier: field_start_date_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            placeholder: Date
-            min_placeholder: ''
-            max_placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: datetime
         combine:
           id: combine
           table: views
@@ -951,7 +508,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           fields:
-            title: title
+            rendered_entity: rendered_entity
           plugin_id: combine
       defaults:
         filters: false
@@ -972,17 +529,45 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - user
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_category'
-        - 'config:field.storage.node.field_event_image'
-        - 'config:field.storage.node.field_event_time'
-        - 'config:field.storage.node.field_start_date'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.rss'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.business_permits.default'
+        - 'config:core.entity_view_display.node.business_permits.teaser'
+        - 'config:core.entity_view_display.node.events.default'
+        - 'config:core.entity_view_display.node.events.notification'
+        - 'config:core.entity_view_display.node.events.short_view'
+        - 'config:core.entity_view_display.node.events.slider_view'
+        - 'config:core.entity_view_display.node.events.teaser'
+        - 'config:core.entity_view_display.node.garage_sales.default'
+        - 'config:core.entity_view_display.node.garage_sales.teaser'
+        - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.teaser'
+        - 'config:core.entity_view_display.node.notification.default'
+        - 'config:core.entity_view_display.node.notification.teaser'
+        - 'config:core.entity_view_display.node.our_santa_ana.default'
+        - 'config:core.entity_view_display.node.our_santa_ana.teaser'
+        - 'config:core.entity_view_display.node.page.default'
+        - 'config:core.entity_view_display.node.page.teaser'
+        - 'config:core.entity_view_display.node.police_department.default'
+        - 'config:core.entity_view_display.node.police_department.teaser'
+        - 'config:core.entity_view_display.node.residents.default'
+        - 'config:core.entity_view_display.node.residents.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_pages.default'
+        - 'config:core.entity_view_display.node.simple_pages.teaser'
+        - 'config:core.entity_view_display.node.social_post.default'
+        - 'config:core.entity_view_display.node.social_post.teaser'
   block_2:
     display_plugin: block
     id: block_2
@@ -1051,15 +636,43 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_category'
-        - 'config:field.storage.node.field_event_image'
-        - 'config:field.storage.node.field_event_time'
-        - 'config:field.storage.node.field_start_date'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.rss'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.business_permits.default'
+        - 'config:core.entity_view_display.node.business_permits.teaser'
+        - 'config:core.entity_view_display.node.events.default'
+        - 'config:core.entity_view_display.node.events.notification'
+        - 'config:core.entity_view_display.node.events.short_view'
+        - 'config:core.entity_view_display.node.events.slider_view'
+        - 'config:core.entity_view_display.node.events.teaser'
+        - 'config:core.entity_view_display.node.garage_sales.default'
+        - 'config:core.entity_view_display.node.garage_sales.teaser'
+        - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.teaser'
+        - 'config:core.entity_view_display.node.notification.default'
+        - 'config:core.entity_view_display.node.notification.teaser'
+        - 'config:core.entity_view_display.node.our_santa_ana.default'
+        - 'config:core.entity_view_display.node.our_santa_ana.teaser'
+        - 'config:core.entity_view_display.node.page.default'
+        - 'config:core.entity_view_display.node.page.teaser'
+        - 'config:core.entity_view_display.node.police_department.default'
+        - 'config:core.entity_view_display.node.police_department.teaser'
+        - 'config:core.entity_view_display.node.residents.default'
+        - 'config:core.entity_view_display.node.residents.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_pages.default'
+        - 'config:core.entity_view_display.node.simple_pages.teaser'
+        - 'config:core.entity_view_display.node.social_post.default'
+        - 'config:core.entity_view_display.node.social_post.teaser'
   block_3:
     display_plugin: block
     id: block_3
@@ -1197,135 +810,6 @@ display:
           separator: ', '
           field_api_classes: false
           plugin_id: field
-        field_start_date:
-          id: field_start_date
-          table: node__field_start_date
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: 'M d, Y'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_event_time:
-          id: field_event_time
-          table: node__field_event_time
-          field: field_event_time
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: daterange_default
-          settings:
-            timezone_override: ''
-            format_type: html_time
-            separator: '-'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
         field_event_image:
           id: field_event_image
           table: node__field_event_image
@@ -1380,70 +864,6 @@ display:
             image_style: ''
             image_link: content
           group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_start_date_1:
-          id: field_start_date_1
-          table: node__field_start_date
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: '<p>D</p><p class="year">M.<br><b>d</b></p>'
-          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1518,7 +938,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"media\"> \n<a href=\"{{ view_node }}\">\n<div class=\"media-left\"><small>{{ field_start_date|date(\"M\") }}</small><span>{{ field_start_date|date(\"d\") }}</span></div>\n<div class=\"media-body\">\n<p>4:00 PM 5:00 PM</p>\n<h4 class=\"media-heading\">{{ title }}</h4>\n</div>\n</a>\n</div>"
+            text: "<div class=\"media\"> \n<a href=\"{{ view_node }}\">\n<div class=\"media-left\"><small>{{ field_start_date|date(\"M\") }}</small><span>{{ field_start_date|date(\"d\") }}</span></div>\n<div class=\"media-body\">\n<p>{{ field_event_time }}</p>\n<h4 class=\"media-heading\">{{ title }}</h4>\n</div>\n</a>\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -1614,13 +1034,10 @@ display:
           row_class: ''
           default_row_class: false
       row:
-        type: fields
+        type: 'entity:node'
         options:
-          default_field_elements: false
-          inline:
-            title: title
-          separator: ''
-          hide_empty: false
+          relationship: none
+          view_mode: short_view
     cache_metadata:
       max-age: -1
       contexts:
@@ -1631,8 +1048,6 @@ display:
       tags:
         - 'config:field.storage.node.field_category'
         - 'config:field.storage.node.field_event_image'
-        - 'config:field.storage.node.field_event_time'
-        - 'config:field.storage.node.field_start_date'
   block_4:
     display_plugin: block
     id: block_4
@@ -1651,91 +1066,35 @@ display:
         fields: false
         pager: false
       style:
-        type: slideshow
+        type: owlcarousel
         options:
-          row_class: col-md-3
+          grouping: {  }
+          row_class: ''
           default_row_class: false
-          slideshow_skin: default
-          slideshow_type: views_slideshow_cycle
-          views_slideshow_cycle:
-            effect: fade
-            transition_advanced: 0
-            timeout: '5000'
-            speed: '700'
-            delay: '0'
-            sync: 1
-            random: 0
-            pause: 1
-            pause_on_click: 0
-            action_advanced: 1
-            start_paused: 0
-            remember_slide: 0
-            remember_slide_days: '1'
-            pause_when_hidden: 0
-            pause_when_hidden_type: full
-            amount_allowed_visible: ''
-            nowrap: 0
-            fixed_height: 1
-            items_per_slide: '4'
-            items_per_slide_first: 0
-            items_per_slide_first_number: '1'
-            wait_for_image_load: 1
-            wait_for_image_load_timeout: '3000'
-            cleartype: 0
-            cleartypenobg: 0
-          widgets:
-            top:
-              views_slideshow_controls:
-                enable: true
-                weight: '1'
-                hide_on_single_slide: '1'
-                type: views_slideshow_controls_text
-              views_slideshow_slide_counter:
-                enable: false
-                weight: '1'
-                hide_on_single_slide: '0'
-              views_slideshow_pager:
-                enable: false
-                weight: '1'
-                hide_on_single_slide: '0'
-                type: views_slideshow_pager_bullets
-                views_slideshow_pager_fields:
-                  views_slideshow_pager_fields_fields:
-                    title: 0
-                    field_category: 0
-                    field_start_date: 0
-                    field_event_time: 0
-                    field_event_image: 0
-                    field_start_date_1: 0
-                    view_node: 0
-                    nothing: 0
-                  views_slideshow_pager_fields_hover: 0
-            bottom:
-              views_slideshow_controls:
-                enable: false
-                weight: '1'
-                hide_on_single_slide: '0'
-                type: views_slideshow_controls_text
-              views_slideshow_slide_counter:
-                enable: false
-                weight: '1'
-                hide_on_single_slide: '0'
-              views_slideshow_pager:
-                enable: false
-                weight: '1'
-                hide_on_single_slide: '0'
-                type: views_slideshow_pager_bullets
-                views_slideshow_pager_fields:
-                  views_slideshow_pager_fields_fields:
-                    title: 0
-                    field_category: 0
-                    field_start_date: 0
-                    field_event_time: 0
-                    field_event_image: 0
-                    field_start_date_1: 0
-                    view_node: 0
-                    nothing: 0
-                  views_slideshow_pager_fields_hover: 0
+          items: '4'
+          itemsDesktop: '[1199,4]'
+          itemsDesktopSmall: '[979,3]'
+          itemsTablet: '[768,2]'
+          itemsMobile: '[479,1]'
+          singleItem: 0
+          itemsScaleUp: 0
+          slideSpeed: '200'
+          paginationSpeed: '800'
+          rewindSpeed: '1000'
+          autoPlay: 0
+          stopOnHover: 0
+          navigation: 0
+          prevText: prev
+          nextText: next
+          rewindNav: 1
+          scrollPerPage: 0
+          pagination: 1
+          paginationNumbers: 0
+          responsive: 1
+          responsiveRefreshRate: '200'
+          mouseDrag: 1
+          touchDrag: 1
+          transitionStyle: fade
       row:
         type: fields
         options:
@@ -1771,456 +1130,18 @@ display:
         groups:
           1: AND
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-        field_category:
-          id: field_category
-          table: node__field_category
-          field: field_category
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_start_date:
-          id: field_start_date
-          table: node__field_start_date
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: 'M d, Y'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_event_time:
-          id: field_event_time
-          table: node__field_event_time
-          field: field_event_time
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: daterange_default
-          settings:
-            timezone_override: ''
-            format_type: html_time
-            separator: '-'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_event_image:
-          id: field_event_image
-          table: node__field_event_image
-          field: field_event_image
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: image
-          settings:
-            image_style: ''
-            image_link: content
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_start_date_1:
-          id: field_start_date_1
-          table: node__field_start_date
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: '<p>D</p><p class="year">M.<br><b>d</b></p>'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        view_node:
-          id: view_node
+        rendered_entity:
+          id: rendered_entity
           table: node
-          field: view_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: true
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: read
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: '0'
-          element_class: read
-          element_label_type: '0'
-          element_label_class: read
-          element_label_colon: false
-          element_wrapper_type: '0'
-          element_wrapper_class: read
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: 'Read More'
-          output_url_as_text: false
-          absolute: false
-          entity_type: node
-          plugin_id: entity_link
-        nothing:
-          id: nothing
-          table: views
-          field: nothing
+          field: rendered_entity
           relationship: none
           group_type: group
           admin_label: ''
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: "<div class=\"event-landing-main\">\n<div class=\"img-box\">\n{{ field_event_image }}\n<span class=\"calender\">{{ field_start_date_1 }}</span>\n</div>\n<div class=\"txt-box\">\n<p class=\"media-heading\">{{ title }}</p>\n<p class=\"by-category\">Category:  {{ field_category }}</p>\n<p class=\"by-category\"><b>Date:</b> {{ field_start_date }}</p>\n<p class=\"by-category\"><b>Time:</b> {{ field_event_time }}</p>\n{{ view_node }}\n</div>\n</div>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -2256,8 +1177,10 @@ display:
           empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: false
-          plugin_id: custom
+          hide_alter_empty: true
+          view_mode: slider_view
+          entity_type: node
+          plugin_id: rendered_entity
       pager:
         type: none
         options:
@@ -2265,15 +1188,43 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_category'
-        - 'config:field.storage.node.field_event_image'
-        - 'config:field.storage.node.field_event_time'
-        - 'config:field.storage.node.field_start_date'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.rss'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.business_permits.default'
+        - 'config:core.entity_view_display.node.business_permits.teaser'
+        - 'config:core.entity_view_display.node.events.default'
+        - 'config:core.entity_view_display.node.events.notification'
+        - 'config:core.entity_view_display.node.events.short_view'
+        - 'config:core.entity_view_display.node.events.slider_view'
+        - 'config:core.entity_view_display.node.events.teaser'
+        - 'config:core.entity_view_display.node.garage_sales.default'
+        - 'config:core.entity_view_display.node.garage_sales.teaser'
+        - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.teaser'
+        - 'config:core.entity_view_display.node.notification.default'
+        - 'config:core.entity_view_display.node.notification.teaser'
+        - 'config:core.entity_view_display.node.our_santa_ana.default'
+        - 'config:core.entity_view_display.node.our_santa_ana.teaser'
+        - 'config:core.entity_view_display.node.page.default'
+        - 'config:core.entity_view_display.node.page.teaser'
+        - 'config:core.entity_view_display.node.police_department.default'
+        - 'config:core.entity_view_display.node.police_department.teaser'
+        - 'config:core.entity_view_display.node.residents.default'
+        - 'config:core.entity_view_display.node.residents.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_pages.default'
+        - 'config:core.entity_view_display.node.simple_pages.teaser'
+        - 'config:core.entity_view_display.node.social_post.default'
+        - 'config:core.entity_view_display.node.social_post.teaser'
   block_5:
     display_plugin: block
     id: block_5
@@ -2300,13 +1251,10 @@ display:
           row_class: notifi_sec
           default_row_class: false
       row:
-        type: fields
+        type: 'entity:node'
         options:
-          default_field_elements: false
-          inline:
-            title: title
-          separator: ''
-          hide_empty: false
+          relationship: none
+          view_mode: notification
       filters:
         status:
           value: '1'
@@ -2435,23 +1383,24 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: '0'
+          element_type: ''
           element_class: ''
-          element_label_type: '0'
+          element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: '0'
+          element_wrapper_type: ''
           element_wrapper_class: ''
-          element_default_classes: false
+          element_default_classes: true
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: datetime_custom
+          type: daterange_default
           settings:
             timezone_override: ''
-            date_format: 'M d, Y'
+            format_type: html_yearless_date
+            separator: '-'
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -2623,51 +1572,6 @@ display:
           entity_field: type
           plugin_id: bundle
           group: 1
-        field_start_date_value:
-          id: field_start_date_value
-          table: node__field_start_date
-          field: field_start_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_start_date_value_op
-            label: 'Event Date'
-            description: ''
-            use_operator: false
-            operator: field_start_date_value_op
-            identifier: field_start_date_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            placeholder: Date
-            min_placeholder: ''
-            max_placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: datetime
         combine:
           id: combine
           table: views
@@ -2708,7 +1612,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           fields:
-            title: title
+            rendered_entity: rendered_entity
           plugin_id: combine
       defaults:
         filters: false
@@ -2766,16 +1670,44 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_category'
-        - 'config:field.storage.node.field_event_image'
-        - 'config:field.storage.node.field_event_time'
-        - 'config:field.storage.node.field_start_date'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.rss'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.business_permits.default'
+        - 'config:core.entity_view_display.node.business_permits.teaser'
+        - 'config:core.entity_view_display.node.events.default'
+        - 'config:core.entity_view_display.node.events.notification'
+        - 'config:core.entity_view_display.node.events.short_view'
+        - 'config:core.entity_view_display.node.events.slider_view'
+        - 'config:core.entity_view_display.node.events.teaser'
+        - 'config:core.entity_view_display.node.garage_sales.default'
+        - 'config:core.entity_view_display.node.garage_sales.teaser'
+        - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.teaser'
+        - 'config:core.entity_view_display.node.notification.default'
+        - 'config:core.entity_view_display.node.notification.teaser'
+        - 'config:core.entity_view_display.node.our_santa_ana.default'
+        - 'config:core.entity_view_display.node.our_santa_ana.teaser'
+        - 'config:core.entity_view_display.node.page.default'
+        - 'config:core.entity_view_display.node.page.teaser'
+        - 'config:core.entity_view_display.node.police_department.default'
+        - 'config:core.entity_view_display.node.police_department.teaser'
+        - 'config:core.entity_view_display.node.residents.default'
+        - 'config:core.entity_view_display.node.residents.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_pages.default'
+        - 'config:core.entity_view_display.node.simple_pages.teaser'
+        - 'config:core.entity_view_display.node.social_post.default'
+        - 'config:core.entity_view_display.node.social_post.teaser'
   page_1:
     display_plugin: page
     id: page_1
@@ -2794,458 +1726,19 @@ display:
         weight: -46
         context: '0'
         menu_name: main
-        enabled: false
       fields:
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          entity_type: node
-          entity_field: title
-          plugin_id: field
-        field_category:
-          id: field_category
-          table: node__field_category
-          field: field_category
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_start_date:
-          id: field_start_date
-          table: node__field_start_date
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: 'M d, Y'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_event_time:
-          id: field_event_time
-          table: node__field_event_time
-          field: field_event_time
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: daterange_default
-          settings:
-            timezone_override: ''
-            format_type: html_time
-            separator: '-'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_event_image:
-          id: field_event_image
-          table: node__field_event_image
-          field: field_event_image
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: image
-          settings:
-            image_style: ''
-            image_link: content
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        field_start_date_1:
-          id: field_start_date_1
-          table: node__field_start_date
-          field: field_start_date
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: datetime_custom
-          settings:
-            timezone_override: ''
-            date_format: '<p>D</p><p class="year">M.<br><b>d</b></p>'
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          plugin_id: field
-        view_node:
-          id: view_node
+        rendered_entity:
+          id: rendered_entity
           table: node
-          field: view_node
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: true
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: read
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: '0'
-          element_class: read
-          element_label_type: '0'
-          element_label_class: read
-          element_label_colon: false
-          element_wrapper_type: '0'
-          element_wrapper_class: read
-          element_default_classes: false
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          text: 'Read More'
-          output_url_as_text: false
-          absolute: false
-          entity_type: node
-          plugin_id: entity_link
-        nothing:
-          id: nothing
-          table: views
-          field: nothing
+          field: rendered_entity
           relationship: none
           group_type: group
           admin_label: ''
           label: ''
           exclude: false
           alter:
-            alter_text: true
-            text: "<div class=\"event-landing-main\">\n<div class=\"img-box\">\n{{ field_event_image }}\n<span class=\"calender\">{{ field_start_date_1 }}</span>\n</div>\n<div class=\"txt-box\">\n<p class=\"media-heading\">{{ title }}</p>\n<p class=\"by-category\">Category:  {{ field_category }}</p>\n<p class=\"by-category\"><b>Date:</b> {{ field_start_date }}</p>\n<p class=\"by-category\"><b>Time:</b> {{ field_event_time }}</p>\n{{ view_node }}\n</div>\n</div>"
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -3281,8 +1774,10 @@ display:
           empty: ''
           hide_empty: false
           empty_zero: false
-          hide_alter_empty: false
-          plugin_id: custom
+          hide_alter_empty: true
+          view_mode: slider_view
+          entity_type: node
+          plugin_id: rendered_entity
       defaults:
         fields: false
         filters: false
@@ -3349,7 +1844,7 @@ display:
             default_group_multiple: {  }
             group_items: {  }
           fields:
-            title: title
+            rendered_entity: rendered_entity
           plugin_id: combine
         field_category_target_id:
           id: field_category_target_id
@@ -3397,51 +1892,6 @@ display:
           hierarchy: false
           error_message: true
           plugin_id: taxonomy_index_tid
-        field_start_date_value:
-          id: field_start_date_value
-          table: node__field_start_date
-          field: field_start_date_value
-          relationship: none
-          group_type: group
-          admin_label: ''
-          operator: '='
-          value:
-            min: ''
-            max: ''
-            value: ''
-            type: date
-          group: 1
-          exposed: true
-          expose:
-            operator_id: field_start_date_value_op
-            label: 'Event Date'
-            description: ''
-            use_operator: false
-            operator: field_start_date_value_op
-            identifier: field_start_date_value
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              administrator: '0'
-            placeholder: 'Start Date'
-            min_placeholder: ''
-            max_placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          plugin_id: datetime
       filter_groups:
         operator: AND
         groups:
@@ -3449,7 +1899,6 @@ display:
     cache_metadata:
       max-age: -1
       contexts:
-        - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
@@ -3457,7 +1906,36 @@ display:
         - 'user.node_grants:view'
         - user.permissions
       tags:
-        - 'config:field.storage.node.field_category'
-        - 'config:field.storage.node.field_event_image'
-        - 'config:field.storage.node.field_event_time'
-        - 'config:field.storage.node.field_start_date'
+        - 'config:core.entity_view_display.node.article.default'
+        - 'config:core.entity_view_display.node.article.rss'
+        - 'config:core.entity_view_display.node.article.teaser'
+        - 'config:core.entity_view_display.node.business_permits.default'
+        - 'config:core.entity_view_display.node.business_permits.teaser'
+        - 'config:core.entity_view_display.node.events.default'
+        - 'config:core.entity_view_display.node.events.notification'
+        - 'config:core.entity_view_display.node.events.short_view'
+        - 'config:core.entity_view_display.node.events.slider_view'
+        - 'config:core.entity_view_display.node.events.teaser'
+        - 'config:core.entity_view_display.node.garage_sales.default'
+        - 'config:core.entity_view_display.node.garage_sales.teaser'
+        - 'config:core.entity_view_display.node.news.default'
+        - 'config:core.entity_view_display.node.news.teaser'
+        - 'config:core.entity_view_display.node.notification.default'
+        - 'config:core.entity_view_display.node.notification.teaser'
+        - 'config:core.entity_view_display.node.our_santa_ana.default'
+        - 'config:core.entity_view_display.node.our_santa_ana.teaser'
+        - 'config:core.entity_view_display.node.page.default'
+        - 'config:core.entity_view_display.node.page.teaser'
+        - 'config:core.entity_view_display.node.police_department.default'
+        - 'config:core.entity_view_display.node.police_department.teaser'
+        - 'config:core.entity_view_display.node.residents.default'
+        - 'config:core.entity_view_display.node.residents.teaser'
+        - 'config:core.entity_view_display.node.simplenews_issue.default'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_html'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_plain'
+        - 'config:core.entity_view_display.node.simplenews_issue.email_textalt'
+        - 'config:core.entity_view_display.node.simplenews_issue.teaser'
+        - 'config:core.entity_view_display.node.simple_pages.default'
+        - 'config:core.entity_view_display.node.simple_pages.teaser'
+        - 'config:core.entity_view_display.node.social_post.default'
+        - 'config:core.entity_view_display.node.social_post.teaser'

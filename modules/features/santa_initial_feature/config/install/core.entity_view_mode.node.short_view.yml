@@ -1,9 +1,0 @@
-langcode: en
-status: true
-dependencies:
-  module:
-    - node
-id: node.short_view
-label: 'Short View'
-targetEntityType: node
-cache: true

@@ -15,7 +15,7 @@ third_party_settings:
 id: exposedformlatest_news
 theme: santacity
 region: sidebar_first
-weight: 142
+weight: 139
 provider: null
 plugin: 'views_exposed_filter_block:latest_news-latest_news'
 settings:

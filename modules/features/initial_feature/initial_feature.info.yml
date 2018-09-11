@@ -8,11 +8,12 @@ dependencies:
   - block_content
   - block_token
   - comment
-  - contact
+  - content_moderation
+  - content_translation
   - ctools
   - datetime
   - datetime_range
-  - dropdown_language
+  - dblog
   - entity_reference_revisions
   - field
   - file
@@ -20,34 +21,29 @@ dependencies:
   - flexslider_views
   - geolocation
   - geolocation_google_maps
-  - help
   - image
-  - lang_dropdown
+  - imce
   - language
   - link
-  - md_slider
-  - menu_link_content
   - menu_ui
   - node
   - options
   - owlcarousel
   - paragraphs
   - path
-  - pathauto
   - rdf
   - redirect
-  - search
-  - shortcut
+  - scheduler
   - simplenews
-  - social_media
   - system
   - taxonomy
   - telephone
   - text
   - time_range
-  - tour
   - user
   - views
   - views_slideshow
   - webform
+  - workflow
+  - workflows
 version: 8.x-1.0

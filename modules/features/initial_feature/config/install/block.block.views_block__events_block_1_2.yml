@@ -18,7 +18,7 @@ third_party_settings:
 id: views_block__events_block_1_2
 theme: santacity
 region: bottom
-weight: 26
+weight: 0
 provider: null
 plugin: 'views_block:events-block_1'
 settings:
@@ -31,6 +31,6 @@ settings:
 visibility:
   request_path:
     id: request_path
-    pages: "/node/49\r\n/residents/information-for-new-residents\r\n/residents/bill-pay-city-services\r\n/residents/homeowners-renters\r\n/residents/programs-events\r\n/residents/transportation\r\n/residents/employment\r\n/residents/education\r\n/residents/get-involved\r\n/node/187\r\n/node/188\r\n/node/189\r\n/node/190\r\n/node/231\r\n/node/233\r\n/node/238\r\n/node/239\r\n/node/244\r\n/node/273\r\n/node/287\r\n/node/295\r\n/node/296\r\n/node/300\r\n/node/306﻿\r\n/node/311\r\n/node/317\r\n/node/321\r\n/node/668\r\n/water-and-sewer\r\n/water-customer-service\r\n/sewer-services\r\n/water-services\r\n/water-conservation-0\r\n/residents/employment\r\n/departments/human-resources-department\r\n/finance-and-management-services\r\n/economic-development-0\r\n/departments/finance-and-management-services"
+    pages: "/node/49\r\n/residents/information-for-new-residents\r\n/residents/bill-pay-city-services\r\n/residents/homeowners-renters\r\n/residents/programs-events\r\n/residents/transportation\r\n/residents/employment\r\n/residents/education\r\n/residents/get-involved\r\n/node/64\r\n/node/187\r\n/node/188\r\n/node/189\r\n/node/190\r\n/node/227\r\n/node/231\r\n/node/233\r\n/node/234\r\n/node/238\r\n/node/239\r\n/node/244\r\n/node/258\r\n/node/273\r\n/node/286\r\n/node/287\r\n/node/290\r\n/node/295\r\n/node/296\r\n/node/300\r\n/node/306﻿\r\n/node/311\r\n/node/317\r\n/node/321\r\n/node/651\r\n/node/668\r\n/water-and-sewer\r\n/water-customer-service\r\n/sewer-services\r\n/water-services\r\n/water-conservation-0\r\n/residents/employment\r\n/departments/human-resources-department\r\n/finance-and-management-services\r\n/economic-development-0\r\n/node/519\r\n/departments/finance-and-management-services\r\n/node/887\r\n/node/644\r\n/node/628\r\n/node/848"
     negate: false
     context_mapping: {  }

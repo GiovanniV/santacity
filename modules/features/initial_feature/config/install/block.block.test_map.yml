@@ -18,7 +18,7 @@ third_party_settings:
 id: test_map
 theme: santacity
 region: bottom
-weight: 24
+weight: -26
 provider: null
 plugin: 'views_block:our_santa_ana-map'
 settings:

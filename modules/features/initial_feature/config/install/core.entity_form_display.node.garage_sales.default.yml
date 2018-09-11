@@ -51,8 +51,28 @@ content:
   field_geolocation:
     weight: 122
     settings:
-      default_longitude: '-117.14948587773438'
-      default_latitude: '32.76282121541567'
+      centre:
+        client_location:
+          weight: 0
+          enable: false
+          map_center_id: client_location
+        fit_bounds:
+          weight: 0
+          enable: false
+          map_center_id: fit_bounds
+          settings:
+            reset_zoom: false
+        fixed_value:
+          enable: true
+          settings:
+            latitude: 33.74912
+            longitude: -117.87336
+          weight: 0
+          map_center_id: location_plugins
+        freeogeoip:
+          weight: 0
+          enable: false
+          map_center_id: location_plugins
       google_map_settings:
         height: 400px
         width: 100%
@@ -91,6 +111,7 @@ content:
             settings:
               info_window_solitary: true
               disable_auto_pan: true
+              max_width: null
               info_auto_display: false
           marker_infobubble:
             weight: 0
@@ -251,5 +272,10 @@ content:
       size: 60
       placeholder: ''
     region: content
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
 hidden: {  }

@@ -18,7 +18,7 @@ third_party_settings:
 id: garage_sales_garace_list
 theme: santacity
 region: sidebar_first
-weight: 143
+weight: 140
 provider: null
 plugin: 'views_block:garage_sales-garace_list'
 settings:

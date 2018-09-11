@@ -15,7 +15,7 @@ third_party_settings:
 id: our_santa_ana_list_view
 theme: santacity
 region: content
-weight: 26
+weight: 16
 provider: null
 plugin: 'views_block:our_santa_ana-block'
 settings:

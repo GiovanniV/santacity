@@ -662,7 +662,7 @@ display:
           hide_alter_empty: true
           text: view
           output_url_as_text: true
-          absolute: false
+          absolute: true
           entity_type: node
           plugin_id: entity_link
         nothing:
@@ -808,14 +808,20 @@ display:
               enable: false
               map_center_id: client_location
             fit_bounds:
-              weight: 0
               enable: true
-              map_center_id: fit_bounds
-            fixed_value:
               weight: 0
+              map_center_id: fit_bounds
+              settings:
+                reset_zoom: false
+            first_row:
+              weight: 0
+              enable: false
+              map_center_id: location_plugins
+            fixed_value:
               settings:
                 latitude: -117.867836
                 longitude: 33.745571
+              weight: 0
               enable: false
               map_center_id: location_plugins
             freeogeoip:
@@ -824,7 +830,7 @@ display:
               map_center_id: location_plugins
           even_empty: 1
           icon_field: none
-          marker_icon_path: ''
+          marker_icon_path: /themes/santacity/images/black.png
           marker_row_number: 0
           map_provider_id: google_maps
           map_provider_settings:
@@ -841,6 +847,7 @@ display:
                 settings:
                   info_window_solitary: true
                   info_auto_display: true
+                  max_width: null
                   disable_auto_pan: false
                 enabled: false
               marker_infobubble:
@@ -856,14 +863,15 @@ display:
                   border_color: ''
                   background_color: '#fff'
                   min_width: null
-                  max_width: 230
+                  max_width: 280
                   min_height: 100
-                  max_height: 250
+                  max_height: 300
                   close_button: 0
               marker_icon:
+                enabled: true
                 weight: 0
                 settings:
-                  marker_icon_path: ''
+                  marker_icon_path: /themes/santacity/images/black.png
                   anchor:
                     x: 0
                     'y': 0
@@ -879,7 +887,6 @@ display:
                   scaled_size:
                     width: null
                     height: null
-                enabled: false
               marker_clusterer:
                 weight: 0
                 settings:
@@ -1108,6 +1115,59 @@ display:
           entity_type: node
           entity_field: title
           plugin_id: field
+        view_node:
+          id: view_node
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: view
+          output_url_as_text: true
+          absolute: false
+          entity_type: node
+          plugin_id: entity_link
         body:
           id: body
           table: node__body
@@ -1119,7 +1179,7 @@ display:
           exclude: true
           alter:
             alter_text: true
-            text: "<div>{{ body }}</div>\n<div class=\"read-more\"><a class=\"read\">View</a></div>"
+            text: "<div>{{ body }}<div><a href=\"{{ view_node }}\" class=\"read\">View</a></div></div>\n"
             make_link: false
             path: ''
             absolute: false
@@ -1159,7 +1219,7 @@ display:
           click_sort_column: value
           type: text_trimmed
           settings:
-            trim_length: 150
+            trim_length: 180
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1346,7 +1406,10 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
-            placeholder: ''
+              super_admin: '0'
+              editor_administrrator: '0'
+              content_editor: '0'
+            placeholder: 'Recreation Center'
           is_grouped: false
           group_info:
             label: ''

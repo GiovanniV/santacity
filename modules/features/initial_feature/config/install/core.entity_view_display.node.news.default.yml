@@ -2,8 +2,9 @@ langcode: en
 status: true
 dependencies:
   config:
+    - core.entity_view_display.comment.comment.default
     - field.field.node.news.body
-    - field.field.node.news.field_comments
+    - field.field.node.news.comment
     - field.field.node.news.field_news_category
     - field.field.node.news.field_news_date
     - field.field.node.news.field_news_image
@@ -26,8 +27,8 @@ content:
     settings: {  }
     third_party_settings: {  }
     region: content
-  field_comments:
-    weight: 105
+  comment:
+    weight: 106
     label: above
     settings:
       view_mode: default

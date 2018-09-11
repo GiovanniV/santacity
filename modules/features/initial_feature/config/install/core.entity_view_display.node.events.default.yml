@@ -3,21 +3,25 @@ status: true
 dependencies:
   config:
     - field.field.node.events.body
+    - field.field.node.events.field_address
+    - field.field.node.events.field_booking_url
     - field.field.node.events.field_category
     - field.field.node.events.field_event_email
     - field.field.node.events.field_event_image
     - field.field.node.events.field_event_location
     - field.field.node.events.field_event_phone
-    - field.field.node.events.field_event_ticket_price
     - field.field.node.events.field_event_time
     - field.field.node.events.field_event_website
+    - field.field.node.events.field_price_details
     - field.field.node.events.field_start_date
+    - filter.format.basic_html
     - node.type.events
   module:
-    - datetime
     - datetime_range
+    - entity_reference_revisions
     - geolocation
     - image
+    - link
     - text
     - user
 id: node.events.default
@@ -31,6 +35,26 @@ content:
     weight: 101
     settings: {  }
     third_party_settings: {  }
+    region: content
+  field_address:
+    weight: 114
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_booking_url:
+    weight: 116
+    label: hidden
+    settings:
+      trim_length: 80
+      target: _blank
+      url_only: false
+      url_plain: false
+      rel: '0'
+    third_party_settings: {  }
+    type: link
     region: content
   field_category:
     weight: 111
@@ -211,6 +235,13 @@ content:
       use_overridden_map_settings: 0
       common_map: '1'
       data_provider_settings: {  }
+      centre:
+        fit_bounds:
+          enable: true
+          weight: -101
+          map_center_id: fit_bounds
+          settings:
+            reset_zoom: true
     third_party_settings: {  }
     type: geolocation_map
     region: content
@@ -222,24 +253,13 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_event_ticket_price:
-    weight: 109
-    label: above
-    settings:
-      thousand_separator: ''
-      decimal_separator: .
-      scale: 2
-      prefix_suffix: true
-    third_party_settings: {  }
-    type: number_decimal
-    region: content
   field_event_time:
-    weight: 104
+    weight: 113
     label: above
     settings:
-      timezone_override: ''
-      format_type: html_time
       separator: '-'
+      format_type: medium
+      timezone_override: ''
     third_party_settings: {  }
     type: daterange_default
     region: content
@@ -251,14 +271,24 @@ content:
     third_party_settings: {  }
     type: string
     region: content
-  field_start_date:
-    weight: 103
+  field_price_details:
+    type: entity_reference_revisions_entity_view
+    weight: 115
     label: above
     settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    region: content
+  field_start_date:
+    weight: 112
+    label: above
+    settings:
+      separator: '-'
       format_type: medium
       timezone_override: ''
     third_party_settings: {  }
-    type: datetime_default
+    type: daterange_default
     region: content
   links:
     weight: 100

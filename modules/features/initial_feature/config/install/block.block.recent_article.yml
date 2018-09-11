@@ -18,7 +18,7 @@ third_party_settings:
 id: recent_article
 theme: santacity
 region: content
-weight: 78
+weight: 68
 provider: null
 plugin: 'views_block:latest_news-recent_article'
 settings:

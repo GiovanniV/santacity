@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: editor_administrrator
-label: 'Editor administrrator'
-weight: 4
-is_admin: null

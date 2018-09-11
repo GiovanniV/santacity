@@ -15,7 +15,7 @@ third_party_settings:
 id: events_filter
 theme: santacity
 region: sidebar_first
-weight: 135
+weight: 132
 provider: null
 plugin: 'views_exposed_filter_block:events-page_1'
 settings:

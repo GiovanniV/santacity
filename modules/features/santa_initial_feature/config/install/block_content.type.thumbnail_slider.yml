@@ -1,7 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: thumbnail_slider
-label: 'Thumbnail Slider'
-revision: 0
-description: ''
