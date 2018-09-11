@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: fy
-label: 'Frisian, Western'
-direction: ltr
-weight: 6
-locked: false

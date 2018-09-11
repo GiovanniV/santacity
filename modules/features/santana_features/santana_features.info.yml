@@ -4,6 +4,50 @@ type: module
 core: 8.x
 dependencies:
   - backup_migrate
+  - block
+  - block_class
+  - block_content
+  - block_token
+  - comment
+  - contact
+  - content_moderation
+  - content_translation
+  - ctools
+  - datetime
+  - datetime_range
+  - entity_reference_revisions
+  - field
+  - field_validation
+  - file
+  - flexslider_fields
+  - flexslider_views
+  - fontawesome
+  - geolocation
+  - geolocation_google_maps
+  - gtranslate
+  - image
+  - imce
   - language
+  - link
+  - menu_ui
+  - node
+  - options
+  - owlcarousel
+  - paragraphs
+  - path
+  - pathauto
+  - rdf
+  - rename_admin_paths
+  - scheduler
+  - simplenews
+  - system
+  - taxonomy
+  - telephone
+  - text
+  - time_range
+  - user
+  - views
+  - views_slideshow
   - webform
+  - workflows
 version: 8.x-1.0

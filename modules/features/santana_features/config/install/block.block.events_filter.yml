@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.events
+  module:
+    - block_class
+    - system
+    - views
+  theme:
+    - santacity
+third_party_settings:
+  block_class:
+    classes: ''
+id: events_filter
+theme: santacity
+region: sidebar_first
+weight: 132
+provider: null
+plugin: 'views_exposed_filter_block:events-page_1'
+settings:
+  id: 'views_exposed_filter_block:events-page_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: 'Events Filter'
+visibility:
+  request_path:
+    id: request_path
+    pages: /events
+    negate: false
+    context_mapping: {  }
