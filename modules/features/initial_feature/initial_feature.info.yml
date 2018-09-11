@@ -14,16 +14,24 @@ dependencies:
   - datetime
   - datetime_range
   - dblog
+  - dropdown_language
+  - editor
   - entity_reference_revisions
   - field
+  - field_validation
   - file
+  - filter
+  - flexslider
   - flexslider_fields
   - flexslider_views
+  - fontawesome
   - geolocation
   - geolocation_google_maps
+  - gtranslate
   - image
   - imce
   - language
+  - libraries
   - link
   - menu_ui
   - node
@@ -33,17 +41,21 @@ dependencies:
   - path
   - rdf
   - redirect
+  - rename_admin_paths
   - scheduler
+  - search
   - simplenews
   - system
   - taxonomy
   - telephone
   - text
   - time_range
+  - ultimate_cron
   - user
   - views
   - views_slideshow
   - webform
   - workflow
+  - workflow_access
   - workflows
 version: 8.x-1.0
