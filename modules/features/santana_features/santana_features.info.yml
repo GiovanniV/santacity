@@ -6,10 +6,8 @@ dependencies:
   - backup_migrate
   - block
   - block_class
-  - block_content
   - block_token
   - comment
-  - contact
   - content_moderation
   - content_translation
   - ctools
@@ -17,7 +15,6 @@ dependencies:
   - datetime_range
   - entity_reference_revisions
   - field
-  - field_validation
   - file
   - flexslider_fields
   - flexslider_views
@@ -35,11 +32,9 @@ dependencies:
   - owlcarousel
   - paragraphs
   - path
-  - pathauto
   - rdf
   - rename_admin_paths
   - scheduler
-  - simplenews
   - system
   - taxonomy
   - telephone
@@ -49,5 +44,7 @@ dependencies:
   - views
   - views_slideshow
   - webform
+  - workflow
+  - workflow_access
   - workflows
 version: 8.x-1.0
