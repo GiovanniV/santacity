@@ -1,0 +1,9 @@
+name: 'Santana Features'
+description: 'Santana Features'
+type: module
+core: 8.x
+dependencies:
+  - backup_migrate
+  - language
+  - webform
+version: 8.x-1.0
