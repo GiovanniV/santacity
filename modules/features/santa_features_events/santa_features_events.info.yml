@@ -6,12 +6,15 @@ dependencies:
   - backup_migrate
   - block
   - block_class
+  - block_content
   - block_token
   - content_moderation
   - content_translation
+  - datetime
   - datetime_range
   - entity_reference_revisions
   - field
+  - file
   - geolocation
   - geolocation_google_maps
   - image

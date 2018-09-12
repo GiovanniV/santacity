@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Price Type'
+vid: price_type
+description: ''
+hierarchy: 0
+weight: 0
