@@ -1,0 +1,36 @@
+name: 'Santa Features Events'
+description: 'Santa Features Events'
+type: module
+core: 8.x
+dependencies:
+  - backup_migrate
+  - block
+  - block_class
+  - block_token
+  - content_moderation
+  - content_translation
+  - datetime_range
+  - entity_reference_revisions
+  - field
+  - geolocation
+  - geolocation_google_maps
+  - image
+  - imce
+  - language
+  - link
+  - menu_ui
+  - node
+  - owlcarousel
+  - paragraphs
+  - path
+  - scheduler
+  - system
+  - taxonomy
+  - telephone
+  - text
+  - time_range
+  - user
+  - views
+  - webform
+  - workflows
+version: 8.x-1.0

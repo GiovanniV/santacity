@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.price.field_amount
+    - field.field.paragraph.price.field_type
+    - paragraphs.paragraphs_type.price
+id: paragraph.price.default
+targetEntityType: paragraph
+bundle: price
+mode: default
+content:
+  field_amount:
+    weight: 1
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+    type: number
+    region: content
+  field_type:
+    weight: 0
+    settings:
+      match_operator: CONTAINS
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: entity_reference_autocomplete
+    region: content
+hidden:
+  created: true
+  status: true
+  uid: true

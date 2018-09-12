@@ -1,0 +1,6 @@
+excluded:
+  - backup_migrate.backup_migrate_schedule.santa_
+  - webform.webform.forma_de_comentarios_
+  - webform.webform.structure_relocation_permit_
+  - webform.webform._first_look_meeting_reservation
+required: true
