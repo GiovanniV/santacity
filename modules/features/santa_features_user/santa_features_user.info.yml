@@ -1,0 +1,9 @@
+name: 'Santa Features User'
+description: 'Santa Features User'
+type: module
+core: 8.x
+dependencies:
+  - backup_migrate
+  - user
+  - webform
+version: 8.x-1.0
