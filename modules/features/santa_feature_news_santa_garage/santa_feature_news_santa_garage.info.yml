@@ -1,0 +1,35 @@
+name: 'Santa Feature News & Santa & Garage'
+description: 'Santa Feature News & Santa & Garage'
+type: module
+core: 8.x
+dependencies:
+  - backup_migrate
+  - block
+  - block_class
+  - block_token
+  - comment
+  - content_translation
+  - ctools
+  - datetime
+  - field
+  - flexslider_fields
+  - flexslider_views
+  - geolocation
+  - geolocation_google_maps
+  - image
+  - imce
+  - language
+  - menu_ui
+  - node
+  - options
+  - owlcarousel
+  - path
+  - scheduler
+  - system
+  - taxonomy
+  - text
+  - user
+  - views
+  - views_slideshow
+  - webform
+version: 8.x-1.0
