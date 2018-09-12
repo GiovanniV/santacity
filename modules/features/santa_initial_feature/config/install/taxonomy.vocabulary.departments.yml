@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-name: Departments
-vid: departments
-description: ''
-hierarchy: 0
-weight: 0
