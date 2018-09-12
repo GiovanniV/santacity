@@ -1,5 +1,5 @@
-name: 'Santana Features'
-description: 'Santana Features'
+name: 'Santa Feature Language'
+description: 'Santa Feature Language'
 type: module
 core: 8.x
 dependencies:
