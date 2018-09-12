@@ -1,0 +1,13 @@
+name: 'Santa Features Others'
+description: 'Santa Features Others'
+type: module
+core: 8.x
+dependencies:
+  - backup_migrate
+  - dropdown_language
+  - fontawesome
+  - geolocation_google_maps
+  - gtranslate
+  - rename_admin_paths
+  - webform
+version: 8.x-1.0
