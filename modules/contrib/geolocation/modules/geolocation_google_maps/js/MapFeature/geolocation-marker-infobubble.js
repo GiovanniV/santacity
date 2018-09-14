@@ -76,7 +76,11 @@
             }
 
             google.maps.event.addListener(currentMarker, 'click', function () {
-
+							$.each(map.mapMarkers, function(index, test) {
+								test.setIcon('/themes/santacity/images/black.png');
+							});
+            
+							currentMarker.setIcon('/themes/santacity/images/orange.png');
               if (typeof currentMarker.infoBubble === 'undefined') {
                 currentMarker.infoBubble = new InfoBubble({
                   map: map.googleMap,

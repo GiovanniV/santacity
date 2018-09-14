@@ -1,0 +1,17 @@
+diff --git a/modules/contrib/geolocation/modules/geolocation_google_maps/js/MapFeature/geolocation-marker-infobubble.js b/modules/contrib/geolocation/modules/geolocation_google_maps/js/MapFeature/geolocation-marker-infobubble.js
+index 6286ee3d..2ecfa8e9 100755
+--- a/modules/contrib/geolocation/modules/geolocation_google_maps/js/MapFeature/geolocation-marker-infobubble.js
++++ b/modules/contrib/geolocation/modules/geolocation_google_maps/js/MapFeature/geolocation-marker-infobubble.js
+@@ -76,7 +76,11 @@
+             }
+ 
+             google.maps.event.addListener(currentMarker, 'click', function () {
+-
++							$.each(map.mapMarkers, function(index, test) {
++								test.setIcon('/themes/santacity/images/black.png');
++							});
++            
++							currentMarker.setIcon('/themes/santacity/images/orange.png');
+               if (typeof currentMarker.infoBubble === 'undefined') {
+                 currentMarker.infoBubble = new InfoBubble({
+                   map: map.googleMap,
