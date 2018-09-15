@@ -1225,7 +1225,7 @@ form.views-exposed-form button.form-submit{
     width: 290px !important;
     }
     .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
-    width: 56% !important;
+    //width: 56% !important;
 }
 div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
     overflow:  hidden !important;
@@ -1910,9 +1910,9 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:15px}
 .discover-sant-container { position:  relative;}
 
 .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
-    padding: 20px;
+    padding: 10px;
     right: 50px;
-    width: 36%;
+    //width: 36%;
     box-shadow: 0 4px 6px #c1c1c1;
     margin-top: 10px;
 }
