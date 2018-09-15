@@ -2998,4 +2998,5 @@ body {
 	content: '';
 }
 div.more {width: 100%;}
+div.more a { color: inherit; }
 div.more:after { float:right; }
