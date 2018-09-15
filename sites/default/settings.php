@@ -23,3 +23,35 @@ $local_settings = __DIR__ . "/settings.local.php";
 if (file_exists($local_settings)) {
   include $local_settings;
 }
+
+$settings['simplesamlphp_dir'] = '/var/www/html/simplesamlphp';
+
+// SimpleSAMLphp_auth module settings
+$config['simplesamlphp_auth.settings'] = [
+ // Basic settings.
+    'activate'                => TRUE, // Enable or Disable SAML login.
+    'auth_source'             => 'default-sp',
+    'login_link_display_name' => 'Login with your SSO account',
+    'register_users'          => TRUE,
+    'debug'                   => FALSE,
+ // Local authentication.
+    'allow' => array(
+      'default_login'         => TRUE,
+      'set_drupal_pwd'        => TRUE,
+      'default_login_users'   => '',
+      'default_login_roles'   => array(
+        'authenticated' => FALSE,
+        'administrator' => 'administrator',
+      ),
+    ),
+    'logout_goto_url'         => '',
+ // User info and syncing.
+ // 'unique_id' the value which is unique in the saml response coming from IDP.
+    'unique_id'               => 'mail',
+    'user_name'               => 'username',
+    'mail_attr'               => 'mail',
+    'sync' => array(
+        'mail'      => TRUE,
+        'user_name' => TRUE,
+    ),
+];
