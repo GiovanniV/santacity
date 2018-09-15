@@ -2997,3 +2997,5 @@ body {
 .paragraph--type--price .field--item:last-child {
 	content: '';
 }
+div.more {width: 100%;}
+div.more:after { float:right; }
