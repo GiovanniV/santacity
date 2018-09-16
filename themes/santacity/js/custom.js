@@ -24,7 +24,15 @@
 				);
 				
 				$('body').addClass(drupalSettings.tranlateClass);
-				doGTranslate('en|' + drupalSettings.language);
+				
+				try {
+					doGTranslate('en|' + drupalSettings.language);
+				}
+				catch(e) {
+					//callUndefinedFunctionCatcher(e.arguments);
+				}
+				
+				
 				// Permit
 				$('.xml-listing-form-container input').click(function() {
 					$('.xml-listing-form-container input').not(this).attr("checked", false);
