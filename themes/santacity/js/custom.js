@@ -48,7 +48,9 @@
 				
 				$('#block-mainnavigation li').click(function(){
 					//$('#block-mainnavigation li').removeClass('open');
-					$(this).hasClass('dropdown-submenu').addClass('open');
+					if($(this).hasClass('dropdown-submenu')) {
+						$(this).addClass('open');
+					}
 				});
 			});
 			
