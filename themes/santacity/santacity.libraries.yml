@@ -20,4 +20,5 @@ framework:
     bootstrap/assets/javascripts/bootstrap/scrollspy.js: {}
     bootstrap/assets/javascripts/bootstrap/tab.js: {}
     bootstrap/assets/javascripts/bootstrap/transition.js: {}
+    js/dropdown.js: {}
     js/custom.js: {}
