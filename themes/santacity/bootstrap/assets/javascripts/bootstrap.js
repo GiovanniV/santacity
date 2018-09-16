@@ -800,8 +800,8 @@ if (typeof jQuery === 'undefined') {
 
       if (e.isDefaultPrevented()) return
 
-      //$this.attr('aria-expanded', 'false')
-      //$parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
+      $this.attr('aria-expanded', 'false')
+      $parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
     })
   }
 

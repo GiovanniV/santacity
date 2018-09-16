@@ -46,10 +46,7 @@
 					$(this).attr('src', '/themes/santacity/images/orange.png');
 				});
 				
-				$('#block-mainnavigation li').click(function(){
-					console.log(1);
-				}, function() {
-					console.log(2);
+				$(document).on('click.bs.dropdown.data-api', function() {
 					$(this).addClass('open');
 					$(this).parents('li').addClass('open');
 					$(this).parents('li').parents('li').addClass('open');
