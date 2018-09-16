@@ -46,6 +46,11 @@
 					$(this).attr('src', '/themes/santacity/images/orange.png');
 				});
 				
+				$('#block-mainnavigation li').click(function(){
+					$(this).parents('ul').addClass('open');
+					$(this).parents('ul').parents('ul').addClass('open');
+					$(this).parents('ul').parents('ul').parents('ul').addClass('open');
+				});
 			});
 			
 			
