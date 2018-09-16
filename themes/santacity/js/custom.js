@@ -48,6 +48,9 @@
 				
 			});
 			
+			// Dropdown
+			var backdrop = '.dropdown-backdrop'
+			var toggle   = '[data-toggle="dropdown"]'
 			$(document).on('click.bs.dropdown.data-api', function(e) {
 				if (e && e.which === 3) return
 				$(backdrop).remove()
