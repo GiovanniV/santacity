@@ -52,7 +52,8 @@
 		
       //$this.attr('aria-expanded', 'false')
       //$parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
-      $parent.trigger($.Event('hidden.bs.dropdown', relatedTarget))
+      $this.addClass('open');
+			$parent.trigger($.Event('hidden.bs.dropdown', relatedTarget))
     })
   }
 
