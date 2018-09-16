@@ -47,10 +47,8 @@
 				});
 				
 				$('#block-mainnavigation li').click(function(){
-					$(this).addClass('open');
-					$(this).parents('ul').addClass('open');
-					$(this).parents('ul').parents('ul').addClass('open');
-					$(this).parents('ul').parents('ul').parents('ul').addClass('open');
+					//$('#block-mainnavigation li').removeClass('open');
+					$(this).hasClass('dropdown-submenu').addClass('open');
 				});
 			});
 			
