@@ -47,7 +47,7 @@
 				});
 				
 				$('#block-mainnavigation li').click(function(){
-					console.log(12);
+					$(this).addClass('open');
 					$(this).parents('li').addClass('open');
 					$(this).parents('li').parents('li').addClass('open');
 					$(this).parents('li').parents('li').parents('li').addClass('open');
