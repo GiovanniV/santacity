@@ -46,14 +46,17 @@
 					$(this).attr('src', '/themes/santacity/images/orange.png');
 				});
 				
-				$(document).on('click.bs.dropdown.data-api', function() {
-					$(this).addClass('open');
-					$(this).parents('li').addClass('open');
-					$(this).parents('li').parents('li').addClass('open');
-					$(this).parents('li').parents('li').parents('li').addClass('open');
-				});
-				
 			});
+			
+			
+			$(document).on('click.bs.dropdown.data-api', function() {
+				console.log(111);
+				$(this).addClass('open');
+				$(this).parents('li').addClass('open');
+				$(this).parents('li').parents('li').addClass('open');
+				$(this).parents('li').parents('li').parents('li').addClass('open');
+			});
+				
 		}
 	};
 })(jQuery, Drupal, drupalSettings);
