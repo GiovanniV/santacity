@@ -39,9 +39,10 @@
 				});
 				
 				$('#block-mainnavigation li').click(function(){
-					$(this).parents('ul').addClass('open');
-					$(this).parents('ul').parents('ul').addClass('open');
-					$(this).parents('ul').parents('ul').parents('ul').addClass('open');
+					console.log(12);
+					$(this).parents('li').addClass('open');
+					$(this).parents('li').parents('li').addClass('open');
+					$(this).parents('li').parents('li').parents('li').addClass('open');
 				});
 				
 			});
