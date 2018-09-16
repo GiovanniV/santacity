@@ -49,9 +49,10 @@
       $parent.trigger(e = $.Event('hide.bs.dropdown', relatedTarget))
 
       if (e.isDefaultPrevented()) return
-			alert(111);
+		
       //$this.attr('aria-expanded', 'false')
       //$parent.removeClass('open').trigger($.Event('hidden.bs.dropdown', relatedTarget))
+      $parent.trigger($.Event('hidden.bs.dropdown', relatedTarget))
     })
   }
 
