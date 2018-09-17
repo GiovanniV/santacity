@@ -49,6 +49,7 @@
 				$('#block-mainnavigation li').click(function(){
 					//$('#block-mainnavigation li').removeClass('open');
 					if($(this).hasClass('dropdown-submenu')) {
+						console.log($(this));
 						$(this).addClass('open');
 					}
 				});
