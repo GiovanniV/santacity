@@ -1,0 +1,83 @@
+<div class="head_follows">
+	<h3>Follow Us</h3>
+	<a class="Follow_page" href=""> View All Social Media</a></div>
+	<div class="socail_page_home">
+		<div class="col-md-4">
+			<div class="facebook_page_home">
+				<div class="fb_home_head">
+					<h1><i class="fa fa-facebook" aria-hidden="true"></i> Facebook</h1>
+				</div>
+				<div class="text_home_page" id="fb_home">
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="facebook_page_home twiter">
+				<div class="fb_home_head">
+					<h1><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</h1>
+				</div>
+				<div class="text_home_page twitter_home" id="twitter_home">
+					
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="facebook_page_home youtube">
+				<div class="fb_home_head">
+					<h1><i class="fa fa-youtube-play" aria-hidden="true"></i> Youtube</h1>
+				</div>
+				<div class="text_home_page you_tube" id="_home">
+					{% for video in yt_feed %}
+		        <div class="media">
+		          <div class="media-left"><a href="https://www.youtube.com/watch?v={{ video.id }}"><img alt="" class="media-object" data-entity-type="" data-entity-uuid="" src="https://img.youtube.com/vi/{{ video.id }}/1.jpg" /></a></div>
+		          <div class="media-body">
+		            <h4 class="media-heading"><a href="https://www.youtube.com/watch?v={{ video.id }}">{{ video.title }}</a></h4>
+		            <p><a href="https://www.youtube.com/watch?v={{ video.id }}" target="_blank" class="read-button">Watch</a></p>
+		          </div>
+		        </div>
+			    {% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+		<script src="themes/santacity/social-feed/bower_components/doT/doT.min.js"></script>
+		<script src="themes/santacity/social-feed/bower_components/codebird-js/codebird.js"></script>
+		<script src="themes/santacity/social-feed/bower_components/moment/min/moment.min.js"></script>
+		<script src="themes/santacity/social-feed/bower_components/moment/locale/it.js"></script>
+		<script src="themes/santacity/social-feed/js/jquery.socialfeed.js"></script>
+		<script>
+			jQuery('#twitter_home').socialfeed({
+	        // TWITTER
+	            twitter:{
+	                accounts: ['@MarketSmart360'],                       //Array: Specify a list of accounts from which to pull tweets
+	                limit: 5,                                    //Integer: max number of tweets to load
+	                consumer_key: '1hpbBmGHVs3tilnAA68R6Fzg0',           //String: consumer key. make sure to have your app read-only
+	                consumer_secret: 'yIyY2WfEunn6nYvzd0Wfjiube459GMELs7pYY3NhZO6TN9oB50', //String: consumer secret key. make sure to have your app read-only
+	                tweet_mode: 'compatibility'                  //String: change to "extended" to show the whole tweet
+	             },
+
+	        // GENERAL SETTINGS
+	        length:400,                                      //Integer: For posts with text longer than this length, show an ellipsis.
+	        date_locale: "en", 
+	        date_format: "MM D YYYY",
+	        template: "themes/santacity/social-feed/template.html",
+	        
+	    });
+			jQuery('#fb_home').socialfeed({
+	        // FACEBOOK
+	        facebook:{
+	            accounts: ['!cityofsantaana'],  //Array: Specify a list of accounts from which to pull wall posts
+	            limit: 3,                                   //Integer: max number of posts to load
+	            access_token: 'EAAfZBqrkw2IkBAOXneoceiZA1cBM7trhbWGQfwWmVud6fcPqea9iRRzilSDA5H22ptyWhiJi8hzZAqXKxd8sokxgsmb9m9JxkzmZBbBh40s0qSVyP24QSXokYqwNdSQpd1EYtaQkxjZBuT14VsXe3Ct1X4ztxmCKXppPocsxqOAZDZD'  //String: "APP_ID|APP_SECRET"
+	        },
+
+	        // GENERAL SETTINGS
+	        length:400,                                      //Integer: For posts with text longer than this length, show an ellipsis.
+	        date_locale: "en", 
+	        date_format: "MM D YYYY",
+	        template: "themes/santacity/social-feed/template.html",
+	        
+	    });
+		</script>
