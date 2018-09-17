@@ -70,18 +70,7 @@ class SimplesamlSubscriber implements EventSubscriberInterface {
    *   The subscribed event.
    */
   public function checkAuthStatus(GetResponseEvent $event) {
-    if ($this->account->isAnonymous()) {
-      return;
-    }
-
-    if (!$this->simplesaml->isActivated()) {
-      return;
-    }
-
-    if ($this->simplesaml->isAuthenticated()) {
-      return;
-    }
-
+    
     if ($this->config->get('allow.default_login')) {
 
       $allowed_uids = explode(',', $this->config->get('allow.default_login_users'));
@@ -94,15 +83,28 @@ class SimplesamlSubscriber implements EventSubscriberInterface {
         return;
       }
     }
+		elseif ($this->account->isAnonymous()) {
+			return;
+		}
 
-    if ($this->config->get('debug')) {
-      $this->logger->debug('User %name not authorized to log in using local account.', ['%name' => $this->account->getAccountName()]);
-    }
-    user_logout();
+		elseif (!$this->simplesaml->isActivated()) {
+			return;
+		}
 
-    $response = new RedirectResponse('/', RedirectResponse::HTTP_FOUND);
-    $event->setResponse($response);
-    $event->stopPropagation();
+		elseif ($this->simplesaml->isAuthenticated()) {
+			return;
+		}
+		
+		else {
+			if ($this->config->get('debug')) {
+				$this->logger->debug('User %name not authorized to log in using local account.', ['%name' => $this->account->getAccountName()]);
+			}
+			user_logout();
+
+			$response = new RedirectResponse('/', RedirectResponse::HTTP_FOUND);
+			$event->setResponse($response);
+			$event->stopPropagation();
+		}
 
   }
 
