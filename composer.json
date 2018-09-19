@@ -9,10 +9,8 @@
         "drupal/socialfeed": "^1.0@beta",
         "drupal/socialmediafeed": "1.x-dev",
         "drupal/social_feed_fetcher": "^1.0@beta",
-        "drupal/geolocation": "2.x-dev"
-    },
-    "replace": {
-        "drupal/core": "^8.5"
+        "drupal/geolocation": "2.x-dev",
+	"drupal/core": "^8.6"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

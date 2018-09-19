@@ -1409,7 +1409,7 @@ display:
               super_admin: '0'
               editor_administrrator: '0'
               content_editor: '0'
-            placeholder: 'Recreation Center'
+            placeholder: 'Search'
           is_grouped: false
           group_info:
             label: ''
@@ -1438,7 +1438,7 @@ display:
           exposed: true
           expose:
             operator_id: field_type_value_op
-            label: 'Fitness & Recreation'
+            label: 'Select Category'
             description: ''
             use_operator: false
             operator: field_type_value_op

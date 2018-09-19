@@ -1,0 +1,30 @@
+{% if attributes -%}
+<div{{ attributes }}>
+    {% endif %}
+    {% if title %}
+        <h3>{{ title }}</h3>
+    {% endif %}
+
+    {% for row in rows %}
+        {% if is_front %}
+            {% if loop.first %}
+                <div class="item-wrapper">
+            {% endif %}
+                    <div{{ row.attributes }}>
+                        {{ row.content }}
+                    </div>
+            {% if loop.index is divisible by(2) and not loop.last %}
+                </div><div class="item-wrapper">
+            {% endif %}
+            {% if loop.last %}
+            </div>
+            {% endif %}
+        {% else %}
+            <div{{ row.attributes }}>{{ row.content }}</div>
+        {% endif %}
+    {% endfor %}
+
+
+{% if attributes -%}
+    </div>
+{% endif %}

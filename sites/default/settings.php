@@ -1,6 +1,6 @@
 <?php
 $config_directories = array(
-	CONFIG_SYNC_DIRECTORY => 'E:/xampp/tmp',
+	CONFIG_SYNC_DIRECTORY => '/var/tmp',
 );
 
 $settings['install_profile'] = 'standard';
@@ -25,6 +25,7 @@ if (file_exists($local_settings)) {
 }
 
 $settings['simplesamlphp_dir'] = '/var/www/html/simplesamlphp';
+$settings['file_private_path'] = 'sites/default/files/private';
 
 // SimpleSAMLphp_auth module settings
 $config['simplesamlphp_auth.settings'] = [

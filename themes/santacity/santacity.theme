@@ -37,17 +37,17 @@ function santacity_preprocess_block(&$variables) {
 
   }
 
-  $filexml='https://www.youtube.com/feeds/videos.xml?channel_id=UC9ZiF7bjOfewUC1ZSRnI39Q';
-	$xml = simplexml_load_file($filexml) or die("Error: Cannot create object");
-  $i = 1;
-	foreach ($xml->entry as $entry) {
-	  $entry->id = str_replace('yt:video:', '', $entry->id);
-	  // print '<img src="https://img.youtube.com/vi/'.$entry->id.'/1.jpg" alt="">';
-	  // print '<a href="https://www.youtube.com/watch?v='.$entry->id.'">'.$entry->title.'</a>';
-	  $variables['yt_feed'][$i]['id'] = $entry->id;
-	  $variables['yt_feed'][$i]['title'] = $entry->title;
-	  if(++$i > 5) break;
-	}
+ //  $filexml='https://www.youtube.com/feeds/videos.xml?channel_id=UC9ZiF7bjOfewUC1ZSRnI39Q';
+	// $xml = simplexml_load_file($filexml) or die("Error: Cannot create object");
+ //  $i = 1;
+	// foreach ($xml->entry as $entry) {
+	//   $entry->id = str_replace('yt:video:', '', $entry->id);
+	//   // print '<img src="https://img.youtube.com/vi/'.$entry->id.'/1.jpg" alt="">';
+	//   // print '<a href="https://www.youtube.com/watch?v='.$entry->id.'">'.$entry->title.'</a>';
+	//   $variables['yt_feed'][$i]['id'] = $entry->id;
+	//   $variables['yt_feed'][$i]['title'] = $entry->title;
+	//   if(++$i > 5) break;
+	// }
 }
 
 /**

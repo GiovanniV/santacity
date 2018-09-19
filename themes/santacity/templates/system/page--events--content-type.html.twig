@@ -61,26 +61,25 @@
 					<div class="col-md-7 wh">
 						{{ image }}
 						{# Header #}
-						
+
 							<div class="col-sm-12" role="heading">
-								
+
 								{% if page.breadcrumb %}
 								{% block breadcrumb %}
 								{{ page.breadcrumb }}
 								{% endblock %}
 								{% endif %}
-								
+
 								{% if page.header %}
 								{% block header %}
 								{{ page.header|without('pagetitle') }}
 								{% endblock %}
 								{% endif %}
-								
+
 							</div>
-						
 						<span class="calender">
 							<p>{{ event_date[0]['value']|date('D') }}</p>
-							<p class="year">{{ event_date[0]['value']|date('M') }}.<strong>{{ event_date[0]['value']|date('d') }}</strong> - 
+							<p class="year">{{ event_date[0]['value']|date('M') }}.<strong>{{ event_date[0]['value']|date('d') }}</strong> -
 							{{ event_date[0]['end_value']|date('M') }}.<strong>{{ event_date[0]['end_value']|date('d') }}</strong>
 							</p>
 						</span>
@@ -92,7 +91,7 @@
 							{{ page.social_share }}
 						</div>
 						{% endif %}
-						
+
 						{{ price_details }}
 						{{ booking_url }}
 					</div>
@@ -129,7 +128,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					<div class="col-sm-12">
 					<br/>
 						{{ page.content|without('related_events', 'socialsharingblock') }}
@@ -139,7 +138,7 @@
 					</div>
 				</div>
 			</div>
-      
+
 {% endblock %}
 
 

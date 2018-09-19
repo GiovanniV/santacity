@@ -65,7 +65,7 @@ header#navbar .container {
   right: 4px;
   top: 50%;
 }
-.dropdown-submenu > a{position:relative;border-radius: 0px;} 
+.dropdown-submenu > a{position:relative;border-radius: 0px;}
 
 .navbar-nav li:last-child > .dropdown-menu a {
   text-align: left!important;
@@ -134,7 +134,7 @@ header#navbar .container {
     font-weight: 500;
     color: #000;
 }
-ul.nav li.dropdown:hover > ul.dropdown-menu {
+ul.nav li.dropdown.open:hover > ul.dropdown-menu {
   display: block;
 }
 .webform-breadcrumb ul.breadcrumb {
@@ -371,13 +371,13 @@ form table .form-item label {
     visibility: visible;
 		display: block;
 }
-        
+
 .form-item input[type=radio], .webform-submission-form .form-item input[type=checkbox] {
     height: auto;
 }
 .webform-submission-form .form-item .panel-body input[type=tel]{width:100%}
-.webform-submission-form .form-item input, 
-.webform-submission-form .form-item .panel-body select, 
+.webform-submission-form .form-item input,
+.webform-submission-form .form-item .panel-body select,
 .path-garage-list .views-exposed-form .form-item input,
 .path-garage-list .views-exposed-form .form-item select{
     border:  0;
@@ -456,7 +456,7 @@ form table .form-item label {
   top: -0.375rem;
   margin: 0 1rem 0 0;
   cursor: pointer;
-  
+
 }
 .webform-submission-form  .form-checkbox:before {
   -webkit-transition: -webkit-transform 0.4s cubic-bezier(0.45, 1.8, 0.5, 0.75);
@@ -839,7 +839,7 @@ form.views-exposed-form button.form-submit{
         left: 0;
     }
 
-    
+
     .heading_area{max-width: 500px;margin: 0 auto 40px;text-align: center;}
 
     .heading_area h3 {
@@ -961,10 +961,13 @@ form.views-exposed-form button.form-submit{
     color: #000 !important;
     }
 
-     
+    /*.item-wrapper > div {
+        position: relative;
+    }*/
     .city_text{
         padding: 15px;
-        box-shadow: 1px 1px 8px 1px #ddd;
+        /*box-shadow: 1px 1px 8px 1px #ddd;*/
+        /*min-height: calc(100% - 144px);*/
     }
 
     .city_box .city_text h5 {
@@ -974,7 +977,7 @@ form.views-exposed-form button.form-submit{
         margin-bottom: 15px;
     }
 
-    
+
     .eco_steps {
         padding: 0px 0 180px;
         color: #fff;
@@ -1004,11 +1007,11 @@ form.views-exposed-form button.form-submit{
         height: 80px;
     }
 
-    
+
     .eco_steps p {
         line-height: 26px;
     }
-    
+
     .eco_steps img, .eco_steps h4, .eco_steps p {
         padding-bottom: 15px;
         margin-bottom: 15px;
@@ -1035,8 +1038,8 @@ form.views-exposed-form button.form-submit{
     section#block-economy5.we_help {
         background: url(/themes/santacity/images/clock_tower.jpg) no-repeat;
         background-size: cover;
-        
-    } 
+
+    }
 
     .we_help .field.field--name-body {
         margin-top: -95px;
@@ -1044,7 +1047,9 @@ form.views-exposed-form button.form-submit{
     .we_help .wh > div {
         margin-bottom: 15px;
     }
-    
+    .more a {
+    color: #000;
+    }
     .more {
         background: #f3c70e;
         padding: 6px 10px 9px;
@@ -1054,6 +1059,9 @@ form.views-exposed-form button.form-submit{
         border-radius: 7px;
         display: inline-block;
         border: 0;
+        font-size: 13px;
+        width: 100%;
+        text-align: center;
     }
     .more:after {
         content: '\e258';
@@ -1063,13 +1071,13 @@ form.views-exposed-form button.form-submit{
         position: relative;
     }
 
-    .btn-more2{ 
-        background: #fff; 
-        padding: 3px 10px;  
-        margin-top: 10px; 
-        color: #333;  
+    .btn-more2{
+        background: #fff;
+        padding: 3px 10px;
+        margin-top: 10px;
+        color: #333;
         border: solid 1px #bbb;
-        font-weight: bold;  
+        font-weight: bold;
         border-radius: 10px;
         display: inline-block;
     }
@@ -1146,7 +1154,7 @@ form.views-exposed-form button.form-submit{
 
     .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--first a span,
     .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--next a span,
-    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--previous a span, 
+    .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--previous a span,
     .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--last a span { display: none; }
 
     .view-events .view-content + nav.pager-nav ul li.pager__item.pager__item--next a:before {content: 'Next';}
@@ -1205,7 +1213,7 @@ form.views-exposed-form button.form-submit{
    .navbar-default .navbar-nav > li > a {
         font-size: 14px;
         padding: 8px;
-    } 
+    }
     .navbar-header {
         width: 20%;
     }
@@ -1380,6 +1388,9 @@ div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
         top: 0;
         z-index: -1;
     }
+
+    .dropdown-submenu > a:after { content: none; }
+    .dropdown-submenu > .dropdown-menu { display: none; }
 }
 
 /************ Developer fix**************/
@@ -1463,7 +1474,7 @@ span.calender p.year {    padding: 10px 20px;}
         bottom: -5px;
     }
 
-        
+
 
     .wh{background-color: #fff;    padding: 10px;}
     .wh a.more.pull-right {
@@ -1602,7 +1613,7 @@ h2.artivle_text {
 	list-style: disc;
 }
 .news-cotent ul li {
-	display: list-item; 
+	display: list-item;
 	list-style-type: disc;
 	list-style-position: inside;
 	padding-left: 0px;
@@ -1802,7 +1813,7 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:0px}
 }
 .top_service .top_right ul {
     padding: 0;
-   
+
 }
 .top_service ul li input {
     padding: 9px 10px;
@@ -1887,18 +1898,26 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:0px}
     background: #f3c70e;
     width: 80px;
     float: left;
-    height: 80px;
+    min-height: 80px;
     text-align: center;
     padding: 20px 0px;
+    height: 100%;
 }
 .region.region-one-fourth .form-group .after-main .view-content .media .media-left small {
     display: block;
  color: #000;
 }
-.region.region-one-fourth .form-group .after-main .view-content .media { margin-bottom: 10px;}
+.region.region-one-fourth .form-group .after-main .view-content .media {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flex;
+    display: -o-flex;
+    display: flex;
+    margin-bottom: 10px;
+}
 .region.region-one-fourth .form-group .after-main .view-content .media .media-body {
     background: #eee;
-    height: 80px;
+    min-height: 80px;
     padding: 18px 10px;
 }
 .region.region-one-fourth .form-group .after-main .view-content .media .media-left span {
@@ -1932,7 +1951,7 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:0px}
     bottom: -11px;
 }
 
-.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container h2 { 
+.discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container h2 {
     position: relative;
     margin:0;
     font-size: 24px;
@@ -2050,7 +2069,7 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:0px}
     padding: 140px 0;
     margin-top: -90px;
     position:  relative;
-		
+
 }
 
 .follow-us-container .head_follows {
@@ -2118,12 +2137,9 @@ form.views-exposed-form button.form-submit{ padding:6px 20px; margin-top:0px}
     height: 225px;
     background: #00000070;
     color: #fff;
-    margin: 10px;
+    margin: 10px 0 10px 60px;
     padding: 0px 20px;
     display: block;
-}
-.flexslider-content-part .flex-direction-nav {
-	display: none;
 }
 .featured_text a.featured_btn {
     background: #f3c70e;
@@ -2281,7 +2297,7 @@ a:focus {
         font-family: 'Glyphicons Halflings';
         padding-left: 3px;
         position: relative;
-        top: 2px; 
+        top: 2px;
     }
 
     .featured-news .view-filters .form-item {
@@ -2393,7 +2409,7 @@ a:focus {
         width: 80px;
         right: 40%;
     }
-   
+
 
     section#block-newsletter:after {
         position: absolute;
@@ -2492,10 +2508,10 @@ a:focus {
         font-family: "Glyphicons Halflings";
         font-size: 14px;
          border-radius:100%
-        color:#fff; background:#f3c70e; padding:10px; border-radius:100%; box-shadow:0px 3px 5px #ccc 
+        color:#fff; background:#f3c70e; padding:10px; border-radius:100%; box-shadow:0px 3px 5px #ccc
     }
     .views_slideshow_controls_text_pause a{ display:none; }
-      
+
     .views_slideshow_controls_text_next a:after{content: "\e258";
        font-family: "Glyphicons Halflings";
         font-size: 14px;
@@ -2598,6 +2614,13 @@ section.back_resident {
 @media screen  and (max-width:1199px) {
 .btn-boxes .btn-box button {
     font-size: 15px;
+}
+section#block-homesliderbottom .field.field--name-body.field--type-text-with-summary.field--label-hidden.field--item .col-sm-4 {
+    padding-left: 0;
+}
+section#block-homesliderbottom .more {
+    padding: 6px 2px 9px;
+    font-size: 12px;
 }
 }
 
@@ -2716,7 +2739,7 @@ footer.footer #block-logo p:nth-child(1) {
     border-right: 2px solid #424242 !important;
     min-height: 150px;
     border-bottom: none;}
-  
+
     footer.footer .block-block-content:last-child{border:none !important;border-right:none; width:50%; float:left; margin-bottom:20px}
      .eco_rgt_inner .row .col-sm-4 img {
     width: auto;
@@ -2739,12 +2762,12 @@ footer.footer #block-logo p:nth-child(1) {
 }
 
 @media screen and (max-width:768px){
-     section#block-economy { background-size:cover;} 
+     section#block-economy { background-size:cover;}
     .economic_area a { margin-bottom: 10px;}
     .eco_rgt_inner{ background:none; padding: 30px 20px 30px;}
     .eco_rgt_inner .row{display: flex; flex-direction: column; margin-bottom:20px}
     .eco_rgt_inner .row .col-sm-4 { order: 1; }
-    .eco_rgt_inner .row .col-sm-8 { order: 2; } 
+    .eco_rgt_inner .row .col-sm-8 { order: 2; }
     section#block-economy4 .field img.center-block { margin: 0px;}
     #block-economy4 button.more {margin-bottom:30px;margin-top:0px;}
     form.eco_btnsup,form.eco_btnsup label { text-align:center}
@@ -2754,6 +2777,10 @@ footer.footer #block-logo p:nth-child(1) {
     border-right: none;
     / border-bottom:solid 2px #464646; /
     / min-height: 130px; /
+    }
+    .field--item .more {
+    width: 230px;
+    text-align: center;
     }
     #block-library .field.field--name-field-title.field--type-string.field--label-hidden.field--item {
         top: 34%;
@@ -2767,6 +2794,11 @@ footer.footer #block-logo p:nth-child(1) {
         width: 100%;
         padding: 20px 50px 36px 20px;
         margin: 160px 0px;
+    }
+    section#block-homesliderbottom .more {
+    padding: 6px 2px 9px;
+    font-size: 14px;
+    width: 50%;
     }
     #views-exposed-form-events-block-1 .form-item {
         width: 100%;
@@ -2805,7 +2837,7 @@ footer.footer #block-logo p:nth-child(1) {
     #block-hometopservice .top_service .top_left ul {
     padding: 0 !important;
     }
-    
+
     .featured_text {
     height: 195px;
         width: 447px;
@@ -2841,7 +2873,7 @@ footer.footer #block-logo p:nth-child(1) {
     .top_right .search-block-form form input {
     height: 27px!important;
     }
-    
+
     #block-discover.col-sm-2,section#block-resident.col-sm-2,#block-footermenucity.col-sm-2,#block-doingbusiness.col-sm-2{
         width: 50%;
         float:  left;
@@ -2855,7 +2887,7 @@ footer.footer #block-logo p:nth-child(1) {
     .follow-us-container {
     padding: 140px 0 60px;
     }
-   
+
     #block-discover.col-sm-2,
     #block-doingbusiness.col-sm-2,
     #block-footermenucity.col-sm-2,
@@ -2868,7 +2900,7 @@ footer.footer #block-logo p:nth-child(1) {
     .top_right .search-block-form form input {
     height: 17px !important;
     }
-  
+
     .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
     width: 86%;
     }
@@ -2909,33 +2941,44 @@ footer.footer #block-logo p:nth-child(1) {
 
 @media screen and (max-width:600px){
     .region.region-page-heading .heading-image-ribbon img {
-     height: 120px;
+        height: 120px;
     }
     #block-library .field.field--name-field-title.field--type-string.field--label-hidden.field--item {
         font-size: 34px;
     }
     .btn-boxes .btn-box button {
-    font-size: 12px;
+        font-size: 12px;
     }
     .main-container .region .breadcrumb li a {
-    font-size: 13px;
+        font-size: 13px;
     }
     .main-container .region .breadcrumb li.active {
-    font-size: 13px;
-    background: #e7c632;
-    padding-right: 10px;
+        font-size: 13px;
+        background: #e7c632;
+        padding-right: 10px;
     }
     .path-frontpage form .form-item label {
-    display: block;
-    margin: 9px 0 8px !important;
-        }
-            .path-frontpage .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container .form-item {
-    width: 100%;
-    margin-bottom: 19px;
+        display: none;
+        margin: 9px 0 8px !important;
+    }
+    .path-frontpage .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container .form-item {
+        width: 100%;
+        margin-bottom: 19px;
+    }
+    section#block-homesliderbottom .more {
+        padding: 6px 2px 9px;
+        font-size: 14px;
+        width: 80%;
+    }
+    .after-main.view.view-events.view-id-events.view-display-id-block_3.js-view-dom-id-7e2e6364982bec53d169308b2de55d163cd06ce62749ee26e733a6326b7e5211 {
+        margin-top: 40px;
+    }
+    .discover-sant-container .view.map-filter-overlay-container .geolocation-map-container.js-show {
+        height: 850px !important;
     }
 }
 @media screen and (max-width:480px){
-   
+
     .btn-boxes .btn-box {
     display: inherit !important;
     }
@@ -2961,7 +3004,7 @@ footer.footer #block-logo p:nth-child(1) {
     .featured-news .view-filters .form-item input {
     width: 100%;
     }
-    
+
     .show-label form .form-item label {
 			display: block;
 		}
@@ -2972,8 +3015,8 @@ footer.footer #block-logo p:nth-child(1) {
     width: 100%;
     margin: 20px 0 20px;
     }
-    
-    
+
+
 
     #block-exposedformlatest-news .form-item, #block-events-filter .form-item {
    width: 100%;
@@ -2989,7 +3032,7 @@ footer.footer #block-logo p:nth-child(1) {
     margin-top: 17px;
     width: 48%;
     }
-   
+
     .path-frontpage .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container .form-item:nth-child(2) {
     margin-bottom: 0;
     }
@@ -3030,10 +3073,10 @@ footer.footer #block-logo p:nth-child(1) {
 }
 
 table thead {
-	background: #f1efef; 
+	background: #f1efef;
 }
 table tbody tr:nth-child(even) {
-	background: #f1efef; 
+	background: #f1efef;
 }
 .table-bordered > thead > tr > th, .table-bordered > thead > tr > td, .table-bordered > tbody > tr > th, .table-bordered > tbody > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > tfoot > tr > td {
 	border: none;

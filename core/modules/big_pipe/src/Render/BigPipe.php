@@ -388,11 +388,15 @@ class BigPipe {
    *   simplify debugging.
    */
   protected function sendNoJsPlaceholders($html, $no_js_placeholders, AttachedAssetsInterface $cumulative_assets) {
-    $placeholder_keys = array_keys($no_js_placeholders);
-    $fragments = $this->splitTextOnPlaceholders($html, $placeholder_keys);
+    // Split the HTML on every no-JS placeholder string.
+    $prepare_for_preg_split = function ($placeholder_string) {
+      return '(' . preg_quote($placeholder_string, '/') . ')';
+    };
+    $preg_placeholder_strings = array_map($prepare_for_preg_split, array_keys($no_js_placeholders));
+    $fragments = preg_split('/' . implode('|', $preg_placeholder_strings) . '/', $html, NULL, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE);
 
     // Determine how many occurrences there are of each no-JS placeholder.
-    $placeholder_occurrences = array_count_values(array_intersect($fragments, $placeholder_keys));
+    $placeholder_occurrences = array_count_values(array_intersect($fragments, array_keys($no_js_placeholders)));
 
     // Set up a variable to store the content of placeholders that have multiple
     // occurrences.
@@ -726,8 +730,8 @@ EOF;
     // being rendered: any code can add messages to render.
     // This violates the principle that each lazy builder must be able to render
     // itself in isolation, and therefore in any order. However, we cannot
-    // change the way drupal_set_message() works in the Drupal 8 cycle. So we
-    // have to accommodate its special needs.
+    // change the way \Drupal\Core\Messenger\MessengerInterface::addMessage()
+    // works in the Drupal 8 cycle. So we have to accommodate its special needs.
     // Allowing placeholders to be rendered in a particular order (in this case:
     // last) would violate this isolation principle. Thus a monopoly is granted
     // to this one special case, with this hard-coded solution.
@@ -748,50 +752,6 @@ EOF;
       array_intersect($placeholder_ids, $message_placeholder_ids)
     );
     return $ordered_placeholder_ids;
-  }
-
-  /**
-   * Splits a text into fragments.
-   *
-   * Will create an array of fragments of text, separated by placeholders.
-   * The result includes the placeholders themselves. Note that the order
-   * of the placeholders matters.
-   *
-   * Examples:
-   *
-   * splitTextOnPlaceholders('some example text', ['e', 'ex']);
-   *  array ('som', 'e', ' ', 'e', 'xampl', 'e', ' t', 'e', 'xt')
-   *
-   * splitTextOnPlaceholders('some example text', ['ex', 'e']);
-   *  array ('som', 'e', ' ', 'ex', 'ampl', 'e', ' t', 'ex', 't')
-   *
-   * @param string $text
-   *   The text to split.
-   * @param string[] $placeholders
-   *   The strings to split on.
-   *
-   * @return string[]
-   *   The created fragments.
-   */
-  protected function splitTextOnPlaceholders($text, array $placeholders) {
-    $prepare_for_preg_split = function ($placeholder_string) {
-      return '(' . preg_quote($placeholder_string, '/') . ')';
-    };
-    $preg_placeholder_strings = array_map($prepare_for_preg_split, $placeholders);
-    $pattern = '/' . implode('|', $preg_placeholder_strings) . '/';
-    if (strlen($pattern) < 31000) {
-      // Only small (<31K) patterns can be handled by preg_split.
-      $flags = PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE;
-      $result = preg_split($pattern, $text, NULL, $flags);
-    }
-    else {
-      // For large amounts of placeholders we use a simpler but slower approach.
-      foreach ($placeholders as $placeholder) {
-        $text = str_replace($placeholder, "\x1F" . $placeholder . "\x1F", $text);
-      }
-      $result = array_filter(explode("\x1F", $text));
-    }
-    return $result;
   }
 
 }
