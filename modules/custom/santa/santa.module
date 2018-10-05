@@ -203,8 +203,10 @@ function santa_node_access(NodeInterface $node, $op, AccountInterface $account) 
 		$nodeValues = $node->toArray();
 		
 		$node_departments = $nodeValues['field_category'][0]['target_id'];
-		$user_departments = $nodeValues['field_category'][0]['target_id'];
+		$user_departments = $userValues['field_category'][0]['target_id'];
 		
+		kint($nodeValues['field_category']);
+		kint($nodeValues['field_category']);
 		foreach($user_departments as $user_department) {
 			if(in_array($user_department, $node_departments)) {
 				return AccessResult::allowed();
