@@ -1,5 +1,7 @@
 <?php
 
+use Drupal\Core\Access\AccessResult;
+
 /**
  * Implementing hook_theme
  */
@@ -174,4 +176,27 @@ function santa_entity_postsave(Drupal\Core\Entity\EntityInterface $entity) {
 	if($entity->bundle() === 'news') {
 		// news_expire($entity);
 	}
+}
+
+
+/**
+ * Implements hook_node_access().
+ */
+function santa_node_access(NodeInterface $node, $op, AccountInterface $account) {
+	$type = $node->getType();
+	$user = \Drupal::entityManager()->getStorage('user'); 
+	$user = $user->load($account->id());
+	
+	if(($type == 'page') && $node->hasField('field_category') && $user->hasField('field_category') ) {
+		$node_departments = $node->getField('field_category')->getValue();
+		$user_departments = $user->getField('field_category')->getValue();
+		
+		foreach($user_departments as $user_department) {
+			if(in_array($user_department, $node_departments)) {
+				return AccessResult::allowed();
+			}
+		}
+		
+	}
+	
 }
