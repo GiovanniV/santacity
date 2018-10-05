@@ -209,6 +209,7 @@ function santa_node_access(NodeInterface $node, $op, AccountInterface $account) 
 			foreach($node_departments as $node_department) {
 				dpm($user_department['target_id'] . '--' . $node_department['target_id']);
 				if($user_department['target_id'] == $node_department['target_id']) {
+					dpm(1111);
 					return AccessResult::allowed();
 				}
 			}
