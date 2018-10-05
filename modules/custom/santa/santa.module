@@ -199,8 +199,11 @@ function santa_node_access(NodeInterface $node, $op, AccountInterface $account) 
 	$user = $user->load($account->id());
 	
 	if(($type == 'page') && $node->hasField('field_category') && $user->hasField('field_category') ) {
-		$node_departments = $node->getField('field_category')->getValue();
-		$user_departments = $user->getField('field_category')->getValue();
+		$userValues = $user->toArray();
+		$nodeValues = $node->toArray();
+		
+		$node_departments = $nodeValues['field_category'][0]['target_id'];
+		$user_departments = $nodeValues['field_category'][0]['target_id'];
 		
 		foreach($user_departments as $user_department) {
 			if(in_array($user_department, $node_departments)) {
