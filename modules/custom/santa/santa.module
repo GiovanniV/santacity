@@ -180,14 +180,6 @@ function news_expire($node = '') {
  */
 function santa_entity_postsave(Drupal\Core\Entity\EntityInterface $entity) {
   if($entity->bundle() === 'events') {
-<<<<<<< HEAD
-    // event_expire($entity);
-  }
-  if($entity->bundle() === 'news') {
-    // news_expire($entity);
-  }
-}
-=======
 		// event_expire($entity);
 	}
 	if($entity->bundle() === 'news') {
