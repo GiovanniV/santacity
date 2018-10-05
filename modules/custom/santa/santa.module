@@ -202,14 +202,14 @@ function santa_node_access(NodeInterface $node, $op, AccountInterface $account) 
 		$userValues = $user->toArray();
 		$nodeValues = $node->toArray();
 		
-		$node_departments = $nodeValues['field_category'][0]['target_id'];
-		$user_departments = $userValues['field_category'][0]['target_id'];
+		$node_departments = $nodeValues['field_category'];
+		$user_departments = $userValues['field_category'];
 		
-		kint($nodeValues['field_category']);
-		kint($nodeValues['field_category']);
 		foreach($user_departments as $user_department) {
-			if(in_array($user_department, $node_departments)) {
-				return AccessResult::allowed();
+			foreach($node_departments as $node_department) {
+				if($user_department['target_id'] == $node_department['target_id']) {
+					return AccessResult::allowed();
+				}
 			}
 		}
 		
