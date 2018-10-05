@@ -1,6 +1,8 @@
 <?php
 
 use Drupal\Core\Access\AccessResult;
+use Drupal\node\NodeInterface;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Implementing hook_theme
