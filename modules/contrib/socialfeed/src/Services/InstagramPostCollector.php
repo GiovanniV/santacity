@@ -2,7 +2,6 @@
 
 namespace Drupal\socialfeed\Services;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
 use MetzWeb\Instagram\Instagram;
 
 /**
@@ -36,17 +35,20 @@ class InstagramPostCollector {
   /**
    * InstagramPostCollector constructor.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
-   *   Config factory.
+   * @param string $apiKey
+   *   Instagram API key.
+   * @param string $accessToken
+   *   Instagram Access token.
    * @param \MetzWeb\Instagram\Instagram|null $instagram
    *   Instagram client.
+   *
+   * @throws \Exception
    */
-  public function __construct(ConfigFactoryInterface $configFactory, Instagram $instagram = NULL) {
-    $config = $configFactory->get('socialfeed.instagramsettings');
-    $this->apiKey = $config->get('client_id');
-    $this->accessToken = $config->get('access_token');
-
+  public function __construct($apiKey, $accessToken, Instagram $instagram = NULL) {
+    $this->apiKey = $apiKey;
+    $this->accessToken = $accessToken;
     $this->instagram = $instagram;
+    $this->setInstagramClient();
   }
 
   /**

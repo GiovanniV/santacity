@@ -1,11 +1,11 @@
-<div class="media"> 
+<div class="media">
 	<a href="{{ url }}">
-		<div class="media-left"><small>{{ event_date[0]['value']|date("M") }}</small><span>{{ event_date[0]['value']|date("d") }}</span></div>
+		<div class="media-left"><small>{{ event_date[0]['value']|date("M", "UTC") }}</small><span>{{ event_date[0]['value']|date("d", "UTC") }}</span></div>
 	</a>
 	<div class="media-body">
 		<a href="{{ url }}">
-		
-		<p>{{ event_time[0]['value']|date('h:i A') }} - {{ event_time[0]['end_value']|date('h:i A') }}</p>
+
+		<p>{{ event_time[0]['value']|date('h:i A', 'UTC') }} - {{ event_time[0]['end_value']|date('h:i A', 'UTC') }}</p>
 		</a>
 		<h4 class="media-heading">
 			<a href="{{ url }}"></a>

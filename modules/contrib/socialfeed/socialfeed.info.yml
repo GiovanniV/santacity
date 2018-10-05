@@ -4,8 +4,8 @@ description: Provides user an option to easily fetch feeds from Facebook, Twitte
 # core: 8.x
 configure: socialfeed.socialfeed
 
-# Information added by Drupal.org packaging script on 2018-02-28
-version: '8.x-1.0-beta2'
+# Information added by Drupal.org packaging script on 2018-10-05
+version: '8.x-1.0-beta3'
 core: '8.x'
 project: 'socialfeed'
-datestamp: 1519809192
+datestamp: 1538733487

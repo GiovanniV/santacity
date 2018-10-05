@@ -37,7 +37,7 @@ class FacebookSettingsForm extends ConfigFormBase {
 
     $form['page_name'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Facebook Page Name'),
+      '#title' => $this->t('Default Facebook Page Name'),
       '#default_value' => $config->get('page_name'),
       '#description' => $this->t('eg. If your Facebook page URL is this http://www.facebook.com/YOUR_PAGE_NAME, <br />then you just need to add this YOUR_PAGE_NAME above.'),
       '#size' => 60,
@@ -47,7 +47,7 @@ class FacebookSettingsForm extends ConfigFormBase {
 
     $form['app_id'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Facebook App ID'),
+      '#title' => $this->t('Default Facebook App ID'),
       '#default_value' => $config->get('app_id'),
       '#size' => 60,
       '#maxlength' => 100,
@@ -56,7 +56,7 @@ class FacebookSettingsForm extends ConfigFormBase {
 
     $form['secret_key'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Facebook Secret Key'),
+      '#title' => $this->t('Default Facebook Secret Key'),
       '#default_value' => $config->get('secret_key'),
       '#size' => 60,
       '#maxlength' => 100,

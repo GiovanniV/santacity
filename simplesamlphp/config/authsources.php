@@ -24,6 +24,9 @@ $config = array(
         // Can be NULL/unset, in which case the user will be shown a list of available IdPs.
         'idp' => 'http://sso.santa-ana.org/adfs/services/trust',
 
+        # 'NameIDPolicy' => null, # Causing a 'Format' error
+        'NameIDPolicy' => false,
+
         // The URL to the discovery service.
         // Can be NULL/unset, in which case a builtin discovery service will be used.
         'discoURL' => null,

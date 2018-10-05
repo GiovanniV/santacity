@@ -2,7 +2,6 @@
 
 namespace Drupal\socialfeed\Services;
 
-use Drupal\Core\Config\ConfigFactoryInterface;
 use Facebook\Facebook;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -50,16 +49,20 @@ class FacebookPostCollector {
   /**
    * FacebookPostCollector constructor.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
-   *   Config factory.
+   * @param string $appId
+   *   Facebook app id.
+   * @param string $appSecret
+   *   Facebook app secret.
    * @param \Facebook\Facebook|null $facebook
    *   Facebook client.
+   *
+   * @throws \Exception
    */
-  public function __construct(ConfigFactoryInterface $configFactory, Facebook $facebook = NULL) {
-    $config = $configFactory->get('socialfeed.facebooksettings');
-    $this->appId = $config->get('app_id');
-    $this->appSecret = $config->get('secret_key');
+  public function __construct($appId, $appSecret, Facebook $facebook = NULL) {
+    $this->appId = $appId;
+    $this->appSecret = $appSecret;
     $this->facebook = $facebook;
+    $this->setFacebookClient();
   }
 
   /**
@@ -72,7 +75,7 @@ class FacebookPostCollector {
       $this->facebook = new Facebook([
         'app_id' => $this->appId,
         'app_secret' => $this->appSecret,
-        'default_graph_version' => 'v2.10',
+        'default_graph_version' => 'v3.0',
         'default_access_token' => $this->defaultAccessToken(),
       ]);
     }

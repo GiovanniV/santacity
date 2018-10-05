@@ -25,7 +25,12 @@ if (file_exists($local_settings)) {
 }
 
 $settings['simplesamlphp_dir'] = '/var/www/html/simplesamlphp';
-$settings['file_private_path'] = 'sites/default/files/private';
+$settings['file_private_path'] = '/var/www/html/sites/default/files/private';
+
+/*error_reporting(E_ALL);
+ini_set('display_errors', TRUE);
+ini_set('display_startup_errors', TRUE);
+$config['system.logging']['error_level'] = 'verbose';*/
 
 // SimpleSAMLphp_auth module settings
 $config['simplesamlphp_auth.settings'] = [
@@ -48,9 +53,9 @@ $config['simplesamlphp_auth.settings'] = [
     'logout_goto_url'         => '',
  // User info and syncing.
  // 'unique_id' the value which is unique in the saml response coming from IDP.
-    'unique_id'               => 'mail',
-    'user_name'               => 'username',
-    'mail_attr'               => 'mail',
+    'unique_id'               => 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn',
+    'user_name'               => 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn',
+    'mail_attr'               => 'http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname',
     'sync' => array(
         'mail'      => TRUE,
         'user_name' => TRUE,

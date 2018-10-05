@@ -2,11 +2,13 @@
 
 namespace Drupal\socialfeed\Plugin\Block;
 
-use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Drupal\socialfeed\Services\InstagramPostCollector;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\socialfeed\Services\InstagramPostCollectorFactory;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\Core\Config\ConfigFactory;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a 'InstagramPostBlock' block.
@@ -16,7 +18,7 @@ use Drupal\Core\Config\ConfigFactory;
  *  admin_label = @Translation("Instagram Block"),
  * )
  */
-class InstagramPostBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class InstagramPostBlock extends SocialBlockBase implements ContainerFactoryPluginInterface, BlockPluginInterface {
 
   /**
    * Drupal\Core\Config\ConfigFactory definition.
@@ -28,9 +30,14 @@ class InstagramPostBlock extends BlockBase implements ContainerFactoryPluginInte
   /**
    * Instagram Service.
    *
-   * @var \Drupal\socialfeed\Services\InstagramPostCollector
+   * @var \Drupal\socialfeed\Services\InstagramPostCollectorFactory
    */
   protected $instagram;
+
+  /**
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
 
   /**
    * InstagramPostBlock constructor.
@@ -45,11 +52,14 @@ class InstagramPostBlock extends BlockBase implements ContainerFactoryPluginInte
    *   The ConfigFactory $config_factory.
    * @param \Drupal\socialfeed\Services\InstagramPostCollector $instagram
    *   The InstagramPostCollector $instagram.
+   * @param \Drupal\Core\Session\AccountInterface $currentUser
+   *   The currently logged in user.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactory $config_factory, InstagramPostCollector $instagram) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, ConfigFactory $config_factory, InstagramPostCollectorFactory $instagram, AccountInterface $currentUser) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->config = $config_factory->get('socialfeed.instagramsettings');
     $this->instagram = $instagram;
+    $this->currentUser = $currentUser;
   }
 
   /**
@@ -72,8 +82,59 @@ class InstagramPostBlock extends BlockBase implements ContainerFactoryPluginInte
       $plugin_id,
       $plugin_definition,
       $container->get('config.factory'),
-      $container->get('socialfeed.instagram')
+      $container->get('socialfeed.instagram'),
+      $container->get('current_user')
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $form = parent::blockForm($form, $form_state);
+    $settings = $this->getConfiguration();
+
+    $form['overrides']['client_id'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Client ID'),
+      '#description' => $this->t('Client ID from Instagram account'),
+      '#default_value' => $this->defaultSettingValue('client_id'),
+      '#size' => 60,
+      '#maxlength' => 100,
+      '#required' => TRUE,
+    ];
+
+    $form['overrides']['access_token'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Access Token'),
+      '#default_value' => $this->defaultSettingValue('access_token'),
+      '#size' => 60,
+      '#maxlength' => 100,
+      '#required' => TRUE,
+    ];
+
+    $form['overrides']['picture_count'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Picture Count'),
+      '#default_value' => $this->defaultSettingValue('picture_count'),
+      '#size' => 60,
+      '#maxlength' => 100,
+      '#min' => 1,
+    ];
+
+    $form['overrides']['picture_resolution'] = [
+      '#type' => 'select',
+      '#title' => $this->t('Picture Resolution'),
+      '#default_value' => $this->defaultSettingValue('picture_resolution'),
+      '#options' => [
+        'thumbnail' => $this->t('Thumbnail'),
+        'low_resolution' => $this->t('Low Resolution'),
+        'standard_resolution' => $this->t('Standard Resolution'),
+      ],
+    ];
+
+    $this->blockFormElementStates($form);
+    return $form;
   }
 
   /**
@@ -81,10 +142,26 @@ class InstagramPostBlock extends BlockBase implements ContainerFactoryPluginInte
    *
    * @return array
    *   Returning data as an array.
+   *
+   * @throws \Exception
    */
   public function build() {
     $build = [];
-    $posts = $this->instagram->getPosts($this->config->get('picture_count'), $this->config->get('picture_resolution'));
+    $items = [];
+    $config = $this->config;
+    $block_settings = $this->getConfiguration();
+
+    if ($block_settings['override']) {
+      $instagram = $this->instagram->createInstance($block_settings['client_id'], $block_settings['access_token']);
+    }
+    else {
+      $instagram = $this->instagram->createInstance($config->get('client_id'), $config->get('access_token'));
+    }
+
+    $posts = $instagram->getPosts(
+      $this->getSetting('picture_count'),
+      $this->getSetting('picture_resolution')
+    );
 
     foreach ($posts as $post) {
       $items[] = [

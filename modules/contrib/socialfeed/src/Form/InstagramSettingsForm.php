@@ -40,7 +40,7 @@ class InstagramSettingsForm extends ConfigFormBase {
     ]);
     $form['client_id'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Client ID'),
+      '#title' => $this->t('Default Client ID'),
       '#description' => $this->t('Client ID from Instagram account'),
       '#default_value' => $config->get('client_id'),
       '#size' => 60,
@@ -66,7 +66,7 @@ class InstagramSettingsForm extends ConfigFormBase {
     ];
     $form['access_token'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Access Token'),
+      '#title' => $this->t('Default Access Token'),
       '#default_value' => $config->get('access_token'),
       '#size' => 60,
       '#maxlength' => 100,
@@ -74,7 +74,7 @@ class InstagramSettingsForm extends ConfigFormBase {
     ];
     $form['picture_count'] = [
       '#type' => 'number',
-      '#title' => $this->t('Picture Count'),
+      '#title' => $this->t('Default Picture Count'),
       '#default_value' => $config->get('picture_count'),
       '#size' => 60,
       '#maxlength' => 100,
@@ -84,7 +84,7 @@ class InstagramSettingsForm extends ConfigFormBase {
       $form['feed'] = [
         '#type' => 'item',
         '#title' => $this->t('Feed URL'),
-        '#markup' => $this->t('https://api.instagram.com/v1/users/self?access_token=@access_token&count=@picture_count',
+        '#markup' => $this->t('https://api.instagram.com/v1/users/self/feed?access_token=@access_token&count=@picture_count',
           [
             '@access_token' => $config->get('access_token'),
             '@picture_count' => $config->get('picture_count'),
@@ -94,7 +94,7 @@ class InstagramSettingsForm extends ConfigFormBase {
     }
     $form['picture_resolution'] = [
       '#type' => 'select',
-      '#title' => $this->t('Picture Resolution'),
+      '#title' => $this->t('Default Picture Resolution'),
       '#default_value' => $config->get('picture_resolution'),
       '#options' => [
         'thumbnail' => $this->t('Thumbnail'),
@@ -102,6 +102,8 @@ class InstagramSettingsForm extends ConfigFormBase {
         'standard_resolution' => $this->t('Standard Resolution'),
       ],
     ];
+
+    // @todo: Move this to the block form, then update the theme implementation.
     $form['post_link'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Show post URL'),

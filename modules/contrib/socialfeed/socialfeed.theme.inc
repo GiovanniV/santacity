@@ -53,6 +53,11 @@ function template_preprocess_socialfeed_facebook_post(&$variables) {
  * @see socialfeed_theme()
  */
 function template_preprocess_socialfeed_twitter_post(&$variables) {
+  if (empty($variables['post']) || !is_object($variables['post'])) {
+    unset($variables['post']);
+    return;
+  }
+
   $display_time = Drupal::config('socialfeed.twittersettings')->get('time_stamp');
   $display_date_twitter_style = Drupal::config('socialfeed.twittersettings')->get('time_ago');
   $twitter_hash_tag = Drupal::config('socialfeed.twittersettings')->get('hashtag');

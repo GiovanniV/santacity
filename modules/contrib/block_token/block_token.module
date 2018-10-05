@@ -84,12 +84,14 @@ function block_token_blocks($token = NULL) {
 
     foreach ($blocks as $block) {
       if (isset(unserialize($block->data)['third_party_settings'])) {
-        if (unserialize($block->data)['third_party_settings']['block_token']['token_value']) {
-          $bid = explode('.', $block->name)[2];
-          $block = \Drupal\block\Entity\Block::load($bid);
-          $module = end($block->getDependencies()['module']);
+        if (isset(unserialize($block->data)['third_party_settings']['block_token'])) {
+          if (unserialize($block->data)['third_party_settings']['block_token']['token_value']) {
+            $bid = explode('.', $block->name)[2];
+            $block = \Drupal\block\Entity\Block::load($bid);
+            $module = end($block->getDependencies()['module']);
 
-          $block_token[block_token_token_name($module, $bid)] = $block;
+            $block_token[block_token_token_name($module, $bid)] = $block;
+          }
         }
       }
     }

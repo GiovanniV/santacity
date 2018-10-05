@@ -3,7 +3,6 @@
 namespace Drupal\socialfeed\Services;
 
 use Abraham\TwitterOAuth\TwitterOAuth;
-use Drupal\Core\Config\ConfigFactoryInterface;
 
 /**
  * Class TwitterPostCollector.
@@ -50,18 +49,20 @@ class TwitterPostCollector {
   /**
    * TwitterPostCollector constructor.
    *
-   * @param \Drupal\Core\Config\ConfigFactoryInterface $configFactory
-   *   Config factory.
+   * @param string $consumerKey
+   * @param string $consumerSecret
+   * @param string $accessToken
+   * @param string $accessTokenSecret
    * @param \Abraham\TwitterOAuth\TwitterOAuth|null $twitter
    *   Twitter OAuth Client.
    */
-  public function __construct(ConfigFactoryInterface $configFactory, TwitterOAuth $twitter = NULL) {
-    $config = $configFactory->get('socialfeed.twittersettings');
-    $this->consumerKey = $config->get('consumer_key');
-    $this->consumerSecret = $config->get('consumer_secret');
-    $this->accessToken = $config->get('access_token');
-    $this->accessTokenSecret = $config->get('access_token_secret');
+  public function __construct($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret, TwitterOAuth $twitter = NULL) {
+    $this->consumerKey = $consumerKey;
+    $this->consumerSecret = $consumerSecret;
+    $this->accessToken = $accessToken;
+    $this->accessTokenSecret = $accessTokenSecret;
     $this->twitter = $twitter;
+    $this->setTwitterClient();
   }
 
   /**

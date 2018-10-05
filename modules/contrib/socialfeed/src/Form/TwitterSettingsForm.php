@@ -35,7 +35,7 @@ class TwitterSettingsForm extends ConfigFormBase {
     $config = $this->config('socialfeed.twittersettings');
     $form['consumer_key'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Twitter Consumer Key'),
+      '#title' => $this->t('Default Twitter Consumer Key'),
       '#default_value' => $config->get('consumer_key'),
       '#size' => 60,
       '#maxlength' => 100,
@@ -43,7 +43,7 @@ class TwitterSettingsForm extends ConfigFormBase {
     ];
     $form['consumer_secret'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Twitter Consumer Secret'),
+      '#title' => $this->t('Default Twitter Consumer Secret'),
       '#default_value' => $config->get('consumer_secret'),
       '#size' => 60,
       '#maxlength' => 100,
@@ -51,7 +51,7 @@ class TwitterSettingsForm extends ConfigFormBase {
     ];
     $form['access_token'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Twitter Access Token'),
+      '#title' => $this->t('Default Twitter Access Token'),
       '#default_value' => $config->get('access_token'),
       '#size' => 60,
       '#maxlength' => 100,
@@ -59,7 +59,7 @@ class TwitterSettingsForm extends ConfigFormBase {
     ];
     $form['access_token_secret'] = [
       '#type' => 'textfield',
-      '#title' => $this->t('Twitter Access Token Secret'),
+      '#title' => $this->t('Default Twitter Access Token Secret'),
       '#default_value' => $config->get('access_token_secret'),
       '#size' => 60,
       '#maxlength' => 100,
@@ -67,12 +67,14 @@ class TwitterSettingsForm extends ConfigFormBase {
     ];
     $form['tweets_count'] = [
       '#type' => 'number',
-      '#title' => $this->t('Tweets Count'),
+      '#title' => $this->t('Default Tweet Count'),
       '#default_value' => $config->get('tweets_count'),
       '#size' => 60,
       '#maxlength' => 100,
       '#min' => 1,
     ];
+
+    // @todo: Move these to the block form; Update theme implementation.
     $form['hashtag'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Show Hashtag'),

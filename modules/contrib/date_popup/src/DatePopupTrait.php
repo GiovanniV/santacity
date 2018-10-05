@@ -18,10 +18,13 @@ trait DatePopupTrait {
       // Detect filters that are using min/max.
       if (isset($form[$this->options['expose']['identifier']]['min'])) {
         $form[$this->options['expose']['identifier']]['min']['#type'] = 'date';
+        $form[$this->options['expose']['identifier']]['min']['#attributes']['type'] = 'date';
         $form[$this->options['expose']['identifier']]['max']['#type'] = 'date';
+        $form[$this->options['expose']['identifier']]['max']['#attributes']['type'] = 'date';
       }
       else {
         $form[$this->options['expose']['identifier']]['#type'] = 'date';
+        $form[$this->options['expose']['identifier']]['#attributes']['type'] = 'date';
       }
     }
   }

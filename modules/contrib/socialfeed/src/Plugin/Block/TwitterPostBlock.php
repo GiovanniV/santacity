@@ -2,11 +2,13 @@
 
 namespace Drupal\socialfeed\Plugin\Block;
 
-use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
+use Drupal\Core\Session\AccountInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
-use Drupal\socialfeed\Services\TwitterPostCollector;
+use Drupal\socialfeed\Services\TwitterPostCollectorFactory;
+use Drupal\Core\Block\BlockPluginInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Provides a 'TwitterPostBlock' block.
@@ -16,12 +18,12 @@ use Drupal\socialfeed\Services\TwitterPostCollector;
  *  admin_label = @Translation("Twitter Block"),
  * )
  */
-class TwitterPostBlock extends BlockBase implements ContainerFactoryPluginInterface {
+class TwitterPostBlock extends SocialBlockBase implements ContainerFactoryPluginInterface, BlockPluginInterface {
 
   /**
-   * Drupal\socialfeed\Services\TwitterPostCollector definition.
+   * The Twitter service.
    *
-   * @var \Drupal\socialfeed\Services\TwitterPostCollector
+   * @var \Drupal\socialfeed\Services\TwitterPostCollectorFactory
    */
   protected $twitter;
 
@@ -31,6 +33,11 @@ class TwitterPostBlock extends BlockBase implements ContainerFactoryPluginInterf
    * @var \Drupal\Core\Config\ImmutableConfig
    */
   protected $config;
+
+  /**
+   * @var \Drupal\Core\Session\AccountInterface
+   */
+  protected $currentUser;
 
   /**
    * TwitterPostBlock constructor.
@@ -45,11 +52,14 @@ class TwitterPostBlock extends BlockBase implements ContainerFactoryPluginInterf
    *   The TwitterPostCollector $socialfeed_twitter.
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config
    *   The ConfigFactoryInterface $config.
+   * @param \Drupal\Core\Session\AccountInterface $currentUser
+   *   The currently logged in user.
    */
-  public function __construct(array $configuration, $plugin_id, $plugin_definition, TwitterPostCollector $socialfeed_twitter, ConfigFactoryInterface $config) {
+  public function __construct(array $configuration, $plugin_id, $plugin_definition, TwitterPostCollectorFactory $socialfeed_twitter, ConfigFactoryInterface $config, AccountInterface $currentUser) {
     parent::__construct($configuration, $plugin_id, $plugin_definition);
     $this->twitter = $socialfeed_twitter;
     $this->config = $config->get('socialfeed.twittersettings');
+    $this->currentUser = $currentUser;
   }
 
   /**
@@ -72,8 +82,64 @@ class TwitterPostBlock extends BlockBase implements ContainerFactoryPluginInterf
       $plugin_id,
       $plugin_definition,
       $container->get('socialfeed.twitter'),
-      $container->get('config.factory')
+      $container->get('config.factory'),
+      $container->get('current_user')
     );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function blockForm($form, FormStateInterface $form_state) {
+    $form = parent::blockForm($form, $form_state);
+
+    $form['overrides']['consumer_key'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Twitter Consumer Key'),
+      '#default_value' => $this->defaultSettingValue('consumer_key'),
+      '#size' => 60,
+      '#maxlength' => 100,
+      '#required' => TRUE,
+    ];
+
+    $form['overrides']['consumer_secret'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Twitter Consumer Secret'),
+      '#default_value' => $this->defaultSettingValue('consumer_secret'),
+      '#size' => 60,
+      '#maxlength' => 100,
+      '#required' => TRUE,
+    ];
+
+    $form['overrides']['access_token'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Twitter Access Token'),
+      '#default_value' => $this->defaultSettingValue('access_token'),
+      '#size' => 60,
+      '#maxlength' => 100,
+      '#required' => TRUE,
+    ];
+
+    $form['overrides']['access_token_secret'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Twitter Access Token Secret'),
+      '#default_value' => $this->defaultSettingValue('access_token_secret'),
+      '#size' => 60,
+      '#maxlength' => 100,
+      '#required' => TRUE,
+    ];
+
+    $form['overrides']['tweets_count'] = [
+      '#type' => 'number',
+      '#title' => $this->t('Tweets Count'),
+      '#default_value' => $this->defaultSettingValue('tweets_count'),
+      '#size' => 60,
+      '#maxlength' => 100,
+      '#min' => 1,
+    ];
+
+    $this->blockFormElementStates($form);
+    return $form;
   }
 
   /**
@@ -84,7 +150,23 @@ class TwitterPostBlock extends BlockBase implements ContainerFactoryPluginInterf
    */
   public function build() {
     $build = [];
-    $posts = $this->twitter->getPosts($this->config->get('tweets_count'));
+    $items = [];
+    $config = $this->config;
+    $block_settings = $this->getConfiguration();
+
+    if ($block_settings['override']) {
+      $twitter = $this->twitter->createInstance($block_settings['consumer_key'], $block_settings['consumer_secret'], $block_settings['access_token'], $block_settings['access_token_secret']);
+    }
+    else {
+      $twitter = $this->twitter->createInstance($config->get('consumer_key'), $config->get('consumer_secret'), $config->get('access_token'), $config->get('access_token_secret'));
+    }
+
+    $tweets_count = $this->getSetting('tweets_count');
+    $posts = $twitter->getPosts($tweets_count);
+    if (!is_array($posts)) {
+      return $build;
+    }
+
     foreach ($posts as $post) {
       $items[] = [
         '#theme' => 'socialfeed_twitter_post',

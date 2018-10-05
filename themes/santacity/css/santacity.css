@@ -1202,6 +1202,12 @@ form.views-exposed-form button.form-submit{
         height:120px;
     }
 
+    .top_service a,
+    .top_service a:hover,
+    .top_service a:focus {
+        color: #fff;
+    }
+
 
 /*Responsive css start*/
 
@@ -1210,7 +1216,7 @@ form.views-exposed-form button.form-submit{
         max-width: 60%;
         margin-left: 0%;
     }
-   .navbar-default .navbar-nav > li > a {
+    .navbar-default .navbar-nav > li > a {
         font-size: 14px;
         padding: 8px;
     }
@@ -1226,23 +1232,21 @@ form.views-exposed-form button.form-submit{
     div#navbar-collapse{
         padding: 0;
     }
-
-
-.top_service .top_right {
-    width: 40%;
-    margin-right: 40px;
-}
-.top_service ul li {
-    width: 290px !important;
+    .top_service .top_right {
+        width: 40%;
+        margin-right: 40px;
+    }
+    .top_service ul li {
+        width: 290px !important;
     }
     .discover-sant-container .view.map-filter-overlay-container.view-our-santa-ana .view-filters.form-group.filter-container {
-    width: 56% !important;
-}
-div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
-    overflow:  hidden !important;
-    width: 92% !IMPORTANT;
-    margin:  auto !important;
-}
+        width: 56% !important;
+    }
+    div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
+        overflow:  hidden !important;
+        width: 92% !IMPORTANT;
+        margin:  auto !important;
+    }
 }
 
 
@@ -1362,6 +1366,18 @@ div#views_slideshow_cycle_teaser_section_our_santa_ana-block {
     }
      #block-libraryservices {
     margin-bottom: 30px;
+    }
+    .home-feature-content:after {
+        clip-path: none;
+        content: '';
+        background: url(/themes/santacity/images/header-top-bg.png) no-repeat;
+        background-size: 103%;
+        background-position: center top;
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        top: -2px;
+        z-index: 1;
     }
 }
 

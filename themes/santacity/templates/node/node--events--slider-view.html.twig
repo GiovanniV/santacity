@@ -4,18 +4,18 @@
 {{ content.field_event_image }}
 </a>
 <span class="calender">
-<p>{{ event_date[0]['value']|date('D') }}</p>
-<p>{{ event_date[0]['value']|date('M') }}.<strong>{{ event_date[0]['value']|date('d') }}</strong> - 
-{{ event_date[0]['end_value']|date('M') }}.<strong>{{ event_date[0]['end_value']|date('d') }}</strong>
+<p>{{ event_date[0]['value']|date('D', 'UTC') }}</p>
+<p>{{ event_date[0]['value']|date('M', 'UTC') }}.<strong>{{ event_date[0]['value']|date('d', 'UTC') }}</strong> -
+{{ event_date[0]['end_value']|date('M', 'UTC') }}.<strong>{{ event_date[0]['end_value']|date('d', 'UTC') }}</strong>
 </p>
 </span>
 </div>
 <div class="txt-box">
 <p class="media-heading"><a href{{ url }}" hreflang="en">{{ label }}</a></p>
 <p class="by-category">Category:  {{ content.field_category }}</p>
-<p class="by-category"><b>Date:</b> {{ event_date[0]['value']|date('M, d, Y') }} - {{ event_date[0]['end_value']|date('M, d, Y') }}</p>
-<p class="by-category"><b>Time:</b> 
-{{ event_time[0]['value']|date('h:i A') }} - {{ event_time[0]['end_value']|date('h:i A') }}
+<p class="by-category"><b>Date:</b> {{ event_date[0]['value']|date('M, d, Y', 'UTC') }} - {{ event_date[0]['end_value']|date('M, d, Y', 'UTC') }}</p>
+<p class="by-category"><b>Time:</b>
+{{ event_time[0]['value']|date('h:i A') }} - {{ event_time[0]['end_value']|date('h:i A', 'UTC') }}
 </p>
 <a href="{{ url }}" class="read" hreflang="en">Read More</a>
 </div>
