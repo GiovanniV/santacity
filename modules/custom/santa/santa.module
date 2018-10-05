@@ -8,13 +8,13 @@ function santa_theme() {
   $theme['home_slider'] = [
     'variables' => [
       'data' => [],
-			'#attached' => [
-				'library' => 'santa/home-slider',
-			]
+      '#attached' => [
+        'library' => 'santa/home-slider',
+      ]
     ],
   ];
-	
-	// XML 
+
+  // XML
   $theme['xml_upload'] = [
     'variables' => [
       'xml_upload_form' => [],
@@ -30,74 +30,79 @@ function santa_theme() {
  */
 function santa_preprocess_page(&$variables) {
   $variables['attributes']['class'] = [];
-	$language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-	
-	$variables['attributes']['class'][] = 'node-' . $nid;
-	
-	$variables['#attached']['drupalSettings']['language'] = $language;
-	
-	$variables['#attached']['drupalSettings']['tranlateClass'] = '';
-	if(isset($variables['node'])) {
-		$nid = $variables['node']->id();
-		
-		if($variables['node']->hasTranslation($language)) {
-			$variables['attributes']['class'][] = 'notranslate';
-			$variables['#attached']['drupalSettings']['tranlateClass'] = 'notranslate';
-		}
-	}
+  $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
+
+  if(isset($nid)) {
+    $variables['attributes']['class'][] = 'node-' . $nid;
+  }
+
+  $variables['#attached']['drupalSettings']['language'] = $language;
+
+  $variables['#attached']['drupalSettings']['tranlateClass'] = '';
+  if(isset($variables['node'])) {
+    $nid = $variables['node']->id();
+
+    if($variables['node']->hasTranslation($language)) {
+      $variables['attributes']['class'][] = 'notranslate';
+      $variables['#attached']['drupalSettings']['tranlateClass'] = 'notranslate';
+    }
+  }
 }
 
 /**
  * Implements hook_preprocess_node().
  */
 function santa_preprocess_node(&$variables) {
-	if($variables['node']->getType() == 'business_permits') {
-		$nid = $variables['node']->id();
-		if($variables['node']->hasField('field_sample_xml')) {
-			$fid = $variables['node']->get('field_sample_xml')->getValue()[0]['target_id'];
-		}
-		$current_user = \Drupal::currentUser();
-		$userRole = $current_user->getRoles();
-		
-		$xmlUploadForm = '';
-		if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
-			$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', $nid, $fid);
-		}
-		$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', $nid, $fid);
-		
-		$variables['xmlUploadForm'] = $xmlUploadForm;
-		$variables['xmlListingForm'] = $xmlListingForm;
-		
-		$variables['#attached']['library'][] = 'santa/datatables';
+  if($variables['node']->getType() == 'business_permits') {
+    $nid = $variables['node']->id();
+    if($variables['node']->hasField('field_sample_xml')) {
+      $fid = $variables['node']->get('field_sample_xml')->getValue()[0]['target_id'];
+    }
+    $current_user = \Drupal::currentUser();
+    $userRole = $current_user->getRoles();
+
+    $xmlUploadForm = '';
+    if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
+      $xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', $nid, $fid);
+    }
+    $xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', $nid, $fid);
+
+    $variables['xmlUploadForm'] = $xmlUploadForm;
+    $variables['xmlListingForm'] = $xmlListingForm;
+
+    $variables['#attached']['library'][] = 'santa/datatables';
     $variables['#attached']['library'][] = 'santa/datatables_core';
-	}
+  }
 }
 
 /**
  * Implementing hook_preprocess_block
  */
 function santa_preprocess_block(&$variables) {
-  if (strpos($variables['content']['body'][0]['#text'], '{{ search_form }}') !== false) {
-    $block = \Drupal\block\Entity\Block::load('santacity_search');
-    $searchForm = \Drupal::entityTypeManager()->getViewBuilder('block')->view($block);
-    $searchForm = render($searchForm);
-    $variables['content']['body'][0]['#text'] = str_replace('{{ search_form }}', $searchForm, $variables['content']['body'][0]['#text']);
+  if (!empty($variables['content']['body'][0]['#text'])) {
+    if (strpos($variables['content']['body'][0]['#text'], '{{ search_form }}') !== false) {
+      $block = \Drupal\block\Entity\Block::load('santacity_search');
+      $searchForm = \Drupal::entityTypeManager()->getViewBuilder('block')->view($block);
+      $searchForm = render($searchForm);
+      $variables['content']['body'][0]['#text'] = str_replace('{{ search_form }}', $searchForm, $variables['content']['body'][0]['#text']);
+    }
+
+    if (strpos($variables['content']['body'][0]['#text'], '{{ contact_form }}') !== false) {
+      /*
+      $webform = \Drupal::entityTypeManager()->getStorage('webform')->load('contact');
+      $view_builder = \Drupal::service('entity_type.manager')->getViewBuilder('webform');
+      $build = $view_builder->view($webform);
+      */
+
+      $webform = \Drupal::entityTypeManager()->getStorage('webform')->load('help');
+      $webform = $webform->getSubmissionForm();
+      $webform = render($webform);
+      $variables['content']['body'][0]['#text'] = str_replace('{{ contact_form }}', $webform, $variables['content']['body'][0]['#text']);
+    }
   }
 
-  if (strpos($variables['content']['body'][0]['#text'], '{{ contact_form }}') !== false) {
-    /*
-    $webform = \Drupal::entityTypeManager()->getStorage('webform')->load('contact');
-    $view_builder = \Drupal::service('entity_type.manager')->getViewBuilder('webform');
-    $build = $view_builder->view($webform);
-    */
-
-    $webform = \Drupal::entityTypeManager()->getStorage('webform')->load('help');
-    $webform = $webform->getSubmissionForm();
-    $webform = render($webform);
-    $variables['content']['body'][0]['#text'] = str_replace('{{ contact_form }}', $webform, $variables['content']['body'][0]['#text']);
-  }
-
-  return $build;
+  //return $build;
+  return;
 }
 
 /**
@@ -112,32 +117,33 @@ function santa_preprocess_field(&$variables, $hook) {
  * Implements hook_cronapi().
  */
 function santa_cron() {
-	\Drupal::logger('santa_cron')->notice('Event & New cron tab');
-	event_expire();
-	news_expire();
+  \Drupal::logger('santa_cron')->notice('Event & New cron tab');
+  event_expire();
+  news_expire();
 }
 
 /**
  * The callback for the cron job,
  */
 function event_expire($node = '') {
-	if(!empty($node)) {
-		$eventNodes = [$node];
-	}
-	else {
-		$eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
-	}
-	
-		
-  foreach ($eventNodes as $eventNode) {
-    $eventDate = $eventNode->get('field_start_date')->getValue();
-		$eventDateTimestamp = strtotime($eventDate[0]['end_value']);
-		$currentTimestamp = time();
-		
-		if($eventDateTimestamp < $currentTimestamp) {
-			$eventNode->setPublished(false);
-			$eventNode->save();
-		}
+  if(!empty($node)) {
+    $eventNodes = [$node];
+  }
+  else {
+    $eventNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'events']);
+  }
+
+  if(!empty($eventDate[0]['end_value'])) {
+    foreach ($eventNodes as $eventNode) {
+      $eventDate = $eventNode->get('field_start_date')->getValue();
+      $eventDateTimestamp = strtotime($eventDate[0]['end_value']);
+      $currentTimestamp = time();
+
+      if($eventDateTimestamp < $currentTimestamp) {
+        $eventNode->setPublished(false);
+        $eventNode->save();
+      }
+    }
   }
 }
 
@@ -145,22 +151,25 @@ function event_expire($node = '') {
  * The callback for the cron job,
  */
 function news_expire($node = '') {
-	if(!empty($node)) {
-		$eventNodes = [$node];
-	}
-	else {
-		$$newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
-	}
-	
-  foreach ($newsNodes as $newsNode) {
-    $newsDate = $newsNode->get('field_news_date')->getValue();
-		$newsDateTimestamp = strtotime($newsDate[0]['value']);
-		$currentTimestamp = time();
-		
-		if($newsDateTimestamp < $currentTimestamp) {
-			$newsNode->setPublished(false);
-			$newsNode->save();
-		}
+  if(!empty($node)) {
+    $eventNodes = [$node];
+  }
+  else {
+    // $$newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
+    $newsNodes = \Drupal::entityTypeManager()->getStorage('node')->loadByProperties(['type' => 'news']);
+  }
+
+  if(!empty($newsDate[0]['value'])) {
+    foreach ($newsNodes as $newsNode) {
+      $newsDate = $newsNode->get('field_news_date')->getValue();
+      $newsDateTimestamp = strtotime($newsDate[0]['value']);
+      $currentTimestamp = time();
+
+      if($newsDateTimestamp < $currentTimestamp) {
+        $newsNode->setPublished(false);
+        $newsNode->save();
+      }
+    }
   }
 }
 
@@ -169,9 +178,9 @@ function news_expire($node = '') {
  */
 function santa_entity_postsave(Drupal\Core\Entity\EntityInterface $entity) {
   if($entity->bundle() === 'events') {
-		// event_expire($entity);
-	}
-	if($entity->bundle() === 'news') {
-		// news_expire($entity);
-	}
+    // event_expire($entity);
+  }
+  if($entity->bundle() === 'news') {
+    // news_expire($entity);
+  }
 }
