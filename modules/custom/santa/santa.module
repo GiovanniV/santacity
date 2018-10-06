@@ -199,7 +199,7 @@ function santa_node_access(NodeInterface $node, $op, AccountInterface $account) 
 	$user = $user->load($account->id());
 	switch ($op) {
 		case 'update':
-			if(($type == 'page') && $node->hasField('field_category') && $user->hasField('field_category') ) {
+			if(in_array($type, ['page', 'events']) && $node->hasField('field_category') && $user->hasField('field_category') ) {
 				$userValues = $user->toArray();
 				$nodeValues = $node->toArray();
 				
@@ -209,7 +209,6 @@ function santa_node_access(NodeInterface $node, $op, AccountInterface $account) 
 				foreach($user_departments as $user_department) {
 					foreach($node_departments as $node_department) {
 						if($user_department['target_id'] == $node_department['target_id']) {
-							dpm(12121);
 							return AccessResult::allowed();
 						}
 					}
