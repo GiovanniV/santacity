@@ -36,7 +36,7 @@ function santa_preprocess_page(&$variables) {
   $variables['attributes']['class'] = [];
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
   $defaultLanguage = \Drupal::languageManager()->getDefaultLanguage();
-	print($defaultLanguage):
+	print_r($defaultLanguage);
 	$variables['attributes']['class'] = [];
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
   $variables['#attached']['drupalSettings']['language'] = $language;
