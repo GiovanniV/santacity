@@ -26,8 +26,10 @@
 				$('body').addClass(drupalSettings.tranlateClass);
 
 				try {
+					console.log('en|' + drupalSettings.language);
+						
 					if(drupalSettings.language != 'en') {
-						console.log('en|' + drupalSettings.language);
+						//console.log('en|' + drupalSettings.language);
 						doGTranslate('en|' + drupalSettings.language);
 					}					
 				}
