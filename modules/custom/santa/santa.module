@@ -46,6 +46,7 @@ function santa_preprocess_page(&$variables) {
     $nid = $variables['node']->id();
     $variables['attributes']['class'][] = 'node-' . $nid;
     if($variables['node']->hasTranslation($language) || ($defaultLanguage == $language) || ($language == 'en') ) {
+			exit;
       $variables['attributes']['class'][] = 'notranslate';
       $variables['#attached']['drupalSettings']['tranlateClass'] = 'notranslate';
     }
