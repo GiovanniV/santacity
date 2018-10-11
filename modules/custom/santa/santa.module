@@ -50,6 +50,10 @@ function santa_preprocess_page(&$variables) {
       $variables['attributes']['class'][] = 'notranslate';
       $variables['#attached']['drupalSettings']['tranlateClass'] = 'notranslate';
     }
+		print_r($language);
+	print_r($defaultLanguage);
+	exit;
+	
   }
 }
 
