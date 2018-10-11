@@ -35,7 +35,8 @@ function santa_theme() {
 function santa_preprocess_page(&$variables) {
   $variables['attributes']['class'] = [];
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
-	
+  $defaultLanguage = \Drupal::languageManager()->getDefaultLanguage();
+	print($defaultLanguage):
 	$variables['attributes']['class'] = [];
   $language = \Drupal::languageManager()->getCurrentLanguage()->getId();
   $variables['#attached']['drupalSettings']['language'] = $language;
@@ -44,7 +45,7 @@ function santa_preprocess_page(&$variables) {
 	if(isset($variables['node'])) {
     $nid = $variables['node']->id();
     $variables['attributes']['class'][] = 'node-' . $nid;
-    if($variables['node']->hasTranslation($language)) {
+    if($variables['node']->hasTranslation($language) || ($defaultLanguage == $language) ) {
       $variables['attributes']['class'][] = 'notranslate';
       $variables['#attached']['drupalSettings']['tranlateClass'] = 'notranslate';
     }
