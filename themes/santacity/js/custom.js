@@ -26,12 +26,9 @@
 				$('body').addClass(drupalSettings.tranlateClass);
 
 				try {
-					console.log('en|' + drupalSettings.language);
+					doGTranslate('en|' + drupalSettings.language);
 					if(drupalSettings.language == 'en') {
-						doGTranslate('');
-					}
-					else {
-						doGTranslate('en|' + drupalSettings.language);
+						$('body').addClass(drupalSettings.tranlateClass);
 					}
 				}
 				catch(e) {
