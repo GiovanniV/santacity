@@ -28,7 +28,7 @@
 				try {
 					doGTranslate('en|' + drupalSettings.language);
 					if(drupalSettings.language == 'en') {
-						$('body').addClass(drupalSettings.tranlateClass);
+						$('html').addClass('notranslate');
 					}
 				}
 				catch(e) {
