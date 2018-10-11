@@ -27,7 +27,8 @@
 
 				try {
 					if(drupalSettings.language != 'en') {
-						doGTranslate('en|' + drupalSettings.language);
+						console.log('en|' + drupalSettings.language);
+						// doGTranslate('en|' + drupalSettings.language);
 					}					
 				}
 				catch(e) {
