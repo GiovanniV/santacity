@@ -27,6 +27,7 @@
 
 				try {
 					if(drupalSettings.language != 'en') {
+						console.log('en|' + drupalSettings.language);
 						doGTranslate('en|' + drupalSettings.language);
 					}					
 				}
