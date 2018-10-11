@@ -26,7 +26,9 @@
 				$('body').addClass(drupalSettings.tranlateClass);
 
 				try {
-					doGTranslate('en|' + drupalSettings.language);
+					if(drupalSettings.language != 'en') {
+						doGTranslate('en|' + drupalSettings.language);
+					}					
 				}
 				catch(e) {
 					//callUndefinedFunctionCatcher(e.arguments);
