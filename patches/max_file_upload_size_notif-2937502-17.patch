@@ -1,0 +1,50 @@
+diff --git a/src/Filter/DrupalUtils.php b/src/Filter/DrupalUtils.php
+index 345c06e..6b625c4 100644
+--- a/src/Filter/DrupalUtils.php
++++ b/src/Filter/DrupalUtils.php
+@@ -99,10 +99,39 @@ class DrupalUtils extends PluginBase {
+    */
+   public function beforeRestore(BackupFileReadableInterface $file) {
+     if ($file->getMeta('filesize') > file_upload_max_size()) {
+-      throw new BackupMigrateException('The input file exceeds the servers upload_max_filesize or post_max_size limit.', ['!id' => $file->getMeta('id')]);
++      throw new BackupMigrateException(
++        'The unzipped input file ":file" exceeds the servers upload_max_filesize
++        or post_max_size limit. The unzipped file weighs is :size.',
++        [
++          ':file' => $file->getName(),
++          ':size' => $this->formatBytes($file->getMeta('filesize')),
++        ]
++      );
+     }
+
+     return $file;
+   }
+
++
++  /**
++   * Convert bytes
++   *
++   * @param int $size
++   * @param int $precision
++   *
++   * @return string
++   */
++  protected function formatBytes(int $size, int $precision = NULL) {
++    // Sets default precision
++    if (!$precision) {
++      $precision = 2;
++    }
++
++    $base = log($size, 1024);
++    $suffixes = ['', 'KB', 'MB', 'GB', 'TB'];
++
++    return round(
++      pow(
++        1024,
++        $base - floor($base)
++      ),
++      $precision
++    ) . $suffixes[floor($base)];
++  }
++
+ }
