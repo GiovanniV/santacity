@@ -3,6 +3,10 @@
 use Drupal\Core\Access\AccessResult;
 use Drupal\node\NodeInterface;
 use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Form\FormStateInterface;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\Core\Database\Database;
+use Drupal\file\Entity\File;
 
 /**
  * Implementing hook_theme
@@ -52,30 +56,114 @@ function santa_preprocess_page(&$variables) {
 }
 
 /**
+ * Implementing hook_form_form_id_alter()
+ */
+function santa_form_node_form_alter(&$form, FormStateInterface $form_state, $form_id) {
+	$node = $form_state->getFormObject()->getEntity();
+	$nid = $node->id();
+	$contentType = $node->getType();
+	
+	$config = \Drupal::config('santa.xml_settings');
+	$xmlContentType = $config->get('content_types');
+	
+	if(in_array($contentType, $xmlContentType)) {
+		$fid = getxmlCsvSampleData($nid);
+		$form['xml'] = array(
+      '#type' => 'details',
+      '#title' => t('Sample XML/CSV'),
+      '#description' => t('Sample XML/CSV'),
+      '#group' => 'advanced',
+      '#open' => FALSE,
+			'sample_file' => [
+				'#type' => 'managed_file',
+				'#title' => t('XML/CSV File'),
+				'#upload_location' => 'public://xml/sample',
+				'#default_value' => [$fid],
+				'#multiple' => false,
+				'#description' => t('Allowed extensions: xml csv'),
+				'#upload_validators' => array(
+					'file_validate_extensions' => array('xml csv'),
+				),
+			],
+      '#weight' => 1000,
+    );
+		
+		foreach (array_keys($form['actions']) as $action) {
+      if ($action != 'preview' && isset($form['actions'][$action]['#type']) && $form['actions'][$action]['#type'] === 'submit') {
+        $form['actions'][$action]['#submit'][] = 'santa_xml_sample_save';
+      }
+    }
+	}
+	
+}	
+
+function santa_xml_sample_save($form, FormStateInterface $form_state) {
+	$config = \Drupal::config('santa.xml_settings');
+	$xmlContentType = $config->get('content_types');
+	$node = $form_state->getFormObject()->getEntity();
+	$nid = $node->id();
+	$contentType = $node->getType();
+	$sampleFileId = $form_state->getValue('sample_file');
+	
+	if(in_array($contentType, $xmlContentType) && !empty($sampleFileId)) {
+		// Save File 
+		$sampleFileId = $sampleFileId[0];
+		$sampleFile = File::load($sampleFileId);
+		$sampleFile->setPermanent();
+		$sampleFile->save();
+		
+		$connection = Database::getConnection();
+		$connection->merge('santa_xml_csv_sample')
+			->key(['nid' => $nid])
+			->fields(['fid' => $sampleFileId])
+			->execute();
+	}
+  
+}
+
+
+/**
  * Implements hook_preprocess_node().
  */
 function santa_preprocess_node(&$variables) {
-  if($variables['node']->getType() == 'business_permits') {
+  $config = \Drupal::config('santa.xml_settings');
+	$xmlContentType = $config->get('content_types');
+	
+	$contentType = $variables['node']->getType();
+	
+	if(in_array($contentType, $xmlContentType)) {
     $nid = $variables['node']->id();
-    if($variables['node']->hasField('field_sample_xml')) {
-      $fid = $variables['node']->get('field_sample_xml')->getValue()[0]['target_id'];
-    }
-    $current_user = \Drupal::currentUser();
-    $userRole = $current_user->getRoles();
+    $fid = getxmlCsvSampleData($nid);
+		
+		if(!empty($fid)) {
+			$xmlUploadForm = [];
+			if($variables['node']->access('update')) {
+				$xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', $nid, $fid);
+			}
+			$xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', $nid, $fid);
 
-    $xmlUploadForm = '';
-    if(in_array('super_admin', $userRole) || in_array('administrator', $userRole)) {
-      $xmlUploadForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlUploadForm', $nid, $fid);
-    }
-    $xmlListingForm = \Drupal::formBuilder()->getForm('Drupal\santa\Form\XmlListingForm', $nid, $fid);
+			$variables['content']['xmlUploadForm'] = $xmlUploadForm;
+			$variables['content']['xmlListingForm'] = $xmlListingForm;
 
-    $variables['xmlUploadForm'] = $xmlUploadForm;
-    $variables['xmlListingForm'] = $xmlListingForm;
-
-    $variables['#attached']['library'][] = 'santa/datatables';
-    $variables['#attached']['library'][] = 'santa/datatables_core';
+			$variables['#attached']['library'][] = 'santa/datatables';
+			$variables['#attached']['library'][] = 'santa/datatables_core';
+		}
   }
 }
+
+/**
+ * Get  XML/CSV Sample Data
+ */
+function getxmlCsvSampleData($nid) {
+	$connection = Database::getConnection();
+	$query = $connection->select('santa_xml_csv_sample', 'sample');
+	$query->condition('sample.nid', $nid);
+	$query->fields('sample', ['fid']);
+	$result = $query->execute()->fetchAssoc();
+	
+	return isset($result['fid']) ? $result['fid'] : '';
+}	
+
 
 /**
  * Implementing hook_preprocess_block

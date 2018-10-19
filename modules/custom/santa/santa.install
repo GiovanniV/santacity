@@ -1,0 +1,80 @@
+<?php
+use Drupal\Core\Database\Database;
+
+/**
+ * hook_update_N()
+ */
+function santa_update_8001() {
+	$santa_xml_csv_sample = array(
+		'description' => 'Santa XML CSV',
+		'fields' => array(
+			'nid' => array(
+				'description' => 'Node ID',
+				'type' => 'int',
+				'not null' => TRUE,
+			),
+			'fid' => array(
+				'description' => 'Sample File ID',
+				'type' => 'int',
+				'not null' => TRUE,
+			),
+		),
+		'primary key' => array('nid'),
+	); 
+	$schema = Database::getConnection()->schema();
+	$schema->createTable('santa_xml_csv_sample', $santa_xml_csv_sample);
+}	
+
+/**
+ * hook_update_N()
+ */
+function santa_update_8007() {
+	$santa_xml_upload = array(
+		'description' => 'Santa XML CSV',
+		'fields' => array(
+			'id' => [
+        'description' => 'ID',
+				'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ],
+			'nid' => array(
+				'description' => 'Node ID',
+				'type' => 'int',
+				'not null' => TRUE,
+			),
+			'type' => array(
+				'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+			),
+			'name' => array(
+				'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+			),
+			'created_date' => array(
+				'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+			),
+			'updated_date' => array(
+				'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+			),
+			'file_id' => array(
+				'description' => 'Sample File ID',
+				'type' => 'int',
+				'not null' => TRUE,
+			),
+		),
+		'primary key' => array('id'),
+	); 
+	$schema = Database::getConnection()->schema();
+	$schema->createTable('santa_xml_upload', $santa_xml_upload);
+}	

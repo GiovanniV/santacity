@@ -8,3 +8,5 @@ version: '8.x'
 core: '8.x'
 project: 'santacity'
 datestamp: 1505830148
+
+configure: santa.xml_settings

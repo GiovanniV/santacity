@@ -27,6 +27,8 @@ class XmlListingForm extends FormBase {
    * {@inheritdoc}
    */
   public function buildForm(array $form, FormStateInterface $form_state, $nid = NULL) {
+		$extensions = array('application/xml' => 'XML','text/csv' => 'CSV');
+		
 		$form['#attributes'] = [
 			'class' => ['xml-listing-form-container'],
 		];
@@ -54,7 +56,7 @@ class XmlListingForm extends FormBase {
 		$xml_title = $xml_node->getTitle();
 		
 		foreach ($records as $record) {
-			$timeAgo = t('(created during the last @time months)', array('@time' => \Drupal::service('date.formatter')->formatTimeDiffSince($record->created_date)));;
+			$timeAgo = t('(created during the last @time months)', array('@time' => \Drupal::service('date.formatter')->formatTimeDiffSince($record->created_date)));
 			// Resources
 			$form['xml'][$record->id]['resource'] = array(
 				'#plain_text' => 'Listing of ' . $xml_title . ' ' . $timeAgo,
@@ -62,7 +64,7 @@ class XmlListingForm extends FormBase {
 			
 			// Type
 			$form['xml'][$record->id]['type'] = array(
-				'#plain_text' => 'xml',
+				'#plain_text' => isset($extensions[$record->type]) ? $extensions[$record->type] : $record->type,
 			);
 			
 			// Download
@@ -89,16 +91,14 @@ class XmlListingForm extends FormBase {
 			);
 			
 			if($showOperation) {
-				// Operations (dropbutton) column.
 				$form['xml'][$record->id]['operations'] = array(
-					'#type' => 'operations',
-					'#links' => array(),
+					'#type' => 'submit',
+					'#value' => 'Delete',
+					'#name' => 'delete_' . $record->id,
+					'#id' => $record->id,
+					'#submit' => ['::xmlDelete'],
 				);
 				
-				$form['xml'][$record->id]['operations']['#links']['delete'] = array(
-					'title' => t('Delete'),
-					'url' => '/test',
-				);
 			}
 			
 		}
@@ -154,17 +154,30 @@ class XmlListingForm extends FormBase {
 	*/
 	public function loadXmlRecordsTable($fid) {
 		$file = File::load($fid);
-    $xmlPath = file_create_url($file->getFileUri());
+		$type = $file->getMimeType();
 		
-		$xml = simplexml_load_file($xmlPath);
+    $filePath = file_create_url($file->getFileUri());
 		
 		$header = $rows = [];
 		$item = 0;
 		
-		foreach($xml->children() as $record) {
-			$record = (array)$record;
-			$header = array_keys($record);
-			$rows[] = $record;
+		switch($type) {
+			case 'application/xml':
+				$xml = simplexml_load_file($filePath);
+				foreach($xml->children() as $record) {
+					$record = (array)$record;
+					$header = array_keys($record);
+					$rows[] = $record;
+				}
+				break;
+			case 'text/csv':
+				$file = fopen($filePath, "r");
+				$header = fgetcsv($file);
+				while($column = fgetcsv($file)) {
+					$rows[] = array_combine(header);
+				}
+				fclose($file);
+				break;
 		}
 		
 		$form = [
@@ -184,17 +197,38 @@ class XmlListingForm extends FormBase {
 		return $form;
 	} 
 	
+	/**
+	* {@inheritdoc}
+	*/
+	public function xmlDelete(array &$form, FormStateInterface $form_state) {
+		$element = $form_state->getTriggeringElement();
+		$id = $element['#id'];
+		$this->deleteXmlFiles($id);
+		$form_state->setRebuild(FALSE);
+	}
+	
   /**
   * Get XML Files
   */
   public function getXmlFiles($nid = '') {
     $connection = Database::getConnection();
-    $query = $connection->select('xml_upload', 'xml');
+    $query = $connection->select('santa_xml_upload', 'xml');
     $query->condition('xml.nid', $nid);
     $query->fields('xml');
     $results = $query->execute();
     return $results;
     
   }
+  
+  /**
+  * Delete XML Files
+  */
+  public function deleteXmlFiles($id) {
+    $connection = Database::getConnection();
+    $query = $connection->delete('santa_xml_upload');
+    $query->condition('id', $id);
+    $results = $query->execute();
+  }
+
 
 }

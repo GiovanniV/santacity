@@ -1,0 +1,10 @@
+xml file upload:
+  description: 'XML Upload'
+  title: 'XML Upload'
+  restrict access: TRUE
+
+xml file delete:
+  description: 'XML Delete'
+  title: 'XML Delete'
+  restrict access: TRUE
+

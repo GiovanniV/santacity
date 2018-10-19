@@ -36,7 +36,7 @@ class XmlUploadForm extends FormBase {
 
 		$form['xml_file_upload']['sample_xml'] = array(
 			'#type' => 'link',
-			'#title' => t('Sample XML'),
+			'#title' => t('Sample Data'),
 			'#attributes' => ['class' => ['pull-right']],
 			'#url' => Url::fromRoute('file_download.link', array('scheme' => 'public', 'fid' => $fid)),
 		);
@@ -44,12 +44,12 @@ class XmlUploadForm extends FormBase {
 		$form['xml_file_upload']['fid'] = array(
 			'#type' => 'managed_file',
 			'#title' => t('XML File'),
-			'#upload_location' => 'private://xml/',
+			'#upload_location' => 'public://xml/data',
 			'#required' => true,
 			'#multiple' => false,
-			'#description' => t('Allowed extensions: gif png jpg jpeg'),
+			'#description' => t('Allowed extensions: xml csv'),
 			'#upload_validators' => array(
-				'file_validate_extensions' => array('xml'),
+				'file_validate_extensions' => array('xml csv'),
 			),
 		);
 		
@@ -94,18 +94,20 @@ class XmlUploadForm extends FormBase {
   **/
   private function saveXmlFile($inputValues) {
     $connection = Database::getConnection();
+		$file = File::load($inputValues['fid'][0]);
+		$type = $file->getMimeType();
 		
 		$fieldValues = [
 			'id' => '',
 			'nid' => $inputValues['nid'],
-			'type' => 'xml',
+			'type' => $type,
 			'file_id' => $inputValues['fid'][0],
 			'created_date' => time(),
 		];
 		
 		if(empty($fieldValues['id'])) {
 			unset($fieldValues['id']);
-			$connection->insert('xml_upload')
+			$connection->insert('santa_xml_upload')
 				->fields($fieldValues)
 				->execute();
 			
